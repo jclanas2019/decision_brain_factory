@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "industry": "Comercio: triaje de consultas y reclamaciones",
+  "locale": "es_ES",
+  "fields": [
+    {
+      "id": "dias_desde_compra",
+      "type": "number",
+      "description": "Días transcurridos desde la compra"
+    },
+    {
+      "id": "mensaje",
+      "type": "text",
+      "description": "¿Cuál es la necesidad principal del cliente?"
+    },
+    {
+      "id": "contexto",
+      "type": "text",
+      "description": "Organización y contexto operativo"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "clasificacion",
+      "kind": "choice",
+      "question": "¿Cuál es la necesidad principal del cliente?",
+      "min_probability": 0.55,
+      "options": [
+        {
+          "id": "consulta",
+          "meaning": "Solicita información del producto."
+        },
+        {
+          "id": "reclamacion",
+          "meaning": "Reclama un problema con su compra."
+        },
+        {
+          "id": "cancelacion",
+          "meaning": "Expresa intención de cancelar la compra."
+        }
+      ]
+    },
+    {
+      "id": "atencion_prioritaria",
+      "kind": "boolean",
+      "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+      "options": [
+        {
+          "id": "false",
+          "meaning": "Se puede atender en el flujo habitual."
+        },
+        {
+          "id": "true",
+          "meaning": "Requiere revisión prioritaria."
+        }
+      ],
+      "min_probability": 0.55
+    },
+    {
+      "id": "nivel",
+      "kind": "score",
+      "question": "¿Qué nivel de atención corresponde al caso?",
+      "options": [
+        {
+          "id": "bajo",
+          "value": 0,
+          "meaning": "Atención habitual."
+        },
+        {
+          "id": "medio",
+          "value": 1,
+          "meaning": "Revisión del especialista."
+        },
+        {
+          "id": "alto",
+          "value": 2,
+          "meaning": "Revisión humana prioritaria."
+        }
+      ],
+      "min_probability": 0.5
+    }
+  ],
+  "routing": {
+    "review_action": "revision_humana",
+    "fallback": "cola_general",
+    "rules": [
+      {
+        "decision": "clasificacion",
+        "option": "cancelacion",
+        "min_probability": 0.6,
+        "action": "revision_cancelacion"
+      },
+      {
+        "decision": "clasificacion",
+        "option": "reclamacion",
+        "min_probability": 0.6,
+        "action": "cola_postventa"
+      },
+      {
+        "decision": "clasificacion",
+        "option": "consulta",
+        "min_probability": 0.6,
+        "action": "cola_informacion"
+      }
+    ]
+  },
+  "synthetic_scenarios": [
+    {
+      "id": "consulta",
+      "context": {
+        "dias_desde_compra": [
+          0,
+          3
+        ],
+        "mensaje": {
+          "train": "¿Qué tallas y colores tienen disponibles?",
+          "validation": "Quisiera consultar las medidas del producto antes de comprar.",
+          "calibration": "Necesito información sobre los modelos disponibles.",
+          "test": "Estoy comparando opciones: ¿pueden explicar las características?"
+        },
+        "contexto": {
+          "train": "Organización {company}, ciudad {city}.",
+          "validation": "Caso de {company}; oficina en {city}.",
+          "calibration": "Registro {code} para {company}.",
+          "test": "Solicitud operativa de {company}, referencia {code}."
+        }
+      },
+      "targets": {
+        "clasificacion": "consulta",
+        "atencion_prioritaria": "false",
+        "nivel": "bajo"
+      }
+    },
+    {
+      "id": "reclamacion",
+      "context": {
+        "dias_desde_compra": [
+          2,
+          12
+        ],
+        "mensaje": {
+          "train": "Recibí un producto defectuoso y necesito solución.",
+          "validation": "Mi pedido llegó dañado; solicito ayuda con el problema.",
+          "calibration": "El artículo no funciona como se describe.",
+          "test": "La compra presenta una falla y quisiera reclamar."
+        },
+        "contexto": {
+          "train": "Organización {company}, ciudad {city}.",
+          "validation": "Caso de {company}; oficina en {city}.",
+          "calibration": "Registro {code} para {company}.",
+          "test": "Solicitud operativa de {company}, referencia {code}."
+        }
+      },
+      "targets": {
+        "clasificacion": "reclamacion",
+        "atencion_prioritaria": "false",
+        "nivel": "medio"
+      }
+    },
+    {
+      "id": "cancelacion",
+      "context": {
+        "dias_desde_compra": [
+          0,
+          2
+        ],
+        "mensaje": {
+          "train": "Quiero cancelar el pedido de inmediato.",
+          "validation": "He decidido anular mi compra, no deseo recibirla.",
+          "calibration": "Solicito la cancelación de esta orden.",
+          "test": "No envíen el producto: deseo dejar sin efecto el pedido."
+        },
+        "contexto": {
+          "train": "Organización {company}, ciudad {city}.",
+          "validation": "Caso de {company}; oficina en {city}.",
+          "calibration": "Registro {code} para {company}.",
+          "test": "Solicitud operativa de {company}, referencia {code}."
+        }
+      },
+      "targets": {
+        "clasificacion": "cancelacion",
+        "atencion_prioritaria": "true",
+        "nivel": "alto"
+      }
+    }
+  ]
+}

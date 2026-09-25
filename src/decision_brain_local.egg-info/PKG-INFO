@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: decision-brain-local
-Version: 0.5.0
+Version: 0.8.0
 Summary: Local typed decision models and evaluation harness
 Requires-Python: <3.14,>=3.12
 Requires-Dist: annotated-doc==0.0.5
@@ -36,3 +36,16 @@ Requires-Dist: typing-extensions==4.16.0
 Requires-Dist: typing-inspection==0.4.4
 Requires-Dist: tzdata==2026.4
 Requires-Dist: uvicorn==0.54.0
+Requires-Dist: charset-normalizer==3.5.1
+Requires-Dist: googleapis-common-protos==1.75.4
+Requires-Dist: importlib-metadata==8.7.1
+Requires-Dist: opentelemetry-api==1.38.0
+Requires-Dist: opentelemetry-exporter-otlp-proto-common==1.38.0
+Requires-Dist: opentelemetry-exporter-otlp-proto-http==1.38.0
+Requires-Dist: opentelemetry-proto==1.38.0
+Requires-Dist: opentelemetry-sdk==1.38.0
+Requires-Dist: opentelemetry-semantic-conventions==0.59b0
+Requires-Dist: protobuf==6.33.6
+Requires-Dist: requests==2.34.2
+Requires-Dist: urllib3==2.8.0
+Requires-Dist: zipp==4.1.0

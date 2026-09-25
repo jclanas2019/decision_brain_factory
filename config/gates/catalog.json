@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "brains": [
+    {
+      "brain_id": "retail.triaje",
+      "contract_hash": "dd7fd4884efdc2ad4adfbeed08160fb2717c2d47a08a9f958a7b6b43a6f9ff2e",
+      "endpoint": "http://127.0.0.1:8000",
+      "owner": "equipo-local",
+      "latency_sla_ms": 80,
+      "actions": [
+        "cola_general",
+        "cola_informacion",
+        "cola_postventa",
+        "revision_cancelacion",
+        "revision_humana"
+      ],
+      "interop_config": "interop_gate.json",
+      "observe_config": "observe.json",
+      "upstream_token_env": "BRAIN_RETAIL_TRIAJE_TOKEN",
+      "mode": "active",
+      "environments": {
+        "production": {
+          "registry": "../../registry/production"
+        },
+        "development": {
+          "registry": "../../registry/development",
+          "interop_config": "interop_gate.development.json"
+        }
+      }
+    }
+  ]
+}

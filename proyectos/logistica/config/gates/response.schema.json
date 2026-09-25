@@ -1,0 +1,272 @@
+{
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "correlation_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "brain_id": {
+      "const": "logistica.incidencia"
+    },
+    "model_version": {
+      "type": "string"
+    },
+    "context": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    },
+    "answers": {
+      "type": "object",
+      "properties": {
+        "clasificacion": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "choice"
+            },
+            "choice": {
+              "enum": [
+                "normal",
+                "demora",
+                "dano"
+              ]
+            },
+            "probabilities": {
+              "type": "object",
+              "properties": {
+                "normal": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "demora": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "dano": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "normal",
+                "demora",
+                "dano"
+              ],
+              "additionalProperties": false
+            },
+            "max_probability": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "needs_review": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "kind",
+            "choice",
+            "probabilities",
+            "max_probability",
+            "needs_review"
+          ],
+          "additionalProperties": false
+        },
+        "atencion_prioritaria": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "boolean"
+            },
+            "choice": {
+              "enum": [
+                "false",
+                "true"
+              ]
+            },
+            "probabilities": {
+              "type": "object",
+              "properties": {
+                "false": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "true": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "false",
+                "true"
+              ],
+              "additionalProperties": false
+            },
+            "max_probability": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "needs_review": {
+              "type": "boolean"
+            },
+            "probability_true": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "kind",
+            "choice",
+            "probabilities",
+            "max_probability",
+            "needs_review",
+            "probability_true"
+          ],
+          "additionalProperties": false
+        },
+        "nivel": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "score"
+            },
+            "choice": {
+              "enum": [
+                "bajo",
+                "medio",
+                "alto"
+              ]
+            },
+            "probabilities": {
+              "type": "object",
+              "properties": {
+                "bajo": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "medio": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "alto": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "bajo",
+                "medio",
+                "alto"
+              ],
+              "additionalProperties": false
+            },
+            "max_probability": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "needs_review": {
+              "type": "boolean"
+            },
+            "expected_score": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "choice",
+            "probabilities",
+            "max_probability",
+            "needs_review",
+            "expected_score"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "clasificacion",
+        "atencion_prioritaria",
+        "nivel"
+      ],
+      "additionalProperties": false
+    },
+    "action": {
+      "enum": [
+        "cola_general",
+        "revisar_reprogramacion",
+        "revision_dano",
+        "revision_humana",
+        "seguimiento_habitual"
+      ]
+    },
+    "needs_review": {
+      "type": "boolean"
+    },
+    "confidence": {
+      "type": "object",
+      "properties": {
+        "clasificacion": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "atencion_prioritaria": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "nivel": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "clasificacion",
+        "atencion_prioritaria",
+        "nivel"
+      ],
+      "additionalProperties": false
+    },
+    "trace_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    }
+  },
+  "required": [
+    "request_id",
+    "correlation_id",
+    "brain_id",
+    "model_version",
+    "context",
+    "answers",
+    "action",
+    "needs_review",
+    "confidence",
+    "trace_id",
+    "event_id"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Runtime also verifies probability sums, argmax, thresholds, action rule, contract hash and model identity."
+}

@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "properties": {
+    "brain_id": {
+      "const": "comercio.triaje"
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "dias_desde_compra": {
+          "type": "number",
+          "minimum": -1000000000000.0,
+          "maximum": 1000000000000.0
+        },
+        "mensaje": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 12000
+        },
+        "contexto": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 12000
+        }
+      },
+      "required": [
+        "dias_desde_compra",
+        "mensaje",
+        "contexto"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "brain_id",
+    "context"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

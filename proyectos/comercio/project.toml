@@ -1,0 +1,10 @@
+version = 1
+
+[harness]
+suite = "config/harness_suite.json"
+min_pass_rate = 1.0
+# Sin run: usa el último entrenamiento completado.
+# Sin output: crea una carpeta nueva para cada evaluación.
+# run = "runs/mi_modelo"
+# output = "runs/mi_evaluacion"
+# baseline = "runs/referencia"

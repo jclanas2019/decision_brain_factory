@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "environment": "production",
+  "catalog": "catalog.json",
+  "database": "../../registry/edge.sqlite3",
+  "audit": "../../registry/audit.jsonl",
+  "token_env": "BRAIN_OBSERVER_TOKEN"
+}

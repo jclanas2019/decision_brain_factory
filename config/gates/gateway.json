@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "environment": "production",
+  "require_tls": true,
+  "catalog": "catalog.json",
+  "routes": "routes.json",
+  "database": "../../registry/edge.sqlite3",
+  "limits": {
+    "max_body_bytes": 65536,
+    "max_text_chars": 12000,
+    "max_numeric_magnitude": 1000000000000.0
+  },
+  "max_response_bytes": 262144,
+  "max_inflight": 16,
+  "upstream_timeout_seconds": 10,
+  "callers": {
+    "orchestrator": {
+      "token_env": "BRAIN_ORCHESTRATOR_TOKEN",
+      "brains": [
+        "retail.triaje"
+      ]
+    },
+    "postventa-api": {
+      "token_env": "BRAIN_POSTVENTA_TOKEN",
+      "brains": [
+        "retail.triaje"
+      ]
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "origin": "synthetic_preset_smoke_only",
+  "cases": [
+    {
+      "id": "normal",
+      "context": {
+        "horas_desviacion": 0.0,
+        "estado_entrega": "No hay novedades adversas; el transporte marcha a tiempo.",
+        "contexto": "Solicitud operativa de Empresa Ejemplo, referencia TEST-001."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "normal",
+          "atencion_prioritaria": "false",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "demora",
+      "context": {
+        "horas_desviacion": 14.0,
+        "estado_entrega": "El destinatario sigue esperando fuera de la ventana convenida.",
+        "contexto": "Solicitud operativa de Empresa Ejemplo, referencia TEST-001."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "demora",
+          "atencion_prioritaria": "false",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "dano",
+      "context": {
+        "horas_desviacion": 6.0,
+        "estado_entrega": "El contenido llegó quebrado y debe inspeccionarse.",
+        "contexto": "Solicitud operativa de Empresa Ejemplo, referencia TEST-001."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "dano",
+          "atencion_prioritaria": "true",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "reject_unknown_field",
+      "context": {
+        "__unexpected__": "invalid"
+      },
+      "expect_error": true
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "labels": [
+    "brain_id",
+    "version",
+    "action",
+    "needs_review"
+  ],
+  "redact": [
+    "mensaje",
+    "contexto"
+  ],
+  "audit": "registry/audit.jsonl",
+  "retention": {
+    "mode": "append_only_manual_archive",
+    "metrics_window_seconds": 3600
+  },
+  "slo": {
+    "availability": 0.995,
+    "p95_ms": 80,
+    "review_rate_max": 0.25,
+    "fallback_rate_max": 0.25
+  }
+}

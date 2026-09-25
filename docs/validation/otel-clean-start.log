@@ -1,0 +1,26 @@
+Decision Brain 0.7.0 | /workspace/scratch/bd214683c088/decision_brain_observability
+Entorno listo.
+[1/3] Ejecutando pruebas del servicio, harness y configuración…
+Pruebas: 71; fallos: 0; errores: 0.
+[2/3] Entrenando y generando el informe del modelo…
+  epoch=1 train_loss=0.02326 validation_loss=0.68476
+  epoch=10 train_loss=0.00152 validation_loss=0.74448
+propuesta=0 validation_loss=0.684756 accepted=True
+  epoch=1 train_loss=0.20706 validation_loss=0.76097
+  epoch=10 train_loss=0.00251 validation_loss=0.78949
+propuesta=1 validation_loss=0.76097 accepted=False
+  epoch=1 train_loss=0.00142 validation_loss=0.68445
+  epoch=10 train_loss=0.00137 validation_loss=0.70267
+propuesta=2 validation_loss=0.684446 accepted=True
+FUNCTIONAL TEST PASSED; test_loss=0.290716
+clasificacion: exactitud=86.3%; referencia=33.3%; loss=0.35613
+atencion_prioritaria: exactitud=91.3%; referencia=66.7%; loss=0.19374
+nivel: exactitud=90.0%; referencia=33.3%; loss=0.32228
+Informe interpretado: /workspace/scratch/bd214683c088/decision_brain_observability/runs/session_20260925_183458_88b78d51/model/report.html
+[3/3] Evaluando decisiones con el harness…
+4 de 4 casos cumplen todas sus expectativas. Cumple el umbral; no se comparó con una referencia.
+HTML: /workspace/scratch/bd214683c088/decision_brain_observability/runs/session_20260925_183458_88b78d51/evaluation/report.html
+
+Ejecución completada: el modelo cumple los criterios del harness
+INFORME: /workspace/scratch/bd214683c088/decision_brain_observability/runs/session_20260925_183458_88b78d51/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/decision_brain_observability/runs/latest.html

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "brains": [
+    {
+      "brain_id": "logistica.incidencia",
+      "contract_hash": "c6cc01144fd0a42d290bbf2b7ec803dd5c8712d762bb6769e051ab965480a866",
+      "endpoint": "http://brain:8000",
+      "owner": "equipo-local",
+      "latency_sla_ms": 80,
+      "actions": [
+        "cola_general",
+        "revisar_reprogramacion",
+        "revision_dano",
+        "revision_humana",
+        "seguimiento_habitual"
+      ],
+      "interop_config": "/app/config/gates/interop_gate.json",
+      "observe_config": "/app/config/gates/observe.json",
+      "upstream_token_env": "BRAIN_STACK_WORKER_TOKEN",
+      "mode": "active",
+      "environments": {
+        "production": {
+          "registry": "/app/registry/production"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "brain_id": "retail.triaje",
+  "allowed_callers": [
+    "orchestrator",
+    "postventa-api"
+  ],
+  "required_headers": [
+    "authorization",
+    "traceparent",
+    "accept-version",
+    "idempotency-key"
+  ],
+  "input": "contract.fields",
+  "output": [
+    "answers",
+    "action",
+    "needs_review",
+    "model_version"
+  ],
+  "pin_version_from": "registry.production",
+  "limits": {
+    "max_body_bytes": 65536,
+    "max_text_chars": 12000,
+    "max_numeric_magnitude": 1000000000000.0
+  },
+  "event_facts": []
+}

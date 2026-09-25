@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "properties": {
+    "brain_id": {
+      "const": "logistica.incidencia"
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "horas_desviacion": {
+          "type": "number",
+          "minimum": -1000000000000.0,
+          "maximum": 1000000000000.0
+        },
+        "estado_entrega": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 12000
+        },
+        "contexto": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 12000
+        }
+      },
+      "required": [
+        "horas_desviacion",
+        "estado_entrega",
+        "contexto"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "brain_id",
+    "context"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -1,0 +1,133 @@
+{
+  "passed": true,
+  "mode": "development",
+  "checks": {
+    "real_http_two_brains": true,
+    "distinct_target_contract": true,
+    "event_state_mapping": true,
+    "idempotent_replay": true,
+    "shared_trace": true,
+    "version_rejected": true,
+    "central_audit_two_records": true,
+    "separate_observer_process": true,
+    "otel_spans_across_processes": true,
+    "web_dashboard_api": true
+  },
+  "quality": {
+    "logistica.incidencia": {
+      "passed": false,
+      "pass_rate": 0.5
+    },
+    "logistica.seguimiento": {
+      "passed": false,
+      "pass_rate": 0.5
+    }
+  },
+  "trace_id": "ac5a0bcf14894e68bb8d5635dc6a3f47",
+  "decisions": [
+    {
+      "request_id": "5057e0a3baba4d1a840bb86b89fa3d99",
+      "correlation_id": "5057e0a3baba4d1a840bb86b89fa3d99",
+      "brain_id": "logistica.incidencia",
+      "model_version": "v1",
+      "context": {},
+      "answers": {
+        "clasificacion": {
+          "kind": "choice",
+          "choice": "normal",
+          "probabilities": {
+            "normal": 0.3768751919269562,
+            "demora": 0.3350769281387329,
+            "dano": 0.2880478799343109
+          },
+          "max_probability": 0.3768751919269562,
+          "needs_review": true
+        },
+        "atencion_prioritaria": {
+          "kind": "boolean",
+          "choice": "false",
+          "probabilities": {
+            "false": 0.6929402947425842,
+            "true": 0.30705970525741577
+          },
+          "max_probability": 0.6929402947425842,
+          "needs_review": false,
+          "probability_true": 0.30705970525741577
+        },
+        "nivel": {
+          "kind": "score",
+          "choice": "bajo",
+          "probabilities": {
+            "bajo": 0.37831437587738037,
+            "medio": 0.336185485124588,
+            "alto": 0.285500168800354
+          },
+          "max_probability": 0.37831437587738037,
+          "needs_review": true,
+          "expected_score": 0.9071857929229736
+        }
+      },
+      "action": "revision_humana",
+      "needs_review": true,
+      "confidence": {
+        "clasificacion": 0.3768751919269562,
+        "atencion_prioritaria": 0.6929402947425842,
+        "nivel": 0.37831437587738037
+      },
+      "trace_id": "ac5a0bcf14894e68bb8d5635dc6a3f47",
+      "event_id": "5057e0a3baba4d1a840bb86b89fa3d99"
+    },
+    {
+      "request_id": "8026c26a29b748b3b26e81ae80f0f0b7",
+      "correlation_id": "8026c26a29b748b3b26e81ae80f0f0b7",
+      "brain_id": "logistica.seguimiento",
+      "model_version": "v1",
+      "context": {},
+      "answers": {
+        "clasificacion": {
+          "kind": "choice",
+          "choice": "normal",
+          "probabilities": {
+            "normal": 0.557713508605957,
+            "demora": 0.18232731521129608,
+            "dano": 0.2599591612815857
+          },
+          "max_probability": 0.557713508605957,
+          "needs_review": false
+        },
+        "atencion_prioritaria": {
+          "kind": "boolean",
+          "choice": "false",
+          "probabilities": {
+            "false": 0.6987893581390381,
+            "true": 0.3012106120586395
+          },
+          "max_probability": 0.6987893581390381,
+          "needs_review": false,
+          "probability_true": 0.3012106120586395
+        },
+        "nivel": {
+          "kind": "score",
+          "choice": "bajo",
+          "probabilities": {
+            "bajo": 0.5677540302276611,
+            "medio": 0.1730881929397583,
+            "alto": 0.25915780663490295
+          },
+          "max_probability": 0.5677540302276611,
+          "needs_review": false,
+          "expected_score": 0.6914038062095642
+        }
+      },
+      "action": "cola_general",
+      "needs_review": false,
+      "confidence": {
+        "clasificacion": 0.557713508605957,
+        "atencion_prioritaria": 0.6987893581390381,
+        "nivel": 0.5677540302276611
+      },
+      "trace_id": "ac5a0bcf14894e68bb8d5635dc6a3f47",
+      "event_id": "8026c26a29b748b3b26e81ae80f0f0b7"
+    }
+  ]
+}

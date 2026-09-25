@@ -1,40 +1,26 @@
-# Verificación de la reorganización 0.5.0
+# Validación de la versión 0.8.0
 
-El código se convirtió en el paquete decision_brain bajo src/. Las pruebas están en tests/, la configuración en config/, la documentación en docs/ y los archivos de contenedores en deploy/. Las referencias internas, comandos, instalación editable y copia de proyectos se adaptaron a estas rutas.
+Ejecutada en Linux con Python 3.12 el 25 de septiembre de 2026. Dependencias idénticas a 0.7; no se ejecutó macOS nativo.
 
-Se ejecutaron las 37 pruebas después del cambio de estructura. También se verificó la creación de un proyecto independiente que conserva la organización. Las verificaciones anteriores de macOS simulado y calidad de modelos se conservan abajo como antecedentes, no como nuevas ejecuciones nativas.
-
-# Verificación de la entrega 0.4.0
-
-Esta entrega consolida el proyecto ejecutable y su fábrica en una sola carpeta. No requiere copiar parches ni reutilizar una entrega anterior.
-
-| Verificación ejecutada | Resultado |
+| Verificación | Resultado |
 | --- | --- |
-| Suite de software | 37 pruebas, cero fallos y cero errores |
-| Instalación aislada de dependencias y paquete | Completada; pip check sin incompatibilidades |
-| Retail, flujo completo por defecto | Completado dos veces; harness 4/4 |
-| Predicción desde el último modelo guardado | Completada con respuestas tipadas e interpretación |
-| Harness independiente, sin especificar run ni output | Completado, 4/4; carpeta nueva |
-| Servicio HTTP real con uvicorn | Readiness 200, predicción autenticada correcta, acceso sin credencial 401 |
-| Proyecto generado de logística | Creado y ejecutado desde ruta con espacios, acentos y enlace simbólico |
-| Entorno con LANG=C, entrada PYTHONIOENCODING=ascii y TMPDIR enlazado | El arranque impuso UTF-8; las 37 pruebas aprobaron |
-| Proyecto generado de manufactura | Entrenamiento, recarga, métricas, HTML y harness completados |
-| HTML de la última sesión retail | Ocho archivos leídos como UTF-8 y todos sus enlaces locales/figuras verificados |
+| Suite Python | 85 pruebas aprobadas |
+| Proyecto generado por la fábrica | 85 pruebas aprobadas |
+| Flujo HTTP persistente | Comercio, logística, gateway, observador y consumidor en cinco procesos |
+| Entrega automática | Evento logístico reconstruido y decidido por comercio |
+| Reintento de caso | Misma decisión; sin nueva inferencia o traspaso |
+| Caída del consumidor | Supervisor lo reinició automáticamente |
+| Caída/reinicio del entorno | Evento fuente pendiente recuperado y entregado |
+| Persistencia | Configuración, secretos y modelos reutilizados |
+| Integridad del flujo probado | Dos casos, cuatro decisiones únicas |
+| Trazas | Continuidad de trace_id y spans gate/predict/judge |
+| Panel Web | Consumidor activo, entregas, filtro por cerebro y navegación a traza probados con DOM y HTTP real |
+| Calidad visible | Comercio aprobado; logística fallida y roja |
 
-## Fallos encontrados y resueltos
+Los tests del consumidor cubren cursor persistente, unicidad evento/ruta, recuperación, backoff máximo, versión y clave fijadas, cambio de ruta, ciclos y aislamiento del llamador. El gate valida handoff numérico, rango, campos exactos, rechazo de texto y su inclusión en la huella idempotente. Se probó generar y leer la definición launchd, sin secretos incorporados; no se ejecutó launchctl.
 
-Las pruebas TOML comparaban rutas canónicas contra alias sin normalizar. Se corrigieron y se añadió un caso con enlaces simbólicos. Lecturas, escrituras y procesos usaban codificaciones implícitas; ahora usan UTF-8, y los registros se muestran en páginas HTML con charset declarado. Se eliminaron copias de plantillas obsoletas y los instaladores incrementales de la distribución. Los fixtures técnicos usan un contrato de prueba separado del contrato de negocio.
+Durante la prueba se detectó que el sondeo de puertos recién cerrados podía fallar por TIME_WAIT. Se corrigió usando SO_REUSEADDR en el sondeo; el reinicio inmediato completo aprobó después de la corrección.
 
-Se corrigió la selección del último modelo para predicción y evaluación independiente, la generación de salidas únicas y los mensajes de fallo. Se agregó validación de pesos, temperaturas y distribuciones de probabilidad. La promoción rechaza métricas vacías o matrices de confusión inconsistentes.
+La prueba de interfaz usa JavaScript real con jsdom contra servicios locales reales. No es una inspección visual de Chromium/Safari ni certificación responsive. No se hicieron despliegue Docker, prueba de carga, failover entre hosts, corte eléctrico ni prueba nativa de launchd. SQLite y los locks son para un solo host.
 
-Durante la primera instalación de verificación un paquete descargado produjo BadZipFile. Una segunda instalación completó el entorno. El instalador final incluye un reintento limitado sin caché para ese error concreto y conserva diagnóstico. Una segunda instalación desde cero, en la ruta de logística con espacios, completó el flujo.
-
-## Resultados de calidad, separados de los errores técnicos
-
-Los presets no son modelos certificados. En los casos sintéticos evaluados, retail aprobó 4/4, logística 2/4 y manufactura 3/4. Los dos últimos devolvieron salida 1 y conservaron los informes: el software funcionó, pero los modelos incumplieron expectativas. No se ajustaron los umbrales ni se cambiaron las etiquetas para ocultar estos resultados. Requieren datos y validación de dominio antes de uso operativo.
-
-## Límites de la verificación
-
-Ejecución realizada en Linux x86_64 con Python 3.12.14. No se dispone de un Mac para ejecutar pruebas nativas; se reprodujeron enlaces simbólicos, temporales con alias, rutas con espacios y condiciones de codificación. La apertura con `open` está implementada para macOS, pero no se ejecutó allí. Se incluye CI para Linux/macOS y Python 3.12/3.13; agregarlo no equivale a haber ejecutado esa matriz.
-
-No se verificó un despliegue Docker ni carga productiva en esta revisión. La búsqueda de hiperparámetros no es auto-research autónomo. El diseño local no utiliza la API de JEV ni acredita equivalencia con sus mecanismos internos.
+Este entorno permanente usa DEVELOPMENT. No ejecuta acciones en ERP/CRM, no cambia políticas para aprobar modelos fallidos y no certifica calidad productiva. Las plantillas del traspaso interno requieren validación de negocio específica. La evidencia de esta versión está en docs/validation/operations-tests.log, operations-live.json y operations-live.log. Los demás archivos conservan antecedentes de entregas anteriores.

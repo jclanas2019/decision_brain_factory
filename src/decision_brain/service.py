@@ -1,3 +1,6 @@
+from decision_brain.telemetry import instrument, annotate
+from opentelemetry import trace as otel_trace
+from contextlib import nullcontext
 """Authenticated, bounded local inference service. No training/admin HTTP endpoints."""
 import asyncio
 from collections import deque
@@ -12,6 +15,10 @@ import threading
 import time
 import uuid
 import sys
+import re
+from decision_brain.edge_contracts import trace_id,contract_hash
+
+class VersionConflict(Exception):pass
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse, PlainTextResponse
 from starlette.concurrency import run_in_threadpool
@@ -31,6 +38,7 @@ class Settings:
     max_text_chars:int=12000
     requests_per_minute:int=120
     max_inflight:int=4
+    brain_id:str="local.brain"
 
     @classmethod
     def env(cls):
@@ -42,12 +50,13 @@ class Settings:
                    int(os.environ.get('BRAIN_MAX_BODY_BYTES','65536')),
                    int(os.environ.get('BRAIN_MAX_TEXT_CHARS','12000')),
                    int(os.environ.get('BRAIN_REQUESTS_PER_MINUTE','120')),
-                   int(os.environ.get('BRAIN_MAX_INFLIGHT','4')))
+                   int(os.environ.get('BRAIN_MAX_INFLIGHT','4')),
+                   os.environ.get('BRAIN_ID','local.brain'))
 
 
 class ModelManager:
     def __init__(self,settings):
-        self.settings=settings;self.lock=threading.Lock();self.current=None
+        self.tracer=None;self.settings=settings;self.lock=threading.Lock();self.current=None
     def get(self):
         with self.lock:
             pointer=json.loads((self.settings.registry/'active.json').read_text(encoding='utf-8'))
@@ -58,12 +67,17 @@ class ModelManager:
                 spec,encoder,net=load_model(folder)
                 self.current=(version,spec,encoder,net)
             return self.current
-    def predict(self,state):
+    def predict(self,state,expected_version=None):
         try:version,spec,enc,net=self.get()
         except Exception as error:raise RuntimeError('model_unavailable') from error
+        if expected_version is not None and version!=expected_version:raise VersionConflict('active_version_changed')
         validate_state(state,spec)
         probabilities=net.predict(encode([state],enc))
-        return {'model_version':version,**judge(spec,[p[0] for p in probabilities])}
+        annotate(**{'brain.id':self.settings.brain_id,'model.version':version})
+        with self.tracer.start_as_current_span('judge',record_exception=False,set_status_on_exception=False) if self.tracer else nullcontext():
+            result=judge(spec,[p[0] for p in probabilities])
+            annotate(**{'brain.id':self.settings.brain_id,'model.version':version,'decision.action':result['proposed_action']})
+        return {'model_version':version,'contract_hash':contract_hash(spec),**result}
 
 
 class Boundary:
@@ -75,6 +89,12 @@ class Boundary:
         if scope['type']!='http':return await self.app(scope,receive,send)
         start=time.perf_counter();request_id=uuid.uuid4().hex
         headers={k.lower():v for k,v in scope.get('headers',[])}
+        supplied_id=headers.get(b'x-request-id',b'').decode('ascii',errors='ignore')
+        if re.fullmatch('[0-9a-f]{32}',supplied_id):request_id=supplied_id
+        trace=headers.get(b'traceparent',b'').decode('ascii',errors='ignore')
+        try:trace_value=trace_id(trace) if trace else format(otel_trace.get_current_span().get_span_context().trace_id,'032x')
+        except ValueError:trace_value=None
+        annotate(**{'brain.id':self.settings.brain_id,'request.id':request_id})
         protected=scope['path'] not in ('/health','/ready')
         async def fail(code,message):
             self.counters['rejected']+=1
@@ -117,11 +137,12 @@ class Boundary:
                     (b'x-request-id',request_id.encode()),(b'cache-control',b'no-store')]
             await send(message)
         scope.setdefault('state',{})['request_id']=request_id
+        scope['state']['trace_id']=trace_value
         try:await self.app(scope,bounded_receive,traced_send)
         finally:
             self.counters['requests']+=1
             LOG.info(json.dumps({'request_id':request_id,'event':'http_request','status':status,
-                                  'duration_ms':round((time.perf_counter()-start)*1000,2)}))
+                                  'brain_id':self.settings.brain_id,'trace_id':trace_value,'span':'predict','duration_ms':round((time.perf_counter()-start)*1000,2)}))
 
 
 def create_app(settings=None):
@@ -138,6 +159,7 @@ def create_app(settings=None):
     manager=ModelManager(settings);capacity=asyncio.Semaphore(settings.max_inflight)
     counters={'requests':0,'rejected':0,'predictions':0,'reviews':0}
     app.add_middleware(Boundary,settings=settings,counters=counters)
+    manager.tracer=instrument(app,'predict')
     @app.get('/health')
     async def health():return {'status':'alive'}
     @app.get('/ready')
@@ -149,12 +171,13 @@ def create_app(settings=None):
     async def model():
         try:version,spec,_,_=await run_in_threadpool(manager.get)
         except Exception:raise HTTPException(503,'model_unavailable')
-        return {'version':version,'industry':spec['industry'],'fields':spec['fields'],'decisions':spec['decisions']}
+        return {'version':version,'brain_id':settings.brain_id,'contract_hash':contract_hash(spec),'industry':spec['industry'],'fields':spec['fields'],'decisions':spec['decisions']}
     @app.get('/metrics',response_class=PlainTextResponse)
     async def metrics():
         return '\n'.join(f'brain_{k}_total {v}' for k,v in counters.items())+'\n'
     @app.post('/v1/predict')
     async def predict(request:Request):
+        if request.headers.get('x-brain-id') and request.headers['x-brain-id']!=settings.brain_id:raise HTTPException(403,'wrong_brain')
         if request.headers.get('content-type','').split(';')[0].strip()!='application/json':raise HTTPException(415,'application/json required')
         try:
             value=await request.json()
@@ -168,14 +191,20 @@ def create_app(settings=None):
         try:await asyncio.wait_for(capacity.acquire(),timeout=.05)
         except asyncio.TimeoutError:raise HTTPException(503,'inference_capacity_exceeded')
         try:
-            try:result=await run_in_threadpool(manager.predict,value['context'])
+            try:
+                if request.headers.get('accept-version'):
+                    result=await run_in_threadpool(manager.predict,value['context'],expected_version=request.headers['accept-version'])
+                else:result=await run_in_threadpool(manager.predict,value['context'])
+            except VersionConflict:raise HTTPException(409,'active_version_changed')
             except ValueError:raise HTTPException(422,'context_does_not_match_contract')
             except Exception:raise HTTPException(503,'model_unavailable')
         finally:capacity.release()
         counters['predictions']+=1
         counters['reviews']+=int(any(a['needs_review'] for a in result['answers'].values()))
         result['request_id']=request.state.request_id
-        LOG.info(json.dumps({'event':'decision','request_id':request.state.request_id,'model_version':result['model_version'],
+        result['trace_id']=request.state.trace_id
+        result['brain_id']=settings.brain_id
+        LOG.info(json.dumps({'event':'decision','brain_id':settings.brain_id,'span':'judge','trace_id':request.state.trace_id,'request_id':request.state.request_id,'model_version':result['model_version'],
                              'needs_review':any(a['needs_review'] for a in result['answers'].values())}))
         return result
     return app
