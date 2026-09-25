@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "industry": "Logística: clasificación de incidencias de entrega",
+  "locale": "es_ES",
+  "fields": [
+    {
+      "id": "horas_desviacion",
+      "type": "number",
+      "description": "Horas de diferencia respecto a la ventana de entrega"
+    },
+    {
+      "id": "estado_entrega",
+      "type": "text",
+      "description": "¿Qué incidencia presenta el envío?"
+    },
+    {
+      "id": "contexto",
+      "type": "text",
+      "description": "Organización y contexto operativo"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "clasificacion",
+      "kind": "choice",
+      "question": "¿Qué incidencia presenta el envío?",
+      "min_probability": 0.55,
+      "options": [
+        {
+          "id": "normal",
+          "meaning": "Envío sin incidencias reportadas."
+        },
+        {
+          "id": "demora",
+          "meaning": "Entrega retrasada respecto al compromiso."
+        },
+        {
+          "id": "dano",
+          "meaning": "Daño reportado en la carga."
+        }
+      ]
+    },
+    {
+      "id": "atencion_prioritaria",
+      "kind": "boolean",
+      "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+      "options": [
+        {
+          "id": "false",
+          "meaning": "Se puede atender en el flujo habitual."
+        },
+        {
+          "id": "true",
+          "meaning": "Requiere revisión prioritaria."
+        }
+      ],
+      "min_probability": 0.55
+    },
+    {
+      "id": "nivel",
+      "kind": "score",
+      "question": "¿Qué nivel de atención corresponde al caso?",
+      "options": [
+        {
+          "id": "bajo",
+          "value": 0,
+          "meaning": "Atención habitual."
+        },
+        {
+          "id": "medio",
+          "value": 1,
+          "meaning": "Revisión del especialista."
+        },
+        {
+          "id": "alto",
+          "value": 2,
+          "meaning": "Revisión humana prioritaria."
+        }
+      ],
+      "min_probability": 0.5
+    }
+  ],
+  "routing": {
+    "review_action": "revision_humana",
+    "fallback": "cola_general",
+    "rules": [
+      {
+        "decision": "clasificacion",
+        "option": "dano",
+        "min_probability": 0.6,
+        "action": "revision_dano"
+      },
+      {
+        "decision": "clasificacion",
+        "option": "demora",
+        "min_probability": 0.6,
+        "action": "revisar_reprogramacion"
+      },
+      {
+        "decision": "clasificacion",
+        "option": "normal",
+        "min_probability": 0.6,
+        "action": "seguimiento_habitual"
+      }
+    ]
+  },
+  "synthetic_scenarios": [
+    {
+      "id": "normal",
+      "context": {
+        "horas_desviacion": [
+          -1,
+          1
+        ],
+        "estado_entrega": {
+          "train": "La entrega avanza según lo programado.",
+          "validation": "El envío cumple la hora prevista sin problemas.",
+          "calibration": "La carga sigue en ruta dentro del plazo.",
+          "test": "No hay novedades adversas; el transporte marcha a tiempo."
+        },
+        "contexto": {
+          "train": "Organización {company}, ciudad {city}.",
+          "validation": "Caso de {company}; oficina en {city}.",
+          "calibration": "Registro {code} para {company}.",
+          "test": "Solicitud operativa de {company}, referencia {code}."
+        }
+      },
+      "targets": {
+        "clasificacion": "normal",
+        "atencion_prioritaria": "false",
+        "nivel": "bajo"
+      }
+    },
+    {
+      "id": "demora",
+      "context": {
+        "horas_desviacion": [
+          4,
+          24
+        ],
+        "estado_entrega": {
+          "train": "El camión lleva retraso y no cumplirá el horario.",
+          "validation": "La entrega llegó tarde respecto a lo acordado.",
+          "calibration": "Tenemos una demora en la ruta de distribución.",
+          "test": "El destinatario sigue esperando fuera de la ventana convenida."
+        },
+        "contexto": {
+          "train": "Organización {company}, ciudad {city}.",
+          "validation": "Caso de {company}; oficina en {city}.",
+          "calibration": "Registro {code} para {company}.",
+          "test": "Solicitud operativa de {company}, referencia {code}."
+        }
+      },
+      "targets": {
+        "clasificacion": "demora",
+        "atencion_prioritaria": "false",
+        "nivel": "medio"
+      }
+    },
+    {
+      "id": "dano",
+      "context": {
+        "horas_desviacion": [
+          0,
+          12
+        ],
+        "estado_entrega": {
+          "train": "Se detectó mercancía rota dentro de la caja.",
+          "validation": "La carga presenta daño visible por un golpe.",
+          "calibration": "Reportan paquetes dañados al recibir el envío.",
+          "test": "El contenido llegó quebrado y debe inspeccionarse."
+        },
+        "contexto": {
+          "train": "Organización {company}, ciudad {city}.",
+          "validation": "Caso de {company}; oficina en {city}.",
+          "calibration": "Registro {code} para {company}.",
+          "test": "Solicitud operativa de {company}, referencia {code}."
+        }
+      },
+      "targets": {
+        "clasificacion": "dano",
+        "atencion_prioritaria": "true",
+        "nivel": "alto"
+      }
+    }
+  ]
+}

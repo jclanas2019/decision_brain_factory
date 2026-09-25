@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "industry": "Manufactura: triaje de reportes de calidad",
+  "locale": "es_ES",
+  "fields": [
+    {
+      "id": "desviacion_mm",
+      "type": "number",
+      "description": "Magnitud reportada de desviación dimensional"
+    },
+    {
+      "id": "observacion",
+      "type": "text",
+      "description": "¿Qué condición describe el reporte de calidad?"
+    },
+    {
+      "id": "contexto",
+      "type": "text",
+      "description": "Organización y contexto operativo"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "clasificacion",
+      "kind": "choice",
+      "question": "¿Qué condición describe el reporte de calidad?",
+      "min_probability": 0.55,
+      "options": [
+        {
+          "id": "conforme",
+          "meaning": "No se reporta una desviación de calidad."
+        },
+        {
+          "id": "inspeccion",
+          "meaning": "Hay una desviación que requiere inspección."
+        },
+        {
+          "id": "critico",
+          "meaning": "El reporte describe una anomalía crítica para revisión."
+        }
+      ]
+    },
+    {
+      "id": "atencion_prioritaria",
+      "kind": "boolean",
+      "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+      "options": [
+        {
+          "id": "false",
+          "meaning": "Se puede atender en el flujo habitual."
+        },
+        {
+          "id": "true",
+          "meaning": "Requiere revisión prioritaria."
+        }
+      ],
+      "min_probability": 0.55
+    },
+    {
+      "id": "nivel",
+      "kind": "score",
+      "question": "¿Qué nivel de atención corresponde al caso?",
+      "options": [
+        {
+          "id": "bajo",
+          "value": 0,
+          "meaning": "Atención habitual."
+        },
+        {
+          "id": "medio",
+          "value": 1,
+          "meaning": "Revisión del especialista."
+        },
+        {
+          "id": "alto",
+          "value": 2,
+          "meaning": "Revisión humana prioritaria."
+        }
+      ],
+      "min_probability": 0.5
+    }
+  ],
+  "routing": {
+    "review_action": "revision_humana",
+    "fallback": "cola_general",
+    "rules": [
+      {
+        "decision": "clasificacion",
+        "option": "critico",
+        "min_probability": 0.6,
+        "action": "revision_responsable"
+      },
+      {
+        "decision": "clasificacion",
+        "option": "inspeccion",
+        "min_probability": 0.6,
+        "action": "cola_inspeccion"
+      },
+      {
+        "decision": "clasificacion",
+        "option": "conforme",
+        "min_probability": 0.6,
+        "action": "registrar_conformidad"
+      }
+    ]
+  },
+  "synthetic_scenarios": [
+    {
+      "id": "conforme",
+      "context": {
+        "desviacion_mm": [
+          0,
+          0.1
+        ],
+        "observacion": {
+          "train": "La pieza cumple las dimensiones y tolerancias.",
+          "validation": "El control confirma calidad dentro de especificación.",
+          "calibration": "No se encontraron defectos en la inspección.",
+          "test": "El lote se ajusta a los parámetros del producto."
+        },
+        "contexto": {
+          "train": "Organización {company}, ciudad {city}.",
+          "validation": "Caso de {company}; oficina en {city}.",
+          "calibration": "Registro {code} para {company}.",
+          "test": "Solicitud operativa de {company}, referencia {code}."
+        }
+      },
+      "targets": {
+        "clasificacion": "conforme",
+        "atencion_prioritaria": "false",
+        "nivel": "bajo"
+      }
+    },
+    {
+      "id": "inspeccion",
+      "context": {
+        "desviacion_mm": [
+          0.2,
+          0.8
+        ],
+        "observacion": {
+          "train": "Hay una desviación menor que requiere inspección adicional.",
+          "validation": "Se observa variación fuera de tolerancia en algunas piezas.",
+          "calibration": "El control recomienda revisar una diferencia dimensional.",
+          "test": "Varias unidades no coinciden con la medida esperada."
+        },
+        "contexto": {
+          "train": "Organización {company}, ciudad {city}.",
+          "validation": "Caso de {company}; oficina en {city}.",
+          "calibration": "Registro {code} para {company}.",
+          "test": "Solicitud operativa de {company}, referencia {code}."
+        }
+      },
+      "targets": {
+        "clasificacion": "inspeccion",
+        "atencion_prioritaria": "false",
+        "nivel": "medio"
+      }
+    },
+    {
+      "id": "critico",
+      "context": {
+        "desviacion_mm": [
+          1,
+          3
+        ],
+        "observacion": {
+          "train": "Se encontró una grieta estructural grave.",
+          "validation": "La pieza presenta fractura y no debe aprobarse sin revisión.",
+          "calibration": "El defecto crítico requiere evaluación inmediata del responsable.",
+          "test": "El informe identifica una rotura importante en el componente."
+        },
+        "contexto": {
+          "train": "Organización {company}, ciudad {city}.",
+          "validation": "Caso de {company}; oficina en {city}.",
+          "calibration": "Registro {code} para {company}.",
+          "test": "Solicitud operativa de {company}, referencia {code}."
+        }
+      },
+      "targets": {
+        "clasificacion": "critico",
+        "atencion_prioritaria": "true",
+        "nivel": "alto"
+      }
+    }
+  ]
+}
