@@ -1,3 +1,21 @@
+# Validación de la ampliación 0.10 — Choice, Score y Noul
+
+Se ejecutaron 106 pruebas, sin fallos ni errores, en el proyecto principal y otras 106 en un proyecto generado por la fábrica. Incluyen entrenamiento y recarga con los tres tipos, semántica numérica, compatibilidad boolean, rechazo de respuestas alteradas, SDK y rangos de harness.
+
+La ejecución adicional utilizó 2.000 filas sintéticas, tres candidatos y hasta 40 épocas con parada temprana. Su test separado contiene 300 filas. La prueba funcional verifica recarga y validación de todas las respuestas tipadas. El harness existente aprobó sus cuatro casos; no se comparó contra una versión de referencia.
+
+| Cabeza | Loss de test | Resultado adicional |
+| --- | --- | --- |
+| Choice | 0,35613 | Exactitud: 86,3 % |
+| Noul | 0,19374 | Brier binario: 0,06130 |
+| Score | 0,32228 | MAE: 0,23520 niveles |
+
+El test_loss medio fue 0,290716. La separación entre pérdida de entrenamiento y validación muestra sobreajuste; estos datos sintéticos y cuatro casos de harness no certifican calidad de producción. No se modificaron los umbrales del harness para obtener el resultado.
+
+Evidencia: evidencia/pruebas_primitivas_010.log, evidencia/pruebas_scaffolding_010.log, evidencia/entrenamiento_primitivas_010.log, evidencia/entrenamiento_010/report.html y evidencia/harness_010/report.html. Se comprobaron las referencias locales de los HTML y las leyendas del gráfico de pérdida. No se ejecutó macOS nativo ni una prueba de carga.
+
+## Evidencia anterior de la versión 0.9
+
 # Validación de la versión 0.9
 
 Ejecución en Linux/Python 3.12. La documentación se consolidó: README de entrada, GUIA_DE_USO en Markdown/HTML, referencia SDK y este registro. Se retiraron manuales duplicados y logs históricos de otras versiones del paquete entregado.

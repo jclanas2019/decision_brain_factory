@@ -3,6 +3,7 @@ import json
 import re
 from pathlib import Path
 from decision_brain.edge_contracts import BRAIN,actions,contract_hash
+from decision_brain.primitives import question_type
 
 def write_config(root,spec,brain_id,owner='equipo-local'):
     if not BRAIN.fullmatch(brain_id):raise ValueError('brain_id must be namespaced, e.g. logistica.incidencia')
@@ -47,6 +48,12 @@ def envelope_schemas(spec,brain_id):
     for d in spec['decisions']:
         options=[o['id'] for o in d['options']];prob={'type':'number','minimum':0,'maximum':1}
         properties={'kind':{'const':d['kind']},'choice':{'enum':options},'probabilities':obj({o:prob for o in options}),'max_probability':prob,'needs_review':{'type':'boolean'}}
+        properties['type']={'const':question_type(d)}
+        if question_type(d)=='noul':properties['noul']=prob
+        else:properties['confidence']=prob
+        if d['kind']=='score':
+            properties['score']={'type':'number','minimum':0,'maximum':len(options)-1}
+            properties['legend']={'const':{o['id']:{'level':i,'description':o['meaning']} for i,o in enumerate(d['options'])}}
         if d['kind']=='boolean':properties['probability_true']=prob
         if d['kind']=='score':properties['expected_score']={'type':'number'}
         heads[d['id']]=obj(properties);confidence[d['id']]=prob

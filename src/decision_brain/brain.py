@@ -14,6 +14,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, accuracy_score
 from decision_brain.contracts import SPLITS, read_spec, validate_state, require
 from decision_brain.network import Config, MultiDecisionNet, loss, single_loss
+from decision_brain.primitives import result_fields, describe_answer, question_type, distribution_confidence
 
 
 def save(path,value):
@@ -110,6 +111,7 @@ def judge(spec,probabilities):
         distribution={o['id']:float(v) for o,v in zip(d['options'],p)}
         answer={'kind':d['kind'],'question':d['question'],'choice':option['id'],
                 'meaning':option['meaning'],'probabilities':distribution,'max_probability':conf}
+        answer.update(result_fields(d,distribution))
         if d['kind']=='boolean':answer['probability_true']=float(p[1])
         if d['kind']=='score':answer['expected_score']=float(sum(o['value']*v for o,v in zip(d['options'],p)))
         answer['needs_review']=conf<d.get('min_probability',.6)
@@ -124,9 +126,7 @@ def judge(spec,probabilities):
             if probability>=rule.get('min_probability',.65):
                 route=rule['action'];reason=f"Regla: {rule['decision']}={rule['option']}, probabilidad {probability:.1%}.";break
     return {'answers':answers,'proposed_action':route,'routing_reason':reason,
-            'interpretation':' '.join(f"{a['question']} "
-                f"{'Hipótesis que requiere revisión: ' if a['needs_review'] else 'Estimación del modelo: '}"
-                f"{a['meaning']} ({a['max_probability']:.1%})." for a in answers.values()),
+            'interpretation':' '.join(describe_answer(a) for a in answers.values()),
             'action_executed':False}
 
 
@@ -165,6 +165,14 @@ def evaluate(spec,probs,truth,train_truth):
             'baseline_log_loss':single_loss(baseline,y),
             'labels':[o['id'] for o in d['options']],
             'confusion_matrix':confusion_matrix(y,pred,labels=list(range(k))).tolist()}
+        m=result[d['id']];kind=question_type(d)
+        m.update(type=kind, loss_name='binary_cross_entropy' if kind=='noul' else 'categorical_cross_entropy',
+                 brier=float(np.mean((p[:,1]-y)**2)) if kind=='noul' else float(np.mean(np.sum((p-np.eye(k)[y])**2,axis=1))))
+        if kind=='score':
+            scores=p@np.arange(k);baseline_scores=baseline@np.arange(k)
+            m.update(score_mae=float(np.mean(abs(scores-y))),score_rmse=float(np.sqrt(np.mean((scores-y)**2))),
+                     baseline_score_mae=float(np.mean(abs(baseline_scores-y))),score_range=[0,k-1])
+        if kind!='noul':m['mean_confidence']=float(np.mean([distribution_confidence(row) for row in p]))
     return result
 
 
@@ -186,6 +194,9 @@ def train(args,spec):
         _,history=net.train(features['train'],targets['train'],args.seed,features['validation'],targets['validation'],args.log_every)
         value=loss(net.predict(features['validation']),targets['validation']);accepted=value<best-1e-5
         if accepted:config,best,winner,selected=candidate,value,net,trial
+        for epoch in history:
+            for key in ('train_head_loss','validation_head_loss'):
+                epoch[key]={d['id']:v for d,v in zip(spec['decisions'],epoch[key])}
         trace.append({'trial':trial,'configuration':asdict(candidate),'validation_loss':value,'accepted':accepted,'epochs':history})
         print(f'propuesta={trial} validation_loss={value:.6g} accepted={accepted}',flush=True)
     # Calibration set is independent of both optimization and final testing.
@@ -203,15 +214,24 @@ def train(args,spec):
     replay=saved_net.predict(encode(states['test'],saved_enc))
     require(all(np.allclose(x,y,atol=1e-7,rtol=1e-6) for x,y in zip(test,replay)),'persisted model differs')
     require(all(np.isfinite(p).all() and np.allclose(p.sum(axis=1),1) for p in replay),'invalid probabilities')
+    from decision_brain.edge_contracts import check_response
+    for index in range(len(states['test'])):
+        check_response({**judge(saved_spec,[p[index] for p in replay]),'model_version':'functional'},saved_spec,'functional')
     examples=[]
     for index,state in enumerate(states['test'][:5]):
         examples.append({'state':state,**judge(saved_spec,[p[index] for p in replay])})
     report={'industry':spec['industry'],'seed':args.seed,'dataset_sha256':hashlib.sha256(args.data.read_bytes()).hexdigest(),
         'split_sizes':{s:len(rows) for s,rows in parts.items()},'selected_trial':selected,'search':trace,
         'test_loss':loss(test,targets['test']),'metrics':metrics,'temperatures':winner.temperature,
-        'functional_test':{'serialization_passed':True,'rows':len(states['test'])},
+        'question_types':{d['id']:question_type(d) for d in spec['decisions']},
+        'confidence_method':'1 - normalized Shannon entropy; not Jev proprietary confidence',
+        'functional_test':{'serialization_passed':True,'typed_response_gate_passed':True,'rows':len(states['test'])},
         'scenarios':examples,'data_origin':getattr(args,'origin','user_supplied')}
     save(out/'report.json',report)
+    with (out/'predictions.jsonl').open('w',encoding='utf-8') as stream:
+        for index in range(len(states['test'])):
+            result=judge(saved_spec,[p[index] for p in replay])
+            stream.write(json.dumps({'row':index,'targets':{d['id']:d['options'][int(targets['test'][i][index])]['id'] for i,d in enumerate(spec['decisions'])},**result},ensure_ascii=False,allow_nan=False)+'\n')
     for name,m in metrics.items():
         with (out/f'confusion_{name}.csv').open('w',newline='', encoding='utf-8') as f:
             w=csv.writer(f);w.writerow(['real/predicha',*m['labels']])
@@ -220,7 +240,8 @@ def train(args,spec):
     render(report,out)
     print(f'FUNCTIONAL TEST PASSED; test_loss={report["test_loss"]:.6g}',flush=True)
     for name,m in metrics.items():
-        print(f'{name}: exactitud={m["accuracy"]:.1%}; referencia={m["baseline_accuracy"]:.1%}; loss={m["log_loss"]:.5f}',flush=True)
+        print(f'{name} [{m["type"]}]: exactitud={m["accuracy"]:.1%}; referencia={m["baseline_accuracy"]:.1%}; loss={m["log_loss"]:.5f}',flush=True)
+        print(f'  {m["loss_name"]}={m["log_loss"]:.5f}; brier={m["brier"]:.5f}'+(f'; score_MAE={m["score_mae"]:.5f}' if m['type']=='score' else ''),flush=True)
     print('Informe interpretado:',(out/'report.html').resolve(),flush=True)
     return report
 

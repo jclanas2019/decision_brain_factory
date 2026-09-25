@@ -43,7 +43,15 @@ def validate_suite(suite, spec):
         answers=expected.get('answers',{})
         if not isinstance(answers,dict): raise ValueError('answers must be an object')
         for key,value in answers.items():
-            if key not in decisions or value not in decisions[key]: raise ValueError('Unknown expected decision/option')
+            if key not in decisions:raise ValueError('Unknown expected decision')
+            if isinstance(value,dict):
+                d=next(d for d in spec['decisions'] if d['id']==key)
+                field='noul' if d['kind'] in ('boolean','noul') else 'score' if d['kind']=='score' else None
+                if field is None or set(value)!={field}:raise ValueError('Invalid numeric assertion')
+                bounds=value[field];top=1 if field=='noul' else len(d['options'])-1
+                if not isinstance(bounds,dict) or set(bounds)!={'min','max'}:raise ValueError('Range requires min and max')
+                if any(type(v) not in (int,float) or not math.isfinite(v) for v in bounds.values()) or not 0<=bounds['min']<=bounds['max']<=top:raise ValueError('Invalid assertion range')
+            elif not isinstance(value,str) or value not in decisions[key]:raise ValueError('Unknown expected option')
         if not answers and not any(k in expected for k in ('action','needs_review')): raise ValueError('No assertions')
         if 'action' in expected and expected['action'] not in actions: raise ValueError('Unknown action')
         if 'needs_review' in expected and type(expected['needs_review']) is not bool: raise ValueError('needs_review must be boolean')
@@ -69,7 +77,11 @@ def evaluate(model, suite):
         expected=case.get('expected',{})
         checks={'no_action_executed':answer['action_executed'] is False}
         if case.get('expect_error'): checks['input_rejected']=False
-        for key,value in expected.get('answers',{}).items(): checks['answer:'+key]=answer['answers'][key]['choice']==value
+        for key,value in expected.get('answers',{}).items():
+            if isinstance(value,dict):
+                field,bounds=next(iter(value.items()))
+                checks['answer:'+key]=bounds['min']<=answer['answers'][key][field]<=bounds['max']
+            else:checks['answer:'+key]=answer['answers'][key]['choice']==value
         if 'action' in expected: checks['action']=answer['proposed_action']==expected['action']
         if 'needs_review' in expected: checks['needs_review']=any(a['needs_review'] for a in answer['answers'].values())==expected['needs_review']
         rows.append({'id':case['id'],'passed':all(checks.values()),'checks':checks,'expected':expected,'actual':answer,'latency_ms':(time.perf_counter()-start)*1000})

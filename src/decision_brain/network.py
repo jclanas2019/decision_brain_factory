@@ -55,10 +55,12 @@ class MultiDecisionNet:
                 for j in range(len(p)):
                     m[j]=.9*m[j]+.1*g[j];v[j]=.999*v[j]+.001*g[j]*g[j]
                     p[j]-=self.cfg.lr*(m[j]/(1-.9**step))/(np.sqrt(v[j]/(1-.999**step))+1e-8)
-            train_score=loss(self.predict(x),y)
-            score=loss(self.predict(xv),yv)
+            train_heads=[single_loss(p,t) for p,t in zip(self.predict(x),y)]
+            validation_heads=[single_loss(p,t) for p,t in zip(self.predict(xv),yv)]
+            train_score=float(np.mean(train_heads))
+            score=float(np.mean(validation_heads))
             if not np.isfinite(train_score) or not np.isfinite(score):raise ValueError('Nonfinite training loss; check data scale and learning rate')
-            history.append({'epoch':epoch+1,'train_loss':train_score,'validation_loss':score})
+            history.append({'epoch':epoch+1,'train_loss':train_score,'validation_loss':score,'train_head_loss':train_heads,'validation_head_loss':validation_heads})
             if epoch==0 or (epoch+1)%log_every==0:
                 print(f'  epoch={epoch+1} train_loss={train_score:.5f} '
                       f'validation_loss={score:.5f}',flush=True)

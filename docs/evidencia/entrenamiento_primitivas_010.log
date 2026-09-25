@@ -1,0 +1,17 @@
+  epoch=1 train_loss=0.02326 validation_loss=0.68476
+  epoch=10 train_loss=0.00152 validation_loss=0.74448
+propuesta=0 validation_loss=0.684756 accepted=True
+  epoch=1 train_loss=0.20706 validation_loss=0.76097
+  epoch=10 train_loss=0.00251 validation_loss=0.78949
+propuesta=1 validation_loss=0.76097 accepted=False
+  epoch=1 train_loss=0.00142 validation_loss=0.68445
+  epoch=10 train_loss=0.00137 validation_loss=0.70267
+propuesta=2 validation_loss=0.684446 accepted=True
+FUNCTIONAL TEST PASSED; test_loss=0.290716
+clasificacion [choice]: exactitud=86.3%; referencia=33.3%; loss=0.35613
+  categorical_cross_entropy=0.35613; brier=0.20203
+atencion_prioritaria [noul]: exactitud=91.3%; referencia=66.7%; loss=0.19374
+  binary_cross_entropy=0.19374; brier=0.06130
+nivel [score]: exactitud=90.0%; referencia=33.3%; loss=0.32228
+  categorical_cross_entropy=0.32228; brier=0.16903; score_MAE=0.23520
+Informe interpretado: /workspace/scratch/bd214683c088/primitives_validation_010/report.html

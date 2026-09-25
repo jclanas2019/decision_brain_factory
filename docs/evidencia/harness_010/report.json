@@ -1,0 +1,288 @@
+{
+  "version": 1,
+  "passed": true,
+  "suite_sha256": "db4febc4d2706bbcf1282d52b3267ebf15f1b793e40721510f789314679fb054",
+  "suite_origin": "synthetic_preset_smoke_only",
+  "model_sha256": {
+    "brain.json": "72b13842b4e5b3ae8f3478c96ddb309cd8a1405a1a7daca99a23290358821119",
+    "model.json": "2849d69f2a1abf8f3cbd03157dd90c9ce021caa9568fb31b4ab6354722d4dd8c",
+    "encoder.json": "e2ac708d4c6883846ed862d68364bc6aa456a741bc3eecb92c7b2d9861ed7a4a",
+    "weights.npz": "9bb8901bc6c5f8ea7c99a0233eb5ec4dca46f40c57922357bbb5c9e52d6e1940"
+  },
+  "baseline_sha256": null,
+  "cases_count": 4,
+  "pass_rate": 1.0,
+  "min_pass_rate": 1.0,
+  "regressions": [],
+  "cases": [
+    {
+      "id": "consulta",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "false",
+          "nivel": "bajo"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.5953812003135681,
+              "reclamacion": 0.01503125112503767,
+              "cancelacion": 0.38958755135536194
+            },
+            "max_probability": 0.5953812003135681,
+            "type": "choice",
+            "confidence": 0.3272570392792301,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+            "choice": "false",
+            "meaning": "Se puede atender en el flujo habitual.",
+            "probabilities": {
+              "false": 0.6547317504882812,
+              "true": 0.34526824951171875
+            },
+            "max_probability": 0.6547317504882812,
+            "type": "noul",
+            "noul": 0.34526824951171875,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Qué nivel de atención corresponde al caso?",
+            "choice": "bajo",
+            "meaning": "Atención habitual.",
+            "probabilities": {
+              "bajo": 0.6916089057922363,
+              "medio": 0.012706145644187927,
+              "alto": 0.2956849932670593
+            },
+            "max_probability": 0.6916089057922363,
+            "type": "score",
+            "confidence": 0.3894374422360056,
+            "score": 0.6040761321783066,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Atención habitual."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Revisión del especialista."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Revisión humana prioritaria."
+              }
+            },
+            "expected_score": 0.6040761470794678,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_general",
+        "routing_reason": "Ninguna regla superó su umbral.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 59.5%; confianza de distribución: 32.7%. ¿El caso requiere atención prioritaria según los datos aportados? Probabilidad de que la afirmación sea verdadera: 34.5%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Qué nivel de atención corresponde al caso? Posición en la rúbrica: 0.604 de 2; confianza de distribución: 38.9%.",
+        "action_executed": false
+      },
+      "latency_ms": 1.269836000574287
+    },
+    {
+      "id": "reclamacion",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "false",
+          "nivel": "medio"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "reclamacion",
+            "meaning": "Reclama un problema con su compra.",
+            "probabilities": {
+              "consulta": 0.003400235204026103,
+              "reclamacion": 0.9758366346359253,
+              "cancelacion": 0.020763088017702103
+            },
+            "max_probability": 0.9758366346359253,
+            "type": "choice",
+            "confidence": 0.8874545072528014,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+            "choice": "false",
+            "meaning": "Se puede atender en el flujo habitual.",
+            "probabilities": {
+              "false": 0.9607391953468323,
+              "true": 0.039260830730199814
+            },
+            "max_probability": 0.9607391953468323,
+            "type": "noul",
+            "noul": 0.039260830730199814,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Qué nivel de atención corresponde al caso?",
+            "choice": "medio",
+            "meaning": "Revisión del especialista.",
+            "probabilities": {
+              "bajo": 0.005221920553594828,
+              "medio": 0.9678620100021362,
+              "alto": 0.0269161406904459
+            },
+            "max_probability": 0.9678620100021362,
+            "type": "score",
+            "confidence": 0.857675674208167,
+            "score": 1.021694291383028,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Atención habitual."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Revisión del especialista."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Revisión humana prioritaria."
+              }
+            },
+            "expected_score": 1.021694302558899,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_postventa",
+        "routing_reason": "Regla: clasificacion=reclamacion, probabilidad 97.6%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Reclama un problema con su compra.. Probabilidad de la opción: 97.6%; confianza de distribución: 88.7%. ¿El caso requiere atención prioritaria según los datos aportados? Probabilidad de que la afirmación sea verdadera: 3.9%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Qué nivel de atención corresponde al caso? Posición en la rúbrica: 1.022 de 2; confianza de distribución: 85.8%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.5614769979729317
+    },
+    {
+      "id": "cancelacion",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "true",
+          "nivel": "alto"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "cancelacion",
+            "meaning": "Expresa intención de cancelar la compra.",
+            "probabilities": {
+              "consulta": 0.0001834374706959352,
+              "reclamacion": 6.924769695615396e-05,
+              "cancelacion": 0.9997473359107971
+            },
+            "max_probability": 0.9997473359107971,
+            "type": "choice",
+            "confidence": 0.9977297499779708,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+            "choice": "true",
+            "meaning": "Requiere revisión prioritaria.",
+            "probabilities": {
+              "false": 7.047503459034488e-05,
+              "true": 0.9999295473098755
+            },
+            "max_probability": 0.9999295473098755,
+            "type": "noul",
+            "noul": 0.9999295473098755,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Qué nivel de atención corresponde al caso?",
+            "choice": "alto",
+            "meaning": "Revisión humana prioritaria.",
+            "probabilities": {
+              "bajo": 0.0001925808610394597,
+              "medio": 6.946073699509725e-05,
+              "alto": 0.9997379183769226
+            },
+            "max_probability": 0.9997379183769226,
+            "type": "score",
+            "confidence": 0.9976564938414492,
+            "score": 1.9995452974908403,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Atención habitual."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Revisión del especialista."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Revisión humana prioritaria."
+              }
+            },
+            "expected_score": 1.9995453357696533,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "revision_cancelacion",
+        "routing_reason": "Regla: clasificacion=cancelacion, probabilidad 100.0%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Expresa intención de cancelar la compra.. Probabilidad de la opción: 100.0%; confianza de distribución: 99.8%. ¿El caso requiere atención prioritaria según los datos aportados? Probabilidad de que la afirmación sea verdadera: 100.0%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Qué nivel de atención corresponde al caso? Posición en la rúbrica: 2.000 de 2; confianza de distribución: 99.8%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.5220079983700998
+    },
+    {
+      "id": "reject_unknown_field",
+      "passed": true,
+      "checks": {
+        "input_rejected": true
+      },
+      "error": "context fields must be exactly ['contexto', 'dias_desde_compra', 'mensaje']; labels are not inputs",
+      "latency_ms": 0.0062489998526871204
+    }
+  ],
+  "interpretation": "4 de 4 casos cumplen todas sus expectativas. Cumple el umbral; no se comparó con una referencia.",
+  "limitations": "Prueba offline de casos declarados. No demuestra rendimiento en producción, carga ni independencia de los datos sintéticos. No autoriza despliegues."
+}

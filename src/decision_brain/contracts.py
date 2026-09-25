@@ -29,14 +29,14 @@ def validate(spec):
         if field['type']=='category':
             require(isinstance(field.get('values'),list) and len(field['values'])>0,'category values required')
     for d in spec['decisions']:
-        require(d.get('kind') in ('choice','boolean','score'),'invalid decision kind')
+        require(d.get('kind') in ('choice','boolean','score','noul'),'invalid decision kind')
         require(bool(d.get('question')),'each decision needs a question')
         options=d.get('options',[])
         require(2<=len(options)<=64,'each decision needs 2 to 64 options')
         ids=[o.get('id','') for o in options]
         require(len(set(ids))==len(ids) and all(IDENT.fullmatch(k) for k in ids),'invalid option identifiers')
         require(all(bool(o.get('meaning')) for o in options),'option meanings required')
-        if d['kind']=='boolean':require(ids==['false','true'],'boolean options must be false, true in that order')
+        if d['kind'] in ('boolean','noul'):require(ids==['false','true'],'noul/boolean options must be false, true in that order')
         if d['kind']=='score':
             values=[o.get('value') for o in options]
             require(all(isinstance(v,(int,float)) and not isinstance(v,bool) and math.isfinite(v) for v in values),'score values must be finite numbers')

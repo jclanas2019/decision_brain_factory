@@ -1,0 +1,4 @@
+real/predicha,consulta,reclamacion,cancelacion
+consulta,80,0,20
+reclamacion,3,79,18
+cancelacion,0,0,100

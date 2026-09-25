@@ -29,6 +29,7 @@ src/decision_brain/layout.py
 src/decision_brain/network.py
 src/decision_brain/observer.py
 src/decision_brain/operations.py
+src/decision_brain/primitives.py
 src/decision_brain/project_config.py
 src/decision_brain/releases.py
 src/decision_brain/reporting.py
@@ -37,6 +38,7 @@ src/decision_brain/runtime_paths.py
 src/decision_brain/service.py
 src/decision_brain/telemetry.py
 src/decision_brain/web/app.js
+src/decision_brain/web/decision-brain-factory.png
 src/decision_brain/web/index.html
 src/decision_brain/web/style.css
 tests/test_consumer.py
@@ -46,6 +48,7 @@ tests/test_harness.py
 tests/test_launch.py
 tests/test_observability.py
 tests/test_operations.py
+tests/test_primitives.py
 tests/test_sdk.py
 tests/test_service.py
 tests/test_toml.py

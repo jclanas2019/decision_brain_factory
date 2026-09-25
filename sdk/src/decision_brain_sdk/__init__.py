@@ -8,7 +8,7 @@ import uuid
 from urllib.parse import urlsplit
 import httpx
 
-__version__='0.9.0'
+__version__='0.10.0'
 
 class BrainError(Exception):
     """Controlled error without credential, context or server-body disclosure."""
@@ -29,6 +29,23 @@ class PreparedDecision:
     path:str='v1/predict'
 
 @dataclass(frozen=True)
+class ChoiceAnswer:
+    choice:str
+    probabilities:dict
+    confidence:float
+
+@dataclass(frozen=True)
+class ScoreAnswer:
+    score:float
+    probabilities:dict
+    confidence:float
+    legend:dict
+
+@dataclass(frozen=True)
+class NoulAnswer:
+    noul:float
+
+@dataclass(frozen=True)
 class Decision:
     request_id:str
     brain_id:str
@@ -40,6 +57,12 @@ class Decision:
     answers:dict
     confidence:dict
     replayed:bool
+    def question(self,name):
+        a=self.answers[name]
+        if a.get('type')=='choice':return ChoiceAnswer(a['choice'],a['probabilities'],a['confidence'])
+        if a.get('type')=='score':return ScoreAnswer(a['score'],a['probabilities'],a['confidence'],a['legend'])
+        if a.get('type')=='noul':return NoulAnswer(a['noul'])
+        raise ProtocolError('typed_answer_unavailable_upgrade_server')
     def to_dict(self):
         from dataclasses import asdict
         return asdict(self)
@@ -132,12 +155,31 @@ class DecisionClient(_Client):
                 if not isinstance(probs,dict) or not probs:raise ValueError()
                 if any(type(v) not in (int,float) or not math.isfinite(v) or not 0<=v<=1 for v in probs.values()) or abs(sum(probs.values())-1)>1e-5:raise ValueError()
                 if answer['choice'] not in probs or not math.isclose(probs[answer['choice']],max(probs.values()),abs_tol=1e-5):raise ValueError()
+                kind=answer.get('type')
+                if kind is not None:
+                    if kind not in ('choice','score','noul'):raise ValueError()
+                    if kind=='noul':
+                        n=answer['noul']
+                        if set(probs)!={'false','true'} or type(n) not in (int,float) or not math.isfinite(n) or not math.isclose(n,probs['true'],abs_tol=1e-6) or 'confidence' in answer:raise ValueError()
+                    else:
+                        total=sum(probs.values())
+                        expected=max(0.0,min(1.0,1+sum((v/total)*math.log(v/total) for v in probs.values() if v>0)/math.log(len(probs))))
+                        c=answer['confidence']
+                        if type(c) not in (int,float) or not math.isfinite(c) or not math.isclose(c,expected,abs_tol=1e-6):raise ValueError()
+                        if kind=='score':
+                            legend=answer['legend'];score=answer['score']
+                            if set(legend)!=set(probs):raise ValueError()
+                            levels=[entry['level'] for entry in legend.values()]
+                            if any(type(level) is not int for level in levels) or sorted(levels)!=list(range(len(probs))):raise ValueError()
+                            if any(not isinstance(entry['description'],str) for entry in legend.values()):raise ValueError()
+                            expected_score=sum(legend[key]['level']*v for key,v in probs.items())
+                            if type(score) not in (int,float) or not math.isfinite(score) or not math.isclose(score,expected_score,abs_tol=1e-6):raise ValueError()
                 value=d['confidence'][name]
                 if type(value) not in (int,float) or not math.isfinite(value) or not math.isclose(value,max(probs.values()),abs_tol=1e-5):raise ValueError()
             replayed=r.headers.get('Idempotency-Replayed')=='true'
             if not replayed and d['trace_id']!=prepared.traceparent.split('-')[1]:raise ValueError()
             return Decision(**{k:d[k] for k in ('request_id','brain_id','model_version','action','needs_review','trace_id','event_id','answers','confidence')},replayed=replayed)
-        except (ValueError,TypeError,KeyError):raise ProtocolError('invalid_decision_response') from None
+        except (ValueError,TypeError,KeyError,ZeroDivisionError,AttributeError):raise ProtocolError('invalid_decision_response') from None
     def predict(self,brain_id,context,**kwargs):return self.send(self.prepare(brain_id,context,**kwargs))
     def prepare_event(self,event_id,route_id,brain_id,*,idempotency_key,trace_id,version=None):
         _identifier(event_id,r'[a-zA-Z0-9_.:-]{1,128}','event_id')
@@ -166,4 +208,4 @@ class ObserverClient(_Client):
         rows=self.dashboard().get('deliveries',[])
         return rows if event_id is None else [r for r in rows if r['event_id']==event_id]
 
-__all__=['DecisionClient','ObserverClient','PreparedDecision','Decision','BrainError','TransportError','ProtocolError']
+__all__=['ChoiceAnswer','ScoreAnswer','NoulAnswer','DecisionClient','ObserverClient','PreparedDecision','Decision','BrainError','TransportError','ProtocolError']

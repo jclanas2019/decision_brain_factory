@@ -4,6 +4,7 @@ import json
 import math
 import re
 from decision_brain.contracts import validate_state
+from decision_brain.primitives import result_fields
 
 TRACE=re.compile(r'^00-([0-9a-f]{32})-([0-9a-f]{16})-([0-9a-f]{2})$')
 BRAIN=re.compile(r'^[a-z][a-z0-9_-]*(\.[a-z][a-z0-9_-]*){1,5}$')
@@ -43,6 +44,11 @@ def check_response(value,spec,version):
         winner=max(options,key=lambda k:p[k]);confidence=p[winner]
         if a['choice']!=winner or type(a.get('max_probability')) not in (float,int) or not math.isfinite(a['max_probability']) or abs(a['max_probability']-confidence)>1e-6:raise ValueError('response_winner')
         if type(a.get('needs_review')) is not bool or a['needs_review']!=(confidence<d.get('min_probability',.6)):raise ValueError('response_review')
+        for key,expected_value in result_fields(d,p).items():
+            actual=a.get(key)
+            if isinstance(expected_value,(int,float)):
+                if type(actual) not in (int,float) or not math.isfinite(actual) or abs(actual-expected_value)>1e-6:raise ValueError('response_'+key)
+            elif actual!=expected_value:raise ValueError('response_'+key)
         if d['kind']=='boolean' and (type(a.get('probability_true')) not in (float,int) or not math.isfinite(a['probability_true']) or abs(a['probability_true']-p['true'])>1e-6):raise ValueError('response_boolean')
         if d['kind']=='score':
             expected=sum(o['value']*p[o['id']] for o in d['options'])
@@ -54,6 +60,7 @@ def check_response(value,spec,version):
     for d in spec['decisions']:
         a=answers[d['id']]
         clean[d['id']]={k:a[k] for k in ('kind','choice','probabilities','max_probability','needs_review')}
+        clean[d['id']].update(result_fields(d,a['probabilities']))
         if d['kind']=='boolean':clean[d['id']]['probability_true']=a['probability_true']
         if d['kind']=='score':clean[d['id']]['expected_score']=a['expected_score']
     return clean,action,rule,fallback

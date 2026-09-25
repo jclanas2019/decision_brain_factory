@@ -105,3 +105,7 @@ El SDK no introduce reintentos automáticos ni interpreta un 409 como permiso pa
 ## Alcance
 
 No hay cliente async ni SDK JavaScript, batch, streaming, administración remota de modelos, login web, SSO o ejecutores de acciones. Tampoco se actualizan modelos mediante el SDK. Las operaciones administrativas continúan en los CLIs del servidor.
+
+## Resultados tipados desde 0.10
+
+`decision.question(id)` devuelve `ChoiceAnswer`, `ScoreAnswer` o `NoulAnswer`. Consulta [Primitivas](PRIMITIVAS.md) para ejemplos y compatibilidad.

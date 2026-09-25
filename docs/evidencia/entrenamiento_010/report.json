@@ -1,0 +1,996 @@
+{
+  "industry": "Comercio: triaje de consultas y reclamaciones",
+  "seed": 42,
+  "dataset_sha256": "4d54ce4463165744feeb21a1aeb8f6df2502aa86550d793382f6f23bd5d11019",
+  "split_sizes": {
+    "train": 1100,
+    "validation": 300,
+    "calibration": 300,
+    "test": 300
+  },
+  "selected_trial": 2,
+  "search": [
+    {
+      "trial": 0,
+      "configuration": {
+        "hidden": 64,
+        "lr": 0.008,
+        "decay": 0.0002,
+        "epochs": 40
+      },
+      "validation_loss": 0.6847556034723917,
+      "accepted": true,
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 0.02326380896071593,
+          "validation_loss": 0.6847556034723917,
+          "train_head_loss": {
+            "clasificacion": 0.02360222302377224,
+            "atencion_prioritaria": 0.011746522039175034,
+            "nivel": 0.034442681819200516
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.7459457516670227,
+            "atencion_prioritaria": 0.5337754487991333,
+            "nivel": 0.7745456099510193
+          }
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.0016935758758336306,
+          "validation_loss": 0.7490293184916178,
+          "train_head_loss": {
+            "clasificacion": 0.0019265894079580903,
+            "atencion_prioritaria": 0.0008752596331760287,
+            "nivel": 0.0022788785863667727
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.7850989103317261,
+            "atencion_prioritaria": 0.6174489259719849,
+            "nivel": 0.8445401191711426
+          }
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.0009927601592304807,
+          "validation_loss": 0.77590944369634,
+          "train_head_loss": {
+            "clasificacion": 0.0011097962269559503,
+            "atencion_prioritaria": 0.0005850188317708671,
+            "nivel": 0.0012834654189646244
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8017528057098389,
+            "atencion_prioritaria": 0.6545658111572266,
+            "nivel": 0.8714097142219543
+          }
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.0010064747378540535,
+          "validation_loss": 0.7773573795954386,
+          "train_head_loss": {
+            "clasificacion": 0.0011177427368238568,
+            "atencion_prioritaria": 0.000630030466709286,
+            "nivel": 0.001271651010029018
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8006982803344727,
+            "atencion_prioritaria": 0.664034903049469,
+            "nivel": 0.8673389554023743
+          }
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.0011271364249599476,
+          "validation_loss": 0.7714522083600363,
+          "train_head_loss": {
+            "clasificacion": 0.0012574454303830862,
+            "atencion_prioritaria": 0.0007170336903072894,
+            "nivel": 0.0014069301541894674
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.7961382269859314,
+            "atencion_prioritaria": 0.6614280343055725,
+            "nivel": 0.8567903637886047
+          }
+        },
+        {
+          "epoch": 6,
+          "train_loss": 0.001255860416373859,
+          "validation_loss": 0.76084832350413,
+          "train_head_loss": {
+            "clasificacion": 0.0014107958413660526,
+            "atencion_prioritaria": 0.0008020881214179099,
+            "nivel": 0.001554697286337614
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.788466215133667,
+            "atencion_prioritaria": 0.6514499187469482,
+            "nivel": 0.8426288366317749
+          }
+        },
+        {
+          "epoch": 7,
+          "train_loss": 0.0013598113437183201,
+          "validation_loss": 0.7542784214019775,
+          "train_head_loss": {
+            "clasificacion": 0.0015344541752710938,
+            "atencion_prioritaria": 0.0008712621056474745,
+            "nivel": 0.001673717750236392
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.785565972328186,
+            "atencion_prioritaria": 0.6434037089347839,
+            "nivel": 0.8338655829429626
+          }
+        },
+        {
+          "epoch": 8,
+          "train_loss": 0.0014368134822386007,
+          "validation_loss": 0.7479429046312968,
+          "train_head_loss": {
+            "clasificacion": 0.001623673946596682,
+            "atencion_prioritaria": 0.0009278352954424918,
+            "nivel": 0.0017589312046766281
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.782701313495636,
+            "atencion_prioritaria": 0.6351682543754578,
+            "nivel": 0.8259591460227966
+          }
+        },
+        {
+          "epoch": 9,
+          "train_loss": 0.0014874945239474375,
+          "validation_loss": 0.7417255640029907,
+          "train_head_loss": {
+            "clasificacion": 0.00168722087983042,
+            "atencion_prioritaria": 0.0009601269848644733,
+            "nivel": 0.0018151357071474195
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.780495822429657,
+            "atencion_prioritaria": 0.6256325840950012,
+            "nivel": 0.819048285484314
+          }
+        },
+        {
+          "epoch": 10,
+          "train_loss": 0.0015156243074064453,
+          "validation_loss": 0.7444804906845093,
+          "train_head_loss": {
+            "clasificacion": 0.001702752779237926,
+            "atencion_prioritaria": 0.0010080001084133983,
+            "nivel": 0.0018361200345680118
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.7857356071472168,
+            "atencion_prioritaria": 0.6263365149497986,
+            "nivel": 0.8213693499565125
+          }
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "configuration": {
+        "hidden": 32,
+        "lr": 0.0058558801473451595,
+        "decay": 0.0002,
+        "epochs": 40
+      },
+      "validation_loss": 0.7609704931577047,
+      "accepted": false,
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 0.20706083377202353,
+          "validation_loss": 0.7609704931577047,
+          "train_head_loss": {
+            "clasificacion": 0.18228837847709656,
+            "atencion_prioritaria": 0.1834549903869629,
+            "nivel": 0.2554391324520111
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8500911593437195,
+            "atencion_prioritaria": 0.5606275200843811,
+            "nivel": 0.8721928000450134
+          }
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.025637449696660042,
+          "validation_loss": 0.7655150691668192,
+          "train_head_loss": {
+            "clasificacion": 0.020786868408322334,
+            "atencion_prioritaria": 0.023151665925979614,
+            "nivel": 0.03297381475567818
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8515138030052185,
+            "atencion_prioritaria": 0.5892512798309326,
+            "nivel": 0.8557801246643066
+          }
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.008598816891511282,
+          "validation_loss": 0.7796469132105509,
+          "train_head_loss": {
+            "clasificacion": 0.007357299793511629,
+            "atencion_prioritaria": 0.007114008534699678,
+            "nivel": 0.011325142346322536
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8636635541915894,
+            "atencion_prioritaria": 0.6077328324317932,
+            "nivel": 0.8675443530082703
+          }
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.005502565608670314,
+          "validation_loss": 0.7887754638989767,
+          "train_head_loss": {
+            "clasificacion": 0.004842015914618969,
+            "atencion_prioritaria": 0.00452861562371254,
+            "nivel": 0.007137065287679434
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8717226386070251,
+            "atencion_prioritaria": 0.6204299926757812,
+            "nivel": 0.8741737604141235
+          }
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.004376339105268319,
+          "validation_loss": 0.7935035427411398,
+          "train_head_loss": {
+            "clasificacion": 0.003929540980607271,
+            "atencion_prioritaria": 0.003613314125686884,
+            "nivel": 0.005586162209510803
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8759971857070923,
+            "atencion_prioritaria": 0.6265164017677307,
+            "nivel": 0.8779970407485962
+          }
+        },
+        {
+          "epoch": 6,
+          "train_loss": 0.0037407565396279097,
+          "validation_loss": 0.7913869818051656,
+          "train_head_loss": {
+            "clasificacion": 0.003418621141463518,
+            "atencion_prioritaria": 0.003089155303314328,
+            "nivel": 0.004714493174105883
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8727433085441589,
+            "atencion_prioritaria": 0.626800537109375,
+            "nivel": 0.8746170997619629
+          }
+        },
+        {
+          "epoch": 7,
+          "train_loss": 0.0032905191959192357,
+          "validation_loss": 0.7907552520434061,
+          "train_head_loss": {
+            "clasificacion": 0.003056613728404045,
+            "atencion_prioritaria": 0.0027106080669909716,
+            "nivel": 0.00410433579236269
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8713679909706116,
+            "atencion_prioritaria": 0.6277130246162415,
+            "nivel": 0.8731847405433655
+          }
+        },
+        {
+          "epoch": 8,
+          "train_loss": 0.0029581551595280566,
+          "validation_loss": 0.7899020711580912,
+          "train_head_loss": {
+            "clasificacion": 0.002788627753034234,
+            "atencion_prioritaria": 0.0024271963629871607,
+            "nivel": 0.0036586413625627756
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.870013415813446,
+            "atencion_prioritaria": 0.6275490522384644,
+            "nivel": 0.8721437454223633
+          }
+        },
+        {
+          "epoch": 9,
+          "train_loss": 0.002705536549910903,
+          "validation_loss": 0.7870429356892904,
+          "train_head_loss": {
+            "clasificacion": 0.0025915747974067926,
+            "atencion_prioritaria": 0.0021965517662465572,
+            "nivel": 0.003328483086079359
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8668982982635498,
+            "atencion_prioritaria": 0.6250321269035339,
+            "nivel": 0.8691983819007874
+          }
+        },
+        {
+          "epoch": 10,
+          "train_loss": 0.0025111450037608543,
+          "validation_loss": 0.789485514163971,
+          "train_head_loss": {
+            "clasificacion": 0.002428522100672126,
+            "atencion_prioritaria": 0.0020419368520379066,
+            "nivel": 0.0030629760585725307
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.869537889957428,
+            "atencion_prioritaria": 0.6267368197441101,
+            "nivel": 0.8721818327903748
+          }
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "configuration": {
+        "hidden": 128,
+        "lr": 0.010019937923938132,
+        "decay": 0.0002,
+        "epochs": 40
+      },
+      "validation_loss": 0.6844462752342224,
+      "accepted": true,
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 0.0014151494639615219,
+          "validation_loss": 0.6844462752342224,
+          "train_head_loss": {
+            "clasificacion": 0.0016775598051026464,
+            "atencion_prioritaria": 0.0009352248162031174,
+            "nivel": 0.0016326637705788016
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.7417725920677185,
+            "atencion_prioritaria": 0.5654832124710083,
+            "nivel": 0.7460830211639404
+          }
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.00010623282287269831,
+          "validation_loss": 0.7522987127304077,
+          "train_head_loss": {
+            "clasificacion": 0.00012206803512526676,
+            "atencion_prioritaria": 5.962033901596442e-05,
+            "nivel": 0.00013701009447686374
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8053311109542847,
+            "atencion_prioritaria": 0.6480083465576172,
+            "nivel": 0.8035566806793213
+          }
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.0001042928949270087,
+          "validation_loss": 0.7746511896451315,
+          "train_head_loss": {
+            "clasificacion": 0.0001185622822958976,
+            "atencion_prioritaria": 6.29463538643904e-05,
+            "nivel": 0.0001313700486207381
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8294038772583008,
+            "atencion_prioritaria": 0.6843058466911316,
+            "nivel": 0.8102438449859619
+          }
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.00017626827563314387,
+          "validation_loss": 0.7886994878451029,
+          "train_head_loss": {
+            "clasificacion": 0.0001978167420020327,
+            "atencion_prioritaria": 0.00011562222789507359,
+            "nivel": 0.00021536585700232536
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.841326892375946,
+            "atencion_prioritaria": 0.7140799164772034,
+            "nivel": 0.8106916546821594
+          }
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.0003187271213391796,
+          "validation_loss": 0.7875263690948486,
+          "train_head_loss": {
+            "clasificacion": 0.0003540239413268864,
+            "atencion_prioritaria": 0.00021928489150013775,
+            "nivel": 0.00038287253119051456
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8389016389846802,
+            "atencion_prioritaria": 0.7194635272026062,
+            "nivel": 0.8042139410972595
+          }
+        },
+        {
+          "epoch": 6,
+          "train_loss": 0.0005363463036095103,
+          "validation_loss": 0.7699964046478271,
+          "train_head_loss": {
+            "clasificacion": 0.0005963107687421143,
+            "atencion_prioritaria": 0.00037234288174659014,
+            "nivel": 0.0006403852603398263
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.8230738043785095,
+            "atencion_prioritaria": 0.697275698184967,
+            "nivel": 0.7896397113800049
+          }
+        },
+        {
+          "epoch": 7,
+          "train_loss": 0.0008112987464604279,
+          "validation_loss": 0.7489266196886698,
+          "train_head_loss": {
+            "clasificacion": 0.0009163028444163501,
+            "atencion_prioritaria": 0.0005514236981980503,
+            "nivel": 0.0009661696967668831
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.80596923828125,
+            "atencion_prioritaria": 0.6642385721206665,
+            "nivel": 0.776572048664093
+          }
+        },
+        {
+          "epoch": 8,
+          "train_loss": 0.0010869157849811018,
+          "validation_loss": 0.7217459281285604,
+          "train_head_loss": {
+            "clasificacion": 0.001253118272870779,
+            "atencion_prioritaria": 0.0007112929015420377,
+            "nivel": 0.0012963361805304885
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.7816547751426697,
+            "atencion_prioritaria": 0.6246821880340576,
+            "nivel": 0.7589008212089539
+          }
+        },
+        {
+          "epoch": 9,
+          "train_loss": 0.0012904475637090702,
+          "validation_loss": 0.7065463463465372,
+          "train_head_loss": {
+            "clasificacion": 0.0015014505479484797,
+            "atencion_prioritaria": 0.0008395402110181749,
+            "nivel": 0.0015303519321605563
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.7689551711082458,
+            "atencion_prioritaria": 0.5987253785133362,
+            "nivel": 0.7519584894180298
+          }
+        },
+        {
+          "epoch": 10,
+          "train_loss": 0.0013650299321549635,
+          "validation_loss": 0.7026732365290324,
+          "train_head_loss": {
+            "clasificacion": 0.0015745507553219795,
+            "atencion_prioritaria": 0.0009328136802650988,
+            "nivel": 0.001587725360877812
+          },
+          "validation_head_loss": {
+            "clasificacion": 0.7658628821372986,
+            "atencion_prioritaria": 0.5893847942352295,
+            "nivel": 0.7527720332145691
+          }
+        }
+      ]
+    }
+  ],
+  "test_loss": 0.2907155156135559,
+  "metrics": {
+    "clasificacion": {
+      "question": "¿Cuál es la necesidad principal del cliente?",
+      "accuracy": 0.8633333333333333,
+      "ece": 0.0515875342488289,
+      "coverage": 0.9233333333333333,
+      "selective_accuracy": 0.8880866425992779,
+      "log_loss": 0.35612863302230835,
+      "baseline_accuracy": 0.3333333333333333,
+      "baseline_log_loss": 1.098613115616293,
+      "labels": [
+        "consulta",
+        "reclamacion",
+        "cancelacion"
+      ],
+      "confusion_matrix": [
+        [
+          80,
+          0,
+          20
+        ],
+        [
+          3,
+          79,
+          18
+        ],
+        [
+          0,
+          0,
+          100
+        ]
+      ],
+      "type": "choice",
+      "loss_name": "categorical_cross_entropy",
+      "brier": 0.20203209428520016,
+      "mean_confidence": 0.6774688363075256
+    },
+    "atencion_prioritaria": {
+      "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+      "accuracy": 0.9133333333333333,
+      "ece": 0.029176534016927082,
+      "coverage": 0.97,
+      "selective_accuracy": 0.9278350515463918,
+      "log_loss": 0.19373780488967896,
+      "baseline_accuracy": 0.6666666666666666,
+      "baseline_log_loss": 0.6365149952429962,
+      "labels": [
+        "false",
+        "true"
+      ],
+      "confusion_matrix": [
+        [
+          174,
+          26
+        ],
+        [
+          0,
+          100
+        ]
+      ],
+      "type": "noul",
+      "loss_name": "binary_cross_entropy",
+      "brier": 0.06130370518689896
+    },
+    "nivel": {
+      "question": "¿Qué nivel de atención corresponde al caso?",
+      "accuracy": 0.9,
+      "ece": 0.03882769038279851,
+      "coverage": 0.9833333333333333,
+      "selective_accuracy": 0.9050847457627119,
+      "log_loss": 0.3222801089286804,
+      "baseline_accuracy": 0.3333333333333333,
+      "baseline_log_loss": 1.098613115616293,
+      "labels": [
+        "bajo",
+        "medio",
+        "alto"
+      ],
+      "confusion_matrix": [
+        [
+          91,
+          0,
+          9
+        ],
+        [
+          4,
+          79,
+          17
+        ],
+        [
+          0,
+          0,
+          100
+        ]
+      ],
+      "type": "score",
+      "loss_name": "categorical_cross_entropy",
+      "brier": 0.16902820603927202,
+      "score_mae": 0.2352000066859743,
+      "score_rmse": 0.3944950331282088,
+      "baseline_score_mae": 0.6669696969696971,
+      "score_range": [
+        0,
+        2
+      ],
+      "mean_confidence": 0.6903491020202637
+    }
+  },
+  "temperatures": [
+    0.7,
+    0.7,
+    0.7
+  ],
+  "question_types": {
+    "clasificacion": "choice",
+    "atencion_prioritaria": "noul",
+    "nivel": "score"
+  },
+  "confidence_method": "1 - normalized Shannon entropy; not Jev proprietary confidence",
+  "functional_test": {
+    "serialization_passed": true,
+    "typed_response_gate_passed": true,
+    "rows": 300
+  },
+  "scenarios": [
+    {
+      "state": {
+        "dias_desde_compra": 2.754,
+        "mensaje": "Estoy comparando opciones: ¿pueden explicar las características?",
+        "contexto": "Solicitud operativa de Comercializadora Castro S.Coop., referencia JS-3477."
+      },
+      "answers": {
+        "clasificacion": {
+          "kind": "choice",
+          "question": "¿Cuál es la necesidad principal del cliente?",
+          "choice": "consulta",
+          "meaning": "Solicita información del producto.",
+          "probabilities": {
+            "consulta": 0.8087082505226135,
+            "reclamacion": 0.10257895290851593,
+            "cancelacion": 0.08871278911828995
+          },
+          "max_probability": 0.8087082505226135,
+          "type": "choice",
+          "confidence": 0.43548699223304643,
+          "needs_review": false
+        },
+        "atencion_prioritaria": {
+          "kind": "noul",
+          "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+          "choice": "false",
+          "meaning": "Se puede atender en el flujo habitual.",
+          "probabilities": {
+            "false": 0.9823134541511536,
+            "true": 0.017686573788523674
+          },
+          "max_probability": 0.9823134541511536,
+          "type": "noul",
+          "noul": 0.017686573788523674,
+          "needs_review": false
+        },
+        "nivel": {
+          "kind": "score",
+          "question": "¿Qué nivel de atención corresponde al caso?",
+          "choice": "bajo",
+          "meaning": "Atención habitual.",
+          "probabilities": {
+            "bajo": 0.8721941709518433,
+            "medio": 0.07622670382261276,
+            "alto": 0.05157918855547905
+          },
+          "max_probability": 0.8721941709518433,
+          "type": "score",
+          "confidence": 0.5736520661941962,
+          "score": 0.17938508093357086,
+          "legend": {
+            "bajo": {
+              "level": 0,
+              "description": "Atención habitual."
+            },
+            "medio": {
+              "level": 1,
+              "description": "Revisión del especialista."
+            },
+            "alto": {
+              "level": 2,
+              "description": "Revisión humana prioritaria."
+            }
+          },
+          "expected_score": 0.17938508093357086,
+          "needs_review": false
+        }
+      },
+      "proposed_action": "cola_informacion",
+      "routing_reason": "Regla: clasificacion=consulta, probabilidad 80.9%.",
+      "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 80.9%; confianza de distribución: 43.5%. ¿El caso requiere atención prioritaria según los datos aportados? Probabilidad de que la afirmación sea verdadera: 1.8%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Qué nivel de atención corresponde al caso? Posición en la rúbrica: 0.179 de 2; confianza de distribución: 57.4%.",
+      "action_executed": false
+    },
+    {
+      "state": {
+        "dias_desde_compra": 11.842,
+        "mensaje": "La compra presenta una falla y quisiera reclamar.",
+        "contexto": "Solicitud operativa de Hermanos Ochoa S.L.N.E, referencia no-4070."
+      },
+      "answers": {
+        "clasificacion": {
+          "kind": "choice",
+          "question": "¿Cuál es la necesidad principal del cliente?",
+          "choice": "reclamacion",
+          "meaning": "Reclama un problema con su compra.",
+          "probabilities": {
+            "consulta": 1.5146191572057432e-06,
+            "reclamacion": 0.9999735355377197,
+            "cancelacion": 2.4894319722079672e-05
+          },
+          "max_probability": 0.9999735355377197,
+          "type": "choice",
+          "confidence": 0.9997172737822669,
+          "needs_review": false
+        },
+        "atencion_prioritaria": {
+          "kind": "noul",
+          "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+          "choice": "false",
+          "meaning": "Se puede atender en el flujo habitual.",
+          "probabilities": {
+            "false": 0.9979071617126465,
+            "true": 0.0020928820595145226
+          },
+          "max_probability": 0.9979071617126465,
+          "type": "noul",
+          "noul": 0.0020928820595145226,
+          "needs_review": false
+        },
+        "nivel": {
+          "kind": "score",
+          "question": "¿Qué nivel de atención corresponde al caso?",
+          "choice": "medio",
+          "meaning": "Revisión del especialista.",
+          "probabilities": {
+            "bajo": 2.239822151750559e-06,
+            "medio": 0.9999592304229736,
+            "alto": 3.8455651520052925e-05
+          },
+          "max_probability": 0.9999592304229736,
+          "type": "score",
+          "confidence": 0.9995805862315857,
+          "score": 1.0000361417260137,
+          "legend": {
+            "bajo": {
+              "level": 0,
+              "description": "Atención habitual."
+            },
+            "medio": {
+              "level": 1,
+              "description": "Revisión del especialista."
+            },
+            "alto": {
+              "level": 2,
+              "description": "Revisión humana prioritaria."
+            }
+          },
+          "expected_score": 1.0000361204147339,
+          "needs_review": false
+        }
+      },
+      "proposed_action": "cola_postventa",
+      "routing_reason": "Regla: clasificacion=reclamacion, probabilidad 100.0%.",
+      "interpretation": "¿Cuál es la necesidad principal del cliente? Reclama un problema con su compra.. Probabilidad de la opción: 100.0%; confianza de distribución: 100.0%. ¿El caso requiere atención prioritaria según los datos aportados? Probabilidad de que la afirmación sea verdadera: 0.2%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Qué nivel de atención corresponde al caso? Posición en la rúbrica: 1.000 de 2; confianza de distribución: 100.0%.",
+      "action_executed": false
+    },
+    {
+      "state": {
+        "dias_desde_compra": 0.704,
+        "mensaje": "No envíen el producto: deseo dejar sin efecto el pedido.",
+        "contexto": "Solicitud operativa de Compañía Marco S.Coop., referencia ue-2094."
+      },
+      "answers": {
+        "clasificacion": {
+          "kind": "choice",
+          "question": "¿Cuál es la necesidad principal del cliente?",
+          "choice": "cancelacion",
+          "meaning": "Expresa intención de cancelar la compra.",
+          "probabilities": {
+            "consulta": 0.004407797008752823,
+            "reclamacion": 0.0005777747719548643,
+            "cancelacion": 0.9950143694877625
+          },
+          "max_probability": 0.9950143694877625,
+          "type": "choice",
+          "confidence": 0.9697884599558011,
+          "needs_review": false
+        },
+        "atencion_prioritaria": {
+          "kind": "noul",
+          "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+          "choice": "true",
+          "meaning": "Requiere revisión prioritaria.",
+          "probabilities": {
+            "false": 0.0025191204622387886,
+            "true": 0.9974809288978577
+          },
+          "max_probability": 0.9974809288978577,
+          "type": "noul",
+          "noul": 0.9974809288978577,
+          "needs_review": false
+        },
+        "nivel": {
+          "kind": "score",
+          "question": "¿Qué nivel de atención corresponde al caso?",
+          "choice": "alto",
+          "meaning": "Revisión humana prioritaria.",
+          "probabilities": {
+            "bajo": 0.005326142068952322,
+            "medio": 0.0006462560268118978,
+            "alto": 0.9940276145935059
+          },
+          "max_probability": 0.9940276145935059,
+          "type": "score",
+          "confidence": 0.9648794470011564,
+          "score": 1.9887014852138236,
+          "legend": {
+            "bajo": {
+              "level": 0,
+              "description": "Atención habitual."
+            },
+            "medio": {
+              "level": 1,
+              "description": "Revisión del especialista."
+            },
+            "alto": {
+              "level": 2,
+              "description": "Revisión humana prioritaria."
+            }
+          },
+          "expected_score": 1.9887014627456665,
+          "needs_review": false
+        }
+      },
+      "proposed_action": "revision_cancelacion",
+      "routing_reason": "Regla: clasificacion=cancelacion, probabilidad 99.5%.",
+      "interpretation": "¿Cuál es la necesidad principal del cliente? Expresa intención de cancelar la compra.. Probabilidad de la opción: 99.5%; confianza de distribución: 97.0%. ¿El caso requiere atención prioritaria según los datos aportados? Probabilidad de que la afirmación sea verdadera: 99.7%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Qué nivel de atención corresponde al caso? Posición en la rúbrica: 1.989 de 2; confianza de distribución: 96.5%.",
+      "action_executed": false
+    },
+    {
+      "state": {
+        "dias_desde_compra": 1.915,
+        "mensaje": "Estoy comparando opciones: ¿pueden explicar las características?",
+        "contexto": "Solicitud operativa de Torrents y Páez S.L., referencia ma-3286."
+      },
+      "answers": {
+        "clasificacion": {
+          "kind": "choice",
+          "question": "¿Cuál es la necesidad principal del cliente?",
+          "choice": "consulta",
+          "meaning": "Solicita información del producto.",
+          "probabilities": {
+            "consulta": 0.591647744178772,
+            "reclamacion": 0.028535034507513046,
+            "cancelacion": 0.3798172175884247
+          },
+          "max_probability": 0.591647744178772,
+          "type": "choice",
+          "confidence": 0.29028753139855634,
+          "needs_review": false
+        },
+        "atencion_prioritaria": {
+          "kind": "noul",
+          "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+          "choice": "false",
+          "meaning": "Se puede atender en el flujo habitual.",
+          "probabilities": {
+            "false": 0.7381011843681335,
+            "true": 0.26189878582954407
+          },
+          "max_probability": 0.7381011843681335,
+          "type": "noul",
+          "noul": 0.26189878582954407,
+          "needs_review": false
+        },
+        "nivel": {
+          "kind": "score",
+          "question": "¿Qué nivel de atención corresponde al caso?",
+          "choice": "bajo",
+          "meaning": "Atención habitual.",
+          "probabilities": {
+            "bajo": 0.6849802732467651,
+            "medio": 0.02386496216058731,
+            "alto": 0.29115477204322815
+          },
+          "max_probability": 0.6849802732467651,
+          "type": "score",
+          "confidence": 0.3559397310013106,
+          "score": 0.6061745062470436,
+          "legend": {
+            "bajo": {
+              "level": 0,
+              "description": "Atención habitual."
+            },
+            "medio": {
+              "level": 1,
+              "description": "Revisión del especialista."
+            },
+            "alto": {
+              "level": 2,
+              "description": "Revisión humana prioritaria."
+            }
+          },
+          "expected_score": 0.6061745285987854,
+          "needs_review": false
+        }
+      },
+      "proposed_action": "cola_general",
+      "routing_reason": "Ninguna regla superó su umbral.",
+      "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 59.2%; confianza de distribución: 29.0%. ¿El caso requiere atención prioritaria según los datos aportados? Probabilidad de que la afirmación sea verdadera: 26.2%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Qué nivel de atención corresponde al caso? Posición en la rúbrica: 0.606 de 2; confianza de distribución: 35.6%.",
+      "action_executed": false
+    },
+    {
+      "state": {
+        "dias_desde_compra": 6.739,
+        "mensaje": "La compra presenta una falla y quisiera reclamar.",
+        "contexto": "Solicitud operativa de Comercializadora TQ S.A., referencia nW-6483."
+      },
+      "answers": {
+        "clasificacion": {
+          "kind": "choice",
+          "question": "¿Cuál es la necesidad principal del cliente?",
+          "choice": "reclamacion",
+          "meaning": "Reclama un problema con su compra.",
+          "probabilities": {
+            "consulta": 0.009709248319268227,
+            "reclamacion": 0.9846020936965942,
+            "cancelacion": 0.005688654724508524
+          },
+          "max_probability": 0.9846020936965942,
+          "type": "choice",
+          "confidence": 0.9183659012062624,
+          "needs_review": false
+        },
+        "atencion_prioritaria": {
+          "kind": "noul",
+          "question": "¿El caso requiere atención prioritaria según los datos aportados?",
+          "choice": "false",
+          "meaning": "Se puede atender en el flujo habitual.",
+          "probabilities": {
+            "false": 0.9960903525352478,
+            "true": 0.003909644670784473
+          },
+          "max_probability": 0.9960903525352478,
+          "type": "noul",
+          "noul": 0.003909644670784473,
+          "needs_review": false
+        },
+        "nivel": {
+          "kind": "score",
+          "question": "¿Qué nivel de atención corresponde al caso?",
+          "choice": "medio",
+          "meaning": "Revisión del especialista.",
+          "probabilities": {
+            "bajo": 0.01448272354900837,
+            "medio": 0.9794410467147827,
+            "alto": 0.006076197139918804
+          },
+          "max_probability": 0.9794410467147827,
+          "type": "score",
+          "confidence": 0.8974281758472293,
+          "score": 0.9915934409946203,
+          "legend": {
+            "bajo": {
+              "level": 0,
+              "description": "Atención habitual."
+            },
+            "medio": {
+              "level": 1,
+              "description": "Revisión del especialista."
+            },
+            "alto": {
+              "level": 2,
+              "description": "Revisión humana prioritaria."
+            }
+          },
+          "expected_score": 0.9915934205055237,
+          "needs_review": false
+        }
+      },
+      "proposed_action": "cola_postventa",
+      "routing_reason": "Regla: clasificacion=reclamacion, probabilidad 98.5%.",
+      "interpretation": "¿Cuál es la necesidad principal del cliente? Reclama un problema con su compra.. Probabilidad de la opción: 98.5%; confianza de distribución: 91.8%. ¿El caso requiere atención prioritaria según los datos aportados? Probabilidad de que la afirmación sea verdadera: 0.4%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Qué nivel de atención corresponde al caso? Posición en la rúbrica: 0.992 de 2; confianza de distribución: 89.7%.",
+      "action_executed": false
+    }
+  ],
+  "data_origin": "synthetic_demo"
+}

@@ -1,0 +1,184 @@
+/workspace/scratch/bd214683c088/decision_brain_observability/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_cycles_rejected (test_consumer.ConsumerTests.test_cycles_rejected) ... ok
+test_foreign_caller_not_consumed (test_consumer.ConsumerTests.test_foreign_caller_not_consumed) ... ok
+test_network_retry_keeps_version_key_trace (test_consumer.ConsumerTests.test_network_retry_keeps_version_key_trace) ... ok
+test_pending_resumes_after_restart (test_consumer.ConsumerTests.test_pending_resumes_after_restart) ... ok
+test_poison_request_is_not_retried (test_consumer.ConsumerTests.test_poison_request_is_not_retried) ... ok
+test_restart_does_not_duplicate_delivery (test_consumer.ConsumerTests.test_restart_does_not_duplicate_delivery) ... ok
+test_retries_bounded (test_consumer.ConsumerTests.test_retries_bounded) ... ok
+test_route_change_requires_review (test_consumer.ConsumerTests.test_route_change_requires_review) ... ok
+test_all_presets (test_core.CoreChecks.test_all_presets) ... ok
+test_distinct_partition_templates (test_core.CoreChecks.test_distinct_partition_templates) ... ok
+test_empty_production_metrics_rejected (test_core.CoreChecks.test_empty_production_metrics_rejected) ... ok
+test_invalid_artifact_temperature (test_core.CoreChecks.test_invalid_artifact_temperature) ... ok
+test_labels_cannot_be_inputs (test_core.CoreChecks.test_labels_cannot_be_inputs) ... ok
+test_ordinal_values_ordered (test_core.CoreChecks.test_ordinal_values_ordered) ... ok
+test_probability_contract (test_core.CoreChecks.test_probability_contract) ... ok
+test_typed_outputs (test_core.CoreChecks.test_typed_outputs) ... ok
+test_uncertainty_routes_to_review (test_core.CoreChecks.test_uncertainty_routes_to_review) ... ok
+test_utf8_log_and_relative_report_links (test_core.CoreChecks.test_utf8_log_and_relative_report_links) ... ok
+test_utf8_subprocess_stream (test_core.CoreChecks.test_utf8_subprocess_stream) ... ok
+test_active_version_pin (test_gates.GateTests.test_active_version_pin) ... ok
+test_audit_tamper_detected (test_gates.GateTests.test_audit_tamper_detected) ... ok
+test_auth_and_brain_authorization (test_gates.GateTests.test_auth_and_brain_authorization) ... ok
+test_backend_version_race_rejected (test_gates.GateTests.test_backend_version_race_rejected) ... ok
+test_catalog_filters_authorized_brains (test_gates.GateTests.test_catalog_filters_authorized_brains) ... ok
+test_concurrent_same_key (test_gates.GateTests.test_concurrent_same_key) ... ok
+test_contract_drift (test_gates.GateTests.test_contract_drift) ... ok
+test_envelope_trace_and_no_pii (test_gates.GateTests.test_envelope_trace_and_no_pii) ... ok
+test_event_maps_target_state (test_gates.GateTests.test_event_maps_target_state) ... ok
+test_handoff_contract_required_and_idempotent (test_gates.GateTests.test_handoff_contract_required_and_idempotent) ... ok
+test_handoff_rejects_pii_extra_and_negative (test_gates.GateTests.test_handoff_rejects_pii_extra_and_negative) ... ok
+test_harness_promotion_binds_artifacts (test_gates.GateTests.test_harness_promotion_binds_artifacts) ... ok
+test_idempotency_scope_is_per_caller (test_gates.GateTests.test_idempotency_scope_is_per_caller) ... ok
+test_idempotency_survives_restart (test_gates.GateTests.test_idempotency_survives_restart) ... ok
+test_idempotent_replay_and_conflict (test_gates.GateTests.test_idempotent_replay_and_conflict) ... ok
+test_immutable_audit_export_and_metrics (test_gates.GateTests.test_immutable_audit_export_and_metrics) ... ok
+test_invalid_probabilities (test_gates.GateTests.test_invalid_probabilities) ... ok
+test_invalid_response_never_becomes_fallback (test_gates.GateTests.test_invalid_response_never_becomes_fallback) ... ok
+test_low_confidence_keeps_safe_interop (test_gates.GateTests.test_low_confidence_keeps_safe_interop) ... ok
+test_observer_marks_failed_quality_red (test_gates.GateTests.test_observer_marks_failed_quality_red) ... ok
+test_pending_after_crash_not_reexecuted (test_gates.GateTests.test_pending_after_crash_not_reexecuted) ... ok
+test_per_brain_size_limit (test_gates.GateTests.test_per_brain_size_limit) ... ok
+test_production_rechecks_quality_at_activation (test_gates.GateTests.test_production_rechecks_quality_at_activation) ... ok
+test_schema_size_and_version (test_gates.GateTests.test_schema_size_and_version) ... ok
+test_streamed_body_limit (test_gates.GateTests.test_streamed_body_limit) ... ok
+test_tls_required (test_gates.GateTests.test_tls_required) ... ok
+test_trace_required (test_gates.GateTests.test_trace_required) ... ok
+test_typed_state_and_duplicate_json (test_gates.GateTests.test_typed_state_and_duplicate_json) ... ok
+test_wrong_response_correlation (test_gates.GateTests.test_wrong_response_correlation) ... ok
+test_decisions_and_rejection (test_harness.HarnessChecks.test_decisions_and_rejection) ... ok
+test_invalid_probabilities_error (test_harness.HarnessChecks.test_invalid_probabilities_error) ... ok
+test_invalid_suite (test_harness.HarnessChecks.test_invalid_suite) ... ok
+test_report_and_regression (test_harness.HarnessChecks.test_report_and_regression) ... ok
+test_wrong_action_fails (test_harness.HarnessChecks.test_wrong_action_fails) ... ok
+test_check_only (test_launch.LaunchChecks.test_check_only) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
+
+Pruebas del software aprobadas
+INFORME: /workspace/scratch/bd214683c088/decision_brain_sdk/tmp8_z20lof/runs/session_20260925_221105_e8057cf2/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/decision_brain_sdk/tmp8_z20lof/runs/latest.html
+ok
+test_model_failure_keeps_reports (test_launch.LaunchChecks.test_model_failure_keeps_reports) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
+[2/3] Entrenando y generando el informe del modelo…
+[3/3] Evaluando decisiones con el harness…
+
+Ejecución completada: hay decisiones que no cumplen los criterios
+INFORME: /workspace/scratch/bd214683c088/decision_brain_sdk/tmpjapzu1uk/runs/session_20260925_221105_68c1240a/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/decision_brain_sdk/tmpjapzu1uk/runs/latest.html
+ok
+test_repeated_runs_do_not_collide (test_launch.LaunchChecks.test_repeated_runs_do_not_collide) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
+
+Pruebas del software aprobadas
+INFORME: /workspace/scratch/bd214683c088/decision_brain_sdk/tmpx00nb68w/runs/session_20260925_221105_7867f06b/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/decision_brain_sdk/tmpx00nb68w/runs/latest.html
+[1/3] Ejecutando pruebas del servicio, harness y configuración…
+
+Pruebas del software aprobadas
+INFORME: /workspace/scratch/bd214683c088/decision_brain_sdk/tmpx00nb68w/runs/session_20260925_221105_34e3406b/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/decision_brain_sdk/tmpx00nb68w/runs/latest.html
+ok
+test_software_failure_stops_training (test_launch.LaunchChecks.test_software_failure_stops_training) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
+test log
+
+Fallaron las pruebas del software. Consulta el registro.
+INFORME: /workspace/scratch/bd214683c088/decision_brain_sdk/tmpauf_x9qt/runs/session_20260925_221105_bb172217/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/decision_brain_sdk/tmpauf_x9qt/runs/latest.html
+ok
+test_success (test_launch.LaunchChecks.test_success) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
+[2/3] Entrenando y generando el informe del modelo…
+[3/3] Evaluando decisiones con el harness…
+
+Ejecución completada: el modelo cumple los criterios del harness
+INFORME: /workspace/scratch/bd214683c088/decision_brain_sdk/tmpup_xuuny/runs/session_20260925_221105_c8909287/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/decision_brain_sdk/tmpup_xuuny/runs/latest.html
+ok
+test_empty_dashboard_is_not_fake_green (test_observability.ObservabilityTests.test_empty_dashboard_is_not_fake_green) ... ok
+test_otlp_http_protobuf_export (test_observability.ObservabilityTests.test_otlp_http_protobuf_export) ... ok
+test_server_error_marks_span_without_recording_payload (test_observability.ObservabilityTests.test_server_error_marks_span_without_recording_payload) ... ok
+test_trace_id_validated (test_observability.ObservabilityTests.test_trace_id_validated) ... ok
+test_unsampled_parent_respected (test_observability.ObservabilityTests.test_unsampled_parent_respected) ... ok
+test_w3c_parent_child_propagation_and_redaction (test_observability.ObservabilityTests.test_w3c_parent_child_propagation_and_redaction) ... ok
+test_web_shell_assets_and_protected_data (test_observability.ObservabilityTests.test_web_shell_assets_and_protected_data) ... ok
+test_different_projects_rejected (test_operations.OperationTests.test_different_projects_rejected) ... ok
+test_launchd_definition_contains_no_secrets (test_operations.OperationTests.test_launchd_definition_contains_no_secrets) ... ok
+test_projects_root_typo_rejected (test_operations.OperationTests.test_projects_root_typo_rejected) ... ok
+test_restart_reuses_configuration (test_operations.OperationTests.test_restart_reuses_configuration) ... ok
+test_boolean_contract_stays_unchanged (test_primitives.PrimitiveChecks.test_boolean_contract_stays_unchanged) ... ok
+test_choice_confidence_is_not_max_probability (test_primitives.PrimitiveChecks.test_choice_confidence_is_not_max_probability) ... ok
+test_gate_checks_all_typed_values (test_primitives.PrimitiveChecks.test_gate_checks_all_typed_values) ... ok
+test_generated_schema_declares_typed_fields (test_primitives.PrimitiveChecks.test_generated_schema_declares_typed_fields) ... ok
+test_harness_numeric_ranges (test_primitives.PrimitiveChecks.test_harness_numeric_ranges) ... ok
+test_metrics_use_binary_brier_and_continuous_score_error (test_primitives.PrimitiveChecks.test_metrics_use_binary_brier_and_continuous_score_error) ... ok
+test_noul_extremes_and_ambiguity (test_primitives.PrimitiveChecks.test_noul_extremes_and_ambiguity) ... ok
+test_noul_rejects_nonbinary_contract (test_primitives.PrimitiveChecks.test_noul_rejects_nonbinary_contract) ... ok
+test_score_fractional_and_custom_value_compatibility (test_primitives.PrimitiveChecks.test_score_fractional_and_custom_value_compatibility) ... ok
+test_sdk_roundtrip_and_rejects_corruption (test_primitives.PrimitiveChecks.test_sdk_roundtrip_and_rejects_corruption) ... ok
+test_training_reload_metrics_and_html (test_primitives.PrimitiveChecks.test_training_reload_metrics_and_html) ...   epoch=1 train_loss=0.72371 validation_loss=0.94710
+  epoch=2 train_loss=0.50691 validation_loss=0.91095
+propuesta=0 validation_loss=0.910949 accepted=True
+FUNCTIONAL TEST PASSED; test_loss=0.790418
+clasificacion [choice]: exactitud=56.7%; referencia=33.3%; loss=0.95715
+  categorical_cross_entropy=0.95715; brier=0.57192
+atencion_prioritaria [noul]: exactitud=96.7%; referencia=66.7%; loss=0.50500
+  binary_cross_entropy=0.50500; brier=0.16084
+nivel [score]: exactitud=70.0%; referencia=33.3%; loss=0.90911
+  categorical_cross_entropy=0.90911; brier=0.53771; score_MAE=0.65718
+Informe interpretado: /workspace/scratch/bd214683c088/decision_brain_sdk/tmppve7w4d1/run/report.html
+ok
+test_event_preparation (test_sdk.SDKTests.test_event_preparation) ... ok
+test_http_errors_typed_and_private (test_sdk.SDKTests.test_http_errors_typed_and_private) ... ok
+test_invalid_input_before_network (test_sdk.SDKTests.test_invalid_input_before_network) ... ok
+test_observer_delivery_filter (test_sdk.SDKTests.test_observer_delivery_filter) ... ok
+test_preparation_freezes_context_version_key_trace (test_sdk.SDKTests.test_preparation_freezes_context_version_key_trace) ... ok
+test_remote_http_and_credentials_in_url_rejected (test_sdk.SDKTests.test_remote_http_and_credentials_in_url_rejected) ... ok
+test_replay_preserves_original_trace (test_sdk.SDKTests.test_replay_preserves_original_trace) ... ok
+test_response_probabilities_validated (test_sdk.SDKTests.test_response_probabilities_validated) ... ok
+test_timeout_not_retried_or_leaked (test_sdk.SDKTests.test_timeout_not_retried_or_leaked) ... ok
+test_typed_prediction_and_prefix (test_sdk.SDKTests.test_typed_prediction_and_prefix) ... ok
+test_auth_and_prediction (test_service.ServiceTests.test_auth_and_prediction) ... {"request_id": "43c686e880674f2daff7ef1a70f764df", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.6}
+{"request_id": "c8c9c52f9e5d4a8788013f25375f6b4e", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 3.48}
+{"event": "request_rejected", "request_id": "dba8ad6bb75849519ae4eb03ca6fb08d", "status": 401, "reason": "authentication_required"}
+{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "9a139cf02d25871f6c48d47b0f7ef14b", "request_id": "0e9167226ae9461d807e0025831089db", "model_version": "v1", "needs_review": false}
+{"request_id": "0e9167226ae9461d807e0025831089db", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "9a139cf02d25871f6c48d47b0f7ef14b", "span": "predict", "duration_ms": 3.07}
+{"request_id": "9793ad2797b6405aa3bc42f71b6a27da", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "b321a7e7da36c166d12c1eebbec3e45b", "span": "predict", "duration_ms": 0.25}
+ok
+test_concurrency_limit (test_service.ServiceTests.test_concurrency_limit) ... {"request_id": "9960784f17874471bb4c8af7c7795b27", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "96593b1c0d59bdb901f6a9a37ce9d5ca", "span": "predict", "duration_ms": 51.19}
+{"request_id": "3bfd80d837d24e82a7ebeecaad99f70b", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "dc90ac6142522e8ddc7b1cc03eef7089", "span": "predict", "duration_ms": 52.33}
+{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "30563ee8dc2379a04c885be84a566a0f", "request_id": "055364c3ac7e4959a3e309b1114c7a3d", "model_version": "v1", "needs_review": false}
+{"request_id": "055364c3ac7e4959a3e309b1114c7a3d", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "30563ee8dc2379a04c885be84a566a0f", "span": "predict", "duration_ms": 207.54}
+ok
+test_gate_threshold_logic (test_service.ServiceTests.test_gate_threshold_logic) ... ok
+test_hot_activation_and_rollback (test_service.ServiceTests.test_hot_activation_and_rollback) ... {"request_id": "4bd8d0cb56b941ed9e9483e49d937055", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "7f297cfd68861f735258bfc330f142b2", "span": "predict", "duration_ms": 4.28}
+{"request_id": "53481793e66f44d2ad1f59d0eb3b2412", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "fde095dccb90fa87db38446a96125c70", "span": "predict", "duration_ms": 4.16}
+{"request_id": "1b2b56384d8d48c3b382ccc696db7bbd", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "f84e2867da68b0f6d5d15c6eabdfe694", "span": "predict", "duration_ms": 3.96}
+ok
+test_immutable_release (test_service.ServiceTests.test_immutable_release) ... ok
+test_integrity_failure (test_service.ServiceTests.test_integrity_failure) ... {"request_id": "a9993d6cab014f8299e10372fe66e73b", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.74}
+ok
+test_invalid_and_oversized (test_service.ServiceTests.test_invalid_and_oversized) ... {"request_id": "87d43f50c64e4d7ca26af88015f7cece", "event": "http_request", "status": 422, "brain_id": "local.brain", "trace_id": "2ee4f7af0785282dff0f93e75e0425aa", "span": "predict", "duration_ms": 3.83}
+{"event": "request_rejected", "request_id": "17fb28586ce04ee590245fa4a48f9940", "status": 413, "reason": "body_too_large"}
+ok
+test_rate_limit (test_service.ServiceTests.test_rate_limit) ... {"request_id": "79a47ffede094311a19598ba31f35d04", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "794062a0c39833f0de3d1081e321ba6f", "span": "predict", "duration_ms": 3.93}
+{"event": "request_rejected", "request_id": "b205c70a72774be6bbb1133a4844359d", "status": 429, "reason": "rate_limit"}
+ok
+test_streamed_body_limit (test_service.ServiceTests.test_streamed_body_limit) ... {"event": "request_rejected", "request_id": "ab1aeab838fa4aae8e5e6ed78043b6a5", "status": 413, "reason": "body_too_large"}
+ok
+test_synthetic_production_rejected (test_service.ServiceTests.test_synthetic_production_rejected) ... {"request_id": "44afc4e8be5447a48a6b3dfed09602e2", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.62}
+ok
+test_weak_key_rejected (test_service.ServiceTests.test_weak_key_rejected) ... ok
+test_cli_override (test_toml.TomlChecks.test_cli_override) ... ok
+test_explicit_missing_error (test_toml.TomlChecks.test_explicit_missing_error) ... HARNESS ERROR: [Errno 2] No such file or directory: '/workspace/scratch/bd214683c088/decision_brain_sdk/missing-configuration.toml'
+ok
+test_reject_invalid (test_toml.TomlChecks.test_reject_invalid) ... ok
+test_relative_paths (test_toml.TomlChecks.test_relative_paths) ... ok
+test_symlinked_project_directory (test_toml.TomlChecks.test_symlinked_project_directory) ... ok
+
+----------------------------------------------------------------------
+Ran 106 tests in 7.335s
+
+OK
+ok
+HTML: /workspace/scratch/bd214683c088/decision_brain_sdk/tmpuy_c5uzv/report/report.html
+ok
+HTML: /workspace/scratch/bd214683c088/decision_brain_sdk/tmper2kj9vd/real/report/report.html

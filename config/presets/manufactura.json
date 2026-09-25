@@ -42,7 +42,7 @@
     },
     {
       "id": "atencion_prioritaria",
-      "kind": "boolean",
+      "kind": "noul",
       "question": "¿El caso requiere atención prioritaria según los datos aportados?",
       "options": [
         {

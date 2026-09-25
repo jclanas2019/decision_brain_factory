@@ -1,4 +1,4 @@
-# Decision Brain 0.9 — uso, operación y SDK
+# Decision Brain 0.10 — uso, operación y SDK
 
 Sistema local de decisiones tipadas con fábrica de proyectos, evaluación, gateway, observabilidad y consumidor de eventos. Las acciones son propuestas: no ejecuta cambios en ERP, CRM ni tickets.
 
@@ -61,3 +61,7 @@ No se requiere una publicación en PyPI. [Referencia del SDK](docs/SDK.md).
 | `runs/`, `runtime/`, `proyectos/` | Datos generados al ejecutar; no vienen en el ZIP |
 
 Esta entrega limpia la documentación anterior. Conserva código y capacidades previas. La documentación distingue desarrollo, promoción, decisiones por cerebro y estado del flujo completo: un cerebro verde no elimina una revisión pendiente de otro. Consulta [VALIDACION.md](docs/VALIDACION.md) para resultados y límites.
+
+## Preguntas tipadas
+
+Entrenamiento y resultados Choice, Score y Noul: [documentación](docs/PRIMITIVAS.md) · [HTML](docs/PRIMITIVAS.html). Los presets nuevos incluyen los tres tipos.

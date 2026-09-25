@@ -525,3 +525,8 @@ No ejecutes ese despliegue con secretos de ejemplo ni alteres procedencia para a
 | Operación | Alertas, capacidad, retención, mantenimiento y responsables definidos |
 
 La puesta en marcha razonable comienza en paralelo sin efectos externos, sigue con operación asistida y solo automatiza clases de casos aprobadas. Esta guía describe el software disponible; no certifica un despliegue industrial ni elimina las limitaciones de calidad observadas.
+
+
+## 15. Preguntas Choice, Score y Noul
+
+La versión 0.10 añade resultados, métricas, SDK tipado y harness de rangos. Consulta [la guía de primitivas](PRIMITIVAS.md), que incluye los comandos, las escalas y la compatibilidad.
