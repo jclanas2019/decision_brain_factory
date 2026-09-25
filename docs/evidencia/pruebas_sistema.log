@@ -56,42 +56,42 @@ test_wrong_action_fails (test_harness.HarnessChecks.test_wrong_action_fails) ...
 test_check_only (test_launch.LaunchChecks.test_check_only) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
 
 Pruebas del software aprobadas
-INFORME: /workspace/scratch/bd214683c088/tmpah6xltli/runs/session_20260925_192336_a3f72b2a/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/tmpah6xltli/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/tmpuqxnoya9/runs/session_20260925_201335_c6eb6131/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/tmpuqxnoya9/runs/latest.html
 ok
 test_model_failure_keeps_reports (test_launch.LaunchChecks.test_model_failure_keeps_reports) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
 [2/3] Entrenando y generando el informe del modelo…
 [3/3] Evaluando decisiones con el harness…
 
 Ejecución completada: hay decisiones que no cumplen los criterios
-INFORME: /workspace/scratch/bd214683c088/tmpxzxbushc/runs/session_20260925_192336_a80e7ad9/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/tmpxzxbushc/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/tmpmomu4wlr/runs/session_20260925_201335_ef81498b/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/tmpmomu4wlr/runs/latest.html
 ok
 test_repeated_runs_do_not_collide (test_launch.LaunchChecks.test_repeated_runs_do_not_collide) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
 
 Pruebas del software aprobadas
-INFORME: /workspace/scratch/bd214683c088/tmphs5hhrcy/runs/session_20260925_192336_fcd51050/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/tmphs5hhrcy/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/tmp7izer6ac/runs/session_20260925_201335_83f65993/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/tmp7izer6ac/runs/latest.html
 [1/3] Ejecutando pruebas del servicio, harness y configuración…
 
 Pruebas del software aprobadas
-INFORME: /workspace/scratch/bd214683c088/tmphs5hhrcy/runs/session_20260925_192336_288383da/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/tmphs5hhrcy/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/tmp7izer6ac/runs/session_20260925_201335_91a4ef9a/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/tmp7izer6ac/runs/latest.html
 ok
 test_software_failure_stops_training (test_launch.LaunchChecks.test_software_failure_stops_training) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
 test log
 
 Fallaron las pruebas del software. Consulta el registro.
-INFORME: /workspace/scratch/bd214683c088/tmpjbwuc13t/runs/session_20260925_192336_bd923329/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/tmpjbwuc13t/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/tmpqx2hojtg/runs/session_20260925_201335_6d182dbf/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/tmpqx2hojtg/runs/latest.html
 ok
 test_success (test_launch.LaunchChecks.test_success) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
 [2/3] Entrenando y generando el informe del modelo…
 [3/3] Evaluando decisiones con el harness…
 
 Ejecución completada: el modelo cumple los criterios del harness
-INFORME: /workspace/scratch/bd214683c088/tmpbtyigou_/runs/session_20260925_192336_de0a70d0/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/tmpbtyigou_/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/tmpzp6ec58g/runs/session_20260925_201335_7ae47aa7/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/tmpzp6ec58g/runs/latest.html
 ok
 test_empty_dashboard_is_not_fake_green (test_observability.ObservabilityTests.test_empty_dashboard_is_not_fake_green) ... ok
 test_otlp_http_protobuf_export (test_observability.ObservabilityTests.test_otlp_http_protobuf_export) ... ok
@@ -104,35 +104,45 @@ test_different_projects_rejected (test_operations.OperationTests.test_different_
 test_launchd_definition_contains_no_secrets (test_operations.OperationTests.test_launchd_definition_contains_no_secrets) ... ok
 test_projects_root_typo_rejected (test_operations.OperationTests.test_projects_root_typo_rejected) ... ok
 test_restart_reuses_configuration (test_operations.OperationTests.test_restart_reuses_configuration) ... ok
-test_auth_and_prediction (test_service.ServiceTests.test_auth_and_prediction) ... {"request_id": "a65fefea3d4847a98a7b374d6817c155", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.53}
-{"request_id": "f0736e1ba2a041c3ab084f0f167352f0", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 4.52}
-{"event": "request_rejected", "request_id": "5c5c78943c9a472e8aa801050ca60f3a", "status": 401, "reason": "authentication_required"}
-{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "216695888788bd73cb5a05d790128a9d", "request_id": "9c8bbc8f50284549a1321d14e542d62b", "model_version": "v1", "needs_review": false}
-{"request_id": "9c8bbc8f50284549a1321d14e542d62b", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "216695888788bd73cb5a05d790128a9d", "span": "predict", "duration_ms": 2.83}
-{"request_id": "4a4ad72fcbeb473aad01340c2ba3d6b9", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "10651320044b196266f1a7ca69d0e754", "span": "predict", "duration_ms": 0.19}
+test_event_preparation (test_sdk.SDKTests.test_event_preparation) ... ok
+test_http_errors_typed_and_private (test_sdk.SDKTests.test_http_errors_typed_and_private) ... ok
+test_invalid_input_before_network (test_sdk.SDKTests.test_invalid_input_before_network) ... ok
+test_observer_delivery_filter (test_sdk.SDKTests.test_observer_delivery_filter) ... ok
+test_preparation_freezes_context_version_key_trace (test_sdk.SDKTests.test_preparation_freezes_context_version_key_trace) ... ok
+test_remote_http_and_credentials_in_url_rejected (test_sdk.SDKTests.test_remote_http_and_credentials_in_url_rejected) ... ok
+test_replay_preserves_original_trace (test_sdk.SDKTests.test_replay_preserves_original_trace) ... ok
+test_response_probabilities_validated (test_sdk.SDKTests.test_response_probabilities_validated) ... ok
+test_timeout_not_retried_or_leaked (test_sdk.SDKTests.test_timeout_not_retried_or_leaked) ... ok
+test_typed_prediction_and_prefix (test_sdk.SDKTests.test_typed_prediction_and_prefix) ... ok
+test_auth_and_prediction (test_service.ServiceTests.test_auth_and_prediction) ... {"request_id": "830b3a571e3f4eeab356441ac7b4d1d3", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.56}
+{"request_id": "128790b8e06e4a05a702993529c2f397", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 3.67}
+{"event": "request_rejected", "request_id": "e4f504227a5c4d6e8bd33230002f5c54", "status": 401, "reason": "authentication_required"}
+{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "959820ecab0677a016ae0b75049a8f8a", "request_id": "b5aa342612774d86aae639f22c35e492", "model_version": "v1", "needs_review": false}
+{"request_id": "b5aa342612774d86aae639f22c35e492", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "959820ecab0677a016ae0b75049a8f8a", "span": "predict", "duration_ms": 2.27}
+{"request_id": "d46b6b2500944f48bf5bff9ec6f3b7bf", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "a25d9017184835642e01ca1ab9f3cfe8", "span": "predict", "duration_ms": 0.19}
 ok
-test_concurrency_limit (test_service.ServiceTests.test_concurrency_limit) ... {"request_id": "8044466580f54ce1a6d5281933e07fce", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "2465bb6992e260e412da9fe29a54079b", "span": "predict", "duration_ms": 51.08}
-{"request_id": "78af4d9169bc45b1b1f929a5c1004d6f", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "5c8715b77b5a7319e958621545927825", "span": "predict", "duration_ms": 51.2}
-{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "94e69123ad7b171d1a648c3bbbe11bc8", "request_id": "0d7928d59bdc411a93de0235e76b1656", "model_version": "v1", "needs_review": false}
-{"request_id": "0d7928d59bdc411a93de0235e76b1656", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "94e69123ad7b171d1a648c3bbbe11bc8", "span": "predict", "duration_ms": 206.65}
+test_concurrency_limit (test_service.ServiceTests.test_concurrency_limit) ... {"request_id": "0c2ecbc9409f4ddc9a36644dc1ab5aec", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "33d99fc540109a6a357de57179c91ec6", "span": "predict", "duration_ms": 51.02}
+{"request_id": "6a74a68e52c249fa89c2f4fe1b79cb5c", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "2167bf6485311fa5f48076d767c98572", "span": "predict", "duration_ms": 51.38}
+{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "aa973e18aac6d9cede60d6b7e2abb452", "request_id": "c502516ae293431389b8777ff1e74355", "model_version": "v1", "needs_review": false}
+{"request_id": "c502516ae293431389b8777ff1e74355", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "aa973e18aac6d9cede60d6b7e2abb452", "span": "predict", "duration_ms": 206.1}
 ok
 test_gate_threshold_logic (test_service.ServiceTests.test_gate_threshold_logic) ... ok
-test_hot_activation_and_rollback (test_service.ServiceTests.test_hot_activation_and_rollback) ... {"request_id": "67c19d799da94ef78c41095a807c9023", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "4e6ce55a43f07c44a3c8cbfea4d73f3e", "span": "predict", "duration_ms": 3.53}
-{"request_id": "1183dd018f5148dfa578a246cd94f7f3", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "2d43fe85584b6c57a6ed2eeeda3e36ab", "span": "predict", "duration_ms": 3.25}
-{"request_id": "7513e238f425444f9d71afca5ba0fb06", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "1ebe2ef772c206f4c085761f4733476f", "span": "predict", "duration_ms": 2.95}
+test_hot_activation_and_rollback (test_service.ServiceTests.test_hot_activation_and_rollback) ... {"request_id": "aea714665deb4cc6ba9f3274f432f006", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "8bd8f6d5fc6b5304bbaabbd8a4161ca0", "span": "predict", "duration_ms": 3.86}
+{"request_id": "a0d70f7790ff4814b8068cdaad73afa4", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "370557ac8ea3340a8ac61730d1a4bf43", "span": "predict", "duration_ms": 2.85}
+{"request_id": "41d3d981e69d41b9b9233b4f109a93b6", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "fbb05257ec81dc73398fde2f5fc72da5", "span": "predict", "duration_ms": 2.69}
 ok
 test_immutable_release (test_service.ServiceTests.test_immutable_release) ... ok
-test_integrity_failure (test_service.ServiceTests.test_integrity_failure) ... {"request_id": "201e93ef4d7b4b6ebb8d8706050e9f0b", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.71}
+test_integrity_failure (test_service.ServiceTests.test_integrity_failure) ... {"request_id": "40cbb7ece0fc4f1fa223bd51fd361696", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.84}
 ok
-test_invalid_and_oversized (test_service.ServiceTests.test_invalid_and_oversized) ... {"request_id": "a76334f9fa63449e8318d2a7a9e4558e", "event": "http_request", "status": 422, "brain_id": "local.brain", "trace_id": "0e3a5306d3074a87f2124f64f4a9d7da", "span": "predict", "duration_ms": 3.2}
-{"event": "request_rejected", "request_id": "8f0df6f5ccbf4c54bdaab0bab5044aa3", "status": 413, "reason": "body_too_large"}
+test_invalid_and_oversized (test_service.ServiceTests.test_invalid_and_oversized) ... {"request_id": "340e9d9b2fa941aab57faeb127d6913b", "event": "http_request", "status": 422, "brain_id": "local.brain", "trace_id": "115268650d831a0782079cabca01b844", "span": "predict", "duration_ms": 3.48}
+{"event": "request_rejected", "request_id": "f40cc24539374580817bcc5f1cac4d07", "status": 413, "reason": "body_too_large"}
 ok
-test_rate_limit (test_service.ServiceTests.test_rate_limit) ... {"request_id": "02c8dc8cbfcc49468c6329f26aae6d10", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "37a0db41d2067a88a6d8c57512e3d1c7", "span": "predict", "duration_ms": 3.06}
-{"event": "request_rejected", "request_id": "a261e399c5134d1798b2421d11af4f0c", "status": 429, "reason": "rate_limit"}
+test_rate_limit (test_service.ServiceTests.test_rate_limit) ... {"request_id": "6ef34c36534045bc97ad74907d9bb893", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "7c857dc82c06ff3990d54d21d154c518", "span": "predict", "duration_ms": 3.06}
+{"event": "request_rejected", "request_id": "433d58c9f02044c68bdd1b62b7b4c868", "status": 429, "reason": "rate_limit"}
 ok
-test_streamed_body_limit (test_service.ServiceTests.test_streamed_body_limit) ... {"event": "request_rejected", "request_id": "51728dd822a0401891438c18bb9e329b", "status": 413, "reason": "body_too_large"}
+test_streamed_body_limit (test_service.ServiceTests.test_streamed_body_limit) ... {"event": "request_rejected", "request_id": "33754ef2fec84ef681f4058c5d00fd97", "status": 413, "reason": "body_too_large"}
 ok
-test_synthetic_production_rejected (test_service.ServiceTests.test_synthetic_production_rejected) ... {"request_id": "a0a4f43323bc49fea6a8a2999e3b54a5", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.57}
+test_synthetic_production_rejected (test_service.ServiceTests.test_synthetic_production_rejected) ... {"request_id": "cd5d0e9d17f4424c925008ccb324a339", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.57}
 ok
 test_weak_key_rejected (test_service.ServiceTests.test_weak_key_rejected) ... ok
 test_cli_override (test_toml.TomlChecks.test_cli_override) ... ok
@@ -143,10 +153,10 @@ test_relative_paths (test_toml.TomlChecks.test_relative_paths) ... ok
 test_symlinked_project_directory (test_toml.TomlChecks.test_symlinked_project_directory) ... ok
 
 ----------------------------------------------------------------------
-Ran 85 tests in 6.209s
+Ran 95 tests in 5.969s
 
 OK
 ok
-HTML: /workspace/scratch/bd214683c088/tmpzf7pgpx5/report/report.html
+HTML: /workspace/scratch/bd214683c088/tmpyj53ouyf/report/report.html
 ok
-HTML: /workspace/scratch/bd214683c088/tmpj4ypxzm_/real/report/report.html
+HTML: /workspace/scratch/bd214683c088/tmpkygee3kt/real/report/report.html

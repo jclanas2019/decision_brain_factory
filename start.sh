@@ -21,7 +21,7 @@ case "${1:-}" in
   new|list|validate) exec "$python_cmd" -m decision_brain.factory "$@" ;;
   --help|-h) exec "$python_cmd" -m decision_brain.launch --help ;;
 esac
-echo "Decision Brain 0.8.0 | $PWD"
+echo "Decision Brain 0.9.0 | $PWD"
 "$python_cmd" scripts/bootstrap.py
 case "${1:-}" in
   setup) exit 0 ;;

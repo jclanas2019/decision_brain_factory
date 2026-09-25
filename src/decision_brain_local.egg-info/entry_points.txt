@@ -1,3 +1,0 @@
-[console_scripts]
-decision-brain = decision_brain.brain:main
-decision-harness = decision_brain.harness:main

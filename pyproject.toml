@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "decision-brain-local"
-version = "0.8.0"
+version = "0.9.0"
 description = "Local typed decision models and evaluation harness"
 requires-python = ">=3.12,<3.14"
 dynamic = ["dependencies"]
@@ -14,7 +14,7 @@ decision-brain = "decision_brain.brain:main"
 decision-harness = "decision_brain.harness:main"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["src", "sdk/src"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["config/requirements.lock"]}

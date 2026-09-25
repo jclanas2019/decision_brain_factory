@@ -56,42 +56,42 @@ test_wrong_action_fails (test_harness.HarnessChecks.test_wrong_action_fails) ...
 test_check_only (test_launch.LaunchChecks.test_check_only) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
 
 Pruebas del software aprobadas
-INFORME: /workspace/scratch/bd214683c088/operations_generated_check/tmpvgk14mp5/runs/session_20260925_192440_62cce243/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/operations_generated_check/tmpvgk14mp5/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/sdk_generated_check/tmpj2ix97un/runs/session_20260925_201600_9ccab587/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/sdk_generated_check/tmpj2ix97un/runs/latest.html
 ok
 test_model_failure_keeps_reports (test_launch.LaunchChecks.test_model_failure_keeps_reports) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
 [2/3] Entrenando y generando el informe del modelo…
 [3/3] Evaluando decisiones con el harness…
 
 Ejecución completada: hay decisiones que no cumplen los criterios
-INFORME: /workspace/scratch/bd214683c088/operations_generated_check/tmprn28ulwt/runs/session_20260925_192440_6ed4b442/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/operations_generated_check/tmprn28ulwt/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/sdk_generated_check/tmpbz397jyt/runs/session_20260925_201600_44963232/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/sdk_generated_check/tmpbz397jyt/runs/latest.html
 ok
 test_repeated_runs_do_not_collide (test_launch.LaunchChecks.test_repeated_runs_do_not_collide) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
 
 Pruebas del software aprobadas
-INFORME: /workspace/scratch/bd214683c088/operations_generated_check/tmpe5glq0n3/runs/session_20260925_192440_a70b89b9/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/operations_generated_check/tmpe5glq0n3/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/sdk_generated_check/tmprydi8dw9/runs/session_20260925_201600_796fd2af/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/sdk_generated_check/tmprydi8dw9/runs/latest.html
 [1/3] Ejecutando pruebas del servicio, harness y configuración…
 
 Pruebas del software aprobadas
-INFORME: /workspace/scratch/bd214683c088/operations_generated_check/tmpe5glq0n3/runs/session_20260925_192440_9088a8c5/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/operations_generated_check/tmpe5glq0n3/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/sdk_generated_check/tmprydi8dw9/runs/session_20260925_201600_121d8e61/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/sdk_generated_check/tmprydi8dw9/runs/latest.html
 ok
 test_software_failure_stops_training (test_launch.LaunchChecks.test_software_failure_stops_training) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
 test log
 
 Fallaron las pruebas del software. Consulta el registro.
-INFORME: /workspace/scratch/bd214683c088/operations_generated_check/tmpho55ewmt/runs/session_20260925_192440_2eccecb5/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/operations_generated_check/tmpho55ewmt/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/sdk_generated_check/tmp86g66xuz/runs/session_20260925_201600_3c66fd78/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/sdk_generated_check/tmp86g66xuz/runs/latest.html
 ok
 test_success (test_launch.LaunchChecks.test_success) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
 [2/3] Entrenando y generando el informe del modelo…
 [3/3] Evaluando decisiones con el harness…
 
 Ejecución completada: el modelo cumple los criterios del harness
-INFORME: /workspace/scratch/bd214683c088/operations_generated_check/tmpgndbh7zh/runs/session_20260925_192440_d6b4f289/index.html
-Acceso permanente: /workspace/scratch/bd214683c088/operations_generated_check/tmpgndbh7zh/runs/latest.html
+INFORME: /workspace/scratch/bd214683c088/sdk_generated_check/tmp4d5e4f0q/runs/session_20260925_201600_f73fe18b/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/sdk_generated_check/tmp4d5e4f0q/runs/latest.html
 ok
 test_empty_dashboard_is_not_fake_green (test_observability.ObservabilityTests.test_empty_dashboard_is_not_fake_green) ... ok
 test_otlp_http_protobuf_export (test_observability.ObservabilityTests.test_otlp_http_protobuf_export) ... ok
@@ -104,49 +104,59 @@ test_different_projects_rejected (test_operations.OperationTests.test_different_
 test_launchd_definition_contains_no_secrets (test_operations.OperationTests.test_launchd_definition_contains_no_secrets) ... ok
 test_projects_root_typo_rejected (test_operations.OperationTests.test_projects_root_typo_rejected) ... ok
 test_restart_reuses_configuration (test_operations.OperationTests.test_restart_reuses_configuration) ... ok
-test_auth_and_prediction (test_service.ServiceTests.test_auth_and_prediction) ... {"request_id": "7a467d4254384b989b2eaef07e95d2df", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.38}
-{"request_id": "25e62329d6014d07a5780a6825b101d4", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 3.31}
-{"event": "request_rejected", "request_id": "e0cbaa0311f04a8d94483b37a3a1bb61", "status": 401, "reason": "authentication_required"}
-{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "09080a51b192f72213ea3b47ede4e984", "request_id": "86ee4f6a70344477a5e248f0c1b998bc", "model_version": "v1", "needs_review": false}
-{"request_id": "86ee4f6a70344477a5e248f0c1b998bc", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "09080a51b192f72213ea3b47ede4e984", "span": "predict", "duration_ms": 2.09}
-{"request_id": "a225b5501c03420b9b331761cab03539", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "503ee6259c531e2746bf71328a398057", "span": "predict", "duration_ms": 0.18}
+test_event_preparation (test_sdk.SDKTests.test_event_preparation) ... ok
+test_http_errors_typed_and_private (test_sdk.SDKTests.test_http_errors_typed_and_private) ... ok
+test_invalid_input_before_network (test_sdk.SDKTests.test_invalid_input_before_network) ... ok
+test_observer_delivery_filter (test_sdk.SDKTests.test_observer_delivery_filter) ... ok
+test_preparation_freezes_context_version_key_trace (test_sdk.SDKTests.test_preparation_freezes_context_version_key_trace) ... ok
+test_remote_http_and_credentials_in_url_rejected (test_sdk.SDKTests.test_remote_http_and_credentials_in_url_rejected) ... ok
+test_replay_preserves_original_trace (test_sdk.SDKTests.test_replay_preserves_original_trace) ... ok
+test_response_probabilities_validated (test_sdk.SDKTests.test_response_probabilities_validated) ... ok
+test_timeout_not_retried_or_leaked (test_sdk.SDKTests.test_timeout_not_retried_or_leaked) ... ok
+test_typed_prediction_and_prefix (test_sdk.SDKTests.test_typed_prediction_and_prefix) ... ok
+test_auth_and_prediction (test_service.ServiceTests.test_auth_and_prediction) ... {"request_id": "8204b9f0e9ae41d1a9d0f0bd20c446a8", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.43}
+{"request_id": "8aa299e5ce4948dead99e816d6d8964a", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 4.2}
+{"event": "request_rejected", "request_id": "c466b70c1bb54917af9e9b98730a7f5b", "status": 401, "reason": "authentication_required"}
+{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "60c6eeea77e97e7a0c59145d534940fe", "request_id": "e8f2e7d63bd041639f99548bd082ed52", "model_version": "v1", "needs_review": false}
+{"request_id": "e8f2e7d63bd041639f99548bd082ed52", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "60c6eeea77e97e7a0c59145d534940fe", "span": "predict", "duration_ms": 2.78}
+{"request_id": "ff302e8cc93845a58562015a7d38ddce", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "49e1ee766269ce1c633d81cbf6ed18aa", "span": "predict", "duration_ms": 0.2}
 ok
-test_concurrency_limit (test_service.ServiceTests.test_concurrency_limit) ... {"request_id": "9f48a1b85a5e427687e600b3a988516f", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "a7dd74fa91802be1cd537d81776cc5d3", "span": "predict", "duration_ms": 51.0}
-{"request_id": "e20aa17393a34306ba509cbef620a6b9", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "72d8ab116466a193e39d3ba6570e7888", "span": "predict", "duration_ms": 51.12}
-{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "ed5d32145c8853b5e9f0266bc974bfeb", "request_id": "5b01f0339f9a43258760b61f62294bd8", "model_version": "v1", "needs_review": false}
-{"request_id": "5b01f0339f9a43258760b61f62294bd8", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "ed5d32145c8853b5e9f0266bc974bfeb", "span": "predict", "duration_ms": 206.29}
+test_concurrency_limit (test_service.ServiceTests.test_concurrency_limit) ... {"request_id": "2b64dcd3e18b4631aa0d51ef3b6afef0", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "c0fe2aa6f021430dc311a2cc72208a08", "span": "predict", "duration_ms": 51.17}
+{"request_id": "cfbf55acd04b4fb79cdbae4fcadec640", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "43259d87c7d435e8633e3aa626be0182", "span": "predict", "duration_ms": 51.47}
+{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "941fc19ae5cf3ced5a1646d3849e451d", "request_id": "444d684ec3464239925993d8b755fc3b", "model_version": "v1", "needs_review": false}
+{"request_id": "444d684ec3464239925993d8b755fc3b", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "941fc19ae5cf3ced5a1646d3849e451d", "span": "predict", "duration_ms": 206.73}
 ok
 test_gate_threshold_logic (test_service.ServiceTests.test_gate_threshold_logic) ... ok
-test_hot_activation_and_rollback (test_service.ServiceTests.test_hot_activation_and_rollback) ... {"request_id": "1161b0cc14854f40a5c960250049e7fb", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "dfdde1768fa810d8d7e2407b936268bf", "span": "predict", "duration_ms": 3.32}
-{"request_id": "88e4e38cd3ff4f3ba4f2320cadb677e4", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "c05a66d5425ce39d081463fee6babc77", "span": "predict", "duration_ms": 3.52}
-{"request_id": "2b7dca442f6a40ff894fda60b8f88d4e", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "d324f7961a28282e7d96b89a234f625b", "span": "predict", "duration_ms": 3.65}
+test_hot_activation_and_rollback (test_service.ServiceTests.test_hot_activation_and_rollback) ... {"request_id": "656a1919ca324abb871dcc6b787b0980", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "7b48f51b6d2027913da6ccee1b5e85a0", "span": "predict", "duration_ms": 4.22}
+{"request_id": "8732aacf02a7449dbfe8c3fdc8e09cf3", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "2016b6fbb52f6ca95f2179a51045bfca", "span": "predict", "duration_ms": 3.05}
+{"request_id": "b319199e4268400a8398be11e59dc073", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "ba59f7fdccafc0d917eb8540e1f10b65", "span": "predict", "duration_ms": 3.58}
 ok
 test_immutable_release (test_service.ServiceTests.test_immutable_release) ... ok
-test_integrity_failure (test_service.ServiceTests.test_integrity_failure) ... {"request_id": "3c886862856644b3be04936009a765e5", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.64}
+test_integrity_failure (test_service.ServiceTests.test_integrity_failure) ... {"request_id": "998210d7d32b48df8bb590746bd8d9b5", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.72}
 ok
-test_invalid_and_oversized (test_service.ServiceTests.test_invalid_and_oversized) ... {"request_id": "a8b918d6bd6f46d4ac0a446330ac1e4f", "event": "http_request", "status": 422, "brain_id": "local.brain", "trace_id": "7dc19e78c1c7a42d9ed54497631db80d", "span": "predict", "duration_ms": 4.91}
-{"event": "request_rejected", "request_id": "d4381db6d427478aaa45727ac93d89fa", "status": 413, "reason": "body_too_large"}
+test_invalid_and_oversized (test_service.ServiceTests.test_invalid_and_oversized) ... {"request_id": "2894653c07304504ad97acc70b0729c1", "event": "http_request", "status": 422, "brain_id": "local.brain", "trace_id": "36c45b0df0fbf2d91124e58f4f3d6109", "span": "predict", "duration_ms": 3.41}
+{"event": "request_rejected", "request_id": "e3d893dd939f4b319063f49d6cc18bcc", "status": 413, "reason": "body_too_large"}
 ok
-test_rate_limit (test_service.ServiceTests.test_rate_limit) ... {"request_id": "bf9042d829184fc1a6e1b1c556991341", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "aae7794df7a5c7bd7a712e70091f20a1", "span": "predict", "duration_ms": 4.43}
-{"event": "request_rejected", "request_id": "c75ed49c5e874514bdd3134f20eba407", "status": 429, "reason": "rate_limit"}
+test_rate_limit (test_service.ServiceTests.test_rate_limit) ... {"request_id": "ec54f2735dbb4ed78793cf597ce0e99e", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "418158ddc2909cf0a1abb46a722cc92e", "span": "predict", "duration_ms": 3.65}
+{"event": "request_rejected", "request_id": "1a47f7cb396d4d138dedb2c572e2c15d", "status": 429, "reason": "rate_limit"}
 ok
-test_streamed_body_limit (test_service.ServiceTests.test_streamed_body_limit) ... {"event": "request_rejected", "request_id": "9daff15caa5e4cc7a8ef1fe88d1bc7b1", "status": 413, "reason": "body_too_large"}
+test_streamed_body_limit (test_service.ServiceTests.test_streamed_body_limit) ... {"event": "request_rejected", "request_id": "60c12d8924e34da0a972d8feb4e381c9", "status": 413, "reason": "body_too_large"}
 ok
-test_synthetic_production_rejected (test_service.ServiceTests.test_synthetic_production_rejected) ... {"request_id": "d3b20173b049431ba1a96ad4fbd77b3a", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.62}
+test_synthetic_production_rejected (test_service.ServiceTests.test_synthetic_production_rejected) ... {"request_id": "7c352998b8c54322a34715f23a8d87db", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.76}
 ok
 test_weak_key_rejected (test_service.ServiceTests.test_weak_key_rejected) ... ok
 test_cli_override (test_toml.TomlChecks.test_cli_override) ... ok
-test_explicit_missing_error (test_toml.TomlChecks.test_explicit_missing_error) ... HARNESS ERROR: [Errno 2] No such file or directory: '/workspace/scratch/bd214683c088/operations_generated_check/missing-configuration.toml'
+test_explicit_missing_error (test_toml.TomlChecks.test_explicit_missing_error) ... HARNESS ERROR: [Errno 2] No such file or directory: '/workspace/scratch/bd214683c088/sdk_generated_check/missing-configuration.toml'
 ok
 test_reject_invalid (test_toml.TomlChecks.test_reject_invalid) ... ok
 test_relative_paths (test_toml.TomlChecks.test_relative_paths) ... ok
 test_symlinked_project_directory (test_toml.TomlChecks.test_symlinked_project_directory) ... ok
 
 ----------------------------------------------------------------------
-Ran 85 tests in 6.100s
+Ran 95 tests in 6.123s
 
 OK
 ok
-HTML: /workspace/scratch/bd214683c088/operations_generated_check/tmpf2gt8o3k/report/report.html
+HTML: /workspace/scratch/bd214683c088/sdk_generated_check/tmp10pi3x3x/report/report.html
 ok
-HTML: /workspace/scratch/bd214683c088/operations_generated_check/tmp1dd9bwuk/real/report/report.html
+HTML: /workspace/scratch/bd214683c088/sdk_generated_check/tmphqvy7unq/real/report/report.html

@@ -1,0 +1,646 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Decision Brain 0.9 · Guía de uso y casos de uso</title><style>body{margin:0;background:#f2f5f8;color:#173045;font:16px/1.65 system-ui,-apple-system,sans-serif}header{background:#122b40;color:#fff;padding:28px max(24px,calc((100vw - 1020px)/2));font-size:22px;font-weight:700}header small{display:block;font-size:13px;font-weight:400;color:#b8d0e0}main{max-width:1020px;margin:28px auto;padding:36px;background:white;border-radius:12px}h1{font-size:34px;line-height:1.2}h2{margin-top:52px;padding-top:18px;border-top:2px solid #dfe8ef;line-height:1.3}h3{margin-top:30px}a{color:#145da8}pre{background:#102a3e;color:#e8f4fd;padding:18px;border-radius:8px;overflow:auto;font-size:13px;line-height:1.6}code{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.88em}p code,td code,li code{background:#edf3f7;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}table{display:block;overflow:auto;border-collapse:collapse;width:100%;margin:20px 0}td,th{text-align:left;padding:12px;border:1px solid #dce5ec;vertical-align:top}th{background:#ecf3f8}nav{padding:20px;background:#edf4f9;border-radius:10px}nav ul{columns:2;font-size:14px;margin-bottom:0}nav li{break-inside:avoid;margin:5px 0}footer{color:#60778a;font-size:12px;margin-top:40px}strong{color:#173045}@media(max-width:700px){main{margin:0;padding:22px;border-radius:0}nav ul{columns:1}h1{font-size:28px}table{font-size:14px}}@media print{body{background:white;font-size:10pt}header{padding:10px;color:black;background:white}main{margin:0;padding:0}nav{display:none}pre{white-space:pre-wrap;background:#eee;color:black;break-inside:avoid}table{display:table;font-size:9pt}h2{break-after:avoid}a{color:inherit}footer{display:none}}</style></head><body><header>Decision Brain <small>Versión 0.9 · Documentación de uso</small></header><main><nav><details open><summary>Índice</summary><ul><li><a href="#seccion-2">1. Qué hace el sistema</a></li><li><a href="#seccion-3">2. Instalación y primer uso</a></li><li><a href="#seccion-4">3. Elegir el modo de trabajo</a></li><li><a href="#seccion-5">4. Crear y utilizar un cerebro independiente</a></li><li><a href="#seccion-6">5. Interpretar entrenamiento, loss y evaluación</a></li><li><a href="#seccion-7">6. Comercio y logística persistentes</a></li><li><a href="#seccion-8">7. Panel web, métricas y OpenTelemetry</a></li><li><a href="#seccion-9">8. Integración mediante SDK Python</a></li><li><a href="#seccion-10">9. Casos de uso</a></li><li><a href="#seccion-11">10. Contratos y errores HTTP</a></li><li><a href="#seccion-12">11. Promoción, seguridad y continuidad</a></li><li><a href="#seccion-13">12. Resolución de problemas</a></li><li><a href="#seccion-14">13. Catálogo, servicios individuales y despliegue</a></li><li><a href="#seccion-15">14. Lista de aceptación antes de un piloto real</a></li></ul></details></nav><h1 id="seccion-1">Decision Brain 0.9: guía completa de uso y casos de uso</h1>
+<p>Esta guía describe las capacidades implementadas y cómo utilizarlas. Los comandos parten de la raíz del proyecto descomprimido, salvo indicación expresa. No necesitas leer documentos de versiones anteriores.</p>
+<h2 id="seccion-2">1. Qué hace el sistema</h2>
+<p>Decision Brain genera proyectos de clasificación de decisiones para un dominio. Cada cerebro tiene un contrato de entrada, una red local con varias salidas tipadas, reglas para proponer una acción, evaluación y versiones propias.</p>
+<p>El modelo combina texto y campos numéricos. La búsqueda de configuraciones compara candidatos mediante validación; no es investigación autónoma ni RSI general. No usa la API de Jev ni acredita equivalencia con sus mecanismos internos.</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Responsabilidad</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fábrica</td>
+<td>Generar proyectos independientes con contratos, configuración, pruebas y scripts</td>
+</tr>
+<tr>
+<td>Cerebro</td>
+<td>Producir probabilidades y proponer una acción según su contrato</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>Autenticar, validar entradas/salidas, fijar versión y controlar idempotencia</td>
+</tr>
+<tr>
+<td>Consumidor</td>
+<td>Entregar eventos por rutas explícitas, con persistencia y reintentos limitados</td>
+</tr>
+<tr>
+<td>Observador</td>
+<td>Servir panel web, métricas, decisiones, auditoría y trazas</td>
+</tr>
+<tr>
+<td>Harness</td>
+<td>Comprobar escenarios y regresiones antes de aprobar un modelo</td>
+</tr>
+<tr>
+<td>Registro de versiones</td>
+<td>Guardar artefactos y verificar evidencia antes de activar</td>
+</tr>
+<tr>
+<td>SDK Python</td>
+<td>Integrar aplicaciones con gateway y observador sin escribir HTTP manualmente</td>
+</tr>
+</tbody></table>
+<p>Una acción como <code>revision_humana</code> o <code>cola_postventa</code> es una propuesta. No existe un ejecutor conectado al ERP ni una bandeja completa donde personas aprueben y resuelvan casos. La revisión pendiente de un cerebro no se convierte automáticamente en un estado global del expediente.</p>
+<h2 id="seccion-3">2. Instalación y primer uso</h2>
+<p>El sistema completo requiere Python 3.12 o 3.13; se recomienda 3.12. La primera ejecución descarga dependencias fijadas. Los procesos locales están orientados a Linux y macOS; no se afirma compatibilidad nativa con Windows por el uso de locks POSIX y scripts Bash.</p>
+<p>Extrae el ZIP en una carpeta nueva. No copies <code>.venv</code> de entregas anteriores ni mezcles archivos de varias versiones.</p>
+<pre><code class="language-bash">cd decision_brain_sdk
+bash start.sh
+</code></pre>
+<p>El comando prepara un entorno aislado, ejecuta pruebas, entrena el ejemplo de comercio, comprueba la recarga del modelo, ejecuta el harness y genera HTML. El enlace al último informe queda en <code>report.html</code>; cada ejecución conserva su carpeta en <code>runs/</code>.</p>
+<pre><code class="language-bash">bash start.sh --no-open
+bash start.sh check
+</code></pre>
+<p>El primero evita abrir el navegador. El segundo ejecuta las pruebas del software. Pasar las pruebas del software no equivale a aprobar el modelo.</p>
+<table>
+<thead>
+<tr>
+<th>Salida del entrenamiento/harness</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>Cumple los criterios evaluados</td>
+</tr>
+<tr>
+<td>1</td>
+<td>El modelo incumple el harness; el informe se conserva</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fallo técnico o configuración inválida</td>
+</tr>
+</tbody></table>
+<p>En macOS puedes abrir el último informe manualmente:</p>
+<pre><code class="language-bash">open report.html
+</code></pre>
+<h3>Actualizar conservando el entorno de la versión 0.8</h3>
+<p>Detén primero el supervisor anterior. Extrae esta versión en otra carpeta y apunta al mismo estado persistente; no copies ni borres su base, modelos o secretos:</p>
+<pre><code class="language-bash">bash start.sh operate --state &quot;$HOME/Documents/2-lab-ai/decision_brain_factory/runtime/commerce-logistics&quot;
+</code></pre>
+<p>Usa la ruta real de tu instalación. Mantener ese estado conserva auditoría, entregas pendientes y versiones. Indicar solo --projects-root crea un entorno nuevo en la carpeta de estado predeterminada de esta entrega: reutiliza proyectos, pero no migra su historial operativo. No ejecutes dos supervisores sobre el mismo estado.</p>
+<p>Con un estado externo, pasa el mismo --state a status/example/submit. Para el ejemplo SDK usa --fleet con esa misma ruta. Si tenías launchd, detén la definición antigua y genera otra desde la instalación nueva; actualizar el ZIP no cambia su ProgramArguments automáticamente.</p>
+<h2 id="seccion-4">3. Elegir el modo de trabajo</h2>
+<table>
+<thead>
+<tr>
+<th>Necesidad</th>
+<th>Comando</th>
+<th>Persistencia</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Entrenar y evaluar el ejemplo</td>
+<td><code>bash start.sh</code></td>
+<td>Guarda modelos e informes</td>
+</tr>
+<tr>
+<td>Probar gates entre dos cerebros</td>
+<td><code>bash start.sh gates-demo</code></td>
+<td>Guarda resultados; cierra servicios al terminar</td>
+</tr>
+<tr>
+<td>Explorar el panel con una demo</td>
+<td><code>bash start.sh observe-demo</code></td>
+<td>Mantiene la demo abierta hasta Ctrl+C; crea otra ejecución al repetir</td>
+</tr>
+<tr>
+<td>Operar comercio y logística</td>
+<td><code>bash start.sh operate</code></td>
+<td>Reutiliza modelos, registro, cola y secretos</td>
+</tr>
+<tr>
+<td>Generar otro cerebro</td>
+<td><code>bash start.sh new ...</code></td>
+<td>Crea un proyecto independiente</td>
+</tr>
+</tbody></table>
+<p>El comando operate usa DEVELOPMENT y no levanta una flota productiva certificada. Un modelo con harness fallido puede observarse en este ambiente; las políticas de producción siguen rechazándolo.</p>
+<h2 id="seccion-5">4. Crear y utilizar un cerebro independiente</h2>
+<pre><code class="language-bash">bash start.sh list
+bash start.sh new --preset retail --brain-id comercio.triaje --out proyectos/comercio
+bash start.sh new --preset logistica --brain-id logistica.incidencia --out proyectos/logistica
+</code></pre>
+<p>También existe el preset manufactura y se admite <code>--config</code> con un contrato propio. Si el destino existe, la fábrica se detiene: no sobrescribe proyectos.</p>
+<pre><code class="language-bash">(cd proyectos/comercio &amp;&amp; bash start.sh)
+(cd proyectos/logistica &amp;&amp; bash start.sh)
+</code></pre>
+<p>Los paréntesis mantienen tu terminal en la carpeta original. Cada proyecto tiene sus propios contratos, suite, informes y configuración de gates. No queda conectado a otros por el hecho de crearlo.</p>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Qué debes definir</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>config/brain.json</code></td>
+<td>Campos de entrada, preguntas, opciones, umbrales, acciones y escenarios sintéticos</td>
+</tr>
+<tr>
+<td><code>config/harness_suite.json</code></td>
+<td>Casos de evaluación y resultados esperados</td>
+</tr>
+<tr>
+<td><code>config/promotion_policy.json</code></td>
+<td>Criterios mínimos y suites autorizadas para producción</td>
+</tr>
+<tr>
+<td><code>project.toml</code></td>
+<td>Rutas y umbral del harness</td>
+</tr>
+<tr>
+<td><code>config/gates/</code></td>
+<td>Identidad, contratos del borde, observabilidad y catálogo</td>
+</tr>
+</tbody></table>
+<p>Para validar un contrato:</p>
+<pre><code class="language-bash">bash start.sh validate config/brain.json
+</code></pre>
+<p>Para predecir localmente con el último modelo guardado:</p>
+<pre><code class="language-bash">bash start.sh predict --state examples/example_state.json
+</code></pre>
+<p>Esta predicción local no atraviesa el gateway y, por tanto, no constituye una prueba de autenticación, auditoría central o interoperabilidad.</p>
+<h2 id="seccion-6">5. Interpretar entrenamiento, loss y evaluación</h2>
+<p>La pérdida de entrenamiento muestra el ajuste a los ejemplos vistos. La de validación permite seleccionar candidatos. La de prueba evalúa datos reservados. Una pérdida de entrenamiento muy pequeña con validación creciente es compatible con sobreajuste; no justifica declarar mejora.</p>
+<p>Una propuesta rechazada no reemplaza a la mejor configuración. Si todas las propuestas posteriores son rechazadas, no hubo mejora demostrada en esa ejecución.</p>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Cómo interpretarlo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accuracy</td>
+<td>Proporción de clases acertadas en el conjunto evaluado</td>
+</tr>
+<tr>
+<td>Log loss</td>
+<td>Penaliza probabilidades incorrectas; valores menores son mejores en la misma tarea</td>
+</tr>
+<tr>
+<td>Matriz de confusión</td>
+<td>Filas: clase real; columnas: clase predicha</td>
+</tr>
+<tr>
+<td>Harness 4/4</td>
+<td>Cuatro escenarios cumplieron sus expectativas; no representa miles de casos independientes</td>
+</tr>
+<tr>
+<td>Probabilidad máxima</td>
+<td>Confianza del modelo para esa salida, no certeza objetiva</td>
+</tr>
+<tr>
+<td><code>needs_review</code></td>
+<td>El contrato exige revisión por confianza insuficiente</td>
+</tr>
+<tr>
+<td>Fallback</td>
+<td>No se cumplió una regla; se propuso la alternativa declarada</td>
+</tr>
+</tbody></table>
+<p>Ejemplo: si “normal” tiene 42,7% y las alternativas 30,6% y 26,7%, “normal” es la opción más probable, pero puede quedar por debajo del umbral. La respuesta correcta del sistema puede ser <code>revision_humana</code>, no una afirmación de normalidad.</p>
+<p>Los gráficos, matrices e interpretaciones están en el informe del modelo. La explicación de routing describe reglas configuradas y umbrales, no una explicación causal aprendida de la red.</p>
+<h3>Evaluar una versión y comparar con una referencia</h3>
+<pre><code class="language-bash">bash start.sh harness --run runs/candidato --suite config/harness_suite.json --output runs/evaluacion_candidato
+bash start.sh harness --run runs/candidato --baseline runs/referencia --suite config/harness_suite.json --output runs/comparacion_candidato
+</code></pre>
+<p>Usa carpetas de salida nuevas. Los nombres son ejemplos: deben existir los modelos indicados. Una regresión es un caso que pasaba con la referencia y falla con el candidato.</p>
+<p><code>project.toml</code> admite únicamente <code>version</code> y <code>[harness]</code>:</p>
+<pre><code class="language-toml">version = 1
+[harness]
+suite = &quot;config/harness_suite.json&quot;
+min_pass_rate = 1.0
+# run = &quot;runs/candidato&quot;
+# output = &quot;runs/evaluacion_nueva&quot;
+# baseline = &quot;runs/referencia&quot;
+</code></pre>
+<p>Las rutas TOML se resuelven desde el archivo; los argumentos CLI explícitos prevalecen. Sin run se usa el último modelo completado. Sin output se crea una carpeta nueva.</p>
+<h2 id="seccion-7">6. Comercio y logística persistentes</h2>
+<pre><code class="language-bash">bash start.sh operate
+</code></pre>
+<p>El primer arranque crea los proyectos que falten, reutiliza sus modelos si están completos, ejecuta el harness, registra copias development y prepara el catálogo. Si no hay modelo, entrena uno sintético. Los siguientes arranques no reentrenan ni adoptan candidatos nuevos silenciosamente.</p>
+<p>Para conectar los proyectos de tu instalación anterior:</p>
+<pre><code class="language-bash">bash start.sh operate --projects-root &quot;$HOME/Documents/2-lab-ai/decision_brain_factory/proyectos&quot;
+</code></pre>
+<p>La carpeta debe contener <code>comercio/config/brain.json</code> y <code>logistica/config/brain.json</code>. Se verifican los campos esperados para este flujo; no se adaptan contratos arbitrarios automáticamente. También puedes indicar <code>--commerce</code> y <code>--logistics</code> por separado.</p>
+<table>
+<thead>
+<tr>
+<th>Servicio</th>
+<th>Puerto por defecto</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Comercio</td>
+<td>8101</td>
+</tr>
+<tr>
+<td>Logística</td>
+<td>8102</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>8103</td>
+</tr>
+<tr>
+<td>Panel/observador</td>
+<td>8104</td>
+</tr>
+</tbody></table>
+<p>El consumidor es un quinto proceso sin puerto HTTP. Todo escucha en localhost. <code>--base-port</code> permite elegir el primer puerto al crear otro entorno. <code>--state</code> permite otra carpeta de estado. Repetir las mismas rutas de proyectos es válido; cambiar a otros requiere otro estado.</p>
+<p>La carpeta <code>runtime/commerce-logistics/</code> conserva configuración, modelos registrados, secretos, cola, logs y trazas. La definición guarda rutas absolutas: mover carpetas requiere revisar la configuración. Ctrl+C detiene los procesos y conserva los datos; repetir el comando recupera los eventos pendientes.</p>
+<h3>Enviar un caso</h3>
+<p>En otra terminal, desde la raíz del mismo proyecto:</p>
+<pre><code class="language-bash">bash start.sh operate example --key caso-001
+bash start.sh operate status
+</code></pre>
+<p>El ejemplo es ficticio y utiliza compra hace siete días. El segundo paso es asíncrono; consulta Traspasos entre cerebros en el panel. Repetir la misma clave no crea otra decisión.</p>
+<p>Para enviar tus propios datos, guarda <code>caso.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;brain_id&quot;: &quot;logistica.incidencia&quot;,
+  &quot;context&quot;: {
+    &quot;horas_desviacion&quot;: 48,
+    &quot;estado_entrega&quot;: &quot;La entrega sigue pendiente dos días después de lo acordado.&quot;,
+    &quot;contexto&quot;: &quot;Seguimiento interno de un pedido.&quot;
+  },
+  &quot;handoff&quot;: {&quot;dias_desde_compra&quot;: 7}
+}
+</code></pre>
+<pre><code class="language-bash">bash start.sh operate submit --file caso.json --key pedido-123-evaluacion-1
+</code></pre>
+<p><code>handoff</code> es un contrato auxiliar numérico de este flujo. Los días desde la compra deben provenir de la fuente de negocio; no se calculan a partir de las horas de retraso. Se validan campos exactos, finitud, rango no negativo y límites. No se permiten textos libres en handoff.</p>
+<p>El evento transporta hechos autorizados. El gate de comercio reconstruye su propio contexto usando la edad de compra y una plantilla de seguimiento interno basada en la acción logística. No reenvía todo el contexto privado ni fabrica una cita del cliente.</p>
+<h3>Estados de entrega</h3>
+<table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Significado y actuación</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pendiente</td>
+<td>Espera o reintento programado</td>
+</tr>
+<tr>
+<td>Entregada</td>
+<td>El destino respondió y se guardó su identificador</td>
+</tr>
+<tr>
+<td>Requiere revisión (<code>dead</code>)</td>
+<td>Error definitivo o intentos agotados; investigar antes de autorizar otra solicitud</td>
+</tr>
+</tbody></table>
+<p>Las entregas son únicas por evento/ruta. Conservan versión destino, hash de ruta y clave de idempotencia. Los errores transitorios tienen un máximo de cinco intentos. Cambios de versión, contratos, identidad o ruta pueden requerir revisión. Los ciclos de rutas están prohibidos.</p>
+<p>No cambies de clave para “forzar” un reintento: puede crear una nueva decisión. Una reserva ambigua no se elimina automáticamente. No existe todavía un asistente de reconciliación en la UI; el operador debe revisar la entrega y la reserva original. No edites la base mientras está en uso.</p>
+<h2 id="seccion-8">7. Panel web, métricas y OpenTelemetry</h2>
+<p>operate abre el panel con una URL privada de acceso local. El token va en el fragmento, se elimina de la barra y permanece solo en memoria. No compartas esa URL. Si recargas sin token, la pantalla solicita la credencial nuevamente.</p>
+<table>
+<thead>
+<tr>
+<th>Vista</th>
+<th>Qué muestra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cerebros</td>
+<td>Versión, calidad, semáforo y motivos</td>
+</tr>
+<tr>
+<td>Tráfico</td>
+<td>Solicitudes por minuto, aceptadas y rechazadas, con leyenda</td>
+</tr>
+<tr>
+<td>Indicadores</td>
+<td>Decisiones únicas, rechazos, p95 y revisión humana</td>
+</tr>
+<tr>
+<td>Traspasos</td>
+<td>Consumidor activo, entregas, intentos y errores</td>
+</tr>
+<tr>
+<td>Decisiones</td>
+<td>Acción, probabilidades máximas, regla y enlace a traza</td>
+</tr>
+<tr>
+<td>Trazas</td>
+<td>Spans gate, predict y judge, tiempos, padres y atributos permitidos</td>
+</tr>
+</tbody></table>
+<p>La ventana operativa es la última hora. Decisiones y entregas se limitan a 100 filas recientes. El gráfico de solicitudes incluye reintentos; el contador de decisiones únicas no. Los percentiles incluyen rechazos y excluyen replays según las métricas del gateway. La disponibilidad observada con un solo caso no prueba estabilidad.</p>
+<p>Verde significa controles locales satisfechos. Amarillo indica degradación o evidencia incompleta. Rojo indica calidad fallida, contrato/versionado inválido o indisponibilidad. Un cerebro verde no resuelve una revisión pendiente de otro. La recomendación de rollback es genérica: verifica que exista una versión anterior válida antes de ejecutarla.</p>
+<p>Se usa OpenTelemetry real para trazas, con propagación W3C y exportador local SQLite. Se respetan las decisiones de muestreo del padre. La ausencia de spans no implica ausencia de una decisión auditada. No se guardan cuerpos, claves ni mensajes de excepción en atributos de spans.</p>
+<pre><code class="language-bash">export BRAIN_TELEMETRY_DB=&quot;$PWD/registry/telemetry.sqlite3&quot;
+export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=&quot;http://127.0.0.1:4318/v1/traces&quot;
+</code></pre>
+<p>Estas variables deben estar definidas antes de iniciar los procesos. operate configura automáticamente un almacén común para su flota. El endpoint OTLP es opcional y requiere un colector ya disponible; el sistema no instala Jaeger, Tempo o Grafana. La UI local no consulta esos backends remotos automáticamente.</p>
+<p>Las trazas locales tienen retención de siete días, aplicada durante exportaciones. No hay límite duro de tamaño ni compactación automática. Las métricas siguen disponibles en formato Prometheus y los logs/auditoría en JSON: esta versión no exporta métricas ni logs mediante OTLP.</p>
+<p>La auditoría de decisiones tiene escritura transaccional y exportación JSONL con cadena de hashes. No es almacenamiento WORM ni protección frente a un administrador malicioso del disco. Mantén backups y una política de retención. SQLite y locks están pensados para un solo host, no para compartir WAL entre servidores.</p>
+<h2 id="seccion-9">8. Integración mediante SDK Python</h2>
+<p>El arranque del sistema instala el SDK junto al servicio. Para instalar solo el cliente en otra aplicación:</p>
+<pre><code class="language-bash">python -m pip install ./sdk
+</code></pre>
+<p>El paquete es <code>decision-brain-sdk</code>; el import es <code>decision_brain_sdk</code>. El SDK requiere Python 3.10 o superior y httpx; no instala numpy, entrenamiento ni servidor. No está publicado implícitamente en PyPI. Para instalar desde otra ubicación, indica la ruta local a la carpeta sdk.</p>
+<h3>Integración local con el entorno persistente</h3>
+<pre><code class="language-python">from decision_brain_sdk import DecisionClient, ObserverClient
+
+with DecisionClient.from_fleet(&quot;runtime/commerce-logistics&quot;) as client:
+    decision = client.predict(
+        &quot;logistica.incidencia&quot;,
+        {
+            &quot;horas_desviacion&quot;: 48,
+            &quot;estado_entrega&quot;: &quot;Entrega pendiente después de la fecha acordada.&quot;,
+            &quot;contexto&quot;: &quot;Ejemplo ficticio de integración.&quot;
+        },
+        handoff={&quot;dias_desde_compra&quot;: 7},
+        idempotency_key=&quot;sdk-pedido-123-evaluacion-1&quot;
+    )
+    print(decision.action, decision.needs_review, decision.trace_id)
+
+with ObserverClient.from_fleet(&quot;runtime/commerce-logistics&quot;) as observer:
+    print(observer.deliveries(decision.event_id))
+</code></pre>
+<p>from_fleet lee la configuración y los secretos locales existentes. No entrena, no arranca servicios ni accede al registro de otro equipo. La credencial del observador se mantiene separada de la del gateway. La lista de entregas puede estar vacía inmediatamente después de predecir porque el consumidor es asíncrono.</p>
+<p>El ejemplo completo está en <code>examples/sdk_predict.py</code>:</p>
+<pre><code class="language-bash">.venv/bin/python examples/sdk_predict.py --key sdk-caso-001
+</code></pre>
+<h3>Integración remota</h3>
+<pre><code class="language-python">import os
+from decision_brain_sdk import DecisionClient
+
+with DecisionClient(
+    &quot;https://gateway.mi-organizacion.example&quot;,
+    os.environ[&quot;BRAIN_ORCHESTRATOR_TOKEN&quot;],
+    timeout=15
+) as client:
+    print(client.catalog())
+</code></pre>
+<p>La URL es ilustrativa; requiere un despliegue propio. Se exige HTTPS fuera de localhost y se verifica TLS por defecto. No se siguen redirecciones ni se heredan proxies del entorno. No se ponen credenciales en URLs. El SDK no crea un despliegue remoto.</p>
+<h3>Reintentos e idempotencia</h3>
+<pre><code class="language-python">from decision_brain_sdk import DecisionClient, TransportError
+
+with DecisionClient.from_fleet() as client:
+    request = client.prepare(
+        &quot;comercio.triaje&quot;,
+        {&quot;dias_desde_compra&quot;: 7, &quot;mensaje&quot;: &quot;Solicito información del producto.&quot;,
+         &quot;contexto&quot;: &quot;Ejemplo ficticio.&quot;},
+        idempotency_key=&quot;consulta-456&quot;
+    )
+    try:
+        result = client.send(request)
+    except TransportError:
+        # Tras comprobar conectividad, reutiliza exactamente request.
+        # No generes otra clave ni cambies de versión para esquivar el error.
+        raise
+</code></pre>
+<p>prepare copia el JSON a bytes inmutables y fija versión, clave y traza. send reutiliza esa solicitud. No hay reintentos automáticos: un timeout no demuestra que el servidor no haya decidido. Si vuelve a llamar a predict sin una versión explícita, podría descubrir una versión activa distinta; usa PreparedDecision cuando necesitas conservar la solicitud entre intentos dentro del proceso. El objeto no se guarda automáticamente entre reinicios.</p>
+<p>La respuesta es un objeto Decision con request_id, brain_id, model_version, action, needs_review, trace_id, event_id, answers, confidence y replayed. <code>to_dict()</code> facilita su serialización. El SDK valida estructura, finitud y normalización de probabilidades; el gateway conserva la validación autoritativa del contrato y routing.</p>
+<table>
+<thead>
+<tr>
+<th>Error SDK</th>
+<th>Manejo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ValueError</code></td>
+<td>Corrige argumentos antes de enviar</td>
+</tr>
+<tr>
+<td><code>TransportError</code></td>
+<td>Fallo de transporte; resultado potencialmente ambiguo, conserva la solicitud</td>
+</tr>
+<tr>
+<td><code>BrainError</code> con status</td>
+<td>Rechazo HTTP; consulta status y request_id sin registrar secretos</td>
+</tr>
+<tr>
+<td><code>ProtocolError</code></td>
+<td>Respuesta inesperada; no ejecutes una acción a partir de ella</td>
+</tr>
+</tbody></table>
+<p>Los mensajes de error del SDK no incluyen cuerpo de entrada, token ni contenido arbitrario del servidor. La referencia completa está en <code>SDK.md</code>. El SDK es síncrono; no incluye cliente async, JavaScript, streaming ni ejecución de acciones.</p>
+<h2 id="seccion-10">9. Casos de uso</h2>
+<h3>Caso A: consulta comercial independiente</h3>
+<p>Una aplicación recibe una consulta sobre un producto. Envía a comercio edad de compra, mensaje y contexto con una clave estable. El cerebro devuelve clasificación, prioridad, nivel y una acción propuesta. Si needs_review es true, la aplicación conserva el caso para una persona; no debe tratar la opción más probable como una decisión definitiva. No se envía automáticamente a logística.</p>
+<p>Criterio funcional: mismo caso y clave producen el mismo request_id; el resultado y sus probabilidades se pueden consultar sin enviar otro caso.</p>
+<h3>Caso B: incidencia logística con seguimiento comercial</h3>
+<p>El sistema conoce un retraso y la fecha de compra. Envía context logístico más handoff numérico. Logística propone una acción; el consumidor genera el traspaso; comercio recibe su propio estado validado. El panel permite seguir las dos decisiones mediante trace_id y comprobar la entrega.</p>
+<p>Criterio funcional: un evento fuente genera como máximo una entrega por ruta; al reiniciar, la pendiente se recupera. Criterio de negocio pendiente: validar las plantillas y decisiones de toda la cadena con casos reales. Un harness local aprobado no sustituye esta evaluación.</p>
+<h3>Caso C: incertidumbre en logística</h3>
+<p>El máximo de clasificación queda bajo el umbral y se propone revisión humana. El sistema registra esa incertidumbre. Comercio puede emitir una decisión adicional, pero eso no cancela la revisión de origen. La aplicación operadora debe impedir acciones automáticas mientras exista incertidumbre pendiente.</p>
+<p>Limitación actual: no hay expediente global ni bandeja humana resolutiva. Deben añadirse antes de delegar acciones reales a la cadena.</p>
+<h3>Caso D: caída del consumidor o de toda la flota</h3>
+<p>El gateway guarda un evento y el consumidor se detiene. El supervisor intenta reiniciarlo, hasta tres veces por minuto. Si se detiene todo, el próximo arranque recupera el cursor y las entregas pendientes. Las claves y versiones permanecen fijadas; un error definitivo queda visible para revisión.</p>
+<p>Criterio funcional: recuperación sin perder el evento ni duplicar la decisión destino. No se garantiza alta disponibilidad entre hosts.</p>
+<h3>Caso E: probar un candidato</h3>
+<p>Entrena una versión con datos representativos, ejecuta el harness contra una referencia y examina errores, calibración, grupos relevantes y matrices de confusión. Registra y activa solo después de aprobar evidencia. La búsqueda automática no publica modelos.</p>
+<p>Criterio de aceptación: umbrales definidos por costos del negocio, suite autorizada y ninguna regresión prohibida. No se considera suficiente un resultado sintético 4/4.</p>
+<h3>Caso F: crear otra industria</h3>
+<p>Define un contrato propio, sus preguntas y acciones, datos anotados y una suite pertinente. Genera con <code>start.sh new --config</code>. Puede operar independientemente; conectarlo requiere catálogo, ACL y mapping explícitos. El flujo operate de comercio/logística no adapta otros campos automáticamente.</p>
+<h2 id="seccion-11">10. Contratos y errores HTTP</h2>
+<p>POST /v1/predict requiere Bearer, Accept-Version, Idempotency-Key y traceparent. El cuerpo normal contiene brain_id y context; el flujo logístico persistente exige además handoff. El SDK construye los encabezados y permite fijar versión/traza.</p>
+<table>
+<thead>
+<tr>
+<th>HTTP</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>401 / 403</td>
+<td>Identidad ausente o acceso no autorizado</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Recurso o cerebro inexistente</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Versión, clave reutilizada con otro contenido o reserva pendiente</td>
+</tr>
+<tr>
+<td>413</td>
+<td>Tamaño, texto o magnitud excedidos</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Contrato, traza, mapping o tipos inválidos</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Límite de tasa</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Respuesta interna inválida; no se inventa fallback</td>
+</tr>
+<tr>
+<td>503 / 504</td>
+<td>Indisponibilidad o timeout</td>
+</tr>
+</tbody></table>
+<p>Límites predeterminados: 64 KiB, 12.000 caracteres por texto y magnitud 1e12; se aplica el límite más restrictivo del gateway y del cerebro. Los JSON libres, etiquetas de entrenamiento en context y campos adicionales son rechazados.</p>
+<p>Un fallback declarado es una salida válida. Una respuesta inválida no debe convertirse en una cola inventada. El catálogo resuelve destinos y versiones; no se incluyen URLs de otros cerebros en el modelo.</p>
+<h2 id="seccion-12">11. Promoción, seguridad y continuidad</h2>
+<p>Antes de producción hacen falta datos reales representativos, revisión de dominio, aislamiento de evaluación, políticas de acceso, pruebas de carga y restauración. El comando operate está deliberadamente en desarrollo.</p>
+<pre><code class="language-bash">bash start.sh train --data data/real.csv --trials 5 --epochs 60 --output runs/candidato
+bash start.sh harness --run runs/candidato --baseline runs/referencia --output runs/evaluacion_candidato
+</code></pre>
+<p>El CSV debe contener exactamente los campos del contrato, una columna <code>target__&lt;id_de_decision&gt;</code> por salida y <code>__split</code>. Ejemplo de encabezado de comercio:</p>
+<pre><code class="language-csv">dias_desde_compra,mensaje,contexto,target__clasificacion,target__atencion_prioritaria,target__nivel,__split
+7,Solicito información del producto,Ejemplo ficticio,consulta,false,bajo,train
+</code></pre>
+<p>Esta fila ilustra el formato; no es un dataset suficiente. Las particiones son <code>train</code>, <code>validation</code>, <code>calibration</code> y <code>test</code>. Cada una necesita al menos diez filas y todas las clases de cada salida; no se admiten contextos idénticos entre particiones. Los mínimos técnicos no garantizan representatividad. Para obtener un archivo sintético de referencia:</p>
+<pre><code class="language-bash">bash start.sh generate --rows 2000 --seed 42 --output data/ejemplo_formato.csv
+</code></pre>
+<p>El generador no sobrescribe un archivo existente. No basta cambiar una marca synthetic a real. Revisa el esquema de tu contrato y el informe generado; los datos deben tener procedencia verificable.</p>
+<p>Completa <code>config/evidence.example.json</code> en otro archivo. Incluye huella del dataset, revisor, fecha, separación, aceptación del negocio y SHA256 del report.json del harness. Autoriza la huella de la suite en <code>harness.approved_suite_sha256</code> de la política. La lista viene vacía. La política exige baseline salvo excepción inicial explícita y documentada.</p>
+<pre><code class="language-bash">.venv/bin/python -m decision_brain.releases --registry registry/production register --run runs/candidato --version v1 --environment production --harness runs/evaluacion_candidato/report.json --policy config/promotion_policy.json --evidence evidence.json
+.venv/bin/python -m decision_brain.releases --registry registry/production activate --version v1 --environment production
+</code></pre>
+<p>Estos comandos son administrativos y requieren artefactos/evidencia reales. No deben ejecutarse para hacer pasar un ejemplo sintético. Para rollback, verifica que exista una versión previa aprobada:</p>
+<pre><code class="language-bash">.venv/bin/python -m decision_brain.releases --registry registry/production rollback --environment production
+</code></pre>
+<p>En operate, los registros development están bajo runtime/commerce-logistics/comercio/registry y logistica/registry; no los confundas con registry/production. Una entrega pendiente permanece ligada a su versión anterior y puede requerir reconciliación después de un cambio.</p>
+<p>Los secretos locales del entorno tienen permisos 0600 y el estado 0700. Para acceso remoto necesitas TLS y una red administrativa o proxy adecuado. No hay SSO, roles por usuario ni aislamiento multitenant. Las plantillas Compose se incluyen, pero no reemplazan una validación de despliegue.</p>
+<h3>Servicio persistente en macOS</h3>
+<p>Después de configurar operate una vez, detén el proceso foreground con Ctrl+C:</p>
+<pre><code class="language-bash">bash start.sh operate service-file
+launchctl bootstrap &quot;gui/$(id -u)&quot; &quot;$PWD/runtime/commerce-logistics/decision-brain.plist&quot;
+</code></pre>
+<p>Para detenerlo:</p>
+<pre><code class="language-bash">launchctl bootout &quot;gui/$(id -u)&quot; &quot;$PWD/runtime/commerce-logistics/decision-brain.plist&quot;
+</code></pre>
+<p>La definición no contiene secretos. Para futuros inicios de sesión se puede instalar en ~/Library/LaunchAgents con su Label único. El proyecto no modifica launchd automáticamente. No ejecutes foreground y launchd sobre el mismo estado. Esta integración no se probó nativamente en macOS.</p>
+<h2 id="seccion-13">12. Resolución de problemas</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Qué revisar</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Destino ya existe</td>
+<td>Entra al proyecto existente; no repitas new sobre él</td>
+</tr>
+<tr>
+<td>operate no encuentra proyectos</td>
+<td>--projects-root debe apuntar al directorio que contiene comercio y logistica</td>
+</tr>
+<tr>
+<td>Puerto ocupado</td>
+<td>Detén otra instancia o crea otro estado con --base-port</td>
+</tr>
+<tr>
+<td>Panel vacío</td>
+<td>Comprueba catálogo, modelos activos y tráfico real; entrenar no registra tráfico del gateway</td>
+</tr>
+<tr>
+<td>Cerebro rojo</td>
+<td>Examina reasons; separa harness fallido de indisponibilidad técnica</td>
+</tr>
+<tr>
+<td>Traspaso pendiente</td>
+<td>Comprueba consumidor activo, next_attempt y logs</td>
+</tr>
+<tr>
+<td>Traspaso requiere revisión</td>
+<td>Examina versión, ruta, contrato y reserva; no cambies la clave para saltar el bloqueo</td>
+</tr>
+<tr>
+<td>Sin spans</td>
+<td>Comprueba muestreo, retención y BRAIN_TELEMETRY_DB compartida</td>
+</tr>
+<tr>
+<td>HTTP 409 desde SDK</td>
+<td>Conserva la solicitud preparada y revisa versión/clave/reserva; no reintentes con datos distintos</td>
+</tr>
+<tr>
+<td>Error de instalación</td>
+<td>Consulta runs/setup.log y setup_error.html si existe</td>
+</tr>
+</tbody></table>
+<p>Logs persistentes: comercio.log, logistica.log, gateway.log, observer.log y consumer.log dentro del estado. No compartas secrets.json, URLs privadas del panel ni datos de clientes al pedir soporte.</p>
+<p>La validación ejecutada y sus límites se documentan en <code>VALIDACION.md</code>. El sistema todavía necesita expediente global, revisión humana efectiva y adaptadores autorizados antes de ejecutar procesos reales de extremo a extremo.</p>
+<h2 id="seccion-14">13. Catálogo, servicios individuales y despliegue</h2>
+<p>operate configura un catálogo conjunto automáticamente. Para incorporar otro proyecto a un catálogo administrado manualmente:</p>
+<pre><code class="language-bash">.venv/bin/python -m decision_brain.catalog --project proyectos/otro --endpoint http://127.0.0.1:8200 --catalog config/gates/catalog.json --owner operaciones
+</code></pre>
+<p>El proyecto debe existir y tener su configuración de gates. La dirección es un ejemplo de worker local; define el puerto real. El CLI no sustituye silenciosamente un brain_id ya registrado. Revisa las ACL de llamadores en gateway.json, el secreto del worker por nombre de variable y las versiones registradas. Añadir el catálogo no crea rutas: config/gates/routes.json declara por separado origen, acción, destino y mapping. Usa hechos y literales revisados, no JSON interno compartido a ciegas.</p>
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Comando</th>
+<th>Preparación necesaria</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Worker</td>
+<td><code>bash scripts/serve.sh</code></td>
+<td>BRAIN_API_KEY, identidad y registro activo del modelo</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td><code>bash start.sh gateway</code></td>
+<td>Catálogo, secretos de llamadores/workers y TLS en producción</td>
+</tr>
+<tr>
+<td>Observador</td>
+<td><code>bash start.sh observer</code></td>
+<td>BRAIN_OBSERVER_TOKEN y config/gates/observer.json</td>
+</tr>
+</tbody></table>
+<p>El observador individual sirve su UI en localhost:9100 por defecto. El gateway individual usa 8443 y certificados BRAIN_TLS_CERT/BRAIN_TLS_KEY cuando exige TLS. Estos puertos son distintos de los que usa operate. No inicies esos comandos esperando que descubran la flota runtime automáticamente: configura los archivos/env correspondientes o usa operate para el flujo integrado.</p>
+<p>La plantilla <code>deploy/compose.yaml</code> incluye un worker, un gateway TLS y un observador. Requiere versión production aprobada y activada previamente. Configura secretos independientes BRAIN_STACK_WORKER_TOKEN, BRAIN_ORCHESTRATOR_TOKEN, BRAIN_POSTVENTA_TOKEN y BRAIN_OBSERVER_TOKEN mediante tu gestor de secretos. Coloca certificado y clave en secrets/tls/cert.pem y secrets/tls/key.pem. El UID 10001 debe leer los secretos y escribir los almacenes de auditoría/telemetría; los modelos se montan de solo lectura.</p>
+<pre><code class="language-bash">docker compose -f deploy/compose.yaml build
+docker compose -f deploy/compose.yaml up -d
+</code></pre>
+<p>No ejecutes ese despliegue con secretos de ejemplo ni alteres procedencia para admitir modelos sintéticos. La plantilla no crea por sí sola una flota multiworker ni el consumidor persistente de operate. Debes adaptar topología, permisos, TLS y supervisión a la infraestructura. El build/arranque Docker no fue validado en esta entrega.</p>
+<h2 id="seccion-15">14. Lista de aceptación antes de un piloto real</h2>
+<table>
+<thead>
+<tr>
+<th>Área</th>
+<th>Evidencia necesaria</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Modelo</td>
+<td>Casos reales independientes, umbrales de negocio y calidad por segmento</td>
+</tr>
+<tr>
+<td>Cadena</td>
+<td>Evaluación específica logística → comercio, incluyendo incertidumbre de origen</td>
+</tr>
+<tr>
+<td>Personas</td>
+<td>Responsable y procedimiento de revisión; no basta una etiqueta revision_humana</td>
+</tr>
+<tr>
+<td>Efectos externos</td>
+<td>Adaptadores autorizados, idempotencia y conciliación antes de ejecutar acciones</td>
+</tr>
+<tr>
+<td>Acceso</td>
+<td>Identidades, permisos, TLS y rotación de secretos</td>
+</tr>
+<tr>
+<td>Continuidad</td>
+<td>Pruebas de carga, backup/restauración y recuperación de pendientes</td>
+</tr>
+<tr>
+<td>Operación</td>
+<td>Alertas, capacidad, retención, mantenimiento y responsables definidos</td>
+</tr>
+</tbody></table>
+<p>La puesta en marcha razonable comienza en paralelo sin efectos externos, sigue con operación asistida y solo automatiza clases de casos aprobadas. Esta guía describe el software disponible; no certifica un despliegue industrial ni elimina las limitaciones de calidad observadas.</p>
+<footer>Documento generado desde GUIA_DE_USO.md. Incluye capacidades y límites de esta versión.</footer></main></body></html>

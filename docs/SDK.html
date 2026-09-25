@@ -1,0 +1,173 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Decision Brain 0.9 · Referencia SDK</title><style>body{margin:0;background:#f2f5f8;color:#173045;font:16px/1.65 system-ui,-apple-system,sans-serif}header{background:#122b40;color:#fff;padding:28px max(24px,calc((100vw - 1020px)/2));font-size:22px;font-weight:700}header small{display:block;font-size:13px;font-weight:400;color:#b8d0e0}main{max-width:1020px;margin:28px auto;padding:36px;background:white;border-radius:12px}h1{font-size:34px;line-height:1.2}h2{margin-top:52px;padding-top:18px;border-top:2px solid #dfe8ef;line-height:1.3}h3{margin-top:30px}a{color:#145da8}pre{background:#102a3e;color:#e8f4fd;padding:18px;border-radius:8px;overflow:auto;font-size:13px;line-height:1.6}code{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.88em}p code,td code,li code{background:#edf3f7;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}table{display:block;overflow:auto;border-collapse:collapse;width:100%;margin:20px 0}td,th{text-align:left;padding:12px;border:1px solid #dce5ec;vertical-align:top}th{background:#ecf3f8}nav{padding:20px;background:#edf4f9;border-radius:10px}nav ul{columns:2;font-size:14px;margin-bottom:0}nav li{break-inside:avoid;margin:5px 0}footer{color:#60778a;font-size:12px;margin-top:40px}strong{color:#173045}@media(max-width:700px){main{margin:0;padding:22px;border-radius:0}nav ul{columns:1}h1{font-size:28px}table{font-size:14px}}@media print{body{background:white;font-size:10pt}header{padding:10px;color:black;background:white}main{margin:0;padding:0}nav{display:none}pre{white-space:pre-wrap;background:#eee;color:black;break-inside:avoid}table{display:table;font-size:9pt}h2{break-after:avoid}a{color:inherit}footer{display:none}}</style></head><body><header>Decision Brain <small>Versión 0.9 · Documentación de uso</small></header><main><nav><details open><summary>Índice</summary><ul><li><a href="#seccion-2">Clases</a></li><li><a href="#seccion-3">DecisionClient</a></li><li><a href="#seccion-4">Decision</a></li><li><a href="#seccion-5">ObserverClient</a></li><li><a href="#seccion-6">Errores y reintentos</a></li><li><a href="#seccion-7">Alcance</a></li></ul></details></nav><h1 id="seccion-1">SDK Python — referencia 0.9.0</h1>
+<p>Paquete instalable: <code>decision-brain-sdk</code>. Import: <code>decision_brain_sdk</code>. Cliente síncrono compatible con Python &gt;=3.10; probado con Python 3.12. Requiere httpx &gt;=0.28.1,&lt;0.29. No requiere el paquete del servidor para integrarse por HTTP.</p>
+<pre><code class="language-bash">python -m pip install ./sdk
+</code></pre>
+<p>El paquete completo también expone el SDK después de <code>bash start.sh setup</code>. No se presupone publicación en PyPI. El cierre del cliente libera conexiones; utiliza <code>with</code> o <code>close()</code>.</p>
+<h2 id="seccion-2">Clases</h2>
+<table>
+<thead>
+<tr>
+<th>Clase</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>DecisionClient(url, token, *, timeout=15, verify=True, transport=None)</code></td>
+<td>Acceso al gateway</td>
+</tr>
+<tr>
+<td><code>ObserverClient(url, token, *, timeout=15, verify=True, transport=None)</code></td>
+<td>Acceso al observador</td>
+</tr>
+<tr>
+<td><code>PreparedDecision</code></td>
+<td>Solicitud congelada para envío/reintento consistente</td>
+</tr>
+<tr>
+<td><code>Decision</code></td>
+<td>Resultado tipado y atributo replayed</td>
+</tr>
+<tr>
+<td><code>BrainError</code></td>
+<td>Rechazo HTTP o error de catálogo, con code/status/request_id</td>
+</tr>
+<tr>
+<td><code>TransportError</code></td>
+<td>Fallo de transporte; subclase de BrainError</td>
+</tr>
+<tr>
+<td><code>ProtocolError</code></td>
+<td>Respuesta incompatible; subclase de BrainError</td>
+</tr>
+</tbody></table>
+<p>Los URL pueden incluir un prefijo de proxy, por ejemplo <a href="https://host/brain/">https://host/brain/</a>. Fuera de localhost se exige HTTPS. No se permiten usuario/contraseña en URL, query ni fragmento. Por defecto se verifica el certificado, no se heredan proxies del entorno y no se siguen redirecciones. transport permite pruebas con httpx.MockTransport.</p>
+<h2 id="seccion-3">DecisionClient</h2>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Resultado y comportamiento</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>from_fleet(path=&quot;runtime/commerce-logistics&quot;, **kwargs)</code></td>
+<td>Lee fleet.json/secrets.json locales; usa credencial de orchestrator</td>
+</tr>
+<tr>
+<td><code>ready()</code></td>
+<td>GET /ready; no implica calidad global del negocio</td>
+</tr>
+<tr>
+<td><code>catalog()</code></td>
+<td>Lista de cerebros activos autorizados</td>
+</tr>
+<tr>
+<td><code>prepare(brain_id, context, *, idempotency_key, version=None, trace_id=None, handoff=None)</code></td>
+<td>Serializa el cuerpo y fija versión, clave y traza; descubre versión si no se indicó</td>
+</tr>
+<tr>
+<td><code>send(prepared)</code></td>
+<td>Envía una vez y valida la respuesta; nunca cambia la clave automáticamente</td>
+</tr>
+<tr>
+<td><code>predict(brain_id, context, **kwargs)</code></td>
+<td>Atajo para prepare + send</td>
+</tr>
+<tr>
+<td><code>prepare_event(event_id, route_id, brain_id, *, idempotency_key, trace_id, version=None)</code></td>
+<td>Prepara entrega manual al gate destino; requiere la traza original</td>
+</tr>
+<tr>
+<td><code>close()</code></td>
+<td>Cierra conexiones</td>
+</tr>
+</tbody></table>
+<p>La clave de idempotencia es obligatoria y tiene hasta 128 caracteres alfanuméricos o <code>_.:-</code>. Los contextos deben ser JSON finitos y el cuerpo no puede exceder 64 KiB. El SDK no conoce todos los campos del contrato del modelo: los tipos/campos concretos y límites por cerebro se validan en el gateway.</p>
+<p>trace_id es hexadecimal minúsculo de 32 caracteres no nulos; si se omite se genera uno. No se acepta un contexto OpenTelemetry de la aplicación automáticamente: para unir la llamada a una traza existente debes aportar trace_id. El SDK genera un span parent ID de propagación; no instrumenta por sí mismo un span cliente en tu aplicación.</p>
+<p>Si el gateway indica replay, se conserva la traza de la respuesta original aunque el reintento haya llegado con otra. PreparedDecision se conserva en memoria y copia el cuerpo a bytes; no persiste solicitudes ni secretos en disco. Su serialización duradera, si se necesita, corresponde a la aplicación y debe proteger datos sensibles.</p>
+<h3>Entrega manual de un evento</h3>
+<pre><code class="language-python">from decision_brain_sdk import DecisionClient
+
+with DecisionClient.from_fleet() as client:
+    prepared = client.prepare_event(
+        event_id=&quot;ID_DEL_EVENTO_ORIGEN&quot;,
+        route_id=&quot;ID_DE_RUTA_CONFIGURADA&quot;,
+        brain_id=&quot;comercio.triaje&quot;,
+        idempotency_key=&quot;entrega-manual-caso-123&quot;,
+        trace_id=&quot;0123456789abcdef0123456789abcdef&quot;
+    )
+    # Enviar solo tras verificar esos valores y quién gestiona la entrega:
+    # result = client.send(prepared)
+</code></pre>
+<p>No dupliques con este método una entrega que ya gestione el consumidor persistente. Distintas claves pueden crear distintas decisiones. La identidad del llamador debe coincidir con la del evento origen y tener autorización sobre el destino.</p>
+<h2 id="seccion-4">Decision</h2>
+<p>Campos: request_id, brain_id, model_version, action, needs_review, trace_id, event_id, answers, confidence, replayed. <code>to_dict()</code> devuelve una copia serializable. La dataclass es frozen, pero sus diccionarios anidados no son inmutables; tratarlos como datos de lectura evita cambios accidentales en tu aplicación.</p>
+<p>Se validan los campos básicos, cerebro y versión esperados, distribución finita/normalizada, elección coherente con la probabilidad máxima y confidence. Esto no reemplaza la validación del contrato completo del servidor, ni demuestra calibración, calidad del modelo o seguridad de una acción.</p>
+<h2 id="seccion-5">ObserverClient</h2>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Consulta</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>from_fleet(path=&quot;runtime/commerce-logistics&quot;, **kwargs)</code></td>
+<td>Configuración local con credencial independiente de observador</td>
+</tr>
+<tr>
+<td><code>ready()</code></td>
+<td>Disponibilidad del observador</td>
+</tr>
+<tr>
+<td><code>dashboard()</code></td>
+<td>Estado, indicadores, consumidor y entregas</td>
+</tr>
+<tr>
+<td><code>operations()</code></td>
+<td>Semáforo por cerebro</td>
+</tr>
+<tr>
+<td><code>decisions(brain_id, action=None)</code></td>
+<td>Hasta 100 decisiones de la última hora que coincidan con el filtro</td>
+</tr>
+<tr>
+<td><code>traces()</code></td>
+<td>Hasta 200 trazas recientes de la última hora</td>
+</tr>
+<tr>
+<td><code>trace(trace_id)</code></td>
+<td>Hasta 1000 spans; incluye indicador truncated</td>
+</tr>
+<tr>
+<td><code>metrics()</code></td>
+<td>Texto Prometheus</td>
+</tr>
+<tr>
+<td><code>deliveries(event_id=None)</code></td>
+<td>Filtra las últimas 100 entregas expuestas por dashboard</td>
+</tr>
+<tr>
+<td><code>close()</code></td>
+<td>Cierra conexiones</td>
+</tr>
+</tbody></table>
+<p>No hay paginación SDK sobre un historial ilimitado. Una entrega ausente puede estar pendiente de descubrimiento o fuera de esa ventana/listado: no concluyas que nunca ocurrió. Consulta la auditoría/almacenamiento mediante procesos administrativos cuando corresponda.</p>
+<h2 id="seccion-6">Errores y reintentos</h2>
+<pre><code class="language-python">from decision_brain_sdk import BrainError, TransportError, ProtocolError
+
+try:
+    result = client.send(prepared)
+except TransportError:
+    # No sabemos si el servidor alcanzó a decidir. Conservar prepared.
+    raise
+except ProtocolError:
+    # Respuesta no válida: no ejecutar ninguna acción.
+    raise
+except BrainError as error:
+    print(error.code, error.status, error.request_id)
+</code></pre>
+<p>El SDK no introduce reintentos automáticos ni interpreta un 409 como permiso para generar otra clave. La política de backoff y reconciliación pertenece a la aplicación. Los ejemplos usan variables client/prepared ya creadas; consulta la guía principal para un programa completo.</p>
+<h2 id="seccion-7">Alcance</h2>
+<p>No hay cliente async ni SDK JavaScript, batch, streaming, administración remota de modelos, login web, SSO o ejecutores de acciones. Tampoco se actualizan modelos mediante el SDK. Las operaciones administrativas continúan en los CLIs del servidor.</p>
+<footer>Documento generado desde SDK.md. Incluye capacidades y límites de esta versión.</footer></main></body></html>

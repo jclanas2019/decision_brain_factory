@@ -1,0 +1,15 @@
+test_event_preparation (test_sdk.SDKTests.test_event_preparation) ... ok
+test_http_errors_typed_and_private (test_sdk.SDKTests.test_http_errors_typed_and_private) ... ok
+test_invalid_input_before_network (test_sdk.SDKTests.test_invalid_input_before_network) ... ok
+test_observer_delivery_filter (test_sdk.SDKTests.test_observer_delivery_filter) ... ok
+test_preparation_freezes_context_version_key_trace (test_sdk.SDKTests.test_preparation_freezes_context_version_key_trace) ... ok
+test_remote_http_and_credentials_in_url_rejected (test_sdk.SDKTests.test_remote_http_and_credentials_in_url_rejected) ... ok
+test_replay_preserves_original_trace (test_sdk.SDKTests.test_replay_preserves_original_trace) ... ok
+test_response_probabilities_validated (test_sdk.SDKTests.test_response_probabilities_validated) ... ok
+test_timeout_not_retried_or_leaked (test_sdk.SDKTests.test_timeout_not_retried_or_leaked) ... ok
+test_typed_prediction_and_prefix (test_sdk.SDKTests.test_typed_prediction_and_prefix) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.006s
+
+OK

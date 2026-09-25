@@ -44,7 +44,7 @@ class SQLiteSpanExporter(SpanExporter):
     def shutdown(self):pass
 
 def provider(service):
-    p=TracerProvider(resource=Resource.create({'service.name':service,'service.version':'0.8.0'}))
+    p=TracerProvider(resource=Resource.create({'service.name':service,'service.version':'0.9.0'}))
     local=SQLiteSpanExporter(database());p.add_span_processor(SimpleSpanProcessor(local))
     endpoint=os.environ.get('OTEL_EXPORTER_OTLP_TRACES_ENDPOINT')
     base=os.environ.get('OTEL_EXPORTER_OTLP_ENDPOINT')
@@ -82,7 +82,7 @@ class TraceBoundary:
 
 def instrument(app,component):
     p,local=provider('decision-brain-'+component)
-    tracer=p.get_tracer('decision_brain', '0.8.0')
+    tracer=p.get_tracer('decision_brain', '0.9.0')
     app.state.telemetry_provider=p;app.state.telemetry_exporter=local;app.state.tracer=tracer
     app.add_middleware(TraceBoundary,tracer=tracer,component=component)
     return tracer

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": [
+    "catalog",
+    "typed_prediction",
+    "idempotent_replay",
+    "automatic_delivery",
+    "observer_filter",
+    "trace_query",
+    "prometheus_metrics"
+  ],
+  "request_id": "d284b4771de44a4f959d0b5c230dee70",
+  "trace_id": "f67971dd66ef48268b139e94413c13fa"
+}
