@@ -20,4 +20,4 @@ where = ["src", "sdk/src"]
 dependencies = {file = ["config/requirements.lock"]}
 
 [tool.setuptools.package-data]
-decision_brain = ["web/*.html", "web/*.css", "web/*.js"]
+decision_brain = ["web/*.html", "web/*.css", "web/*.js", "web/*.png"]

@@ -153,8 +153,9 @@ def create_app(config_path=None):
     async def dashboard_page():return FileResponse(web/'index.html',headers=safe_headers)
     @app.get('/assets/{name}')
     async def asset(name:str):
-        if name not in ('app.js','style.css'):raise HTTPException(404)
-        return FileResponse(web/name,media_type='text/javascript' if name.endswith('.js') else 'text/css',headers=safe_headers)
+        types={'app.js':'text/javascript','style.css':'text/css','decision-brain-factory.png':'image/png'}
+        if name not in types:raise HTTPException(404)
+        return FileResponse(web/name,media_type=types[name],headers=safe_headers)
     @app.get('/v1/dashboard')
     async def dashboard_data(request:Request):
         observer.authorize(request)

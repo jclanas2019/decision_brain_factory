@@ -2,6 +2,8 @@
 
 Esta guía describe las capacidades implementadas y cómo utilizarlas. Los comandos parten de la raíz del proyecto descomprimido, salvo indicación expresa. No necesitas leer documentos de versiones anteriores.
 
+![Arquitectura y capacidades de Decision Brain Factory 0.9](decision-brain-factory.png)
+
 ## 1. Qué hace el sistema
 
 Decision Brain genera proyectos de clasificación de decisiones para un dominio. Cada cerebro tiene un contrato de entrada, una red local con varias salidas tipadas, reglas para proponer una acción, evaluación y versiones propias.
