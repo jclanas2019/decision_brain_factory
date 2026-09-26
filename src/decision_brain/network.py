@@ -1,5 +1,6 @@
 """Shared neural encoder with a variable number of classification heads."""
 import numpy as np
+import time
 from dataclasses import dataclass, asdict
 
 def softmax(x):
@@ -35,16 +36,19 @@ class MultiDecisionNet:
         p=self.params;h=np.tanh(x@p[0]+p[1]);
         return [softmax((h@p[2+2*i]+p[3+2*i])/self.temperature[i]) for i in range(len(self.counts))]
 
-    def train(self,x,y,seed,xv,yv,log_every=10):
+    def train(self,x,y,seed,xv,yv,log_every=10,deadline=None):
         rng=np.random.default_rng(seed); p=self.params
         m=[np.zeros_like(a) for a in p]; v=[np.zeros_like(a) for a in p]
         best=float('inf'); saved=None; wait=0; step=0; history=[]
         for epoch in range(self.cfg.epochs):
             for ix in np.array_split(rng.permutation(len(x)),max(1,int(np.ceil(len(x)/64)))):
+                if deadline is not None and time.monotonic()>=deadline:raise TimeoutError('Experiment time budget exceeded')
                 xb=x[ix]; h,probs=self.forward(xb); dh=np.zeros_like(h)
                 g=[np.zeros_like(a) for a in p]
                 for i,prob in enumerate(probs):
-                    dz=prob.copy();dz[np.arange(len(ix)),y[i][ix]]-=1
+                    dz=prob.copy()
+                    if y[i].ndim==2:dz-=y[i][ix]
+                    else:dz[np.arange(len(ix)),y[i][ix]]-=1
                     dz/=(len(ix)*len(self.counts))
                     g[2+2*i]=h.T@dz+self.cfg.decay*p[2+2*i]
                     g[3+2*i]=dz.sum(axis=0)
@@ -79,6 +83,8 @@ class MultiDecisionNet:
         p=self.params;h=np.tanh(x@p[0]+p[1]);return softmax((h@p[2+2*i]+p[3+2*i])/t)
 
 
-def single_loss(p,y):return float(-np.log(np.clip(p[np.arange(len(y)),y],1e-9,1)).mean())
+def single_loss(p,y):
+    if y.ndim==2:return float(-np.sum(y*np.log(np.clip(p,1e-9,1)),axis=1).mean())
+    return float(-np.log(np.clip(p[np.arange(len(y)),y],1e-9,1)).mean())
 def loss(probs,y):return float(np.mean([single_loss(p,a) for p,a in zip(probs,y)]))
 

@@ -67,6 +67,8 @@ def validate(spec):
             elif f['type']=='number':
                 require(isinstance(v,list) and len(v)==2 and all(isinstance(x,(int,float)) and math.isfinite(x) for x in v) and v[0]<=v[1],'number template must be [min,max]')
             else:require(v in f['values'],'invalid category template')
+    from decision_brain.synthetic import validate_design
+    validate_design(spec)
     return spec
 
 

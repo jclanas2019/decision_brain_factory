@@ -5,7 +5,7 @@ import unittest
 from unittest.mock import patch
 from decision_brain import launch
 class LaunchChecks(unittest.TestCase):
-    def exercise(self,returns,check_only=False):
+    def exercise(self,returns,check_only=False,assurance=None):
         tmp=tempfile.TemporaryDirectory();self.addCleanup(tmp.cleanup)
         root=Path(tmp.name)
         args=['launch','--no-open']+(['--check-only'] if check_only else [])
@@ -14,12 +14,16 @@ class LaunchChecks(unittest.TestCase):
             result=returns.pop(0)
             if 'decision_brain.brain' in command or 'decision_brain.harness' in command:
                 out=Path(command[command.index('--output')+1]);out.mkdir();(out/'report.html').write_text('report', encoding='utf-8')
+                if 'decision_brain.brain' in command and assurance is not None:(out/'report.json').write_text(json.dumps({'assurance':{'passed':assurance}}))
             return result
         with patch.object(launch,'ROOT',root),patch('sys.argv',args),patch.object(launch,'step',side_effect=fake_step):code=launch.main()
         sessions=list((root/'runs').glob('session_*'))
         self.assertEqual(len(sessions),1)
         self.assertTrue((root/'runs/latest.html').exists())
         return code,json.loads((sessions[0]/'status.json').read_text(encoding='utf-8')),root
+    def test_autoevals_failure_blocks_success_even_if_harness_passes(self):
+        code,_,_=self.exercise([0,0,0],assurance=False)
+        self.assertEqual(code,1)
     def test_success(self):
         code,status,_=self.exercise([0,0,0]);self.assertEqual(code,0);self.assertTrue(status['evaluation_report'])
     def test_model_failure_keeps_reports(self):

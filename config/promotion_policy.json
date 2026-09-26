@@ -15,5 +15,11 @@
     "min_pass_rate": 1.0,
     "require_baseline": true,
     "approved_suite_sha256": []
+  },
+  "require_autoevals": true,
+  "autoevals": {
+    "exact_match": 0.85,
+    "probability_quality": 0.85,
+    "score_closeness": 0.8
   }
 }

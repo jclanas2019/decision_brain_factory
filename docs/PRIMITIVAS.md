@@ -115,3 +115,6 @@ Noul: https://docs.typesafe.ai/primitives/noul
 Confianza: https://docs.typesafe.ai/confidence
 
 Consultadas el 25 de septiembre de 2026. Se adopta la distinción funcional de los tipos, no compatibilidad total con la API de TypeSafe ni sus resultados de calidad.
+
+
+La versión 0.11 amplía los escenarios retail y cambia el significado de sus preguntas de urgencia e impacto. Consulta [Entrenamiento realista](ENTRENAMIENTO_REALISTA.md) antes de reutilizar etiquetas antiguas.

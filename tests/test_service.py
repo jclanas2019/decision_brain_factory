@@ -103,6 +103,7 @@ class ServiceTests(unittest.TestCase):
                     'selective_accuracy':.97,'confusion_matrix':[[950,50],[50,950]]}}}
         evidence={'dataset_sha256':'test-fixture','real_data_confirmed':True,'reviewer':'test',
                   'reviewed_at':'2026-09-25','split_method':'test','business_acceptance':'test'}
+        report['assurance']={'engine':'autoevals','passed':True,'test_used_for_selection':False,'scores':{'engine':'autoevals','schema_passed':True,'rows':2000,'heads':{'decision':{'exact_match':.95,'probability_quality':.95}}}}
         self.assertEqual(check_gate(report,policy,evidence),[])
         report['metrics']['decision']['selective_accuracy']=.6
         self.assertTrue(check_gate(report,policy,evidence))

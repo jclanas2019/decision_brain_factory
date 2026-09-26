@@ -3,7 +3,7 @@
   "brains": [
     {
       "brain_id": "retail.triaje",
-      "contract_hash": "aef098a97f335831a3ad4a90e7339399c9e1273f3047ab483058beb6166d4a61",
+      "contract_hash": "60c6daeb0d49de233190ccc906e8dba99060e66aea7087caa1711e663306624f",
       "endpoint": "http://127.0.0.1:8000",
       "owner": "equipo-local",
       "latency_sla_ms": 80,

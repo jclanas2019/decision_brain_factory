@@ -1,0 +1,2070 @@
+{
+  "version": 1,
+  "passed": false,
+  "suite_sha256": "db5c1176daa75a825cccc6d0199433115c9e2aaf5398722ea4b4f29468b52bc6",
+  "suite_origin": "authored_cross_factor_and_ambiguity_challenge",
+  "model_sha256": {
+    "brain.json": "61b386e5cfe30401cb1ea9e55e8483af4a310aad0274000e58df5c2e3f1c6575",
+    "model.json": "57d9a92d8f4b6e45baa68ecfc83d45a5725980961b193b69c852ffc6ca056b33",
+    "encoder.json": "49fefc216f2e49c57af734d08024fd66f5669709b643621113509d55e95371ff",
+    "weights.npz": "f5026a43573a37254b7e9359063ed9fa9a272751fe27356667997e859b3c7086"
+  },
+  "baseline_sha256": null,
+  "cases_count": 25,
+  "pass_rate": 0.84,
+  "min_pass_rate": 1.0,
+  "regressions": [],
+  "cases": [
+    {
+      "id": "cross_consulta_false_bajo",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "false",
+          "nivel": "bajo"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.8159061670303345,
+              "reclamacion": 0.09683884680271149,
+              "cancelacion": 0.08725499361753464
+            },
+            "max_probability": 0.8159061670303345,
+            "type": "choice",
+            "confidence": 0.44939695197748286,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.9952707886695862,
+              "true": 0.004729165695607662
+            },
+            "max_probability": 0.9952707886695862,
+            "type": "noul",
+            "noul": 0.004729165695607662,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "bajo",
+            "meaning": "Impacto menor o personal, sin interrupción operativa.",
+            "probabilities": {
+              "bajo": 0.9580013751983643,
+              "medio": 0.028041448444128036,
+              "alto": 0.013957194052636623
+            },
+            "max_probability": 0.9580013751983643,
+            "type": "score",
+            "confidence": 0.8170892356707449,
+            "score": 0.05595583654940128,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 0.055955834686756134,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_informacion",
+        "routing_reason": "Regla: clasificacion=consulta, probabilidad 81.6%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 81.6%; confianza de distribución: 44.9%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 0.5%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 0.056 de 2; confianza de distribución: 81.7%.",
+        "action_executed": false
+      },
+      "latency_ms": 1.3206040021032095
+    },
+    {
+      "id": "cross_consulta_false_medio",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "false",
+          "nivel": "medio"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.8680917024612427,
+              "reclamacion": 0.1086779311299324,
+              "cancelacion": 0.023230290040373802
+            },
+            "max_probability": 0.8680917024612427,
+            "type": "choice",
+            "confidence": 0.5891236121197365,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.9891021251678467,
+              "true": 0.010897824540734291
+            },
+            "max_probability": 0.9891021251678467,
+            "type": "noul",
+            "noul": 0.010897824540734291,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "medio",
+            "meaning": "Impacto parcial, varias unidades o un equipo con alternativa.",
+            "probabilities": {
+              "bajo": 0.001256102928891778,
+              "medio": 0.9980436563491821,
+              "alto": 0.0007002202328294516
+            },
+            "max_probability": 0.9980436563491821,
+            "type": "score",
+            "confidence": 0.9859537963766525,
+            "score": 0.999444096814841,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 0.9994440674781799,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_informacion",
+        "routing_reason": "Regla: clasificacion=consulta, probabilidad 86.8%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 86.8%; confianza de distribución: 58.9%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 1.1%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 0.999 de 2; confianza de distribución: 98.6%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.5696689986507408
+    },
+    {
+      "id": "cross_consulta_false_alto",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "false",
+          "nivel": "alto"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.8792234659194946,
+              "reclamacion": 0.10356124490499496,
+              "cancelacion": 0.01721532829105854
+            },
+            "max_probability": 0.8792234659194946,
+            "type": "choice",
+            "confidence": 0.6195811112856826,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.998602569103241,
+              "true": 0.0013974019093438983
+            },
+            "max_probability": 0.998602569103241,
+            "type": "noul",
+            "noul": 0.0013974019093438983,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.008019386790692806,
+              "medio": 0.013242188841104507,
+              "alto": 0.9787383675575256
+            },
+            "max_probability": 0.9787383675575256,
+            "type": "score",
+            "confidence": 0.8935034077673898,
+            "score": 1.9707189239561558,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.9707189798355103,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_informacion",
+        "routing_reason": "Regla: clasificacion=consulta, probabilidad 87.9%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 87.9%; confianza de distribución: 62.0%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 0.1%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.971 de 2; confianza de distribución: 89.4%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.5312909997883253
+    },
+    {
+      "id": "cross_consulta_true_bajo",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "true",
+          "nivel": "bajo"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.8420121073722839,
+              "reclamacion": 0.08882905542850494,
+              "cancelacion": 0.06915879249572754
+            },
+            "max_probability": 0.8420121073722839,
+            "type": "choice",
+            "confidence": 0.5042843534743294,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "true",
+            "meaning": "Vencimiento explícito hoy o en las próximas horas.",
+            "probabilities": {
+              "false": 0.0003316467918921262,
+              "true": 0.9996683597564697
+            },
+            "max_probability": 0.9996683597564697,
+            "type": "noul",
+            "noul": 0.9996683597564697,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "bajo",
+            "meaning": "Impacto menor o personal, sin interrupción operativa.",
+            "probabilities": {
+              "bajo": 0.9693265557289124,
+              "medio": 0.018753666430711746,
+              "alto": 0.011919871903955936
+            },
+            "max_probability": 0.9693265557289124,
+            "type": "score",
+            "confidence": 0.8565742430720054,
+            "score": 0.04259341023862362,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 0.04259341210126877,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_informacion",
+        "routing_reason": "Regla: clasificacion=consulta, probabilidad 84.2%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 84.2%; confianza de distribución: 50.4%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 100.0%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 0.043 de 2; confianza de distribución: 85.7%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.48031500045908615
+    },
+    {
+      "id": "cross_consulta_true_medio",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "true",
+          "nivel": "medio"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.8845715522766113,
+              "reclamacion": 0.09715395420789719,
+              "cancelacion": 0.018274398520588875
+            },
+            "max_probability": 0.8845715522766113,
+            "type": "choice",
+            "confidence": 0.6284917833095636,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "true",
+            "meaning": "Vencimiento explícito hoy o en las próximas horas.",
+            "probabilities": {
+              "false": 0.00015380507102236152,
+              "true": 0.9998462200164795
+            },
+            "max_probability": 0.9998462200164795,
+            "type": "noul",
+            "noul": 0.9998462200164795,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "medio",
+            "meaning": "Impacto parcial, varias unidades o un equipo con alternativa.",
+            "probabilities": {
+              "bajo": 0.0019597779028117657,
+              "medio": 0.9971304535865784,
+              "alto": 0.0009098675800487399
+            },
+            "max_probability": 0.9971304535865784,
+            "type": "score",
+            "confidence": 0.9804702038784122,
+            "score": 0.9989501887466758,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 0.998950183391571,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_informacion",
+        "routing_reason": "Regla: clasificacion=consulta, probabilidad 88.5%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 88.5%; confianza de distribución: 62.8%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 100.0%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 0.999 de 2; confianza de distribución: 98.0%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.6266159980441444
+    },
+    {
+      "id": "cross_consulta_true_alto",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "true",
+          "nivel": "alto"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.8941918015480042,
+              "reclamacion": 0.09299029409885406,
+              "cancelacion": 0.012817992828786373
+            },
+            "max_probability": 0.8941918015480042,
+            "type": "choice",
+            "confidence": 0.6570902152893856,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "true",
+            "meaning": "Vencimiento explícito hoy o en las próximas horas.",
+            "probabilities": {
+              "false": 0.001320020528510213,
+              "true": 0.9986799359321594
+            },
+            "max_probability": 0.9986799359321594,
+            "type": "noul",
+            "noul": 0.9986799359321594,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.010780451819300652,
+              "medio": 0.01247310359030962,
+              "alto": 0.9767464399337769
+            },
+            "max_probability": 0.9767464399337769,
+            "type": "score",
+            "confidence": 0.8848537527594992,
+            "score": 1.9659659834578633,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.965965986251831,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_informacion",
+        "routing_reason": "Regla: clasificacion=consulta, probabilidad 89.4%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 89.4%; confianza de distribución: 65.7%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 99.9%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.966 de 2; confianza de distribución: 88.5%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.5730949997087009
+    },
+    {
+      "id": "cross_reclamacion_false_bajo",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "false",
+          "nivel": "bajo"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "reclamacion",
+            "meaning": "Reclama un problema con su compra.",
+            "probabilities": {
+              "consulta": 0.00649215467274189,
+              "reclamacion": 0.9234378337860107,
+              "cancelacion": 0.0700700581073761
+            },
+            "max_probability": 0.9234378337860107,
+            "type": "choice",
+            "confidence": 0.7337368619469873,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.9934937357902527,
+              "true": 0.006506247911602259
+            },
+            "max_probability": 0.9934937357902527,
+            "type": "noul",
+            "noul": 0.006506247911602259,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "bajo",
+            "meaning": "Impacto menor o personal, sin interrupción operativa.",
+            "probabilities": {
+              "bajo": 0.9309607744216919,
+              "medio": 0.02197006531059742,
+              "alto": 0.04706914722919464
+            },
+            "max_probability": 0.9309607744216919,
+            "type": "score",
+            "confidence": 0.7320871758591777,
+            "score": 0.1161083597689867,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 0.11610835790634155,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_postventa",
+        "routing_reason": "Regla: clasificacion=reclamacion, probabilidad 92.3%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Reclama un problema con su compra.. Probabilidad de la opción: 92.3%; confianza de distribución: 73.4%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 0.7%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 0.116 de 2; confianza de distribución: 73.2%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.6390449998434633
+    },
+    {
+      "id": "cross_reclamacion_false_medio",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "false",
+          "nivel": "medio"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "reclamacion",
+            "meaning": "Reclama un problema con su compra.",
+            "probabilities": {
+              "consulta": 0.006314553786069155,
+              "reclamacion": 0.9711488485336304,
+              "cancelacion": 0.022536633536219597
+            },
+            "max_probability": 0.9711488485336304,
+            "type": "choice",
+            "confidence": 0.8672086301790826,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.984995424747467,
+              "true": 0.015004639513790607
+            },
+            "max_probability": 0.984995424747467,
+            "type": "noul",
+            "noul": 0.015004639513790607,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "medio",
+            "meaning": "Impacto parcial, varias unidades o un equipo con alternativa.",
+            "probabilities": {
+              "bajo": 0.0027264885138720274,
+              "medio": 0.9931107759475708,
+              "alto": 0.00416276091709733
+            },
+            "max_probability": 0.9931107759475708,
+            "type": "score",
+            "confidence": 0.9583263680624264,
+            "score": 1.0014362977817655,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.0014363527297974,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_postventa",
+        "routing_reason": "Regla: clasificacion=reclamacion, probabilidad 97.1%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Reclama un problema con su compra.. Probabilidad de la opción: 97.1%; confianza de distribución: 86.7%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 1.5%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.001 de 2; confianza de distribución: 95.8%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.5747770046582446
+    },
+    {
+      "id": "cross_reclamacion_false_alto",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "false",
+          "nivel": "alto"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "reclamacion",
+            "meaning": "Reclama un problema con su compra.",
+            "probabilities": {
+              "consulta": 0.00604362552985549,
+              "reclamacion": 0.9746677875518799,
+              "cancelacion": 0.01928858831524849
+            },
+            "max_probability": 0.9746677875518799,
+            "type": "choice",
+            "confidence": 0.8798120165254745,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.9980168342590332,
+              "true": 0.0019831559620797634
+            },
+            "max_probability": 0.9980168342590332,
+            "type": "noul",
+            "noul": 0.0019831559620797634,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.004105870146304369,
+              "medio": 0.004152610898017883,
+              "alto": 0.9917415380477905
+            },
+            "max_probability": 0.9917415380477905,
+            "type": "score",
+            "confidence": 0.9512472045797338,
+            "score": 1.987635686993599,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.9876357316970825,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_postventa",
+        "routing_reason": "Regla: clasificacion=reclamacion, probabilidad 97.5%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Reclama un problema con su compra.. Probabilidad de la opción: 97.5%; confianza de distribución: 88.0%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 0.2%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.988 de 2; confianza de distribución: 95.1%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.47239300329238176
+    },
+    {
+      "id": "cross_reclamacion_true_bajo",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "true",
+          "nivel": "bajo"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "reclamacion",
+            "meaning": "Reclama un problema con su compra.",
+            "probabilities": {
+              "consulta": 0.00747834425419569,
+              "reclamacion": 0.924353301525116,
+              "cancelacion": 0.06816836446523666
+            },
+            "max_probability": 0.924353301525116,
+            "type": "choice",
+            "confidence": 0.7338393020388789,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "true",
+            "meaning": "Vencimiento explícito hoy o en las próximas horas.",
+            "probabilities": {
+              "false": 0.0005022964905947447,
+              "true": 0.999497652053833
+            },
+            "max_probability": 0.999497652053833,
+            "type": "noul",
+            "noul": 0.999497652053833,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "bajo",
+            "meaning": "Impacto menor o personal, sin interrupción operativa.",
+            "probabilities": {
+              "bajo": 0.9386965036392212,
+              "medio": 0.015687856823205948,
+              "alto": 0.045615579932928085
+            },
+            "max_probability": 0.9386965036392212,
+            "type": "score",
+            "confidence": 0.7584187522466646,
+            "score": 0.10691901668906212,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 0.10691902041435242,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_postventa",
+        "routing_reason": "Regla: clasificacion=reclamacion, probabilidad 92.4%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Reclama un problema con su compra.. Probabilidad de la opción: 92.4%; confianza de distribución: 73.4%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 99.9%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 0.107 de 2; confianza de distribución: 75.8%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.5072760031907819
+    },
+    {
+      "id": "cross_reclamacion_true_medio",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "true",
+          "nivel": "medio"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "reclamacion",
+            "meaning": "Reclama un problema con su compra.",
+            "probabilities": {
+              "consulta": 0.007305871695280075,
+              "reclamacion": 0.9707790017127991,
+              "cancelacion": 0.021915141493082047
+            },
+            "max_probability": 0.9707790017127991,
+            "type": "choice",
+            "confidence": 0.864869071782175,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "true",
+            "meaning": "Vencimiento explícito hoy o en las próximas horas.",
+            "probabilities": {
+              "false": 0.00022304899175651371,
+              "true": 0.9997770190238953
+            },
+            "max_probability": 0.9997770190238953,
+            "type": "noul",
+            "noul": 0.9997770190238953,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "medio",
+            "meaning": "Impacto parcial, varias unidades o un equipo con alternativa.",
+            "probabilities": {
+              "bajo": 0.003930426202714443,
+              "medio": 0.990291178226471,
+              "alto": 0.005778416059911251
+            },
+            "max_probability": 0.990291178226471,
+            "type": "score",
+            "confidence": 0.9442824270491867,
+            "score": 1.0018480103462934,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.0018479824066162,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_postventa",
+        "routing_reason": "Regla: clasificacion=reclamacion, probabilidad 97.1%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Reclama un problema con su compra.. Probabilidad de la opción: 97.1%; confianza de distribución: 86.5%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 100.0%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.002 de 2; confianza de distribución: 94.4%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.446272999397479
+    },
+    {
+      "id": "cross_reclamacion_true_alto",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "true",
+          "nivel": "alto"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "reclamacion",
+            "meaning": "Reclama un problema con su compra.",
+            "probabilities": {
+              "consulta": 0.007102454546838999,
+              "reclamacion": 0.9749669432640076,
+              "cancelacion": 0.017930688336491585
+            },
+            "max_probability": 0.9749669432640076,
+            "type": "choice",
+            "confidence": 0.8798858643095704,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "true",
+            "meaning": "Vencimiento explícito hoy o en las próximas horas.",
+            "probabilities": {
+              "false": 0.0018487568013370037,
+              "true": 0.9981512427330017
+            },
+            "max_probability": 0.9981512427330017,
+            "type": "noul",
+            "noul": 0.9981512427330017,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.004651798401027918,
+              "medio": 0.0035895949695259333,
+              "alto": 0.9917586445808411
+            },
+            "max_probability": 0.9917586445808411,
+            "type": "score",
+            "confidence": 0.9513948388560608,
+            "score": 1.987106884131208,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.9871069192886353,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_postventa",
+        "routing_reason": "Regla: clasificacion=reclamacion, probabilidad 97.5%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Reclama un problema con su compra.. Probabilidad de la opción: 97.5%; confianza de distribución: 88.0%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 99.8%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.987 de 2; confianza de distribución: 95.1%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.4694290037150495
+    },
+    {
+      "id": "cross_cancelacion_false_bajo",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "false",
+          "nivel": "bajo"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "cancelacion",
+            "meaning": "Expresa intención de cancelar la compra.",
+            "probabilities": {
+              "consulta": 7.297936826944351e-05,
+              "reclamacion": 0.0004907417460344732,
+              "cancelacion": 0.9994361996650696
+            },
+            "max_probability": 0.9994361996650696,
+            "type": "choice",
+            "confidence": 0.9954506538951916,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.9913104772567749,
+              "true": 0.00868949294090271
+            },
+            "max_probability": 0.9913104772567749,
+            "type": "noul",
+            "noul": 0.00868949294090271,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "bajo",
+            "meaning": "Impacto menor o personal, sin interrupción operativa.",
+            "probabilities": {
+              "bajo": 0.9461427927017212,
+              "medio": 0.024671312421560287,
+              "alto": 0.029185885563492775
+            },
+            "max_probability": 0.9461427927017212,
+            "type": "score",
+            "confidence": 0.7752973259368111,
+            "score": 0.08304308354854584,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 0.08304308354854584,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "revision_cancelacion",
+        "routing_reason": "Regla: clasificacion=cancelacion, probabilidad 99.9%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Expresa intención de cancelar la compra.. Probabilidad de la opción: 99.9%; confianza de distribución: 99.5%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 0.9%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 0.083 de 2; confianza de distribución: 77.5%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.4394629941089079
+    },
+    {
+      "id": "cross_cancelacion_false_medio",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "false",
+          "nivel": "medio"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "cancelacion",
+            "meaning": "Expresa intención de cancelar la compra.",
+            "probabilities": {
+              "consulta": 0.0001997384097194299,
+              "reclamacion": 0.001480798819102347,
+              "cancelacion": 0.9983194470405579
+            },
+            "max_probability": 0.9983194470405579,
+            "type": "choice",
+            "confidence": 0.9881411685867078,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.9802581071853638,
+              "true": 0.019741922616958618
+            },
+            "max_probability": 0.9802581071853638,
+            "type": "noul",
+            "noul": 0.019741922616958618,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "medio",
+            "meaning": "Impacto parcial, varias unidades o un equipo con alternativa.",
+            "probabilities": {
+              "bajo": 0.0033126543276011944,
+              "medio": 0.9940749406814575,
+              "alto": 0.0026123791467398405
+            },
+            "max_probability": 0.9940749406814575,
+            "type": "score",
+            "confidence": 0.9632628994551822,
+            "score": 0.9992996989749372,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 0.9992997050285339,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "revision_cancelacion",
+        "routing_reason": "Regla: clasificacion=cancelacion, probabilidad 99.8%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Expresa intención de cancelar la compra.. Probabilidad de la opción: 99.8%; confianza de distribución: 98.8%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 2.0%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 0.999 de 2; confianza de distribución: 96.3%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.5713420032407157
+    },
+    {
+      "id": "cross_cancelacion_false_alto",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "false",
+          "nivel": "alto"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "cancelacion",
+            "meaning": "Expresa intención de cancelar la compra.",
+            "probabilities": {
+              "consulta": 0.00020658505673054606,
+              "reclamacion": 0.0015522247413173318,
+              "cancelacion": 0.9982411861419678
+            },
+            "max_probability": 0.9982411861419678,
+            "type": "choice",
+            "confidence": 0.9876662703628629,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.9972435235977173,
+              "true": 0.0027564733754843473
+            },
+            "max_probability": 0.9972435235977173,
+            "type": "noul",
+            "noul": 0.0027564733754843473,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.008920510299503803,
+              "medio": 0.00862801168113947,
+              "alto": 0.9824514985084534
+            },
+            "max_probability": 0.9824514985084534,
+            "type": "score",
+            "confidence": 0.9085211232638573,
+            "score": 1.9735310086980462,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.9735310077667236,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "revision_cancelacion",
+        "routing_reason": "Regla: clasificacion=cancelacion, probabilidad 99.8%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Expresa intención de cancelar la compra.. Probabilidad de la opción: 99.8%; confianza de distribución: 98.8%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 0.3%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.974 de 2; confianza de distribución: 90.9%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.5462850022013299
+    },
+    {
+      "id": "cross_cancelacion_true_bajo",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "true",
+          "nivel": "bajo"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "cancelacion",
+            "meaning": "Expresa intención de cancelar la compra.",
+            "probabilities": {
+              "consulta": 8.807705307845026e-05,
+              "reclamacion": 0.0005250333924777806,
+              "cancelacion": 0.9993869066238403
+            },
+            "max_probability": 0.9993869066238403,
+            "type": "choice",
+            "confidence": 0.9950843423909915,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "true",
+            "meaning": "Vencimiento explícito hoy o en las próximas horas.",
+            "probabilities": {
+              "false": 0.0005458497325889766,
+              "true": 0.9994542002677917
+            },
+            "max_probability": 0.9994542002677917,
+            "type": "noul",
+            "noul": 0.9994542002677917,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "bajo",
+            "meaning": "Impacto menor o personal, sin interrupción operativa.",
+            "probabilities": {
+              "bajo": 0.9549466967582703,
+              "medio": 0.0177085492759943,
+              "alto": 0.0273448433727026
+            },
+            "max_probability": 0.9549466967582703,
+            "type": "score",
+            "confidence": 0.8053232239757921,
+            "score": 0.0723982360213995,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 0.07239823788404465,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "revision_cancelacion",
+        "routing_reason": "Regla: clasificacion=cancelacion, probabilidad 99.9%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Expresa intención de cancelar la compra.. Probabilidad de la opción: 99.9%; confianza de distribución: 99.5%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 99.9%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 0.072 de 2; confianza de distribución: 80.5%.",
+        "action_executed": false
+      },
+      "latency_ms": 1.5414669978781603
+    },
+    {
+      "id": "cross_cancelacion_true_medio",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "true",
+          "nivel": "medio"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "cancelacion",
+            "meaning": "Expresa intención de cancelar la compra.",
+            "probabilities": {
+              "consulta": 0.00024606281658634543,
+              "reclamacion": 0.0015829290496185422,
+              "cancelacion": 0.9981709718704224
+            },
+            "max_probability": 0.9981709718704224,
+            "type": "choice",
+            "confidence": 0.9871842271211902,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "true",
+            "meaning": "Vencimiento explícito hoy o en las próximas horas.",
+            "probabilities": {
+              "false": 0.00023195608810056,
+              "true": 0.999768078327179
+            },
+            "max_probability": 0.999768078327179,
+            "type": "noul",
+            "noul": 0.999768078327179,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "medio",
+            "meaning": "Impacto parcial, varias unidades o un equipo con alternativa.",
+            "probabilities": {
+              "bajo": 0.004828818142414093,
+              "medio": 0.9916732907295227,
+              "alto": 0.003497916040942073
+            },
+            "max_probability": 0.9916732907295227,
+            "type": "score",
+            "confidence": 0.9510040348936449,
+            "score": 0.9986691228114069,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 0.9986691474914551,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "revision_cancelacion",
+        "routing_reason": "Regla: clasificacion=cancelacion, probabilidad 99.8%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Expresa intención de cancelar la compra.. Probabilidad de la opción: 99.8%; confianza de distribución: 98.7%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 100.0%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 0.999 de 2; confianza de distribución: 95.1%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.48240800242638215
+    },
+    {
+      "id": "cross_cancelacion_true_alto",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "answer:clasificacion": true,
+        "answer:atencion_prioritaria": true,
+        "answer:nivel": true
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "true",
+          "nivel": "alto"
+        }
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "cancelacion",
+            "meaning": "Expresa intención de cancelar la compra.",
+            "probabilities": {
+              "consulta": 0.0002721100754570216,
+              "reclamacion": 0.0017714629648253322,
+              "cancelacion": 0.997956395149231
+            },
+            "max_probability": 0.997956395149231,
+            "type": "choice",
+            "confidence": 0.9858920036072822,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "true",
+            "meaning": "Vencimiento explícito hoy o en las próximas horas.",
+            "probabilities": {
+              "false": 0.0018186945235356688,
+              "true": 0.9981813430786133
+            },
+            "max_probability": 0.9981813430786133,
+            "type": "noul",
+            "noul": 0.9981813430786133,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.010539942421019077,
+              "medio": 0.007669912651181221,
+              "alto": 0.9817901253700256
+            },
+            "max_probability": 0.9817901253700256,
+            "type": "score",
+            "confidence": 0.9058967990942,
+            "score": 1.9712501633912325,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.9712501764297485,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "revision_cancelacion",
+        "routing_reason": "Regla: clasificacion=cancelacion, probabilidad 99.8%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Expresa intención de cancelar la compra.. Probabilidad de la opción: 99.8%; confianza de distribución: 98.6%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 99.8%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.971 de 2; confianza de distribución: 90.6%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.6393549992935732
+    },
+    {
+      "id": "sin_intencion",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "action": true,
+        "needs_review": true
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.8371533155441284,
+              "reclamacion": 0.07196009159088135,
+              "cancelacion": 0.09088648110628128
+            },
+            "max_probability": 0.8371533155441284,
+            "type": "choice",
+            "confidence": 0.49378455679698297,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.7195163369178772,
+              "true": 0.2804836928844452
+            },
+            "max_probability": 0.7195163369178772,
+            "type": "noul",
+            "noul": 0.2804836928844452,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.3334383964538574,
+              "medio": 0.2337263822555542,
+              "alto": 0.4328352212905884
+            },
+            "max_probability": 0.4328352212905884,
+            "type": "score",
+            "confidence": 0.027486297308401686,
+            "score": 1.099396824836731,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.099396824836731,
+            "needs_review": true
+          }
+        },
+        "proposed_action": "revision_humana",
+        "routing_reason": "Probabilidad insuficiente en: nivel",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 83.7%; confianza de distribución: 49.4%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 28.0%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Requiere revisión. Posición en la rúbrica: 1.099 de 2; confianza de distribución: 2.7%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.4369999951450154
+    },
+    {
+      "id": "intenciones_mixtas",
+      "passed": false,
+      "checks": {
+        "no_action_executed": true,
+        "action": false,
+        "needs_review": false
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.9925635457038879,
+              "reclamacion": 0.00258256564848125,
+              "cancelacion": 0.004853897728025913
+            },
+            "max_probability": 0.9925635457038879,
+            "type": "choice",
+            "confidence": 0.955708107719008,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.9284027218818665,
+              "true": 0.07159727066755295
+            },
+            "max_probability": 0.9284027218818665,
+            "type": "noul",
+            "noul": 0.07159727066755295,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.2820582091808319,
+              "medio": 0.06553449481725693,
+              "alto": 0.6524072289466858
+            },
+            "max_probability": 0.6524072289466858,
+            "type": "score",
+            "confidence": 0.2588722406891124,
+            "score": 1.3703489527106285,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.3703489303588867,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_informacion",
+        "routing_reason": "Regla: clasificacion=consulta, probabilidad 99.3%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 99.3%; confianza de distribución: 95.6%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 7.2%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.370 de 2; confianza de distribución: 25.9%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.535307997779455
+    },
+    {
+      "id": "plazo_contradictorio",
+      "passed": true,
+      "checks": {
+        "no_action_executed": true,
+        "action": true,
+        "needs_review": true
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "cancelacion",
+            "meaning": "Expresa intención de cancelar la compra.",
+            "probabilities": {
+              "consulta": 0.001332474290393293,
+              "reclamacion": 0.0004104638646822423,
+              "cancelacion": 0.9982571005821228
+            },
+            "max_probability": 0.9982571005821228,
+            "type": "choice",
+            "confidence": 0.9874712464472124,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.9971593618392944,
+              "true": 0.002840678906068206
+            },
+            "max_probability": 0.9971593618392944,
+            "type": "noul",
+            "noul": 0.002840678906068206,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.28520089387893677,
+              "medio": 0.21662425994873047,
+              "alto": 0.49817490577697754
+            },
+            "max_probability": 0.49817490577697754,
+            "type": "score",
+            "confidence": 0.0567383463702088,
+            "score": 1.2129740715026855,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.2129740715026855,
+            "needs_review": true
+          }
+        },
+        "proposed_action": "revision_humana",
+        "routing_reason": "Probabilidad insuficiente en: nivel",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Expresa intención de cancelar la compra.. Probabilidad de la opción: 99.8%; confianza de distribución: 98.7%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 0.3%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Requiere revisión. Posición en la rúbrica: 1.213 de 2; confianza de distribución: 5.7%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.5887189981876872
+    },
+    {
+      "id": "impacto_contradictorio",
+      "passed": false,
+      "checks": {
+        "no_action_executed": true,
+        "action": false,
+        "needs_review": false
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.8105200529098511,
+              "reclamacion": 0.054234106093645096,
+              "cancelacion": 0.13524580001831055
+            },
+            "max_probability": 0.8105200529098511,
+            "type": "choice",
+            "confidence": 0.45484245816546065,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.7481218576431274,
+              "true": 0.25187814235687256
+            },
+            "max_probability": 0.7481218576431274,
+            "type": "noul",
+            "noul": 0.25187814235687256,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.01688809134066105,
+              "medio": 0.000278579507721588,
+              "alto": 0.9828333258628845
+            },
+            "max_probability": 0.9828333258628845,
+            "type": "score",
+            "confidence": 0.9196971959922404,
+            "score": 1.9659452312334906,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.9659452438354492,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_informacion",
+        "routing_reason": "Regla: clasificacion=consulta, probabilidad 81.1%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 81.1%; confianza de distribución: 45.5%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 25.2%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.966 de 2; confianza de distribución: 92.0%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.4506699988269247
+    },
+    {
+      "id": "mensaje_vacio_semantico",
+      "passed": false,
+      "checks": {
+        "no_action_executed": true,
+        "action": false,
+        "needs_review": false
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.9958653450012207,
+              "reclamacion": 0.0008015524945221841,
+              "cancelacion": 0.0033330293372273445
+            },
+            "max_probability": 0.9958653450012207,
+            "type": "choice",
+            "confidence": 0.9737382889319133,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "false",
+            "meaning": "Plazo flexible; puede esperar varios días.",
+            "probabilities": {
+              "false": 0.8737400770187378,
+              "true": 0.126259908080101
+            },
+            "max_probability": 0.8737400770187378,
+            "type": "noul",
+            "noul": 0.126259908080101,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.1510566622018814,
+              "medio": 0.14516828954219818,
+              "alto": 0.7037750482559204
+            },
+            "max_probability": 0.7037750482559204,
+            "type": "score",
+            "confidence": 0.26006593155139934,
+            "score": 1.552718386054039,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.5527184009552002,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_informacion",
+        "routing_reason": "Regla: clasificacion=consulta, probabilidad 99.6%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 99.6%; confianza de distribución: 97.4%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 12.6%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.553 de 2; confianza de distribución: 26.0%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.40577199979452416
+    },
+    {
+      "id": "fuera_dominio",
+      "passed": false,
+      "checks": {
+        "no_action_executed": true,
+        "action": false,
+        "needs_review": false
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      },
+      "actual": {
+        "answers": {
+          "clasificacion": {
+            "kind": "choice",
+            "question": "¿Cuál es la necesidad principal del cliente?",
+            "choice": "consulta",
+            "meaning": "Solicita información del producto.",
+            "probabilities": {
+              "consulta": 0.9402899742126465,
+              "reclamacion": 0.05282895267009735,
+              "cancelacion": 0.006881099194288254
+            },
+            "max_probability": 0.9402899742126465,
+            "type": "choice",
+            "confidence": 0.7747107483847493,
+            "needs_review": false
+          },
+          "atencion_prioritaria": {
+            "kind": "noul",
+            "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+            "choice": "true",
+            "meaning": "Vencimiento explícito hoy o en las próximas horas.",
+            "probabilities": {
+              "false": 0.053550321608781815,
+              "true": 0.9464496970176697
+            },
+            "max_probability": 0.9464496970176697,
+            "type": "noul",
+            "noul": 0.9464496970176697,
+            "needs_review": false
+          },
+          "nivel": {
+            "kind": "score",
+            "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+            "choice": "alto",
+            "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa.",
+            "probabilities": {
+              "bajo": 0.21150007843971252,
+              "medio": 0.08246489614248276,
+              "alto": 0.7060350179672241
+            },
+            "max_probability": 0.7060350179672241,
+            "type": "score",
+            "confidence": 0.28990672063922474,
+            "score": 1.494534932076931,
+            "legend": {
+              "bajo": {
+                "level": 0,
+                "description": "Impacto menor o personal, sin interrupción operativa."
+              },
+              "medio": {
+                "level": 1,
+                "description": "Impacto parcial, varias unidades o un equipo con alternativa."
+              },
+              "alto": {
+                "level": 2,
+                "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+              }
+            },
+            "expected_score": 1.494534969329834,
+            "needs_review": false
+          }
+        },
+        "proposed_action": "cola_informacion",
+        "routing_reason": "Regla: clasificacion=consulta, probabilidad 94.0%.",
+        "interpretation": "¿Cuál es la necesidad principal del cliente? Solicita información del producto.. Probabilidad de la opción: 94.0%; confianza de distribución: 77.5%. ¿Existe un plazo explícito que requiere atención hoy o en las próximas horas? Probabilidad de que la afirmación sea verdadera: 94.6%. Cerca de 0,5 indica ambigüedad, no intensidad. ¿Cuál es el alcance del impacto operativo o económico descrito? Posición en la rúbrica: 1.495 de 2; confianza de distribución: 29.0%.",
+        "action_executed": false
+      },
+      "latency_ms": 0.44673400407191366
+    },
+    {
+      "id": "reject_unknown_field",
+      "passed": true,
+      "checks": {
+        "input_rejected": true
+      },
+      "error": "context fields must be exactly ['contexto', 'dias_desde_compra', 'mensaje']; labels are not inputs",
+      "latency_ms": 0.005437999789137393
+    }
+  ],
+  "interpretation": "21 de 25 casos cumplen todas sus expectativas. No cumple el criterio: revisar los casos fallidos o las regresiones.",
+  "limitations": "Prueba offline de casos declarados. No demuestra rendimiento en producción, carga ni independencia de los datos sintéticos. No autoriza despliegues."
+}

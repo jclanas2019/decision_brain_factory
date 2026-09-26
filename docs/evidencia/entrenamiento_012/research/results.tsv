@@ -1,0 +1,4 @@
+experiment	config_sha256	mean_validation_loss	status	hypothesis	reasons
+0	b9bdb3757d659e6155e423b3da61b6cb90ff8690bb6417b792b42dddf947096d	0.12732299293080965	keep	Baseline con configuración original y semillas fijadas.	baseline established; not a quality approval
+1	05a063f24c259aec2cd5f0ab5d0dfbb051d4e9f9683278f1872fee671843571c	0.15825863182544708	discard	Reducir sobreajuste aumentando regularización; conservar el resto.	head_loss_regression:atencion_prioritaria; head_loss_regression:clasificacion; head_loss_regression:nivel; no_mean_loss_improvement; seed_loss_regression:42; seed_loss_regression:43
+2	a52e5d91f02f84fe23f1b724c9f5e8369e15acb96ff94534057d23dbcff665a5	0.13019225125511485	discard	Evaluar menor capacidad para mejorar generalización.	no_mean_loss_improvement

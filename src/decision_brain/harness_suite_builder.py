@@ -4,6 +4,8 @@ from pathlib import Path
 
 
 def build(spec):
+    if spec.get('evaluation_cases'):
+        return {'version':1,'origin':'authored_cross_factor_and_ambiguity_challenge','cases':[*spec['evaluation_cases'],{'id':'reject_unknown_field','context':{'__unexpected__':'invalid'},'expect_error':True}]}
     cases=[]
     for scene in spec.get('synthetic_scenarios',[]):
         state={}

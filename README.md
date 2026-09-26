@@ -1,4 +1,4 @@
-# Decision Brain 0.10 — uso, operación y SDK
+# Decision Brain 0.12 — uso, operación y SDK
 
 Sistema local de decisiones tipadas con fábrica de proyectos, evaluación, gateway, observabilidad y consumidor de eventos. Las acciones son propuestas: no ejecuta cambios en ERP, CRM ni tickets.
 
@@ -65,3 +65,11 @@ Esta entrega limpia la documentación anterior. Conserva código y capacidades p
 ## Preguntas tipadas
 
 Entrenamiento y resultados Choice, Score y Noul: [documentación](docs/PRIMITIVAS.md) · [HTML](docs/PRIMITIVAS.html). Los presets nuevos incluyen los tres tipos.
+
+## Escenarios y datos reales
+
+[Entrenamiento y evaluación 0.11](docs/ENTRENAMIENTO_REALISTA.md): generador retail de 18 combinaciones, harness de ambigüedad, auditoría y preparación de CSV por entidad. Los fallos de calidad permanecen visibles.
+
+## AutoEvals y autoresearch
+
+`bash start.sh autoresearch` ejecuta pruebas, búsqueda acotada con varias semillas, AutoEvals y harness. [Guía de aseguramiento](docs/ASEGURAMIENTO.md) · [HTML](docs/ASEGURAMIENTO.html).

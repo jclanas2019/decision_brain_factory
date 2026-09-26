@@ -57,7 +57,7 @@ def inside():
         log=logs/'package-setup.log'
         if install(pip+['--no-deps','-e',str(ROOT)],log):return fail('Falló la instalación del paquete.',log)
         stamp.write_text(fingerprint,encoding='utf-8')
-    smoke=subprocess.run([sys.executable,'-c','import numpy, sklearn, matplotlib, faker, fastapi, httpx; from decision_brain import harness, brain'],cwd=ROOT,capture_output=True,text=True,encoding='utf-8')
+    smoke=subprocess.run([sys.executable,'-c','import numpy, sklearn, matplotlib, faker, fastapi, httpx, autoevals; from decision_brain import harness, brain'],cwd=ROOT,capture_output=True,text=True,encoding='utf-8')
     if smoke.returncode:
         log=logs/'import-error.log';log.write_text(smoke.stdout+smoke.stderr,encoding='utf-8')
         return fail('Una dependencia no puede importarse.',log)

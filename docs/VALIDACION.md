@@ -1,3 +1,47 @@
+# Validación 0.12: AutoEvals y autoresearch
+
+Se ejecutaron 123 pruebas de software sin fallos. La dependencia real AutoEvals 0.3.0 está instalada y su evaluación local se probó bloqueando conexiones de red. pip check no detectó incompatibilidades.
+
+El entrenamiento de evidencia usó 2.000 filas sintéticas, tres experimentos y dos semillas por experimento. La referencia se conservó; las dos propuestas se descartaron. El registro durable coincide con la búsqueda incluida en report.json. AutoEvals y la recarga funcional pasaron; el harness aprobó 21/25 casos y permanece FAIL. No se activó ninguna versión ni se relajaron expectativas.
+
+| Control | Resultado |
+| --- | --- |
+| AutoEvals sobre test | PASS |
+| Recarga y respuesta tipada, 300 casos | PASS |
+| Propuestas mejoradas aceptadas | 0; se conserva baseline |
+| Harness | FAIL: 21/25 |
+| Promoción | Bloqueada por harness y datos sintéticos |
+
+Los tests verifican propuesta fuera de límites, regresión por cabeza/semilla/ExactMatch, presupuesto temporal, conservación del incumbente ante error, checkpoint final, falta de evidencia AutoEvals, hashes de otro modelo y propagación de FAIL al arranque. No se ejecutó macOS nativo, una carga productiva ni un agente externo.
+
+Evidencia actual: evidencia/entrenamiento_012/report.html, evidencia/entrenamiento_012/research/research.json, evidencia/harness_012/report.html, evidencia/resumen_012.json y evidencia/pruebas_012.log. Los números de versiones anteriores se conservan como histórico, no como validación de 0.12.
+
+## Evidencia anterior
+
+# Validación 0.11: escenarios y datos
+
+Se ejecutaron 111 pruebas de software sin fallos. Se entrenó el preset retail con 2.000 registros sintéticos y tres candidatos; 300 registros se reservaron para test. La recarga y el gate de respuestas tipadas pasaron en los 300 casos.
+
+El harness ampliado NO aprobó: 21/25 casos. Fallan intenciones_mixtas, impacto_contradictorio, mensaje_vacio_semantico y fuera_dominio. Una política que exija aprobar el harness no debe promocionar este modelo. El comando de harness devuelve 1 por calidad, conservando sus informes.
+
+| Medida | Resultado |
+| --- | --- |
+| Textos de entrenamiento distintos | 1.084 de 1.100 |
+| Combinaciones de etiquetas | 18 en cada partición |
+| Textos exactos compartidos entre particiones | 0 |
+| Exactitud Choice / Noul / Score por nivel | 100 % / 99,3 % / 100 % |
+| Exactitud sin texto | 34 % / 50 % / 35,3 % |
+| Loss de test media | 0,06970 |
+| MAE de Score | 0,01732 niveles |
+
+Estos resultados altos corresponden a frases sintéticas combinadas y se deben leer junto a los cuatro fallos del harness. No hay validación sobre casos reales ni sobre macOS nativo. Cambió la semántica de las preguntas: no es válido comparar estas exactitudes con las de 0.10 como si fueran el mismo problema.
+
+El experimento opcional con etiquetas distribuidas de incertidumbre tampoco superó 21/25 casos y redujo Noul a 95,7 %. Se entrega desactivado por defecto; no fue promovido por parecer más sofisticado.
+
+La evidencia actual está en docs/evidencia/entrenamiento_011, harness_011, experimento_incertidumbre_011 y resumen_011.json. Las carpetas con sufijo 010 corresponden a la versión anterior.
+
+## Evidencia anterior
+
 # Validación de la ampliación 0.10 — Choice, Score y Noul
 
 Se ejecutaron 106 pruebas, sin fallos ni errores, en el proyecto principal y otras 106 en un proyecto generado por la fábrica. Incluyen entrenamiento y recarga con los tres tipos, semántica numérica, compatibilidad boolean, rechazo de respuestas alteradas, SDK y rangos de harness.

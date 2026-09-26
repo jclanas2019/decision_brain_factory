@@ -1,5 +1,5 @@
 {
-  "dias_desde_compra": 1.5,
-  "mensaje": "Estoy comparando opciones: ¿pueden explicar las características?",
-  "contexto": "Solicitud operativa de Empresa Ejemplo, referencia TEST-001."
+  "dias_desde_compra": 5,
+  "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La respuesta puede esperar hasta la próxima semana. Es una compra personal pequeña sin consecuencias para el trabajo.",
+  "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
 }

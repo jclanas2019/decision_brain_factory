@@ -1,0 +1,4 @@
+[
+  {"hypothesis":"Comprobar si una regularización mayor reduce la brecha de generalización.","hidden":64,"lr":0.008,"decay":0.0006},
+  {"hypothesis":"Comprobar si una red menor mantiene calidad con menor capacidad.","hidden":32,"lr":0.008,"decay":0.0002}
+]

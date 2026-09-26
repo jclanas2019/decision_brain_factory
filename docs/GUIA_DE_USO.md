@@ -530,3 +530,12 @@ La puesta en marcha razonable comienza en paralelo sin efectos externos, sigue c
 ## 15. Preguntas Choice, Score y Noul
 
 La versión 0.10 añade resultados, métricas, SDK tipado y harness de rangos. Consulta [la guía de primitivas](PRIMITIVAS.md), que incluye los comandos, las escalas y la compatibilidad.
+
+
+## 16. Entrenamiento y evaluación de escenarios
+
+Consulta [la ampliación 0.11](ENTRENAMIENTO_REALISTA.md) para las nuevas definiciones de Noul y Score en retail, generación por factores, resultados y datos reales.
+
+## 17. Aseguramiento del entrenamiento
+
+[AutoEvals y autoresearch](ASEGURAMIENTO.md): uso, presupuestos, hipótesis, evidencia y promoción.

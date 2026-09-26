@@ -13,6 +13,8 @@ from datetime import datetime,timezone
 from decision_brain.runtime_paths import latest_model
 from decision_brain.brain import load_model, encode, judge, signature
 from decision_brain.contracts import validate_state
+from decision_brain.autoeval_quality import exact
+from importlib.metadata import version as package_version
 
 
 def digest(path):
@@ -81,9 +83,9 @@ def evaluate(model, suite):
             if isinstance(value,dict):
                 field,bounds=next(iter(value.items()))
                 checks['answer:'+key]=bounds['min']<=answer['answers'][key][field]<=bounds['max']
-            else:checks['answer:'+key]=answer['answers'][key]['choice']==value
-        if 'action' in expected: checks['action']=answer['proposed_action']==expected['action']
-        if 'needs_review' in expected: checks['needs_review']=any(a['needs_review'] for a in answer['answers'].values())==expected['needs_review']
+            else:checks['answer:'+key]=bool(exact(answer['answers'][key]['choice'],value))
+        if 'action' in expected: checks['action']=bool(exact(answer['proposed_action'],expected['action']))
+        if 'needs_review' in expected: checks['needs_review']=bool(exact(any(a['needs_review'] for a in answer['answers'].values()),expected['needs_review']))
         rows.append({'id':case['id'],'passed':all(checks.values()),'checks':checks,'expected':expected,'actual':answer,'latency_ms':(time.perf_counter()-start)*1000})
     return rows
 
@@ -104,7 +106,9 @@ def run(run_dir,suite_path,out,baseline=None,min_pass_rate=1.0):
     rate=sum(r['passed'] for r in rows)/len(rows)
     passed=rate>=min_pass_rate and not regressions
     fingerprints=lambda folder:{f:digest(folder/f) for f in ('brain.json','model.json','encoder.json','weights.npz')}
-    report={'version':1,'passed':passed,'suite_sha256':digest(suite_path),'suite_origin':suite.get('origin','unspecified'),
+    report={'autoevals':{'engine':'autoevals','version':package_version('autoevals'),'mode':'local_no_remote_judge',
+                'scorer':'ExactMatch for discrete assertions; exact range checks for numeric assertions'},
+            'version':1,'passed':passed,'suite_sha256':digest(suite_path),'suite_origin':suite.get('origin','unspecified'),
             'model_sha256':fingerprints(run_dir),'baseline_sha256':fingerprints(baseline) if baseline else None,
             'cases_count':len(rows),'pass_rate':rate,'min_pass_rate':min_pass_rate,'regressions':regressions,'cases':rows,
             'interpretation':f'{sum(r["passed"] for r in rows)} de {len(rows)} casos cumplen todas sus expectativas. '+

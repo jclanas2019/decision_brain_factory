@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "max_experiments": 12,
+  "max_seconds": 600,
+  "experiment_seconds": 120,
+  "seed_offsets": [0, 1],
+  "min_loss_improvement": 0.0001,
+  "max_head_loss_regression": 0.02,
+  "max_exact_match_regression": 0.02,
+  "max_seed_loss_regression": 0.02,
+  "final_autoevals": {
+    "exact_match": 0.85,
+    "probability_quality": 0.85,
+    "score_closeness": 0.8
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "version": "0.12.0",
+  "software_tests": 123,
+  "autoevals_version": "0.3.0",
+  "autoevals_passed": true,
+  "functional": {
+    "serialization_passed": true,
+    "typed_response_gate_passed": true,
+    "rows": 300
+  },
+  "harness_passed": false,
+  "harness_pass_rate": 0.84,
+  "experiments": 3,
+  "seeds_per_experiment": 2,
+  "statuses": [
+    "keep",
+    "discard",
+    "discard"
+  ],
+  "test_used_for_selection": false,
+  "promotion": "blocked_by_harness_and_synthetic_data"
+}

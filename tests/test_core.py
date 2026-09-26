@@ -31,7 +31,7 @@ class CoreChecks(unittest.TestCase):
         self.spec['decisions'][2]['options'][1]['value']=-1
         with self.assertRaises(ValueError):validate(self.spec)
     def test_distinct_partition_templates(self):
-        t=self.spec['synthetic_scenarios'][0]['context']['mensaje'];t['test']=t['train']
+        t=self.spec['synthetic_design']['factors'][0]['phrases']['consulta'];t['test']=t['train']
         with self.assertRaises(ValueError):validate(self.spec)
     def test_uncertainty_routes_to_review(self):
         result=brain.judge(self.spec,[[.34,.33,.33],[.5,.5],[.34,.33,.33]])

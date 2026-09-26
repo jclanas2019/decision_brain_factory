@@ -28,7 +28,7 @@ def signature(spec):return hashlib.sha256(json.dumps(spec,sort_keys=True).encode
 def generate(spec,rows,seed,path):
     require(not Path(path).exists(),'Dataset already exists; choose another output path')
     scenes=spec.get('synthetic_scenarios',[])
-    require(len(scenes)>0,'No synthetic scenarios: supply an annotated CSV for training')
+    require(len(scenes)>0 or 'synthetic_design' in spec,'No synthetic scenarios: supply an annotated CSV for training')
     require(rows>=200,'Generate at least 200 rows')
     fake=Faker(spec.get('locale','es_ES'));fake.seed_instance(seed)
     rng=np.random.default_rng(seed)
@@ -39,6 +39,12 @@ def generate(spec,rows,seed,path):
         sizes=[int(rows*.55),int(rows*.15),int(rows*.15)]
         sizes.append(rows-sum(sizes))
         for split,n in zip(SPLITS,sizes):
+            if 'synthetic_design' in spec:
+                from decision_brain.synthetic import rows_for_split
+                for state,labels in rows_for_split(spec,n,split,seed,fake):
+                    validate_state(state,spec)
+                    writer.writerow({**state,**{'target__'+k:v for k,v in labels.items()},'__split':split})
+                continue
             for i in range(n):
                 scene=scenes[i%len(scenes)]
                 replacements={'company':fake.company(),'name':fake.name(),'city':fake.city(),'code':fake.bothify('??-####')}
@@ -54,15 +60,21 @@ def generate(spec,rows,seed,path):
 
 
 def read_dataset(path,spec):
-    parts={s:[] for s in SPLITS}
+    parts={s:[] for s in SPLITS};groups={}
     allowed={f['id'] for f in spec['fields']}|{'target__'+d['id'] for d in spec['decisions']}|{'__split'}
     with open(path,newline='',encoding='utf-8') as f:
         reader=csv.DictReader(f)
-        require(set(reader.fieldnames or [])==allowed,'CSV columns must match contract plus target__<decision> and __split')
+        columns=set(reader.fieldnames or [])
+        require(len(reader.fieldnames or [])==len(columns),'duplicate CSV headers')
+        require(columns in (allowed,allowed|{'__group'}),'CSV columns must match contract plus target__<decision>, __split and optional __group')
         for row in reader:
             state={v['id']:float(row[v['id']]) if v['type']=='number' else row[v['id']] for v in spec['fields']}
             validate_state(state,spec)
             require(row['__split'] in parts,'invalid __split')
+            if '__group' in columns:
+                group=row['__group'].strip();require(bool(group),'__group must be nonempty')
+                require(group not in groups or groups[group]==row['__split'],'same __group crosses data partitions')
+                groups[group]=row['__split']
             targets=[]
             for d in spec['decisions']:
                 options=[v['id'] for v in d['options']]
@@ -179,32 +191,44 @@ def evaluate(spec,probs,truth,train_truth):
 def train(args,spec):
     out=args.output
     require(not out.exists(),'Output directory already exists; choose a new run directory')
+    protected={str(args.data.resolve()):hashlib.sha256(args.data.read_bytes()).hexdigest()}
+    for name in ('brain.py','network.py','autoeval_quality.py','autoresearch.py'):
+        path=Path(__file__).with_name(name);protected[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest()
     parts=read_dataset(args.data,spec)
     states={s:[r[0] for r in rows] for s,rows in parts.items()}
     targets={s:[np.array([r[1][i] for r in rows]) for i in range(len(spec['decisions']))] for s,rows in parts.items()}
     enc=fit_encoder(states['train'],spec)
     features={s:encode(rows,enc) for s,rows in states.items()}
     counts=[len(d['options']) for d in spec['decisions']]
-    rng=np.random.default_rng(args.seed);config=Config(epochs=args.epochs)
-    trace=[];best=float('inf');winner=None;selected=None
-    for trial in range(args.trials):
-        candidate=config if trial==0 else Config(hidden=int(rng.choice([32,64,128])),
-            lr=float(np.clip(config.lr*np.exp(rng.normal(0,.3)),.001,.02)),decay=config.decay,epochs=args.epochs)
-        net=MultiDecisionNet(features['train'].shape[1],candidate,args.seed,counts)
-        _,history=net.train(features['train'],targets['train'],args.seed,features['validation'],targets['validation'],args.log_every)
-        value=loss(net.predict(features['validation']),targets['validation']);accepted=value<best-1e-5
-        if accepted:config,best,winner,selected=candidate,value,net,trial
-        for epoch in history:
-            for key in ('train_head_loss','validation_head_loss'):
-                epoch[key]={d['id']:v for d,v in zip(spec['decisions'],epoch[key])}
-        trace.append({'trial':trial,'configuration':asdict(candidate),'validation_loss':value,'accepted':accepted,'epochs':history})
-        print(f'propuesta={trial} validation_loss={value:.6g} accepted={accepted}',flush=True)
+    optimization_features=features['train'];optimization_targets=targets['train'];uncertainty_count=0
+    # Synthetic uncertainty exposure is explicit and used ONLY for synthetic demos.
+    fraction=spec.get('synthetic_design',{}).get('uncertainty_training_fraction',0)
+    if getattr(args,'origin','user_supplied')=='synthetic_demo' and fraction:
+        from decision_brain.synthetic import uncertainty_rows
+        fake=Faker(spec.get('locale','es_ES'));fake.seed_instance(args.seed+991)
+        extra=list(uncertainty_rows(spec,int(len(states['train'])*fraction),args.seed,fake))
+        uncertainty_count=len(extra)
+        optimization_features=np.vstack([features['train'],encode([s for s,_ in extra],enc)])
+        optimization_targets=[np.vstack([np.eye(count)[targets['train'][i]],np.array([y[i] for _,y in extra])]).astype(np.float32) for i,count in enumerate(counts)]
+    from decision_brain.autoresearch import policy_read,search,freeze_hash
+    from decision_brain.layout import project_root
+    policy_path=getattr(args,'research_policy',None) or project_root()/'config/research_policy.json'
+    research_policy=policy_read(policy_path)
+    proposals_path=getattr(args,'proposals',None)
+    proposals=json.loads(Path(proposals_path).read_text()) if proposals_path else None
+    winner,config,trace,selected=search({'decisions':spec['decisions']},optimization_features,optimization_targets,
+        features['validation'],targets['validation'],seed=args.seed,epochs=args.epochs,trials=args.trials,
+        log_every=args.log_every,folder=out/'research',policy=research_policy,proposals=proposals)
+    require(all(hashlib.sha256(Path(path).read_bytes()).hexdigest()==digest for path,digest in protected.items()),'Data or training/evaluation code changed during research')
     # Calibration set is independent of both optimization and final testing.
     winner.temperature=[min((.7,1.,1.4,2.,3.),key=lambda t:single_loss(
         winner._raw_prob(features['calibration'],i,t),targets['calibration'][i])) for i in range(len(counts))]
     test=winner.predict(features['test'])
     metrics=evaluate(spec,test,targets['test'],targets['train'])
-    out.mkdir(parents=True)
+    from decision_brain.autoeval_quality import evaluate as autoevaluate,gate as autogate
+    autoevals=autoevaluate(spec['decisions'],test,targets['test'],include_cases=True)
+    autoeval_errors=autogate(autoevals,research_policy['final_autoevals'])
+    out.mkdir(parents=True,exist_ok=True)
     save(out/'brain.json',spec)
     save(out/'model.json',{'contract_hash':signature(spec),'input_dim':features['train'].shape[1],
                          'counts':counts,'configuration':asdict(config)})
@@ -220,14 +244,32 @@ def train(args,spec):
     examples=[]
     for index,state in enumerate(states['test'][:5]):
         examples.append({'state':state,**judge(saved_spec,[p[index] for p in replay])})
+    from decision_brain.data_quality import audit_dataset
+    dataset_audit=audit_dataset(parts,spec)
+    ablations={}
+    for name,disabled in [('without_text',bool(enc['text'])),('without_numeric',bool(enc['numeric']))]:
+        if not disabled:continue
+        x=features['test'].copy();n_numeric=len(enc['numeric'])
+        if name=='without_text':x[:,n_numeric:]=0
+        else:x[:,:n_numeric]=0
+        ablations[name]=evaluate(spec,winner.predict(x),targets['test'],targets['train'])
     report={'industry':spec['industry'],'seed':args.seed,'dataset_sha256':hashlib.sha256(args.data.read_bytes()).hexdigest(),
         'split_sizes':{s:len(rows) for s,rows in parts.items()},'selected_trial':selected,'search':trace,
         'test_loss':loss(test,targets['test']),'metrics':metrics,'temperatures':winner.temperature,
+        'dataset_audit':dataset_audit,'input_ablation':ablations,
+        'uncertainty_training':{'rows':uncertainty_count,'targets':'soft distributions; train wording only; synthetic_demo only'},
+        'assurance':{'engine':'autoevals','version':autoevals['version'],'passed':not autoeval_errors,
+          'reasons':autoeval_errors,'policy':research_policy['final_autoevals'],
+          'scores':{k:v for k,v in autoevals.items() if k!='cases'},
+          'research_policy_sha256':freeze_hash(research_policy),'test_used_for_selection':False,
+          'protected_inputs_sha256':{Path(k).name:v for k,v in protected.items()},
+          'artifact_sha256':{name:hashlib.sha256((out/name).read_bytes()).hexdigest() for name in ('brain.json','model.json','encoder.json','weights.npz')}},
         'question_types':{d['id']:question_type(d) for d in spec['decisions']},
         'confidence_method':'1 - normalized Shannon entropy; not Jev proprietary confidence',
         'functional_test':{'serialization_passed':True,'typed_response_gate_passed':True,'rows':len(states['test'])},
         'scenarios':examples,'data_origin':getattr(args,'origin','user_supplied')}
     save(out/'report.json',report)
+    save(out/'autoevals.json',{'passed':not autoeval_errors,'reasons':autoeval_errors,**autoevals})
     with (out/'predictions.jsonl').open('w',encoding='utf-8') as stream:
         for index in range(len(states['test'])):
             result=judge(saved_spec,[p[index] for p in replay])
@@ -238,6 +280,7 @@ def train(args,spec):
             for label,row in zip(m['labels'],m['confusion_matrix']):w.writerow([label,*row])
     from decision_brain.reporting import render
     render(report,out)
+    print('AUTOEVALS '+('PASS' if not autoeval_errors else 'FAIL')+'; '+str(autoeval_errors),flush=True)
     print(f'FUNCTIONAL TEST PASSED; test_loss={report["test_loss"]:.6g}',flush=True)
     for name,m in metrics.items():
         print(f'{name} [{m["type"]}]: exactitud={m["accuracy"]:.1%}; referencia={m["baseline_accuracy"]:.1%}; loss={m["log_loss"]:.5f}',flush=True)
@@ -256,6 +299,8 @@ def main():
         t.add_argument('--output',type=Path,default=Path('runs/default'));t.add_argument('--seed',type=int,default=42)
         t.add_argument('--trials',type=int,default=3);t.add_argument('--epochs',type=int,default=40)
         t.add_argument('--log-every',type=int,default=10)
+        t.add_argument('--research-policy',type=Path)
+        t.add_argument('--proposals',type=Path,help='JSON list of bounded hypotheses; baseline always runs first')
         if name=='demo':t.add_argument('--rows',type=int,default=1000)
     inf=sub.add_parser('predict');inf.add_argument('--run',type=Path);inf.add_argument('--state',type=Path,required=True)
     a=p.parse_args()

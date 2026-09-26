@@ -33,6 +33,14 @@ def write_atomic(path,value):
 def check_gate(report,policy,evidence):
     errors=[]
     if not isinstance(report.get('metrics'),dict) or not report['metrics']:return ['missing decision metrics']
+    if policy.get('require_autoevals',False):
+        from decision_brain.autoeval_quality import gate
+        a=report.get('assurance',{})
+        if a.get('engine')!='autoevals' or a.get('passed') is not True or a.get('test_used_for_selection') is not False:
+            errors.append('AutoEvals assurance missing or failed')
+        else:
+            if set(a.get('scores',{}).get('heads',{}))!=set(report['metrics']):errors.append('AutoEvals heads differ from model metrics')
+            errors.extend(gate(a.get('scores',{}),policy.get('autoevals',{})))
     if report.get('data_origin')!='user_supplied':errors.append('synthetic datasets cannot be promoted to production')
     if evidence.get('dataset_sha256')!=report.get('dataset_sha256'):errors.append('evidence dataset hash mismatch')
     for key in ('reviewer','reviewed_at','split_method','business_acceptance'):
@@ -68,6 +76,12 @@ def check_gate(report,policy,evidence):
 def verify_quality(run,quality,policy):
     require(isinstance(quality,dict) and quality.get('passed') is True,'harness quality=fail')
     require(quality.get('regressions')==[],'harness regression detected')
+    if policy.get('require_autoevals',False):
+        require(quality.get('autoevals',{}).get('engine')=='autoevals','harness requires AutoEvals')
+        report=json.loads((run/'report.json').read_text(encoding='utf-8'))
+        hashes=report.get('assurance',{}).get('artifact_sha256',{})
+        require(set(hashes)=={'brain.json','model.json','encoder.json','weights.npz'},'missing assurance artifact hashes')
+        for name,expected in hashes.items():require(digest(run/name)==expected,'assurance belongs to different model')
     required=policy.get('harness',{}).get('min_pass_rate',1.0)
     rate=quality.get('pass_rate')
     require(type(rate) in (int,float) and math.isfinite(rate) and rate>=required,'harness below promotion threshold')

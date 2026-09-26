@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "origin": "synthetic_preset_smoke_only",
+  "origin": "authored_cross_factor_and_ambiguity_challenge",
   "cases": [
     {
-      "id": "consulta",
+      "id": "cross_consulta_false_bajo",
       "context": {
-        "dias_desde_compra": 1.5,
-        "mensaje": "Estoy comparando opciones: ¿pueden explicar las características?",
-        "contexto": "Solicitud operativa de Empresa Ejemplo, referencia TEST-001."
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La respuesta puede esperar hasta la próxima semana. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
       },
       "expected": {
         "answers": {
@@ -18,11 +18,101 @@
       }
     },
     {
-      "id": "reclamacion",
+      "id": "cross_consulta_false_medio",
       "context": {
-        "dias_desde_compra": 7.0,
-        "mensaje": "La compra presenta una falla y quisiera reclamar.",
-        "contexto": "Solicitud operativa de Empresa Ejemplo, referencia TEST-001."
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La respuesta puede esperar hasta la próxima semana. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "false",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "cross_consulta_false_alto",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La respuesta puede esperar hasta la próxima semana. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "false",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "cross_consulta_true_bajo",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La autorización vence esta tarde; necesito respuesta hoy. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "true",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "cross_consulta_true_medio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La autorización vence esta tarde; necesito respuesta hoy. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "true",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "cross_consulta_true_alto",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La autorización vence esta tarde; necesito respuesta hoy. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "true",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "cross_reclamacion_false_bajo",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La respuesta puede esperar hasta la próxima semana. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "false",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "cross_reclamacion_false_medio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La respuesta puede esperar hasta la próxima semana. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
       },
       "expected": {
         "answers": {
@@ -33,11 +123,146 @@
       }
     },
     {
-      "id": "cancelacion",
+      "id": "cross_reclamacion_false_alto",
       "context": {
-        "dias_desde_compra": 1.0,
-        "mensaje": "No envíen el producto: deseo dejar sin efecto el pedido.",
-        "contexto": "Solicitud operativa de Empresa Ejemplo, referencia TEST-001."
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La respuesta puede esperar hasta la próxima semana. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "false",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "cross_reclamacion_true_bajo",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La autorización vence esta tarde; necesito respuesta hoy. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "true",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "cross_reclamacion_true_medio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La autorización vence esta tarde; necesito respuesta hoy. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "true",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "cross_reclamacion_true_alto",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La autorización vence esta tarde; necesito respuesta hoy. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "true",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_false_bajo",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La respuesta puede esperar hasta la próxima semana. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "false",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_false_medio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La respuesta puede esperar hasta la próxima semana. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "false",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_false_alto",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La respuesta puede esperar hasta la próxima semana. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "false",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_true_bajo",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La autorización vence esta tarde; necesito respuesta hoy. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "true",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_true_medio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La autorización vence esta tarde; necesito respuesta hoy. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "true",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_true_alto",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La autorización vence esta tarde; necesito respuesta hoy. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
       },
       "expected": {
         "answers": {
@@ -45,6 +270,78 @@
           "atencion_prioritaria": "true",
           "nivel": "alto"
         }
+      }
+    },
+    {
+      "id": "sin_intencion",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Necesito que revisen mi caso; no he indicado qué quiero hacer.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      }
+    },
+    {
+      "id": "intenciones_mixtas",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Quiero información del producto, reclamar la falla y cancelar otra orden; no sé cuál gestionar primero.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      }
+    },
+    {
+      "id": "plazo_contradictorio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Quiero cancelar la compra. Puedo esperar la próxima semana, pero también necesito respuesta hoy. No confirmo cuál plazo vale.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      }
+    },
+    {
+      "id": "impacto_contradictorio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Solicito información. El impacto es pequeño y la operación completa está detenida. Falta verificar cuál descripción es correcta.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      }
+    },
+    {
+      "id": "mensaje_vacio_semantico",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Hola, pedido ABC-123. Gracias.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      }
+    },
+    {
+      "id": "fuera_dominio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Necesito una receta de cocina para esta noche.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
       }
     },
     {

@@ -1,0 +1,26 @@
+  epoch=1 train_loss=0.09345 validation_loss=0.30624
+  epoch=10 train_loss=0.00764 validation_loss=0.15186
+  epoch=20 train_loss=0.00587 validation_loss=0.12919
+  epoch=30 train_loss=0.00530 validation_loss=0.13437
+  epoch=35 train_loss=0.00536 validation_loss=0.13911
+propuesta=0 validation_loss=0.128637 accepted=True
+  epoch=1 train_loss=0.35930 validation_loss=0.54205
+  epoch=10 train_loss=0.01017 validation_loss=0.17200
+  epoch=20 train_loss=0.00777 validation_loss=0.14903
+  epoch=30 train_loss=0.00663 validation_loss=0.13795
+  epoch=40 train_loss=0.00609 validation_loss=0.13581
+propuesta=1 validation_loss=0.133489 accepted=False
+  epoch=1 train_loss=0.01144 validation_loss=0.16966
+  epoch=10 train_loss=0.00610 validation_loss=0.13885
+  epoch=20 train_loss=0.00516 validation_loss=0.12702
+  epoch=30 train_loss=0.00518 validation_loss=0.12987
+  epoch=31 train_loss=0.00498 validation_loss=0.13154
+propuesta=2 validation_loss=0.125252 accepted=True
+FUNCTIONAL TEST PASSED; test_loss=0.0696958
+clasificacion [choice]: exactitud=100.0%; referencia=34.0%; loss=0.05382
+  categorical_cross_entropy=0.05382; brier=0.01507
+atencion_prioritaria [noul]: exactitud=99.3%; referencia=50.0%; loss=0.14034
+  binary_cross_entropy=0.14034; brier=0.02985
+nivel [score]: exactitud=100.0%; referencia=33.3%; loss=0.01492
+  categorical_cross_entropy=0.01492; brier=0.00189; score_MAE=0.01732
+Informe interpretado: /workspace/scratch/bd214683c088/final_realistic_011/report.html

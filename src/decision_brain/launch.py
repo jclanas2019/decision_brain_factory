@@ -37,6 +37,9 @@ def dashboard(folder,status,checks,training,evaluation):
     origin='Demostración con datos sintéticos.'
     if (folder/'model/report.json').exists():
         model_report=json.loads((folder/'model/report.json').read_text(encoding='utf-8'))
+        assurance=model_report.get('assurance',{})
+        links+='<p>AutoEvals: '+('PASS' if assurance.get('passed') is True else 'FAIL')+'</p>'
+        if (folder/'model/research/research.json').is_file():links+='<p><a href="model/research/research.json">Evidencia de autoresearch</a></p>'
         if model_report.get('data_origin')=='user_supplied':origin='Evaluación del CSV suministrado por el usuario.'
     text=f'<!doctype html><html lang="es"><meta charset="utf-8"><title>Resultado del sistema</title><style>body{{font:18px system-ui;max-width:900px;margin:50px auto;padding:24px}}a{{display:inline-block;padding:10px}}p{{line-height:1.6}}</style><h1>{esc(status)}</h1><p>Pruebas de software: {esc(checks)}.</p>{links}<p>{esc(origin)} Aprobar las pruebas técnicas no certifica las decisiones del modelo ni su preparación para producción.</p></html>'
     if checks=='FALLARON':
@@ -57,6 +60,9 @@ def main():
     p.add_argument('--trials',type=int,default=3)
     p.add_argument('--epochs',type=int,default=40)
     p.add_argument('--data',type=Path,help='CSV anotado; si se omite, usa el generador sintético')
+    p.add_argument('--seed',type=int,default=42)
+    p.add_argument('--research-policy',type=Path)
+    p.add_argument('--proposals',type=Path)
     a=p.parse_args()
     os.environ['PYTHONUTF8']='1';os.environ['PYTHONIOENCODING']='utf-8'
     if a.rows<200 or a.trials<1 or a.epochs<1:p.error('rows >= 200; trials y epochs >= 1')
@@ -80,6 +86,9 @@ def main():
                 model=folder/'model'
                 command=[sys.executable,'-m','decision_brain.brain']+(['train','--data',str(a.data.resolve())] if a.data else ['demo','--rows',str(a.rows)])
                 command+=['--trials',str(a.trials),'--epochs',str(a.epochs),'--output',str(model)]
+                command+=['--seed',str(a.seed)]
+                for flag,value in [('--research-policy',a.research_policy),('--proposals',a.proposals)]:
+                    if value is not None:command+=[flag,str(value.resolve())]
                 result=step(command,folder/'training.log',True)
                 training=(model/'report.html').is_file()
                 if result:status='Falló el entrenamiento. Consulta el registro.'
@@ -90,6 +99,10 @@ def main():
                     result=step([sys.executable,'-m','decision_brain.harness','--run',str(model),'--output',str(folder/'evaluation')],folder/'harness.log',True)
                     evaluation=(folder/'evaluation/report.html').is_file()
                     code=result if result in (0,1) else 2
+                    if (model/'report.json').is_file():
+                        evidence=json.loads((model/'report.json').read_text(encoding='utf-8')).get('assurance',{})
+                        if evidence.get('passed') is not True and code==0:code=1
+                    result=code
                     status={0:'Ejecución completada: el modelo cumple los criterios del harness',1:'Ejecución completada: hay decisiones que no cumplen los criterios',2:'Error al ejecutar el harness. Consulta el registro.'}[code]
     except Exception as exc:
         status=f'Error de ejecución: {exc}';code=2

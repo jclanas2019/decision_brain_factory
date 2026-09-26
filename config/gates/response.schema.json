@@ -215,15 +215,15 @@
               "const": {
                 "bajo": {
                   "level": 0,
-                  "description": "Atención habitual."
+                  "description": "Impacto menor o personal, sin interrupción operativa."
                 },
                 "medio": {
                   "level": 1,
-                  "description": "Revisión del especialista."
+                  "description": "Impacto parcial, varias unidades o un equipo con alternativa."
                 },
                 "alto": {
                   "level": 2,
-                  "description": "Revisión humana prioritaria."
+                  "description": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
                 }
               }
             },

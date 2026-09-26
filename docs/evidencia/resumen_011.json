@@ -1,0 +1,22 @@
+{
+  "version": "0.11.0",
+  "software_tests": 111,
+  "training_rows": 2000,
+  "test_rows": 300,
+  "functional": {
+    "serialization_passed": true,
+    "typed_response_gate_passed": true,
+    "rows": 300
+  },
+  "quality": "fail",
+  "harness_passed": 21,
+  "harness_total": 25,
+  "failed_cases": [
+    "intenciones_mixtas",
+    "impacto_contradictorio",
+    "mensaje_vacio_semantico",
+    "fuera_dominio"
+  ],
+  "uncertainty_variant_promoted": false,
+  "reason": "No global harness gain; Noul test accuracy decreased. Changes to question meaning prevent direct accuracy comparison with v0.10."
+}
