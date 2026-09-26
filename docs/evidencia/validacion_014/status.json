@@ -1,0 +1,6 @@
+{
+  "status": "Ejecución completada: hay decisiones que no cumplen los criterios",
+  "software_checks": "APROBADAS",
+  "training_report": true,
+  "evaluation_report": true
+}

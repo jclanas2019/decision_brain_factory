@@ -1,0 +1,5 @@
+candidate 0 validation_loss 0.17449160697500804
+candidate 1 validation_loss 0.192083618108286
+candidate 2 validation_loss 0.2949426971651956
+neural {"test_loss": 0.051131945355640106, "harness_passed": 25, "warm_model_only_p50_ms": 0.02386599953752011, "uncertainty_quality_errors": ["uncertainty: joint_set_coverage_below_nominal_target"]}
+xgboost {"test_loss": 0.39797094478786904, "harness_passed": 19, "warm_model_only_p50_ms": 0.5105705022288021, "uncertainty_quality_errors": ["uncertainty: joint_set_coverage_below_nominal_target"]}

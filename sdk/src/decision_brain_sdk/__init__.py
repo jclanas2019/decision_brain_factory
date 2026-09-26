@@ -8,7 +8,7 @@ import uuid
 from urllib.parse import urlsplit
 import httpx
 
-__version__='0.12.0'
+__version__='0.14.0'
 
 class BrainError(Exception):
     """Controlled error without credential, context or server-body disclosure."""

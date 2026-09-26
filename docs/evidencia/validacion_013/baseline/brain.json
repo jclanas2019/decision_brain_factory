@@ -1,0 +1,704 @@
+{
+  "version": 1,
+  "industry": "Comercio: triaje de consultas y reclamaciones",
+  "locale": "es_ES",
+  "fields": [
+    {
+      "id": "dias_desde_compra",
+      "type": "number",
+      "description": "Días transcurridos desde la compra"
+    },
+    {
+      "id": "mensaje",
+      "type": "text",
+      "description": "¿Cuál es la necesidad principal del cliente?"
+    },
+    {
+      "id": "contexto",
+      "type": "text",
+      "description": "Organización y contexto operativo"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "clasificacion",
+      "kind": "choice",
+      "question": "¿Cuál es la necesidad principal del cliente?",
+      "min_probability": 0.55,
+      "options": [
+        {
+          "id": "consulta",
+          "meaning": "Solicita información del producto."
+        },
+        {
+          "id": "reclamacion",
+          "meaning": "Reclama un problema con su compra."
+        },
+        {
+          "id": "cancelacion",
+          "meaning": "Expresa intención de cancelar la compra."
+        }
+      ]
+    },
+    {
+      "id": "atencion_prioritaria",
+      "kind": "noul",
+      "question": "¿Existe un plazo explícito que requiere atención hoy o en las próximas horas?",
+      "options": [
+        {
+          "id": "false",
+          "meaning": "Plazo flexible; puede esperar varios días."
+        },
+        {
+          "id": "true",
+          "meaning": "Vencimiento explícito hoy o en las próximas horas."
+        }
+      ],
+      "min_probability": 0.55
+    },
+    {
+      "id": "nivel",
+      "kind": "score",
+      "question": "¿Cuál es el alcance del impacto operativo o económico descrito?",
+      "options": [
+        {
+          "id": "bajo",
+          "value": 0,
+          "meaning": "Impacto menor o personal, sin interrupción operativa."
+        },
+        {
+          "id": "medio",
+          "value": 1,
+          "meaning": "Impacto parcial, varias unidades o un equipo con alternativa."
+        },
+        {
+          "id": "alto",
+          "value": 2,
+          "meaning": "Impacto total, pérdidas graves o actividad bloqueada sin alternativa."
+        }
+      ],
+      "min_probability": 0.5
+    }
+  ],
+  "routing": {
+    "review_action": "revision_humana",
+    "fallback": "cola_general",
+    "rules": [
+      {
+        "decision": "clasificacion",
+        "option": "cancelacion",
+        "min_probability": 0.6,
+        "action": "revision_cancelacion"
+      },
+      {
+        "decision": "clasificacion",
+        "option": "reclamacion",
+        "min_probability": 0.6,
+        "action": "cola_postventa"
+      },
+      {
+        "decision": "clasificacion",
+        "option": "consulta",
+        "min_probability": 0.6,
+        "action": "cola_informacion"
+      }
+    ]
+  },
+  "synthetic_design": {
+    "version": 1,
+    "message_field": "mensaje",
+    "numeric_ranges": {
+      "dias_desde_compra": [
+        0,
+        30
+      ]
+    },
+    "products": [
+      "monitor",
+      "teclado",
+      "silla de oficina",
+      "impresora",
+      "auriculares",
+      "cargador",
+      "repuesto"
+    ],
+    "factors": [
+      {
+        "decision": "clasificacion",
+        "phrases": {
+          "consulta": {
+            "train": [
+              "Quiero información sobre las tallas disponibles.",
+              "Necesito consultar las características del producto.",
+              "Mi solicitud es una consulta sobre los colores.",
+              "Busco información de compatibilidad antes de comprar.",
+              "Necesito saber las medidas del artículo.",
+              "Tengo una pregunta sobre la garantía del producto.",
+              "Solo pido información del catálogo.",
+              "Quisiera consultar qué incluye el paquete."
+            ],
+            "validation": [
+              "¿Pueden darme información sobre las medidas disponibles?",
+              "Quiero consultar si el accesorio es compatible.",
+              "Mi pregunta es sobre las características y la garantía."
+            ],
+            "calibration": [
+              "Solicito información de los modelos del catálogo.",
+              "Antes de comprar necesito consultar el tamaño.",
+              "¿Qué características tiene este artículo?"
+            ],
+            "test": [
+              "Me interesa consultar las tallas y medidas del catálogo.",
+              "¿Podrían facilitar información de compatibilidad?",
+              "Necesito una explicación de las características del producto."
+            ]
+          },
+          "reclamacion": {
+            "train": [
+              "Quiero reclamar porque recibí un producto defectuoso.",
+              "Mi reclamación es por una pieza que llegó dañada.",
+              "Necesito solución para un artículo con falla.",
+              "Presento una reclamación por un cobro duplicado.",
+              "El pedido llegó incompleto y quiero reclamar.",
+              "Estoy reclamando porque enviaron una referencia equivocada.",
+              "Solicito reparación de un producto defectuoso.",
+              "Necesito resolver un error en mi compra."
+            ],
+            "validation": [
+              "La pieza tiene una falla; presento una reclamación.",
+              "Quiero reclamar el artículo que llegó incompleto.",
+              "Solicito solución porque se duplicó el cobro."
+            ],
+            "calibration": [
+              "Presento reclamación por el producto dañado.",
+              "Quiero una reparación de la pieza con falla.",
+              "Necesito reclamar un error en la referencia recibida."
+            ],
+            "test": [
+              "Mi reclamación corresponde a una falla del artículo.",
+              "El producto llegó defectuoso; pido una solución.",
+              "Me enviaron un pedido incompleto y deseo reclamar."
+            ]
+          },
+          "cancelacion": {
+            "train": [
+              "Quiero cancelar el pedido antes del despacho.",
+              "Solicito anular mi compra.",
+              "Mi decisión es cancelar esta orden.",
+              "Necesito dejar sin efecto la compra.",
+              "Por favor cancelen el pedido, ya no lo necesito.",
+              "He decidido anular el pedido pendiente.",
+              "Deseo cancelar la compra realizada.",
+              "Solicito la cancelación de la orden."
+            ],
+            "validation": [
+              "Confirmo que quiero cancelar esta compra.",
+              "Pido anular la orden antes de recibirla.",
+              "Quiero dejar sin efecto el pedido pendiente."
+            ],
+            "calibration": [
+              "Mi solicitud es cancelar el pedido actual.",
+              "He decidido que anulen esta compra.",
+              "Necesito la cancelación de mi orden pendiente."
+            ],
+            "test": [
+              "Quiero cancelar la orden que aún no recibo.",
+              "Solicito que dejen sin efecto el pedido.",
+              "La decisión final es anular mi compra."
+            ]
+          }
+        }
+      },
+      {
+        "decision": "atencion_prioritaria",
+        "phrases": {
+          "false": {
+            "train": [
+              "Puedo esperar hasta la próxima semana.",
+              "No tengo una fecha límite próxima.",
+              "No hay urgencia; atiéndanme cuando corresponda.",
+              "El plazo es flexible y puedo esperar.",
+              "No necesito respuesta inmediata.",
+              "Esto puede esperar varios días.",
+              "No hay ningún vencimiento cercano.",
+              "Podemos resolverlo la semana siguiente."
+            ],
+            "validation": [
+              "No tengo prisa y puedo esperar varios días.",
+              "La fecha es flexible; no existe urgencia.",
+              "No necesito atención hoy; puedo esperar."
+            ],
+            "calibration": [
+              "No hay plazo urgente para esta solicitud.",
+              "Puedo esperar una semana para la respuesta.",
+              "El caso no tiene vencimiento próximo."
+            ],
+            "test": [
+              "Puedo esperar, no necesito respuesta hoy.",
+              "No existe una fecha límite para resolverlo.",
+              "El plazo sigue siendo flexible, sin urgencia."
+            ]
+          },
+          "true": {
+            "train": [
+              "Necesito respuesta hoy, antes de que venza el plazo.",
+              "La fecha límite vence esta tarde.",
+              "Debo resolverlo en las próximas dos horas.",
+              "El plazo termina hoy y necesito atención urgente.",
+              "Necesito atención inmediata por un vencimiento hoy.",
+              "Tengo un plazo de una hora para resolverlo.",
+              "Debe atenderse hoy porque mañana vence la autorización.",
+              "La ventana de respuesta termina esta mañana."
+            ],
+            "validation": [
+              "El plazo vence hoy; solicito respuesta inmediata.",
+              "Debo resolverlo esta tarde antes del vencimiento.",
+              "La ventana termina en dos horas y necesito atención."
+            ],
+            "calibration": [
+              "Tengo una fecha límite hoy y necesito respuesta.",
+              "Debemos resolver esto esta mañana.",
+              "La autorización vence en una hora; necesito atención."
+            ],
+            "test": [
+              "Necesito respuesta esta tarde porque vence el plazo.",
+              "El vencimiento es hoy y necesito resolverlo.",
+              "La fecha límite llega en dos horas."
+            ]
+          }
+        }
+      },
+      {
+        "decision": "nivel",
+        "phrases": {
+          "bajo": {
+            "train": [
+              "El impacto económico es mínimo y nadie está bloqueado.",
+              "Se trata de una compra personal de bajo importe.",
+              "Es un asunto menor, sin interrupciones de trabajo.",
+              "El impacto es pequeño y no hay personas afectadas.",
+              "Afecta solo a un accesorio barato de uso personal.",
+              "El importe es pequeño y no afecta la operación.",
+              "No hay pérdidas relevantes ni trabajo detenido.",
+              "El alcance se limita a una unidad de poco valor."
+            ],
+            "validation": [
+              "Es una unidad de bajo importe y sin impacto operativo.",
+              "El alcance es pequeño, sin trabajo interrumpido.",
+              "El impacto es mínimo para mi compra personal."
+            ],
+            "calibration": [
+              "Es un accesorio personal barato, sin otras consecuencias.",
+              "No afecta la operación y el importe es bajo.",
+              "Se trata de un problema menor de alcance limitado."
+            ],
+            "test": [
+              "El impacto es pequeño y no interrumpe ninguna actividad.",
+              "Afecta una sola compra personal de bajo valor.",
+              "No hay trabajo detenido ni pérdidas relevantes."
+            ]
+          },
+          "medio": {
+            "train": [
+              "El impacto afecta a un equipo, que puede seguir con una alternativa.",
+              "Un departamento tiene dificultades, pero hay una solución temporal.",
+              "Afecta varias unidades y necesitamos revisión del especialista.",
+              "La actividad sigue con una alternativa provisional.",
+              "El impacto es parcial y existe una solución temporal.",
+              "Un equipo trabaja con limitaciones, sin detener toda la operación.",
+              "Varias unidades requieren revisión, con un reemplazo provisional.",
+              "La afectación es de un departamento y tiene una alternativa."
+            ],
+            "validation": [
+              "Un equipo está afectado, aunque dispone de una alternativa.",
+              "Hay impacto parcial y usamos una solución temporal.",
+              "Varias unidades necesitan revisión de un especialista."
+            ],
+            "calibration": [
+              "El departamento sigue trabajando con una alternativa provisional.",
+              "Tenemos afectación parcial y una solución temporal.",
+              "El impacto alcanza varias unidades que requieren revisión."
+            ],
+            "test": [
+              "Un departamento está afectado pero continúa con una alternativa.",
+              "El impacto es parcial; tenemos una solución provisional.",
+              "Varias unidades requieren revisión, sin paralizar la operación."
+            ]
+          },
+          "alto": {
+            "train": [
+              "La operación completa está detenida sin alternativa.",
+              "El impacto es grave: todos los equipos están bloqueados.",
+              "Hay pérdidas importantes y no existe solución temporal.",
+              "Se detuvo toda la actividad de la empresa.",
+              "Todas las unidades están afectadas sin reemplazo disponible.",
+              "La interrupción es total y nadie puede continuar trabajando.",
+              "La operación está paralizada y no tenemos alternativa.",
+              "El impacto es grave para toda la organización."
+            ],
+            "validation": [
+              "La actividad completa está paralizada, sin solución alternativa.",
+              "Todos los equipos están bloqueados y las pérdidas son importantes.",
+              "El impacto es total: ninguna unidad puede continuar."
+            ],
+            "calibration": [
+              "Toda la operación está detenida y no existe reemplazo.",
+              "Las pérdidas son graves para todos los equipos.",
+              "Nadie puede trabajar porque la interrupción es total."
+            ],
+            "test": [
+              "El impacto alcanza a toda la operación, que está detenida.",
+              "Los equipos completos están bloqueados sin alternativa.",
+              "La interrupción total genera pérdidas importantes."
+            ]
+          }
+        }
+      }
+    ],
+    "uncertainty_training_fraction": 0.0
+  },
+  "evaluation_cases": [
+    {
+      "id": "cross_consulta_false_bajo",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La respuesta puede esperar hasta la próxima semana. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "false",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "cross_consulta_false_medio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La respuesta puede esperar hasta la próxima semana. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "false",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "cross_consulta_false_alto",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La respuesta puede esperar hasta la próxima semana. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "false",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "cross_consulta_true_bajo",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La autorización vence esta tarde; necesito respuesta hoy. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "true",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "cross_consulta_true_medio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La autorización vence esta tarde; necesito respuesta hoy. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "true",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "cross_consulta_true_alto",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "¿Qué dimensiones tiene el monitor que ofrecen? Solo necesito información. La autorización vence esta tarde; necesito respuesta hoy. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "consulta",
+          "atencion_prioritaria": "true",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "cross_reclamacion_false_bajo",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La respuesta puede esperar hasta la próxima semana. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "false",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "cross_reclamacion_false_medio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La respuesta puede esperar hasta la próxima semana. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "false",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "cross_reclamacion_false_alto",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La respuesta puede esperar hasta la próxima semana. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "false",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "cross_reclamacion_true_bajo",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La autorización vence esta tarde; necesito respuesta hoy. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "true",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "cross_reclamacion_true_medio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La autorización vence esta tarde; necesito respuesta hoy. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "true",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "cross_reclamacion_true_alto",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "La impresora que recibí falla al encender. Quiero reclamar la compra. La autorización vence esta tarde; necesito respuesta hoy. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "reclamacion",
+          "atencion_prioritaria": "true",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_false_bajo",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La respuesta puede esperar hasta la próxima semana. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "false",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_false_medio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La respuesta puede esperar hasta la próxima semana. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "false",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_false_alto",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La respuesta puede esperar hasta la próxima semana. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "false",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_true_bajo",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La autorización vence esta tarde; necesito respuesta hoy. Es una compra personal pequeña sin consecuencias para el trabajo.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "true",
+          "nivel": "bajo"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_true_medio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La autorización vence esta tarde; necesito respuesta hoy. Afecta a un departamento que dispone de una alternativa temporal.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "true",
+          "nivel": "medio"
+        }
+      }
+    },
+    {
+      "id": "cross_cancelacion_true_alto",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Por favor anulen la compra que hice, quiero cancelar el pedido. La autorización vence esta tarde; necesito respuesta hoy. Toda nuestra operación está detenida y no hay alternativa.",
+        "contexto": "Pedido PED-PRUEBA-001 de monitor para una empresa de Valparaíso."
+      },
+      "expected": {
+        "answers": {
+          "clasificacion": "cancelacion",
+          "atencion_prioritaria": "true",
+          "nivel": "alto"
+        }
+      }
+    },
+    {
+      "id": "sin_intencion",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Necesito que revisen mi caso; no he indicado qué quiero hacer.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      }
+    },
+    {
+      "id": "intenciones_mixtas",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Quiero información del producto, reclamar la falla y cancelar otra orden; no sé cuál gestionar primero.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      }
+    },
+    {
+      "id": "plazo_contradictorio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Quiero cancelar la compra. Puedo esperar la próxima semana, pero también necesito respuesta hoy. No confirmo cuál plazo vale.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      }
+    },
+    {
+      "id": "impacto_contradictorio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Solicito información. El impacto es pequeño y la operación completa está detenida. Falta verificar cuál descripción es correcta.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      }
+    },
+    {
+      "id": "mensaje_vacio_semantico",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Hola, pedido ABC-123. Gracias.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      }
+    },
+    {
+      "id": "fuera_dominio",
+      "context": {
+        "dias_desde_compra": 5,
+        "mensaje": "Necesito una receta de cocina para esta noche.",
+        "contexto": "Caso sin información suficiente."
+      },
+      "expected": {
+        "needs_review": true,
+        "action": "revision_humana"
+      }
+    }
+  ]
+}

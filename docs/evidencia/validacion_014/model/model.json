@@ -1,0 +1,288 @@
+{
+  "contract_hash": "60c6daeb0d49de233190ccc906e8dba99060e66aea7087caa1711e663306624f",
+  "input_dim": 601,
+  "counts": [
+    3,
+    2,
+    3
+  ],
+  "configuration": {
+    "hidden": 64,
+    "lr": 0.008,
+    "decay": 0.0002,
+    "epochs": 40
+  },
+  "model_graph": {
+    "temperature": [
+      0.31376148542936155,
+      0.9196323464146672,
+      0.2500014245341462
+    ],
+    "counts": [
+      3,
+      2,
+      3
+    ],
+    "kind": "router",
+    "routes": [
+      "neural",
+      "neural",
+      "neural"
+    ],
+    "candidates": {
+      "neural": {
+        "temperature": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "counts": [
+          3,
+          2,
+          3
+        ],
+        "kind": "neural",
+        "configuration": {
+          "hidden": 64,
+          "lr": 0.008,
+          "decay": 0.0002,
+          "epochs": 40
+        },
+        "ordinal_heads": [],
+        "parameters": [
+          "root_neural_p0",
+          "root_neural_p1",
+          "root_neural_p2",
+          "root_neural_p3",
+          "root_neural_p4",
+          "root_neural_p5",
+          "root_neural_p6",
+          "root_neural_p7"
+        ]
+      },
+      "ensemble": {
+        "temperature": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "counts": [
+          3,
+          2,
+          3
+        ],
+        "kind": "ensemble",
+        "members": [
+          {
+            "temperature": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "counts": [
+              3,
+              2,
+              3
+            ],
+            "kind": "neural",
+            "configuration": {
+              "hidden": 64,
+              "lr": 0.008,
+              "decay": 0.0002,
+              "epochs": 40
+            },
+            "ordinal_heads": [],
+            "parameters": [
+              "root_ensemble_0_p0",
+              "root_ensemble_0_p1",
+              "root_ensemble_0_p2",
+              "root_ensemble_0_p3",
+              "root_ensemble_0_p4",
+              "root_ensemble_0_p5",
+              "root_ensemble_0_p6",
+              "root_ensemble_0_p7"
+            ]
+          },
+          {
+            "temperature": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "counts": [
+              3,
+              2,
+              3
+            ],
+            "kind": "neural",
+            "configuration": {
+              "hidden": 64,
+              "lr": 0.008,
+              "decay": 0.0002,
+              "epochs": 40
+            },
+            "ordinal_heads": [],
+            "parameters": [
+              "root_ensemble_1_p0",
+              "root_ensemble_1_p1",
+              "root_ensemble_1_p2",
+              "root_ensemble_1_p3",
+              "root_ensemble_1_p4",
+              "root_ensemble_1_p5",
+              "root_ensemble_1_p6",
+              "root_ensemble_1_p7"
+            ]
+          },
+          {
+            "temperature": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "counts": [
+              3,
+              2,
+              3
+            ],
+            "kind": "neural",
+            "configuration": {
+              "hidden": 64,
+              "lr": 0.008,
+              "decay": 0.0002,
+              "epochs": 40
+            },
+            "ordinal_heads": [],
+            "parameters": [
+              "root_ensemble_2_p0",
+              "root_ensemble_2_p1",
+              "root_ensemble_2_p2",
+              "root_ensemble_2_p3",
+              "root_ensemble_2_p4",
+              "root_ensemble_2_p5",
+              "root_ensemble_2_p6",
+              "root_ensemble_2_p7"
+            ]
+          }
+        ]
+      },
+      "corn": {
+        "temperature": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "counts": [
+          3,
+          2,
+          3
+        ],
+        "kind": "corn",
+        "configuration": {
+          "hidden": 64,
+          "lr": 0.008,
+          "decay": 0.0002,
+          "epochs": 40
+        },
+        "ordinal_heads": [
+          2
+        ],
+        "parameters": [
+          "root_corn_p0",
+          "root_corn_p1",
+          "root_corn_p2",
+          "root_corn_p3",
+          "root_corn_p4",
+          "root_corn_p5",
+          "root_corn_p6",
+          "root_corn_p7"
+        ]
+      },
+      "selective": {
+        "temperature": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "counts": [
+          3,
+          2,
+          3
+        ],
+        "kind": "selective",
+        "configuration": {
+          "hidden": 64,
+          "lr": 0.008,
+          "decay": 0.0002,
+          "epochs": 40
+        },
+        "ordinal_heads": [],
+        "parameters": [
+          "root_selective_p0",
+          "root_selective_p1",
+          "root_selective_p2",
+          "root_selective_p3",
+          "root_selective_p4",
+          "root_selective_p5",
+          "root_selective_p6",
+          "root_selective_p7",
+          "root_selective_p8",
+          "root_selective_p9",
+          "root_selective_p10",
+          "root_selective_p11",
+          "root_selective_p12",
+          "root_selective_p13",
+          "root_selective_p14",
+          "root_selective_p15"
+        ]
+      }
+    }
+  },
+  "uncertainty_policy": {
+    "method": "class_conditional_split_conformal_v1",
+    "joint_alpha": 0.1,
+    "head_alpha": 0.03333333333333333,
+    "temperature_rows": 150,
+    "conformal_rows": 150,
+    "heads": [
+      {
+        "quantiles": [
+          0.45886554895086507,
+          0.0022318243024165296,
+          0.026474472816400474
+        ],
+        "class_counts": [
+          50,
+          53,
+          47
+        ]
+      },
+      {
+        "quantiles": [
+          0.7511154294815542,
+          0.8371990997607758
+        ],
+        "class_counts": [
+          76,
+          74
+        ]
+      },
+      {
+        "quantiles": [
+          0.00011468730760710866,
+          0.0003744467791343409,
+          2.1809682628104454e-05
+        ],
+        "class_counts": [
+          54,
+          47,
+          49
+        ]
+      }
+    ]
+  },
+  "algorithm_routes": {
+    "clasificacion": "neural",
+    "atencion_prioritaria": "neural",
+    "nivel": "neural"
+  }
+}

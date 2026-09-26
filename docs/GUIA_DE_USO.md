@@ -539,3 +539,11 @@ Consulta [la ampliación 0.11](ENTRENAMIENTO_REALISTA.md) para las nuevas defini
 ## 17. Aseguramiento del entrenamiento
 
 [AutoEvals y autoresearch](ASEGURAMIENTO.md): uso, presupuestos, hipótesis, evidencia y promoción.
+
+## 18. Abstención calibrada
+
+Consulta [INCERTIDUMBRE.md](INCERTIDUMBRE.md). Los modelos nuevos agregan conjuntos de predicción y explican la revisión. La validación numérica y el harness son controles diferentes: un harness verde puede coexistir con calidad de incertidumbre insuficiente.
+
+## 19. Algoritmos y router
+
+`bash start.sh compare` entrena y compara cuatro candidatos. Consulta [ALGORITMOS_Y_ROUTER.md](ALGORITMOS_Y_ROUTER.md). El router usa validación reservada y queda fijado antes de test.

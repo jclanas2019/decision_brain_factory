@@ -1,0 +1,15 @@
+{
+  "contract_hash": "60c6daeb0d49de233190ccc906e8dba99060e66aea7087caa1711e663306624f",
+  "input_dim": 601,
+  "counts": [
+    3,
+    2,
+    3
+  ],
+  "configuration": {
+    "hidden": 64,
+    "lr": 0.008,
+    "decay": 0.0002,
+    "epochs": 40
+  }
+}

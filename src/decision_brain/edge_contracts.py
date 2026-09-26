@@ -38,12 +38,27 @@ def check_response(value,spec,version):
     for d in spec['decisions']:
         a=answers[d['id']];options=[o['id'] for o in d['options']]
         if not isinstance(a,dict) or a.get('kind')!=d['kind'] or a.get('choice') not in options:raise ValueError('response_type')
+        if 'algorithm' in a and a['algorithm'] not in ('neural','ensemble','corn','selective'):raise ValueError('response_algorithm')
         p=a.get('probabilities')
         if not isinstance(p,dict) or set(p)!=set(options):raise ValueError('response_options')
         if any(type(v) not in (float,int) or not math.isfinite(v) or v<0 or v>1 for v in p.values()) or abs(sum(p.values())-1)>1e-5:raise ValueError('response_probabilities')
         winner=max(options,key=lambda k:p[k]);confidence=p[winner]
         if a['choice']!=winner or type(a.get('max_probability')) not in (float,int) or not math.isfinite(a['max_probability']) or abs(a['max_probability']-confidence)>1e-6:raise ValueError('response_winner')
-        if type(a.get('needs_review')) is not bool or a['needs_review']!=(confidence<d.get('min_probability',.6)):raise ValueError('response_review')
+        required=confidence<d.get('min_probability',.6)
+        if 'prediction_set' in a or 'review_reasons' in a or 'selection_score' in a or 'selection_threshold' in a:
+            expected_reasons=[]
+            if required:expected_reasons.append('below_contract_threshold')
+            if 'prediction_set' in a:
+                choices=a['prediction_set']
+                if not isinstance(choices,list) or any(type(v) is not str or v not in options for v in choices) or len(set(choices))!=len(choices):raise ValueError('response_prediction_set')
+                if len(choices)!=1 or winner not in choices:expected_reasons.append('non_singleton_prediction_set')
+            if 'selection_score' in a or 'selection_threshold' in a:
+                score=a.get('selection_score')
+                if type(score) not in (int,float) or not math.isfinite(score) or not 0<=score<=1 or type(a.get('selection_threshold')) not in (int,float) or a['selection_threshold']!=.5:raise ValueError('response_selection_score')
+                if score<.5:expected_reasons.append('learned_selector_rejected')
+            if a.get('review_reasons')!=expected_reasons:raise ValueError('response_review_reasons')
+            required=bool(expected_reasons)
+        if type(a.get('needs_review')) is not bool or a['needs_review']!=required:raise ValueError('response_review')
         for key,expected_value in result_fields(d,p).items():
             actual=a.get(key)
             if isinstance(expected_value,(int,float)):
@@ -61,6 +76,8 @@ def check_response(value,spec,version):
         a=answers[d['id']]
         clean[d['id']]={k:a[k] for k in ('kind','choice','probabilities','max_probability','needs_review')}
         clean[d['id']].update(result_fields(d,a['probabilities']))
+        for key in ('prediction_set','review_reasons','selection_score','selection_threshold','algorithm'):
+            if key in a:clean[d['id']][key]=a[key]
         if d['kind']=='boolean':clean[d['id']]['probability_true']=a['probability_true']
         if d['kind']=='score':clean[d['id']]['expected_score']=a['expected_score']
     return clean,action,rule,fallback

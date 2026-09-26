@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "min_validation_loss_gain": 0.001,
+  "min_selector_coverage": 0.5,
+  "method": "fixed_per_head_validation_log_loss",
+  "candidates": ["neural", "ensemble", "corn", "selective"]
+}

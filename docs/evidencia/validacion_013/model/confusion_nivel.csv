@@ -1,0 +1,4 @@
+real/predicha,bajo,medio,alto
+bajo,100,0,0
+medio,0,100,0
+alto,0,0,100

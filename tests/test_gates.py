@@ -172,7 +172,13 @@ class GateTests(unittest.IsolatedAsyncioTestCase):
     async def test_production_rechecks_quality_at_activation(self):
         # Controlled rule-engine fixture, not a production-quality data claim.
         model=self.root/'production-fixture';shutil.copytree(self.model_run,model)
-        report=read(model/'report.json');report['data_origin']='user_supplied';put(model/'report.json',report)
+        report=read(model/'report.json');report['data_origin']='user_supplied'
+        # Explicit successful metrics fixture: this test verifies rechecking integrity,
+        # not whether the tiny 4-epoch model is fit for production.
+        report['selective_decisions']['joint_set_coverage']=1.
+        report['selective_decisions']['conformal_policy']['automated']=1
+        for metrics in report['metrics'].values():metrics['selective_accuracy']=1.
+        put(model/'report.json',report)
         quality={'passed':True,'regressions':[],'pass_rate':1.,'cases_count':1,'cases':[{'passed':True,'checks':{'fixture':True}}],
                  'model_sha256':{name:digest(model/name) for name in ('brain.json','model.json','encoder.json','weights.npz')},'suite_sha256':'a'*64}
         qpath=self.root/'quality-pass.json';put(qpath,quality)

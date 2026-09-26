@@ -29,6 +29,9 @@ src/decision_brain/harness.py
 src/decision_brain/harness_suite_builder.py
 src/decision_brain/launch.py
 src/decision_brain/layout.py
+src/decision_brain/model_zoo.py
+src/decision_brain/multi_reporting.py
+src/decision_brain/multi_training.py
 src/decision_brain/network.py
 src/decision_brain/observer.py
 src/decision_brain/operations.py
@@ -42,6 +45,7 @@ src/decision_brain/runtime_paths.py
 src/decision_brain/service.py
 src/decision_brain/synthetic.py
 src/decision_brain/telemetry.py
+src/decision_brain/uncertainty.py
 src/decision_brain/web/app.js
 src/decision_brain/web/decision-brain-factory.png
 src/decision_brain/web/index.html
@@ -53,9 +57,11 @@ tests/test_data_design.py
 tests/test_gates.py
 tests/test_harness.py
 tests/test_launch.py
+tests/test_model_zoo.py
 tests/test_observability.py
 tests/test_operations.py
 tests/test_primitives.py
 tests/test_sdk.py
 tests/test_service.py
 tests/test_toml.py
+tests/test_uncertainty.py

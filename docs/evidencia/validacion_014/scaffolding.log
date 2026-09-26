@@ -1,0 +1,246 @@
+/workspace/scratch/bd214683c088/decision_brain_observability/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_deadline (test_assurance.AssuranceChecks.test_deadline) ... ok
+test_failed_candidate_preserves_incumbent (test_assurance.AssuranceChecks.test_failed_candidate_preserves_incumbent) ...   epoch=1 train_loss=0.52728 validation_loss=0.52728
+  epoch=1 train_loss=0.52728 validation_loss=0.52728
+  epoch=1 train_loss=0.42195 validation_loss=0.42195
+  epoch=1 train_loss=0.42195 validation_loss=0.42195
+autoresearch=0 status=keep validation_loss=0.4746148657399198 reasons=['baseline established; not a quality approval']
+autoresearch=1 status=error validation_loss=None reasons=['candidate failed']
+ok
+test_invalid_probabilities_fail_closed (test_assurance.AssuranceChecks.test_invalid_probabilities_fail_closed) ... ok
+test_policy_and_proposal_validation (test_assurance.AssuranceChecks.test_policy_and_proposal_validation) ... ok
+test_promotion_cannot_skip_autoevals (test_assurance.AssuranceChecks.test_promotion_cannot_skip_autoevals) ... ok
+test_promotion_checks_assurance_model_identity (test_assurance.AssuranceChecks.test_promotion_checks_assurance_model_identity) ... ok
+test_promotion_requires_autoevals_harness (test_assurance.AssuranceChecks.test_promotion_requires_autoevals_harness) ... ok
+test_real_autoevals_offline (test_assurance.AssuranceChecks.test_real_autoevals_offline) ... ok
+test_reject_improvement_with_head_or_autoevals_regression (test_assurance.AssuranceChecks.test_reject_improvement_with_head_or_autoevals_regression) ... ok
+test_search_receives_no_final_partitions_and_has_audit (test_assurance.AssuranceChecks.test_search_receives_no_final_partitions_and_has_audit) ...   epoch=1 train_loss=0.37517 validation_loss=0.37517
+  epoch=2 train_loss=0.31358 validation_loss=0.31358
+  epoch=1 train_loss=0.67660 validation_loss=0.67660
+  epoch=2 train_loss=0.55923 validation_loss=0.55923
+autoresearch=0 status=keep validation_loss=0.4364019185304642 reasons=['baseline established; not a quality approval']
+  epoch=1 train_loss=0.39773 validation_loss=0.39773
+  epoch=2 train_loss=0.34822 validation_loss=0.34822
+  epoch=1 train_loss=0.71698 validation_loss=0.71698
+  epoch=2 train_loss=0.62675 validation_loss=0.62675
+autoresearch=1 status=discard validation_loss=0.48748427629470825 reasons=['head_loss_regression:q', 'no_mean_loss_improvement', 'seed_loss_regression:42', 'seed_loss_regression:43']
+ok
+test_seed_regression_rejected (test_assurance.AssuranceChecks.test_seed_regression_rejected) ... ok
+test_cycles_rejected (test_consumer.ConsumerTests.test_cycles_rejected) ... ok
+test_foreign_caller_not_consumed (test_consumer.ConsumerTests.test_foreign_caller_not_consumed) ... ok
+test_network_retry_keeps_version_key_trace (test_consumer.ConsumerTests.test_network_retry_keeps_version_key_trace) ... ok
+test_pending_resumes_after_restart (test_consumer.ConsumerTests.test_pending_resumes_after_restart) ... ok
+test_poison_request_is_not_retried (test_consumer.ConsumerTests.test_poison_request_is_not_retried) ... ok
+test_restart_does_not_duplicate_delivery (test_consumer.ConsumerTests.test_restart_does_not_duplicate_delivery) ... ok
+test_retries_bounded (test_consumer.ConsumerTests.test_retries_bounded) ... ok
+test_route_change_requires_review (test_consumer.ConsumerTests.test_route_change_requires_review) ... ok
+test_all_presets (test_core.CoreChecks.test_all_presets) ... ok
+test_distinct_partition_templates (test_core.CoreChecks.test_distinct_partition_templates) ... ok
+test_empty_production_metrics_rejected (test_core.CoreChecks.test_empty_production_metrics_rejected) ... ok
+test_invalid_artifact_temperature (test_core.CoreChecks.test_invalid_artifact_temperature) ... ok
+test_labels_cannot_be_inputs (test_core.CoreChecks.test_labels_cannot_be_inputs) ... ok
+test_ordinal_values_ordered (test_core.CoreChecks.test_ordinal_values_ordered) ... ok
+test_probability_contract (test_core.CoreChecks.test_probability_contract) ... ok
+test_typed_outputs (test_core.CoreChecks.test_typed_outputs) ... ok
+test_uncertainty_routes_to_review (test_core.CoreChecks.test_uncertainty_routes_to_review) ... ok
+test_utf8_log_and_relative_report_links (test_core.CoreChecks.test_utf8_log_and_relative_report_links) ... ok
+test_utf8_subprocess_stream (test_core.CoreChecks.test_utf8_subprocess_stream) ... ok
+test_diversity_independence_and_reproducibility (test_data_design.DataDesignChecks.test_diversity_independence_and_reproducibility) ... ok
+test_grouped_preparation_and_leak_rejection (test_data_design.DataDesignChecks.test_grouped_preparation_and_leak_rejection) ... ok
+test_invalid_uncertainty_fraction (test_data_design.DataDesignChecks.test_invalid_uncertainty_fraction) ... ok
+test_reused_wording_rejected (test_data_design.DataDesignChecks.test_reused_wording_rejected) ... ok
+test_uncertainty_targets_and_soft_loss (test_data_design.DataDesignChecks.test_uncertainty_targets_and_soft_loss) ... ok
+test_active_version_pin (test_gates.GateTests.test_active_version_pin) ... ok
+test_audit_tamper_detected (test_gates.GateTests.test_audit_tamper_detected) ... ok
+test_auth_and_brain_authorization (test_gates.GateTests.test_auth_and_brain_authorization) ... ok
+test_backend_version_race_rejected (test_gates.GateTests.test_backend_version_race_rejected) ... ok
+test_catalog_filters_authorized_brains (test_gates.GateTests.test_catalog_filters_authorized_brains) ... ok
+test_concurrent_same_key (test_gates.GateTests.test_concurrent_same_key) ... ok
+test_contract_drift (test_gates.GateTests.test_contract_drift) ... ok
+test_envelope_trace_and_no_pii (test_gates.GateTests.test_envelope_trace_and_no_pii) ... ok
+test_event_maps_target_state (test_gates.GateTests.test_event_maps_target_state) ... ok
+test_handoff_contract_required_and_idempotent (test_gates.GateTests.test_handoff_contract_required_and_idempotent) ... ok
+test_handoff_rejects_pii_extra_and_negative (test_gates.GateTests.test_handoff_rejects_pii_extra_and_negative) ... ok
+test_harness_promotion_binds_artifacts (test_gates.GateTests.test_harness_promotion_binds_artifacts) ... ok
+test_idempotency_scope_is_per_caller (test_gates.GateTests.test_idempotency_scope_is_per_caller) ... ok
+test_idempotency_survives_restart (test_gates.GateTests.test_idempotency_survives_restart) ... ok
+test_idempotent_replay_and_conflict (test_gates.GateTests.test_idempotent_replay_and_conflict) ... ok
+test_immutable_audit_export_and_metrics (test_gates.GateTests.test_immutable_audit_export_and_metrics) ... ok
+test_invalid_probabilities (test_gates.GateTests.test_invalid_probabilities) ... ok
+test_invalid_response_never_becomes_fallback (test_gates.GateTests.test_invalid_response_never_becomes_fallback) ... ok
+test_low_confidence_keeps_safe_interop (test_gates.GateTests.test_low_confidence_keeps_safe_interop) ... ok
+test_observer_marks_failed_quality_red (test_gates.GateTests.test_observer_marks_failed_quality_red) ... ok
+test_pending_after_crash_not_reexecuted (test_gates.GateTests.test_pending_after_crash_not_reexecuted) ... ok
+test_per_brain_size_limit (test_gates.GateTests.test_per_brain_size_limit) ... ok
+test_production_rechecks_quality_at_activation (test_gates.GateTests.test_production_rechecks_quality_at_activation) ... ok
+test_schema_size_and_version (test_gates.GateTests.test_schema_size_and_version) ... ok
+test_streamed_body_limit (test_gates.GateTests.test_streamed_body_limit) ... ok
+test_tls_required (test_gates.GateTests.test_tls_required) ... ok
+test_trace_required (test_gates.GateTests.test_trace_required) ... ok
+test_typed_state_and_duplicate_json (test_gates.GateTests.test_typed_state_and_duplicate_json) ... ok
+test_wrong_response_correlation (test_gates.GateTests.test_wrong_response_correlation) ... ok
+test_decisions_and_rejection (test_harness.HarnessChecks.test_decisions_and_rejection) ... ok
+test_invalid_probabilities_error (test_harness.HarnessChecks.test_invalid_probabilities_error) ... ok
+test_invalid_suite (test_harness.HarnessChecks.test_invalid_suite) ... ok
+test_report_and_regression (test_harness.HarnessChecks.test_report_and_regression) ... ok
+test_wrong_action_fails (test_harness.HarnessChecks.test_wrong_action_fails) ... ok
+test_autoevals_failure_blocks_success_even_if_harness_passes (test_launch.LaunchChecks.test_autoevals_failure_blocks_success_even_if_harness_passes) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
+[2/3] Entrenando y generando el informe del modelo…
+[3/3] Evaluando decisiones con el harness…
+
+Ejecución completada: hay decisiones que no cumplen los criterios
+INFORME: /workspace/scratch/bd214683c088/generated_multi_014/tmpqp55njfg/runs/session_20260926_010619_3d6d5f84/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/generated_multi_014/tmpqp55njfg/runs/latest.html
+ok
+test_check_only (test_launch.LaunchChecks.test_check_only) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
+
+Pruebas del software aprobadas
+INFORME: /workspace/scratch/bd214683c088/generated_multi_014/tmpyp89lxf7/runs/session_20260926_010619_0552d512/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/generated_multi_014/tmpyp89lxf7/runs/latest.html
+ok
+test_model_failure_keeps_reports (test_launch.LaunchChecks.test_model_failure_keeps_reports) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
+[2/3] Entrenando y generando el informe del modelo…
+[3/3] Evaluando decisiones con el harness…
+
+Ejecución completada: hay decisiones que no cumplen los criterios
+INFORME: /workspace/scratch/bd214683c088/generated_multi_014/tmp4vv9nsk4/runs/session_20260926_010619_64968a0e/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/generated_multi_014/tmp4vv9nsk4/runs/latest.html
+ok
+test_repeated_runs_do_not_collide (test_launch.LaunchChecks.test_repeated_runs_do_not_collide) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
+
+Pruebas del software aprobadas
+INFORME: /workspace/scratch/bd214683c088/generated_multi_014/tmpet6k9mmw/runs/session_20260926_010619_7fcf42df/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/generated_multi_014/tmpet6k9mmw/runs/latest.html
+[1/3] Ejecutando pruebas del servicio, harness y configuración…
+
+Pruebas del software aprobadas
+INFORME: /workspace/scratch/bd214683c088/generated_multi_014/tmpet6k9mmw/runs/session_20260926_010619_58dc49d4/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/generated_multi_014/tmpet6k9mmw/runs/latest.html
+ok
+test_software_failure_stops_training (test_launch.LaunchChecks.test_software_failure_stops_training) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
+test log
+
+Fallaron las pruebas del software. Consulta el registro.
+INFORME: /workspace/scratch/bd214683c088/generated_multi_014/tmplduymice/runs/session_20260926_010619_274defc7/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/generated_multi_014/tmplduymice/runs/latest.html
+ok
+test_success (test_launch.LaunchChecks.test_success) ... [1/3] Ejecutando pruebas del servicio, harness y configuración…
+[2/3] Entrenando y generando el informe del modelo…
+[3/3] Evaluando decisiones con el harness…
+
+Ejecución completada: el modelo cumple los criterios del harness
+INFORME: /workspace/scratch/bd214683c088/generated_multi_014/tmpe2s169zg/runs/session_20260926_010619_ae2fe2ee/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/generated_multi_014/tmpe2s169zg/runs/latest.html
+ok
+test_graph_rejects_nonfinite_and_unknown_models (test_model_zoo.ModelZooChecks.test_graph_rejects_nonfinite_and_unknown_models) ... ok
+test_graph_reloads_exactly_and_preserves_selector (test_model_zoo.ModelZooChecks.test_graph_reloads_exactly_and_preserves_selector) ... ok
+test_learned_rejection_reaches_response_gate (test_model_zoo.ModelZooChecks.test_learned_rejection_reaches_response_gate) ... ok
+test_objective_gradients_finite_difference (test_model_zoo.ModelZooChecks.test_objective_gradients_finite_difference) ... ok
+test_ordinal_probabilities_are_valid (test_model_zoo.ModelZooChecks.test_ordinal_probabilities_are_valid) ... ok
+test_router_uses_validation_and_minimum_gain (test_model_zoo.ModelZooChecks.test_router_uses_validation_and_minimum_gain) ... ok
+test_three_algorithms_survive_registry_service_path (test_model_zoo.ModelZooChecks.test_three_algorithms_survive_registry_service_path) ... ok
+test_empty_dashboard_is_not_fake_green (test_observability.ObservabilityTests.test_empty_dashboard_is_not_fake_green) ... ok
+test_otlp_http_protobuf_export (test_observability.ObservabilityTests.test_otlp_http_protobuf_export) ... ok
+test_server_error_marks_span_without_recording_payload (test_observability.ObservabilityTests.test_server_error_marks_span_without_recording_payload) ... ok
+test_trace_id_validated (test_observability.ObservabilityTests.test_trace_id_validated) ... ok
+test_unsampled_parent_respected (test_observability.ObservabilityTests.test_unsampled_parent_respected) ... ok
+test_w3c_parent_child_propagation_and_redaction (test_observability.ObservabilityTests.test_w3c_parent_child_propagation_and_redaction) ... ok
+test_web_shell_assets_and_protected_data (test_observability.ObservabilityTests.test_web_shell_assets_and_protected_data) ... ok
+test_different_projects_rejected (test_operations.OperationTests.test_different_projects_rejected) ... ok
+test_launchd_definition_contains_no_secrets (test_operations.OperationTests.test_launchd_definition_contains_no_secrets) ... ok
+test_projects_root_typo_rejected (test_operations.OperationTests.test_projects_root_typo_rejected) ... ok
+test_restart_reuses_configuration (test_operations.OperationTests.test_restart_reuses_configuration) ... ok
+test_boolean_contract_stays_unchanged (test_primitives.PrimitiveChecks.test_boolean_contract_stays_unchanged) ... ok
+test_choice_confidence_is_not_max_probability (test_primitives.PrimitiveChecks.test_choice_confidence_is_not_max_probability) ... ok
+test_gate_checks_all_typed_values (test_primitives.PrimitiveChecks.test_gate_checks_all_typed_values) ... ok
+test_generated_schema_declares_typed_fields (test_primitives.PrimitiveChecks.test_generated_schema_declares_typed_fields) ... ok
+test_harness_numeric_ranges (test_primitives.PrimitiveChecks.test_harness_numeric_ranges) ... ok
+test_metrics_use_binary_brier_and_continuous_score_error (test_primitives.PrimitiveChecks.test_metrics_use_binary_brier_and_continuous_score_error) ... ok
+test_noul_extremes_and_ambiguity (test_primitives.PrimitiveChecks.test_noul_extremes_and_ambiguity) ... ok
+test_noul_rejects_nonbinary_contract (test_primitives.PrimitiveChecks.test_noul_rejects_nonbinary_contract) ... ok
+test_score_fractional_and_custom_value_compatibility (test_primitives.PrimitiveChecks.test_score_fractional_and_custom_value_compatibility) ... ok
+test_sdk_roundtrip_and_rejects_corruption (test_primitives.PrimitiveChecks.test_sdk_roundtrip_and_rejects_corruption) ... ok
+test_training_reload_metrics_and_html (test_primitives.PrimitiveChecks.test_training_reload_metrics_and_html) ...   epoch=1 train_loss=0.79949 validation_loss=0.88521
+  epoch=2 train_loss=0.64361 validation_loss=0.81777
+  epoch=1 train_loss=0.80689 validation_loss=0.88570
+  epoch=2 train_loss=0.65369 validation_loss=0.80699
+autoresearch=0 status=keep validation_loss=0.8123834729194641 reasons=['baseline established; not a quality approval']
+CALIDAD INCERTIDUMBRE FAIL; ['uncertainty: no_automated_cases_to_validate']
+ABSTENCIÓN: {"cases": 30, "automated": 0, "coverage": 0.0, "review_rate": 1.0, "automated_errors": 0, "selective_accuracy": null}
+AUTOEVALS FAIL; ['clasificacion: exact_match below threshold', 'clasificacion: probability_quality below threshold', 'atencion_prioritaria: exact_match below threshold', 'atencion_prioritaria: probability_quality below threshold', 'nivel: exact_match below threshold', 'nivel: probability_quality below threshold', 'nivel: score_closeness below threshold']
+FUNCTIONAL TEST PASSED; test_loss=0.612395
+clasificacion [choice]: exactitud=76.7%; referencia=40.0%; loss=0.62285
+  categorical_cross_entropy=0.62285; brier=0.36188
+atencion_prioritaria [noul]: exactitud=63.3%; referencia=50.0%; loss=0.64662
+  binary_cross_entropy=0.64662; brier=0.22744
+nivel [score]: exactitud=83.3%; referencia=33.3%; loss=0.56771
+  categorical_cross_entropy=0.56771; brier=0.31072; score_MAE=0.43463
+Informe interpretado: /workspace/scratch/bd214683c088/generated_multi_014/tmp0a6olbt5/run/report.html
+ok
+test_event_preparation (test_sdk.SDKTests.test_event_preparation) ... ok
+test_http_errors_typed_and_private (test_sdk.SDKTests.test_http_errors_typed_and_private) ... ok
+test_invalid_input_before_network (test_sdk.SDKTests.test_invalid_input_before_network) ... ok
+test_observer_delivery_filter (test_sdk.SDKTests.test_observer_delivery_filter) ... ok
+test_preparation_freezes_context_version_key_trace (test_sdk.SDKTests.test_preparation_freezes_context_version_key_trace) ... ok
+test_remote_http_and_credentials_in_url_rejected (test_sdk.SDKTests.test_remote_http_and_credentials_in_url_rejected) ... ok
+test_replay_preserves_original_trace (test_sdk.SDKTests.test_replay_preserves_original_trace) ... ok
+test_response_probabilities_validated (test_sdk.SDKTests.test_response_probabilities_validated) ... ok
+test_timeout_not_retried_or_leaked (test_sdk.SDKTests.test_timeout_not_retried_or_leaked) ... ok
+test_typed_prediction_and_prefix (test_sdk.SDKTests.test_typed_prediction_and_prefix) ... ok
+test_auth_and_prediction (test_service.ServiceTests.test_auth_and_prediction) ... {"request_id": "701c6d2fd2c040eabd72919837674c3d", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.53}
+{"request_id": "2abdb89196564016bdd4a89fcc064b12", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 3.35}
+{"event": "request_rejected", "request_id": "0cac635689994dd581e83991b6a07fe0", "status": 401, "reason": "authentication_required"}
+{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "ca4d524dc686d87594a60a2bd74ca11b", "request_id": "bb3a73382b44456cb08a71144cf9b659", "model_version": "v1", "needs_review": true}
+{"request_id": "bb3a73382b44456cb08a71144cf9b659", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "ca4d524dc686d87594a60a2bd74ca11b", "span": "predict", "duration_ms": 2.44}
+{"request_id": "58b0740483b7430584389e8b69d78e56", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "15c7f8af6558f5d9deda68c50a985a4f", "span": "predict", "duration_ms": 0.18}
+ok
+test_concurrency_limit (test_service.ServiceTests.test_concurrency_limit) ... {"request_id": "ee7d886869fe47069e05058be91e22e6", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "4cbd0785577af7366c849905ef9d8cbd", "span": "predict", "duration_ms": 51.2}
+{"request_id": "f34857500c52486c88c7bfe809f0bb14", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "e485bf0c87ccc7c3b5172a81bc45da27", "span": "predict", "duration_ms": 51.31}
+{"event": "decision", "brain_id": "local.brain", "span": "judge", "trace_id": "1eb1f6226f9b6cc59f2285e1f6fd4ae3", "request_id": "20250b30bd9b47cc9c4b98b8547256a1", "model_version": "v1", "needs_review": true}
+{"request_id": "20250b30bd9b47cc9c4b98b8547256a1", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "1eb1f6226f9b6cc59f2285e1f6fd4ae3", "span": "predict", "duration_ms": 206.71}
+ok
+test_gate_threshold_logic (test_service.ServiceTests.test_gate_threshold_logic) ... ok
+test_hot_activation_and_rollback (test_service.ServiceTests.test_hot_activation_and_rollback) ... {"request_id": "7bebae76aaed41e1ac803d1e2c86688e", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "9c7903c8a759957eccc2a4bbfb5083a6", "span": "predict", "duration_ms": 3.89}
+{"request_id": "d0d1aaa9a21642e99eed76033597db8e", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "9a009e911de5594a5e109333f7b048ae", "span": "predict", "duration_ms": 3.4}
+{"request_id": "6785f47de78745d3b493935f09fd2a0f", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "609e865716069dcc9663d7a37ad3cdae", "span": "predict", "duration_ms": 3.15}
+ok
+test_immutable_release (test_service.ServiceTests.test_immutable_release) ... ok
+test_integrity_failure (test_service.ServiceTests.test_integrity_failure) ... {"request_id": "ced69e7635954f8c8d96399475882ec3", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.71}
+ok
+test_invalid_and_oversized (test_service.ServiceTests.test_invalid_and_oversized) ... {"request_id": "555e088626ba429090b2536f60880100", "event": "http_request", "status": 422, "brain_id": "local.brain", "trace_id": "120d9a838d186752cc3af9e8da91b8ca", "span": "predict", "duration_ms": 3.76}
+{"event": "request_rejected", "request_id": "d9e4f039cef742e3bd65a1dfa594cd42", "status": 413, "reason": "body_too_large"}
+ok
+test_rate_limit (test_service.ServiceTests.test_rate_limit) ... {"request_id": "7536ff38b3c34dd4a2016fe0c00f7edf", "event": "http_request", "status": 200, "brain_id": "local.brain", "trace_id": "5ee0aed35443cf88e0d616dcf00a37a1", "span": "predict", "duration_ms": 3.16}
+{"event": "request_rejected", "request_id": "bcf6de865c2e4c98a90d21830c25df8d", "status": 429, "reason": "rate_limit"}
+ok
+test_streamed_body_limit (test_service.ServiceTests.test_streamed_body_limit) ... {"event": "request_rejected", "request_id": "4fb156bafcf14f7cbb029909907e36e7", "status": 413, "reason": "body_too_large"}
+ok
+test_synthetic_production_rejected (test_service.ServiceTests.test_synthetic_production_rejected) ... {"request_id": "05e8981326df4680af5af087a32e7f8e", "event": "http_request", "status": 503, "brain_id": "local.brain", "trace_id": "00000000000000000000000000000000", "span": "predict", "duration_ms": 0.54}
+ok
+test_weak_key_rejected (test_service.ServiceTests.test_weak_key_rejected) ... ok
+test_cli_override (test_toml.TomlChecks.test_cli_override) ... ok
+test_explicit_missing_error (test_toml.TomlChecks.test_explicit_missing_error) ... HARNESS ERROR: [Errno 2] No such file or directory: '/workspace/scratch/bd214683c088/generated_multi_014/missing-configuration.toml'
+ok
+test_reject_invalid (test_toml.TomlChecks.test_reject_invalid) ... ok
+test_relative_paths (test_toml.TomlChecks.test_relative_paths) ... ok
+test_symlinked_project_directory (test_toml.TomlChecks.test_symlinked_project_directory) ... ok
+test_ambiguous_set_routes_to_review_without_changing_probabilities (test_uncertainty.UncertaintyChecks.test_ambiguous_set_routes_to_review_without_changing_probabilities) ... ok
+test_bad_saved_policy_fails_closed (test_uncertainty.UncertaintyChecks.test_bad_saved_policy_fails_closed) ... ok
+test_clear_case_still_automates (test_uncertainty.UncertaintyChecks.test_clear_case_still_automates) ... ok
+test_gate_cannot_erase_mandatory_review (test_uncertainty.UncertaintyChecks.test_gate_cannot_erase_mandatory_review) ... ok
+test_gate_rejects_fabricated_reason (test_uncertainty.UncertaintyChecks.test_gate_rejects_fabricated_reason) ... ok
+test_nominal_coverage_failure_blocks_quality (test_uncertainty.UncertaintyChecks.test_nominal_coverage_failure_blocks_quality) ... ok
+test_rare_classes_stay_in_set (test_uncertainty.UncertaintyChecks.test_rare_classes_stay_in_set) ... ok
+test_set_quantile_includes_boundary_and_rejects_empty (test_uncertainty.UncertaintyChecks.test_set_quantile_includes_boundary_and_rejects_empty) ... ok
+test_split_is_disjoint_and_complete (test_uncertainty.UncertaintyChecks.test_split_is_disjoint_and_complete) ... ok
+test_zero_automation_has_no_fictitious_accuracy (test_uncertainty.UncertaintyChecks.test_zero_automation_has_no_fictitious_accuracy) ... ok
+
+----------------------------------------------------------------------
+Ran 140 tests in 8.530s
+
+OK
+ok
+HTML: /workspace/scratch/bd214683c088/generated_multi_014/tmpu1mfpowt/report/report.html
+ok
+HTML: /workspace/scratch/bd214683c088/generated_multi_014/tmptcyiq63m/real/report/report.html

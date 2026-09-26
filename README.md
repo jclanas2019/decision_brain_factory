@@ -1,8 +1,24 @@
-# Decision Brain 0.12 — uso, operación y SDK
+# Decision Brain 0.14 — uso, operación y SDK
 
 Sistema local de decisiones tipadas con fábrica de proyectos, evaluación, gateway, observabilidad y consumidor de eventos. Las acciones son propuestas: no ejecuta cambios en ERP, CRM ni tickets.
 
 **Documentación única de uso:** [Guía completa](docs/GUIA_DE_USO.md) · [Versión HTML](docs/GUIA_DE_USO.html)
+
+**Histórico 0.13: resultados y comparación XGBoost:** [Abrir HTML](docs/RESULTADOS_013.html).
+
+## Mejora del algoritmo
+
+[Abstención calibrada y límites](docs/INCERTIDUMBRE.md). La versión 0.13 separa calibración de probabilidades y conjuntos de predicción. El informe compara errores y automatización, y bloquea promoción si no cumple la cobertura conjunta objetivo. Un FAIL de calidad no es un fallo del programa.
+
+**Resultados 0.14:** [Resumen](docs/RESULTADOS_014.html) · [Comparación y rutas](docs/evidencia/validacion_014/model/comparison.html).
+
+## Comparar algoritmos y entrenar un router
+
+```bash
+bash start.sh compare
+```
+
+[Algoritmos, selección, comandos y límites](docs/ALGORITMOS_Y_ROUTER.md). Compara neural, ensemble, CORN y una adaptación de SelectiveNet. El router se elige en validación, antes de test, y se guarda para el servicio y el SDK.
 
 ## Arranque
 

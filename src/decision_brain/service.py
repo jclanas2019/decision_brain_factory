@@ -22,7 +22,7 @@ class VersionConflict(Exception):pass
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse, PlainTextResponse
 from starlette.concurrency import run_in_threadpool
-from decision_brain.brain import load_model, encode, judge
+from decision_brain.brain import load_model, encode, judge, infer_decision
 from decision_brain.contracts import validate_state
 from decision_brain.releases import verify
 
@@ -72,10 +72,9 @@ class ModelManager:
         except Exception as error:raise RuntimeError('model_unavailable') from error
         if expected_version is not None and version!=expected_version:raise VersionConflict('active_version_changed')
         validate_state(state,spec)
-        probabilities=net.predict(encode([state],enc))
         annotate(**{'brain.id':self.settings.brain_id,'model.version':version})
         with self.tracer.start_as_current_span('judge',record_exception=False,set_status_on_exception=False) if self.tracer else nullcontext():
-            result=judge(spec,[p[0] for p in probabilities])
+            result=infer_decision(spec,enc,net,state)
             annotate(**{'brain.id':self.settings.brain_id,'model.version':version,'decision.action':result['proposed_action']})
         return {'model_version':version,'contract_hash':contract_hash(spec),**result}
 

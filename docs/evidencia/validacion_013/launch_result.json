@@ -1,0 +1,8 @@
+{
+  "exit_code": 1,
+  "software_passed": true,
+  "harness_passed": true,
+  "uncertainty_passed": false,
+  "reason": "joint_set_coverage_below_nominal_target",
+  "reports_preserved": true
+}

@@ -33,6 +33,9 @@ def write_atomic(path,value):
 def check_gate(report,policy,evidence):
     errors=[]
     if not isinstance(report.get('metrics'),dict) or not report['metrics']:return ['missing decision metrics']
+    if report.get('uncertainty_policy') is not None:
+        from decision_brain.uncertainty import quality_gate
+        errors.extend(quality_gate(report.get('selective_decisions',{}),report['uncertainty_policy']))
     if policy.get('require_autoevals',False):
         from decision_brain.autoeval_quality import gate
         a=report.get('assurance',{})

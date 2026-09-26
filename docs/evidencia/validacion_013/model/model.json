@@ -1,0 +1,58 @@
+{
+  "contract_hash": "60c6daeb0d49de233190ccc906e8dba99060e66aea7087caa1711e663306624f",
+  "input_dim": 601,
+  "counts": [
+    3,
+    2,
+    3
+  ],
+  "configuration": {
+    "hidden": 64,
+    "lr": 0.008,
+    "decay": 0.0002,
+    "epochs": 40
+  },
+  "uncertainty_policy": {
+    "method": "class_conditional_split_conformal_v1",
+    "joint_alpha": 0.1,
+    "head_alpha": 0.03333333333333333,
+    "temperature_rows": 150,
+    "conformal_rows": 150,
+    "heads": [
+      {
+        "quantiles": [
+          0.5143895149230957,
+          0.0016111135482788086,
+          0.03209078311920166
+        ],
+        "class_counts": [
+          50,
+          53,
+          47
+        ]
+      },
+      {
+        "quantiles": [
+          0.7273653745651245,
+          0.8374344706535339
+        ],
+        "class_counts": [
+          76,
+          74
+        ]
+      },
+      {
+        "quantiles": [
+          0.00016188621520996094,
+          0.0002517104148864746,
+          3.5881996154785156e-05
+        ],
+        "class_counts": [
+          54,
+          47,
+          49
+        ]
+      }
+    ]
+  }
+}

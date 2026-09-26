@@ -71,11 +71,13 @@ def evaluate(model, suite):
             rows.append({'id':case['id'],'passed':passed,'checks':{'input_rejected':passed},'error':str(exc),'latency_ms':(time.perf_counter()-start)*1000})
             continue
         # Inference exceptions are infrastructure failures, never expected-input passes.
-        probs=[p[0] for p in net.predict(encode([state],enc))]
+        x=encode([state],enc)
+        probs=[p[0] for p in net.predict(x)]
         for d,p in zip(spec['decisions'],probs):
             if len(p)!=len(d['options']) or not all(math.isfinite(float(v)) and 0<=v<=1 for v in p) or abs(float(sum(p))-1)>1e-5:
                 raise ValueError('Invalid probability distribution')
-        answer=judge(spec,probs)
+        from decision_brain.model_zoo import review_scores
+        answer=judge(spec,probs,getattr(net,'uncertainty_policy',None),[None if v is None else float(v[0]) for v in review_scores(net,x)])
         expected=case.get('expected',{})
         checks={'no_action_executed':answer['action_executed'] is False}
         if case.get('expect_error'): checks['input_rejected']=False

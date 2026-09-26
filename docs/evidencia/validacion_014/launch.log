@@ -1,0 +1,45 @@
+[1/3] Ejecutando pruebas del servicio, harness y configuración…
+Pruebas: 140; fallos: 0; errores: 0.
+[2/3] Entrenando y generando el informe del modelo…
+ALGORITMO neural
+  epoch=1 train_loss=0.09345 validation_loss=0.31708
+  epoch=10 train_loss=0.00764 validation_loss=0.16428
+  epoch=20 train_loss=0.00587 validation_loss=0.13990
+  epoch=29 train_loss=0.00547 validation_loss=0.14328
+ALGORITMO ensemble_member_1
+  epoch=1 train_loss=0.11022 validation_loss=0.33269
+  epoch=10 train_loss=0.00784 validation_loss=0.16188
+  epoch=20 train_loss=0.00597 validation_loss=0.15094
+  epoch=30 train_loss=0.00543 validation_loss=0.14443
+ALGORITMO ensemble_member_2
+  epoch=1 train_loss=0.10448 validation_loss=0.31358
+  epoch=10 train_loss=0.00774 validation_loss=0.16639
+  epoch=20 train_loss=0.00593 validation_loss=0.14782
+  epoch=30 train_loss=0.00540 validation_loss=0.14256
+  epoch=40 train_loss=0.00525 validation_loss=0.14421
+ALGORITMO corn
+  corn epoch=1 train_loss=0.16521 validation_loss=0.38361
+  corn epoch=10 train_loss=0.01182 validation_loss=0.17879
+  corn epoch=20 train_loss=0.00908 validation_loss=0.15357
+ALGORITMO selective
+  selective epoch=1 train_loss=0.50168 validation_loss=0.65888
+  selective epoch=10 train_loss=0.01232 validation_loss=0.18274
+  selective epoch=20 train_loss=0.00930 validation_loss=0.16043
+  selective epoch=30 train_loss=0.00824 validation_loss=0.15252
+  selective epoch=40 train_loss=0.00780 validation_loss=0.15478
+COMPARACIÓN neural {"test_loss": 0.049902828218667615, "harness_passed": 25, "autoevals_passed": true, "uncertainty_passed": false}
+COMPARACIÓN ensemble {"test_loss": 0.04941614093571383, "harness_passed": 25, "autoevals_passed": true, "uncertainty_passed": false}
+COMPARACIÓN corn {"test_loss": 0.051338928278201766, "harness_passed": 25, "autoevals_passed": true, "uncertainty_passed": false}
+COMPARACIÓN selective {"test_loss": 0.05329693754838411, "harness_passed": 25, "autoevals_passed": true, "uncertainty_passed": false}
+COMPARACIÓN router {"test_loss": 0.04990282633916981, "harness_passed": 25, "autoevals_passed": true, "uncertainty_passed": false}
+ROUTER {"clasificacion": "neural", "atencion_prioritaria": "neural", "nivel": "neural"}
+FUNCTIONAL TEST PASSED; 300 rows, router and gates reloaded
+ASEGURAMIENTO FAIL ['uncertainty: joint_set_coverage_below_nominal_target']
+Informe: /workspace/scratch/bd214683c088/decision_brain_multi14/runs/session_20260926_010514_18a9242c/model/report.html
+[3/3] Evaluando decisiones con el harness…
+25 de 25 casos cumplen todas sus expectativas. Cumple el umbral; no se comparó con una referencia.
+HTML: /workspace/scratch/bd214683c088/decision_brain_multi14/runs/session_20260926_010514_18a9242c/evaluation/report.html
+
+Ejecución completada: hay decisiones que no cumplen los criterios
+INFORME: /workspace/scratch/bd214683c088/decision_brain_multi14/runs/session_20260926_010514_18a9242c/index.html
+Acceso permanente: /workspace/scratch/bd214683c088/decision_brain_multi14/runs/latest.html

@@ -1,0 +1,5425 @@
+{
+  "engine": "autoevals",
+  "version": "0.3.0",
+  "mode": "local_no_remote_judge",
+  "rows": 300,
+  "heads": {
+    "clasificacion": {
+      "exact_match": 1.0,
+      "probability_quality": 0.9991564428338904
+    },
+    "atencion_prioritaria": {
+      "exact_match": 0.9833333333333333,
+      "probability_quality": 0.9688899582678734
+    },
+    "nivel": {
+      "exact_match": 1.0,
+      "probability_quality": 0.9999992414547099,
+      "score_closeness": 0.9999203911383632
+    }
+  },
+  "all_heads_exact": 0.9833333333333333,
+  "schema_passed": true,
+  "cases": [
+    {
+      "row": 0,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999997
+    },
+    {
+      "row": 1,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999559985
+    },
+    {
+      "row": 2,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999968
+    },
+    {
+      "row": 3,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 4,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9994166255713167
+    },
+    {
+      "row": 5,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997377263863874
+    },
+    {
+      "row": 6,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998419067470946
+    },
+    {
+      "row": 7,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999976753997
+    },
+    {
+      "row": 8,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999883838
+    },
+    {
+      "row": 9,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999700951072749
+    },
+    {
+      "row": 10,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999940283662
+    },
+    {
+      "row": 11,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999991920338
+    },
+    {
+      "row": 12,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 13,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999256953
+    },
+    {
+      "row": 14,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999906528391
+    },
+    {
+      "row": 15,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999748228345021
+    },
+    {
+      "row": 16,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999015372
+    },
+    {
+      "row": 17,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999982401168797
+    },
+    {
+      "row": 18,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999985695
+    },
+    {
+      "row": 19,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 20,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 21,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999845904970392
+    },
+    {
+      "row": 22,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999993468366
+    },
+    {
+      "row": 23,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996786244010987
+    },
+    {
+      "row": 24,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999835913
+    },
+    {
+      "row": 25,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999988301949
+    },
+    {
+      "row": 26,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 27,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998157
+    },
+    {
+      "row": 28,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999965724491525
+    },
+    {
+      "row": 29,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999977346
+    },
+    {
+      "row": 30,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999642094
+    },
+    {
+      "row": 31,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999985960299009
+    },
+    {
+      "row": 32,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999987335
+    },
+    {
+      "row": 33,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999997928587
+    },
+    {
+      "row": 34,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9995477112584505
+    },
+    {
+      "row": 35,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999832514706902
+    },
+    {
+      "row": 36,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999997597
+    },
+    {
+      "row": 37,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 38,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 39,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999325
+    },
+    {
+      "row": 40,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 41,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999991
+    },
+    {
+      "row": 42,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999917352235
+    },
+    {
+      "row": 43,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999991128167
+    },
+    {
+      "row": 44,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.989644571305641
+    },
+    {
+      "row": 45,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999996615951
+    },
+    {
+      "row": 46,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998527
+    },
+    {
+      "row": 47,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999996269
+    },
+    {
+      "row": 48,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.963057405812751
+    },
+    {
+      "row": 49,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999776906
+    },
+    {
+      "row": 50,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999927719498
+    },
+    {
+      "row": 51,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999893689047
+    },
+    {
+      "row": 52,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9944783205107259
+    },
+    {
+      "row": 53,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997502270048771
+    },
+    {
+      "row": 54,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999977555554
+    },
+    {
+      "row": 55,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 56,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999877542123
+    },
+    {
+      "row": 57,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9880377058590666
+    },
+    {
+      "row": 58,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999419702
+    },
+    {
+      "row": 59,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999996981797
+    },
+    {
+      "row": 60,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999440242878
+    },
+    {
+      "row": 61,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999887043589
+    },
+    {
+      "row": 62,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 63,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999990171
+    },
+    {
+      "row": 64,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999998908731
+    },
+    {
+      "row": 65,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9782383368992977
+    },
+    {
+      "row": 66,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999996386
+    },
+    {
+      "row": 67,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999990952001
+    },
+    {
+      "row": 68,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 69,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999989077453
+    },
+    {
+      "row": 70,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 71,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999896841713
+    },
+    {
+      "row": 72,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999404991775747
+    },
+    {
+      "row": 73,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999851739
+    },
+    {
+      "row": 74,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999981984
+    },
+    {
+      "row": 75,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999978353219685
+    },
+    {
+      "row": 76,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999992289657189
+    },
+    {
+      "row": 77,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999994232
+    },
+    {
+      "row": 78,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999577089
+    },
+    {
+      "row": 79,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 80,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.99999999990729
+    },
+    {
+      "row": 81,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9994012142459816
+    },
+    {
+      "row": 82,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999984609181
+    },
+    {
+      "row": 83,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9980665980574981
+    },
+    {
+      "row": 84,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999424194971
+    },
+    {
+      "row": 85,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998951
+    },
+    {
+      "row": 86,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999862816485307
+    },
+    {
+      "row": 87,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999240104135
+    },
+    {
+      "row": 88,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999989536974282
+    },
+    {
+      "row": 89,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996712466877445
+    },
+    {
+      "row": 90,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 91,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999993514656
+    },
+    {
+      "row": 92,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 93,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 94,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998974705692332
+    },
+    {
+      "row": 95,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999952656
+    },
+    {
+      "row": 96,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999731669531238
+    },
+    {
+      "row": 97,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999681112785973
+    },
+    {
+      "row": 98,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999082
+    },
+    {
+      "row": 99,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999842852785953
+    },
+    {
+      "row": 100,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999994701045228
+    },
+    {
+      "row": 101,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999896638
+    },
+    {
+      "row": 102,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999154
+    },
+    {
+      "row": 103,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.996957588016251
+    },
+    {
+      "row": 104,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999833048071
+    },
+    {
+      "row": 105,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999905729681
+    },
+    {
+      "row": 106,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999140828
+    },
+    {
+      "row": 107,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999882439878
+    },
+    {
+      "row": 108,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999700496585
+    },
+    {
+      "row": 109,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999977437
+    },
+    {
+      "row": 110,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999986076142534
+    },
+    {
+      "row": 111,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999893
+    },
+    {
+      "row": 112,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999998844091
+    },
+    {
+      "row": 113,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996601203045407
+    },
+    {
+      "row": 114,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999761563
+    },
+    {
+      "row": 115,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999419723
+    },
+    {
+      "row": 116,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999994108844774
+    },
+    {
+      "row": 117,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9995252662565391
+    },
+    {
+      "row": 118,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999981
+    },
+    {
+      "row": 119,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996883534465416
+    },
+    {
+      "row": 120,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999877679019599
+    },
+    {
+      "row": 121,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998352959878081
+    },
+    {
+      "row": 122,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999921
+    },
+    {
+      "row": 123,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999959876743169
+    },
+    {
+      "row": 124,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999997646419965
+    },
+    {
+      "row": 125,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999484467169106
+    },
+    {
+      "row": 126,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999984978617681
+    },
+    {
+      "row": 127,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9988742356642023
+    },
+    {
+      "row": 128,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999933570209
+    },
+    {
+      "row": 129,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9833092003041317
+    },
+    {
+      "row": 130,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999980842815265
+    },
+    {
+      "row": 131,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999975483
+    },
+    {
+      "row": 132,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999925242
+    },
+    {
+      "row": 133,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9994370879133906
+    },
+    {
+      "row": 134,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999640461
+    },
+    {
+      "row": 135,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999047
+    },
+    {
+      "row": 136,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999966583330821
+    },
+    {
+      "row": 137,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9852714007064205
+    },
+    {
+      "row": 138,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999885716817621
+    },
+    {
+      "row": 139,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999997875524
+    },
+    {
+      "row": 140,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999957283768
+    },
+    {
+      "row": 141,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999996076397204
+    },
+    {
+      "row": 142,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999914060232
+    },
+    {
+      "row": 143,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999122
+    },
+    {
+      "row": 144,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999654023527
+    },
+    {
+      "row": 145,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999838770367984
+    },
+    {
+      "row": 146,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999558291
+    },
+    {
+      "row": 147,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999975702919024
+    },
+    {
+      "row": 148,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 149,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999876121286
+    },
+    {
+      "row": 150,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999976072781
+    },
+    {
+      "row": 151,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9897466142652811
+    },
+    {
+      "row": 152,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999969220430583
+    },
+    {
+      "row": 153,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999962063
+    },
+    {
+      "row": 154,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999803808838
+    },
+    {
+      "row": 155,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999594977845
+    },
+    {
+      "row": 156,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998679878961825
+    },
+    {
+      "row": 157,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.99999999999295
+    },
+    {
+      "row": 158,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999779654091
+    },
+    {
+      "row": 159,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999997854
+    },
+    {
+      "row": 160,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999919144
+    },
+    {
+      "row": 161,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999962
+    },
+    {
+      "row": 162,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999922639586287
+    },
+    {
+      "row": 163,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999775246337
+    },
+    {
+      "row": 164,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999995635881325
+    },
+    {
+      "row": 165,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999997
+    },
+    {
+      "row": 166,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999508
+    },
+    {
+      "row": 167,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999906002468234
+    },
+    {
+      "row": 168,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999990128518823
+    },
+    {
+      "row": 169,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 170,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999997664
+    },
+    {
+      "row": 171,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999978
+    },
+    {
+      "row": 172,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 173,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999995334056086
+    },
+    {
+      "row": 174,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999981090263439
+    },
+    {
+      "row": 175,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999636398417
+    },
+    {
+      "row": 176,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998971
+    },
+    {
+      "row": 177,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 178,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999997083475
+    },
+    {
+      "row": 179,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999979284507193
+    },
+    {
+      "row": 180,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9980869756974379
+    },
+    {
+      "row": 181,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997748767132238
+    },
+    {
+      "row": 182,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 183,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999967424
+    },
+    {
+      "row": 184,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999997964
+    },
+    {
+      "row": 185,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999997799
+    },
+    {
+      "row": 186,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999997327213228
+    },
+    {
+      "row": 187,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999990862839
+    },
+    {
+      "row": 188,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9758221161686659
+    },
+    {
+      "row": 189,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999864870391585
+    },
+    {
+      "row": 190,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999997
+    },
+    {
+      "row": 191,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999991839
+    },
+    {
+      "row": 192,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999040362
+    },
+    {
+      "row": 193,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996945007028285
+    },
+    {
+      "row": 194,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999852844433
+    },
+    {
+      "row": 195,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999937263275
+    },
+    {
+      "row": 196,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9986395335897988
+    },
+    {
+      "row": 197,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999167
+    },
+    {
+      "row": 198,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 199,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9980162078899654
+    },
+    {
+      "row": 200,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999962744
+    },
+    {
+      "row": 201,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997698146608389
+    },
+    {
+      "row": 202,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999990376761
+    },
+    {
+      "row": 203,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999900205323
+    },
+    {
+      "row": 204,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 205,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999987823194804
+    },
+    {
+      "row": 206,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999887
+    },
+    {
+      "row": 207,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999993961112232
+    },
+    {
+      "row": 208,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 209,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999893
+    },
+    {
+      "row": 210,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999195227689
+    },
+    {
+      "row": 211,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999991871
+    },
+    {
+      "row": 212,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999995412246366
+    },
+    {
+      "row": 213,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999434
+    },
+    {
+      "row": 214,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999883695201
+    },
+    {
+      "row": 215,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999773878566
+    },
+    {
+      "row": 216,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9990535914272741
+    },
+    {
+      "row": 217,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999976008109938
+    },
+    {
+      "row": 218,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999886
+    },
+    {
+      "row": 219,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 220,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999351029853
+    },
+    {
+      "row": 221,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999996665047644
+    },
+    {
+      "row": 222,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999996809483
+    },
+    {
+      "row": 223,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999947564365
+    },
+    {
+      "row": 224,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999950544248
+    },
+    {
+      "row": 225,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 226,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 227,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998398
+    },
+    {
+      "row": 228,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999967174
+    },
+    {
+      "row": 229,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999952631
+    },
+    {
+      "row": 230,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999998807028241
+    },
+    {
+      "row": 231,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999658185541
+    },
+    {
+      "row": 232,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999994
+    },
+    {
+      "row": 233,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999982478332193
+    },
+    {
+      "row": 234,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999981401604
+    },
+    {
+      "row": 235,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999988649
+    },
+    {
+      "row": 236,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 237,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999998694106551
+    },
+    {
+      "row": 238,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9995143144755425
+    },
+    {
+      "row": 239,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999550621084
+    },
+    {
+      "row": 240,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999754
+    },
+    {
+      "row": 241,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 242,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999994133504997
+    },
+    {
+      "row": 243,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999479
+    },
+    {
+      "row": 244,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999804398
+    },
+    {
+      "row": 245,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 246,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 247,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999752760553
+    },
+    {
+      "row": 248,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999948388372576
+    },
+    {
+      "row": 249,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999996482
+    },
+    {
+      "row": 250,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999998706292
+    },
+    {
+      "row": 251,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999913675
+    },
+    {
+      "row": 252,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999786555574416
+    },
+    {
+      "row": 253,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999996512
+    },
+    {
+      "row": 254,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 255,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999998356086981
+    },
+    {
+      "row": 256,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999552
+    },
+    {
+      "row": 257,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999989642289304
+    },
+    {
+      "row": 258,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999966116
+    },
+    {
+      "row": 259,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997954191526448
+    },
+    {
+      "row": 260,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999891
+    },
+    {
+      "row": 261,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999852736578954
+    },
+    {
+      "row": 262,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 263,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 264,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996315781061174
+    },
+    {
+      "row": 265,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999966992772
+    },
+    {
+      "row": 266,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 267,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999950122385
+    },
+    {
+      "row": 268,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999976568
+    },
+    {
+      "row": 269,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999988122802
+    },
+    {
+      "row": 270,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999998709395
+    },
+    {
+      "row": 271,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999927
+    },
+    {
+      "row": 272,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999975461666132
+    },
+    {
+      "row": 273,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999921877278718
+    },
+    {
+      "row": 274,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999972
+    },
+    {
+      "row": 275,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9979197297039026
+    },
+    {
+      "row": 276,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9888411381231035
+    },
+    {
+      "row": 277,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9903285709709571
+    },
+    {
+      "row": 278,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9993484071243214
+    },
+    {
+      "row": 279,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999988
+    },
+    {
+      "row": 280,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999869973
+    },
+    {
+      "row": 281,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999997056884261
+    },
+    {
+      "row": 282,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999846605045297
+    },
+    {
+      "row": 283,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999988797455545
+    },
+    {
+      "row": 284,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999998275471134
+    },
+    {
+      "row": 285,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9878699820157683
+    },
+    {
+      "row": 286,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999981772075
+    },
+    {
+      "row": 287,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999925734
+    },
+    {
+      "row": 288,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9657006652371365
+    },
+    {
+      "row": 289,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 290,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 291,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999997384268051
+    },
+    {
+      "row": 292,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999961
+    },
+    {
+      "row": 293,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9895461927634946
+    },
+    {
+      "row": 294,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999995659457
+    },
+    {
+      "row": 295,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999982374
+    },
+    {
+      "row": 296,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999601554
+    },
+    {
+      "row": 297,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999287215
+    },
+    {
+      "row": 298,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999851830831
+    },
+    {
+      "row": 299,
+      "question": "clasificacion",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999998923478973
+    },
+    {
+      "row": 0,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8887418095473939
+    },
+    {
+      "row": 1,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9994056634879711
+    },
+    {
+      "row": 2,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9893003709507995
+    },
+    {
+      "row": 3,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.7518233350480068
+    },
+    {
+      "row": 4,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9911259349461986
+    },
+    {
+      "row": 5,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9176343549963979
+    },
+    {
+      "row": 6,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9994406598871989
+    },
+    {
+      "row": 7,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999107697611394
+    },
+    {
+      "row": 8,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9841456913300262
+    },
+    {
+      "row": 9,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998497410843841
+    },
+    {
+      "row": 10,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9995401020973973
+    },
+    {
+      "row": 11,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999839703863663
+    },
+    {
+      "row": 12,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9820491551002528
+    },
+    {
+      "row": 13,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.974307834398932
+    },
+    {
+      "row": 14,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8049068636872064
+    },
+    {
+      "row": 15,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9992170982684336
+    },
+    {
+      "row": 16,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.846644690135299
+    },
+    {
+      "row": 17,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8988606921024191
+    },
+    {
+      "row": 18,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999625955361993
+    },
+    {
+      "row": 19,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9986506652208291
+    },
+    {
+      "row": 20,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.7978535860962099
+    },
+    {
+      "row": 21,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9741531630214048
+    },
+    {
+      "row": 22,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9036852310661552
+    },
+    {
+      "row": 23,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9463079394845177
+    },
+    {
+      "row": 24,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9978896909696593
+    },
+    {
+      "row": 25,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9630045634886955
+    },
+    {
+      "row": 26,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9872486792697465
+    },
+    {
+      "row": 27,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.7950361657245172
+    },
+    {
+      "row": 28,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8689244952297317
+    },
+    {
+      "row": 29,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999122458518476
+    },
+    {
+      "row": 30,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999675572053802
+    },
+    {
+      "row": 31,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997196812020012
+    },
+    {
+      "row": 32,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999117953173232
+    },
+    {
+      "row": 33,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8106506287832231
+    },
+    {
+      "row": 34,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.967399728090198
+    },
+    {
+      "row": 35,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999286804451557
+    },
+    {
+      "row": 36,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996598177104683
+    },
+    {
+      "row": 37,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9392842242023602
+    },
+    {
+      "row": 38,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9995539466886699
+    },
+    {
+      "row": 39,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998536354008154
+    },
+    {
+      "row": 40,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8752008637991028
+    },
+    {
+      "row": 41,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9540070072365172
+    },
+    {
+      "row": 42,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9910327725927708
+    },
+    {
+      "row": 43,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9740108166909373
+    },
+    {
+      "row": 44,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999871196805425
+    },
+    {
+      "row": 45,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9806358954002602
+    },
+    {
+      "row": 46,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996845682178371
+    },
+    {
+      "row": 47,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999395116467821
+    },
+    {
+      "row": 48,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999374420481308
+    },
+    {
+      "row": 49,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9787933651406228
+    },
+    {
+      "row": 50,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999746054409225
+    },
+    {
+      "row": 51,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9845044552721152
+    },
+    {
+      "row": 52,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.992943662360919
+    },
+    {
+      "row": 53,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999541617076338
+    },
+    {
+      "row": 54,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.998220914512469
+    },
+    {
+      "row": 55,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8691022342235972
+    },
+    {
+      "row": 56,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999684988295978
+    },
+    {
+      "row": 57,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9966101995763625
+    },
+    {
+      "row": 58,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9965216478224518
+    },
+    {
+      "row": 59,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9707864984876813
+    },
+    {
+      "row": 60,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9712723626280982
+    },
+    {
+      "row": 61,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997544521496611
+    },
+    {
+      "row": 62,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999780978975975
+    },
+    {
+      "row": 63,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9839256244616381
+    },
+    {
+      "row": 64,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9455482268238335
+    },
+    {
+      "row": 65,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9724505387654878
+    },
+    {
+      "row": 66,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996577600256503
+    },
+    {
+      "row": 67,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999860345611838
+    },
+    {
+      "row": 68,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9936803106541404
+    },
+    {
+      "row": 69,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998039567593768
+    },
+    {
+      "row": 70,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9351100483989291
+    },
+    {
+      "row": 71,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 0.0,
+      "BrierQuality": 0.7363321803689221
+    },
+    {
+      "row": 72,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998691428802603
+    },
+    {
+      "row": 73,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9517943039578978
+    },
+    {
+      "row": 74,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.996063408225719
+    },
+    {
+      "row": 75,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9794599093945352
+    },
+    {
+      "row": 76,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999753890339046
+    },
+    {
+      "row": 77,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999451987803109
+    },
+    {
+      "row": 78,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998016326377306
+    },
+    {
+      "row": 79,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999419373804618
+    },
+    {
+      "row": 80,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9886985988670869
+    },
+    {
+      "row": 81,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9989016980005474
+    },
+    {
+      "row": 82,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9755916085272375
+    },
+    {
+      "row": 83,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9752367675198794
+    },
+    {
+      "row": 84,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999127289881701
+    },
+    {
+      "row": 85,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998600901286061
+    },
+    {
+      "row": 86,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999419011082686
+    },
+    {
+      "row": 87,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999852864208254
+    },
+    {
+      "row": 88,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8928277550500555
+    },
+    {
+      "row": 89,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9985079262737476
+    },
+    {
+      "row": 90,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996840177135795
+    },
+    {
+      "row": 91,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9791628664179077
+    },
+    {
+      "row": 92,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.919246556639607
+    },
+    {
+      "row": 93,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9720867027191064
+    },
+    {
+      "row": 94,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999034193406104
+    },
+    {
+      "row": 95,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9632227326831746
+    },
+    {
+      "row": 96,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9981254754115235
+    },
+    {
+      "row": 97,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9834777242239436
+    },
+    {
+      "row": 98,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9973805056391991
+    },
+    {
+      "row": 99,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9373368741239051
+    },
+    {
+      "row": 100,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998505546092997
+    },
+    {
+      "row": 101,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997781286239604
+    },
+    {
+      "row": 102,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999961470383644
+    },
+    {
+      "row": 103,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9257318897616168
+    },
+    {
+      "row": 104,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9995074668042123
+    },
+    {
+      "row": 105,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9136944116431025
+    },
+    {
+      "row": 106,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9938877785566186
+    },
+    {
+      "row": 107,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9583569099811979
+    },
+    {
+      "row": 108,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9833289334706097
+    },
+    {
+      "row": 109,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998061593306982
+    },
+    {
+      "row": 110,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999625652950893
+    },
+    {
+      "row": 111,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9474575911025338
+    },
+    {
+      "row": 112,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9669613461788172
+    },
+    {
+      "row": 113,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9588333723386293
+    },
+    {
+      "row": 114,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8606279629347182
+    },
+    {
+      "row": 115,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9460705087849751
+    },
+    {
+      "row": 116,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999368286153164
+    },
+    {
+      "row": 117,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9406194492529518
+    },
+    {
+      "row": 118,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9378172108212499
+    },
+    {
+      "row": 119,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9465397232582151
+    },
+    {
+      "row": 120,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998564940570981
+    },
+    {
+      "row": 121,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997419013198443
+    },
+    {
+      "row": 122,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9989524910473673
+    },
+    {
+      "row": 123,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999071194144189
+    },
+    {
+      "row": 124,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9244129973073496
+    },
+    {
+      "row": 125,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9864998483927783
+    },
+    {
+      "row": 126,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8910386375171404
+    },
+    {
+      "row": 127,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9328403543857148
+    },
+    {
+      "row": 128,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997419690868428
+    },
+    {
+      "row": 129,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999673044982873
+    },
+    {
+      "row": 130,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9526872061049189
+    },
+    {
+      "row": 131,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9994465587111269
+    },
+    {
+      "row": 132,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9995326568672974
+    },
+    {
+      "row": 133,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9806092484739294
+    },
+    {
+      "row": 134,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997446594659931
+    },
+    {
+      "row": 135,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9689668120885948
+    },
+    {
+      "row": 136,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9780949435511623
+    },
+    {
+      "row": 137,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999412074449835
+    },
+    {
+      "row": 138,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9991937984433537
+    },
+    {
+      "row": 139,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.7732436385343194
+    },
+    {
+      "row": 140,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999778837784504
+    },
+    {
+      "row": 141,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9921723923710495
+    },
+    {
+      "row": 142,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9956692624291079
+    },
+    {
+      "row": 143,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999549505878085
+    },
+    {
+      "row": 144,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998219683100146
+    },
+    {
+      "row": 145,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9172854959810162
+    },
+    {
+      "row": 146,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999794704211272
+    },
+    {
+      "row": 147,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998298627745515
+    },
+    {
+      "row": 148,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9812119933547162
+    },
+    {
+      "row": 149,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996991577959773
+    },
+    {
+      "row": 150,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999357785247963
+    },
+    {
+      "row": 151,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9504013048283129
+    },
+    {
+      "row": 152,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9994957436791938
+    },
+    {
+      "row": 153,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 0.0,
+      "BrierQuality": 0.6931741210765493
+    },
+    {
+      "row": 154,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999548436512927
+    },
+    {
+      "row": 155,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9810134363185573
+    },
+    {
+      "row": 156,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9676668857665385
+    },
+    {
+      "row": 157,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8726791006485299
+    },
+    {
+      "row": 158,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9178422489589251
+    },
+    {
+      "row": 159,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9988707504162783
+    },
+    {
+      "row": 160,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999090312182731
+    },
+    {
+      "row": 161,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9946763671182429
+    },
+    {
+      "row": 162,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9995391906259864
+    },
+    {
+      "row": 163,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9989417639868017
+    },
+    {
+      "row": 164,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9995658794560313
+    },
+    {
+      "row": 165,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9978940282344232
+    },
+    {
+      "row": 166,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9987228229440526
+    },
+    {
+      "row": 167,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9619664007262083
+    },
+    {
+      "row": 168,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9808899109536091
+    },
+    {
+      "row": 169,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998676148614055
+    },
+    {
+      "row": 170,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9495116558221537
+    },
+    {
+      "row": 171,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.7633509603145827
+    },
+    {
+      "row": 172,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9802726585287009
+    },
+    {
+      "row": 173,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9984810030376692
+    },
+    {
+      "row": 174,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999963136798325
+    },
+    {
+      "row": 175,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999582313105828
+    },
+    {
+      "row": 176,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9410640703872594
+    },
+    {
+      "row": 177,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9293186726077657
+    },
+    {
+      "row": 178,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999481666425802
+    },
+    {
+      "row": 179,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999671067422986
+    },
+    {
+      "row": 180,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9994180306131191
+    },
+    {
+      "row": 181,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9452009854647924
+    },
+    {
+      "row": 182,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9884382699843105
+    },
+    {
+      "row": 183,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9686245512386181
+    },
+    {
+      "row": 184,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9615440705525927
+    },
+    {
+      "row": 185,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999776574927309
+    },
+    {
+      "row": 186,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999357124706832
+    },
+    {
+      "row": 187,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999720073921518
+    },
+    {
+      "row": 188,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9662386552998451
+    },
+    {
+      "row": 189,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998379740957349
+    },
+    {
+      "row": 190,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9736536188513703
+    },
+    {
+      "row": 191,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9503144061338236
+    },
+    {
+      "row": 192,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9990496934130617
+    },
+    {
+      "row": 193,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9444892486988397
+    },
+    {
+      "row": 194,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 0.0,
+      "BrierQuality": 0.6357912019715961
+    },
+    {
+      "row": 195,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999694080818181
+    },
+    {
+      "row": 196,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9956445250750245
+    },
+    {
+      "row": 197,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999729107015751
+    },
+    {
+      "row": 198,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9459546745884031
+    },
+    {
+      "row": 199,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9946457003262583
+    },
+    {
+      "row": 200,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9983164835524045
+    },
+    {
+      "row": 201,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999835825960209
+    },
+    {
+      "row": 202,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.992195043858955
+    },
+    {
+      "row": 203,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9764010852287083
+    },
+    {
+      "row": 204,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9049048731866726
+    },
+    {
+      "row": 205,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9185422511615939
+    },
+    {
+      "row": 206,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9918202884507953
+    },
+    {
+      "row": 207,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9603134716098195
+    },
+    {
+      "row": 208,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9993679481944677
+    },
+    {
+      "row": 209,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9829236589516379
+    },
+    {
+      "row": 210,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999814369540937
+    },
+    {
+      "row": 211,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9991225022836487
+    },
+    {
+      "row": 212,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997770579076781
+    },
+    {
+      "row": 213,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.872902382403655
+    },
+    {
+      "row": 214,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998169977850214
+    },
+    {
+      "row": 215,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998062972094245
+    },
+    {
+      "row": 216,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8951190663261813
+    },
+    {
+      "row": 217,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999220251060137
+    },
+    {
+      "row": 218,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.97646127439155
+    },
+    {
+      "row": 219,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9168113054773658
+    },
+    {
+      "row": 220,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999313397776378
+    },
+    {
+      "row": 221,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999737615459837
+    },
+    {
+      "row": 222,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9631646281237702
+    },
+    {
+      "row": 223,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999726861090403
+    },
+    {
+      "row": 224,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8874952570113697
+    },
+    {
+      "row": 225,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997849687973213
+    },
+    {
+      "row": 226,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9789156753574372
+    },
+    {
+      "row": 227,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9976614892655031
+    },
+    {
+      "row": 228,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9601224026876035
+    },
+    {
+      "row": 229,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999573464528363
+    },
+    {
+      "row": 230,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997251922323506
+    },
+    {
+      "row": 231,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9835478832382829
+    },
+    {
+      "row": 232,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9943191762256863
+    },
+    {
+      "row": 233,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9922725337641339
+    },
+    {
+      "row": 234,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997295198055615
+    },
+    {
+      "row": 235,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.8855793362580475
+    },
+    {
+      "row": 236,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9562515843945404
+    },
+    {
+      "row": 237,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9850240437086093
+    },
+    {
+      "row": 238,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9781790791347656
+    },
+    {
+      "row": 239,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999477034694074
+    },
+    {
+      "row": 240,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9156264992645734
+    },
+    {
+      "row": 241,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9878857493784966
+    },
+    {
+      "row": 242,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.99992370501632
+    },
+    {
+      "row": 243,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9972667421205431
+    },
+    {
+      "row": 244,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9990963892244269
+    },
+    {
+      "row": 245,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999535052868677
+    },
+    {
+      "row": 246,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.952522235339368
+    },
+    {
+      "row": 247,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999399886243924
+    },
+    {
+      "row": 248,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999936526724725
+    },
+    {
+      "row": 249,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999805979470064
+    },
+    {
+      "row": 250,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9604532109369351
+    },
+    {
+      "row": 251,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9554231633872988
+    },
+    {
+      "row": 252,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999866369124593
+    },
+    {
+      "row": 253,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9521296949727064
+    },
+    {
+      "row": 254,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9985502241915986
+    },
+    {
+      "row": 255,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999709967217233
+    },
+    {
+      "row": 256,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996350231462039
+    },
+    {
+      "row": 257,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9991805764270564
+    },
+    {
+      "row": 258,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999674843010055
+    },
+    {
+      "row": 259,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9622313076489645
+    },
+    {
+      "row": 260,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9977137516869721
+    },
+    {
+      "row": 261,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9996789362285519
+    },
+    {
+      "row": 262,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9986905818760724
+    },
+    {
+      "row": 263,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9356347355139386
+    },
+    {
+      "row": 264,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9880976238324924
+    },
+    {
+      "row": 265,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9869846113197734
+    },
+    {
+      "row": 266,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9951006323901445
+    },
+    {
+      "row": 267,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998905936279711
+    },
+    {
+      "row": 268,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999592494204558
+    },
+    {
+      "row": 269,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9615361045276862
+    },
+    {
+      "row": 270,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.974605264518223
+    },
+    {
+      "row": 271,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9990625934799435
+    },
+    {
+      "row": 272,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997450114677559
+    },
+    {
+      "row": 273,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9818166985738427
+    },
+    {
+      "row": 274,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999618646856742
+    },
+    {
+      "row": 275,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9919580881500136
+    },
+    {
+      "row": 276,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 0.0,
+      "BrierQuality": 0.7221309865451768
+    },
+    {
+      "row": 277,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 0.0,
+      "BrierQuality": 0.7144701301229115
+    },
+    {
+      "row": 278,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9673536182882853
+    },
+    {
+      "row": 279,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9140963070296396
+    },
+    {
+      "row": 280,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9987223094958015
+    },
+    {
+      "row": 281,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999011368458006
+    },
+    {
+      "row": 282,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9994542629235027
+    },
+    {
+      "row": 283,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999533315639175
+    },
+    {
+      "row": 284,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.7979717674237918
+    },
+    {
+      "row": 285,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9948805692778603
+    },
+    {
+      "row": 286,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9994283478958766
+    },
+    {
+      "row": 287,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9968220415519851
+    },
+    {
+      "row": 288,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9292650876651862
+    },
+    {
+      "row": 289,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9993461659377516
+    },
+    {
+      "row": 290,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9990959174199063
+    },
+    {
+      "row": 291,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9997231074941202
+    },
+    {
+      "row": 292,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9864978683280724
+    },
+    {
+      "row": 293,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9979929589025988
+    },
+    {
+      "row": 294,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999591342473368
+    },
+    {
+      "row": 295,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9731157612893347
+    },
+    {
+      "row": 296,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9863108105084124
+    },
+    {
+      "row": 297,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.985731302389276
+    },
+    {
+      "row": 298,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999656516637165
+    },
+    {
+      "row": 299,
+      "question": "atencion_prioritaria",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9987832677013648
+    },
+    {
+      "row": 0,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999891754
+    },
+    {
+      "row": 1,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999957
+    },
+    {
+      "row": 2,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 3,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 4,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999993
+    },
+    {
+      "row": 5,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999982377876847
+    },
+    {
+      "row": 6,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999958324
+    },
+    {
+      "row": 7,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.99999999936761
+    },
+    {
+      "row": 8,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999996
+    },
+    {
+      "row": 9,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999990982729
+    },
+    {
+      "row": 10,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999911
+    },
+    {
+      "row": 11,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 12,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999997617142
+    },
+    {
+      "row": 13,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999988639
+    },
+    {
+      "row": 14,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 15,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999913529
+    },
+    {
+      "row": 16,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999012
+    },
+    {
+      "row": 17,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999678318
+    },
+    {
+      "row": 18,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 19,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999996718616276
+    },
+    {
+      "row": 20,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999994
+    },
+    {
+      "row": 21,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999590065
+    },
+    {
+      "row": 22,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 23,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999986
+    },
+    {
+      "row": 24,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999973758
+    },
+    {
+      "row": 25,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999408
+    },
+    {
+      "row": 26,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 27,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 28,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 29,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 30,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 31,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999994065
+    },
+    {
+      "row": 32,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999935
+    },
+    {
+      "row": 33,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 34,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999994416
+    },
+    {
+      "row": 35,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999996753938
+    },
+    {
+      "row": 36,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 37,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999886
+    },
+    {
+      "row": 38,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999993
+    },
+    {
+      "row": 39,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999266115
+    },
+    {
+      "row": 40,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999998086351
+    },
+    {
+      "row": 41,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 42,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999997
+    },
+    {
+      "row": 43,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999997938
+    },
+    {
+      "row": 44,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999993
+    },
+    {
+      "row": 45,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999707
+    },
+    {
+      "row": 46,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999993417
+    },
+    {
+      "row": 47,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999724111
+    },
+    {
+      "row": 48,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999705
+    },
+    {
+      "row": 49,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998863
+    },
+    {
+      "row": 50,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999477
+    },
+    {
+      "row": 51,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999992605
+    },
+    {
+      "row": 52,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999993044
+    },
+    {
+      "row": 53,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999877
+    },
+    {
+      "row": 54,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 55,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999182
+    },
+    {
+      "row": 56,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999994235218
+    },
+    {
+      "row": 57,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 58,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 59,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 60,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999887
+    },
+    {
+      "row": 61,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999976163344
+    },
+    {
+      "row": 62,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999993
+    },
+    {
+      "row": 63,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 64,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998772
+    },
+    {
+      "row": 65,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 66,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999991694596
+    },
+    {
+      "row": 67,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999987169
+    },
+    {
+      "row": 68,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 69,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998604
+    },
+    {
+      "row": 70,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999902674608
+    },
+    {
+      "row": 71,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999837
+    },
+    {
+      "row": 72,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999901244326
+    },
+    {
+      "row": 73,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999793
+    },
+    {
+      "row": 74,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999337333
+    },
+    {
+      "row": 75,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999964294
+    },
+    {
+      "row": 76,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 77,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999891
+    },
+    {
+      "row": 78,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999997661
+    },
+    {
+      "row": 79,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999954496
+    },
+    {
+      "row": 80,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 81,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999996380268
+    },
+    {
+      "row": 82,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999997
+    },
+    {
+      "row": 83,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999764176823
+    },
+    {
+      "row": 84,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 85,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 86,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999994406447
+    },
+    {
+      "row": 87,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 88,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999930473301
+    },
+    {
+      "row": 89,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999996927076
+    },
+    {
+      "row": 90,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999682
+    },
+    {
+      "row": 91,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999997
+    },
+    {
+      "row": 92,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 93,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999998731024
+    },
+    {
+      "row": 94,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999996499662
+    },
+    {
+      "row": 95,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999782773
+    },
+    {
+      "row": 96,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999996917
+    },
+    {
+      "row": 97,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999988516121
+    },
+    {
+      "row": 98,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999967
+    },
+    {
+      "row": 99,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 100,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999736873
+    },
+    {
+      "row": 101,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999986487
+    },
+    {
+      "row": 102,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 103,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999972256
+    },
+    {
+      "row": 104,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999995429644
+    },
+    {
+      "row": 105,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 106,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999996564
+    },
+    {
+      "row": 107,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999049
+    },
+    {
+      "row": 108,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 109,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999998
+    },
+    {
+      "row": 110,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 111,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 112,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999815
+    },
+    {
+      "row": 113,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 114,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999795663
+    },
+    {
+      "row": 115,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999976444507
+    },
+    {
+      "row": 116,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 117,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 118,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998275
+    },
+    {
+      "row": 119,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999995396
+    },
+    {
+      "row": 120,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999994
+    },
+    {
+      "row": 121,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 122,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 123,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999042743016
+    },
+    {
+      "row": 124,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999986743
+    },
+    {
+      "row": 125,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 126,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999992412235
+    },
+    {
+      "row": 127,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999913
+    },
+    {
+      "row": 128,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999984
+    },
+    {
+      "row": 129,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 130,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 131,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999946
+    },
+    {
+      "row": 132,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999902
+    },
+    {
+      "row": 133,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999992424884
+    },
+    {
+      "row": 134,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999988346463
+    },
+    {
+      "row": 135,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999994094
+    },
+    {
+      "row": 136,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 137,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999752758
+    },
+    {
+      "row": 138,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999968359
+    },
+    {
+      "row": 139,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 140,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 141,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 142,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 143,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998334
+    },
+    {
+      "row": 144,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999994435575
+    },
+    {
+      "row": 145,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 146,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 147,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999715031
+    },
+    {
+      "row": 148,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999994
+    },
+    {
+      "row": 149,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999993622337
+    },
+    {
+      "row": 150,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999977
+    },
+    {
+      "row": 151,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999986082
+    },
+    {
+      "row": 152,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999879266727
+    },
+    {
+      "row": 153,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999991596
+    },
+    {
+      "row": 154,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999815
+    },
+    {
+      "row": 155,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 156,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999987305
+    },
+    {
+      "row": 157,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999988185
+    },
+    {
+      "row": 158,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 159,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999823
+    },
+    {
+      "row": 160,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999996454
+    },
+    {
+      "row": 161,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999992
+    },
+    {
+      "row": 162,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 163,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999997657261
+    },
+    {
+      "row": 164,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 165,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999582605
+    },
+    {
+      "row": 166,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 167,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999976390387411
+    },
+    {
+      "row": 168,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 169,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999996602
+    },
+    {
+      "row": 170,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998737
+    },
+    {
+      "row": 171,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 172,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999728548
+    },
+    {
+      "row": 173,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 174,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 175,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 176,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999593
+    },
+    {
+      "row": 177,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999997
+    },
+    {
+      "row": 178,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999993
+    },
+    {
+      "row": 179,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999951087168
+    },
+    {
+      "row": 180,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 181,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 182,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999998782557
+    },
+    {
+      "row": 183,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999375
+    },
+    {
+      "row": 184,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999793
+    },
+    {
+      "row": 185,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999979716
+    },
+    {
+      "row": 186,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 187,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999996864648
+    },
+    {
+      "row": 188,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999545587
+    },
+    {
+      "row": 189,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999957274
+    },
+    {
+      "row": 190,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999997573
+    },
+    {
+      "row": 191,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999885177293195
+    },
+    {
+      "row": 192,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 193,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999920716
+    },
+    {
+      "row": 194,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999866
+    },
+    {
+      "row": 195,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 196,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999988
+    },
+    {
+      "row": 197,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 198,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999573
+    },
+    {
+      "row": 199,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999966097
+    },
+    {
+      "row": 200,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999980786445
+    },
+    {
+      "row": 201,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 202,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999544475
+    },
+    {
+      "row": 203,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999006
+    },
+    {
+      "row": 204,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999927144038
+    },
+    {
+      "row": 205,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9998668789961557
+    },
+    {
+      "row": 206,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999926427363
+    },
+    {
+      "row": 207,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999277183580387
+    },
+    {
+      "row": 208,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999996962
+    },
+    {
+      "row": 209,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999994
+    },
+    {
+      "row": 210,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 211,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 212,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 213,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999989
+    },
+    {
+      "row": 214,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999927716
+    },
+    {
+      "row": 215,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999496
+    },
+    {
+      "row": 216,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999997219
+    },
+    {
+      "row": 217,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 218,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999962
+    },
+    {
+      "row": 219,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999768745974
+    },
+    {
+      "row": 220,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999953
+    },
+    {
+      "row": 221,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999525
+    },
+    {
+      "row": 222,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999397
+    },
+    {
+      "row": 223,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 224,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999981
+    },
+    {
+      "row": 225,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999816
+    },
+    {
+      "row": 226,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999799726
+    },
+    {
+      "row": 227,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 228,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999951
+    },
+    {
+      "row": 229,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999995874
+    },
+    {
+      "row": 230,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 231,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999324
+    },
+    {
+      "row": 232,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999986
+    },
+    {
+      "row": 233,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999995631897
+    },
+    {
+      "row": 234,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999989474
+    },
+    {
+      "row": 235,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999890478
+    },
+    {
+      "row": 236,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999992
+    },
+    {
+      "row": 237,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999869887
+    },
+    {
+      "row": 238,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 239,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999984627
+    },
+    {
+      "row": 240,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 241,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 242,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999992
+    },
+    {
+      "row": 243,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 244,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 245,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999994367804
+    },
+    {
+      "row": 246,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999997547286
+    },
+    {
+      "row": 247,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999997771
+    },
+    {
+      "row": 248,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.99999999999994
+    },
+    {
+      "row": 249,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999964544
+    },
+    {
+      "row": 250,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999997161
+    },
+    {
+      "row": 251,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999947967719591
+    },
+    {
+      "row": 252,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999993221992091
+    },
+    {
+      "row": 253,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 254,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999976151106
+    },
+    {
+      "row": 255,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 256,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999308401
+    },
+    {
+      "row": 257,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999996
+    },
+    {
+      "row": 258,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999863974
+    },
+    {
+      "row": 259,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 260,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 261,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 262,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 263,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999252192
+    },
+    {
+      "row": 264,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999384603
+    },
+    {
+      "row": 265,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 266,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999999
+    },
+    {
+      "row": 267,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999806
+    },
+    {
+      "row": 268,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998775
+    },
+    {
+      "row": 269,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999996
+    },
+    {
+      "row": 270,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999910693
+    },
+    {
+      "row": 271,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 272,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 273,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 274,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999979337
+    },
+    {
+      "row": 275,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999949325
+    },
+    {
+      "row": 276,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 277,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 278,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999754113
+    },
+    {
+      "row": 279,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999998321
+    },
+    {
+      "row": 280,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 281,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999981
+    },
+    {
+      "row": 282,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999585
+    },
+    {
+      "row": 283,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999392
+    },
+    {
+      "row": 284,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.999999999999988
+    },
+    {
+      "row": 285,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999995492
+    },
+    {
+      "row": 286,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 287,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999277347315
+    },
+    {
+      "row": 288,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999950738
+    },
+    {
+      "row": 289,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999945192
+    },
+    {
+      "row": 290,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999835773654
+    },
+    {
+      "row": 291,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999974
+    },
+    {
+      "row": 292,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999994
+    },
+    {
+      "row": 293,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999984747354
+    },
+    {
+      "row": 294,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999887076
+    },
+    {
+      "row": 295,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 296,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999998916955
+    },
+    {
+      "row": 297,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999999998
+    },
+    {
+      "row": 298,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 1.0
+    },
+    {
+      "row": 299,
+      "question": "nivel",
+      "ExactMatch": 1.0,
+      "BrierQuality": 0.9999999999995884
+    }
+  ]
+}

@@ -21,7 +21,7 @@ case "${1:-}" in
   new|list|validate) exec "$python_cmd" -m decision_brain.factory "$@" ;;
   --help|-h) exec "$python_cmd" -m decision_brain.launch --help ;;
 esac
-echo "Decision Brain 0.12.0 | $PWD"
+echo "Decision Brain 0.14.0 | $PWD"
 "$python_cmd" scripts/bootstrap.py
 case "${1:-}" in
   setup) exit 0 ;;
@@ -30,6 +30,7 @@ case "${1:-}" in
   operate) shift; exec .venv/bin/python -m decision_brain.operations "$@" ;;
   observe-demo) shift; exec .venv/bin/python -m decision_brain.gates_demo --serve "$@" ;;
   gates-demo) shift; exec .venv/bin/python -m decision_brain.gates_demo "$@" ;;
+  compare) shift; exec .venv/bin/python -m decision_brain.launch --engine multi "$@" ;;
   autoresearch) shift; exec .venv/bin/python -m decision_brain.launch "$@" ;;
   autoevals) shift; exec .venv/bin/python -m decision_brain.harness "$@" ;;
   prepare-data) shift; exec .venv/bin/python -m decision_brain.prepare_data "$@" ;;

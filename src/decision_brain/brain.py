@@ -111,14 +111,19 @@ def encode(rows,enc):
     return np.hstack(blocks).astype(np.float32)
 
 
-def judge(spec,probabilities):
+def judge(spec,probabilities,uncertainty_policy=None,selection_scores=None):
     require(len(probabilities)==len(spec['decisions']),'number of prediction heads does not match contract')
     for d,p in zip(spec['decisions'],probabilities):
         values=np.asarray(p)
         require(values.shape==(len(d['options']),) and np.isfinite(values).all() and
                 (values>=0).all() and (values<=1).all() and np.isclose(values.sum(),1,atol=1e-5),'invalid probability distribution')
+    from decision_brain.uncertainty import validate_policy, prediction_set
+    validate_policy(uncertainty_policy,[len(d['options']) for d in spec['decisions']])
+    if selection_scores is not None:
+        require(len(selection_scores)==len(probabilities),'invalid selector heads')
+        require(all(v is None or (type(v) in (int,float) and np.isfinite(v) and 0<=v<=1) for v in selection_scores),'invalid selection scores')
     answers={};uncertain=[]
-    for d,p in zip(spec['decisions'],probabilities):
+    for head_index,(d,p) in enumerate(zip(spec['decisions'],probabilities)):
         winner=int(np.argmax(p));option=d['options'][winner];conf=float(p[winner])
         distribution={o['id']:float(v) for o,v in zip(d['options'],p)}
         answer={'kind':d['kind'],'question':d['question'],'choice':option['id'],
@@ -127,11 +132,25 @@ def judge(spec,probabilities):
         if d['kind']=='boolean':answer['probability_true']=float(p[1])
         if d['kind']=='score':answer['expected_score']=float(sum(o['value']*v for o,v in zip(d['options'],p)))
         answer['needs_review']=conf<d.get('min_probability',.6)
+        if uncertainty_policy is not None:
+            indices=prediction_set(p,uncertainty_policy['heads'][head_index])
+            answer['prediction_set']=[d['options'][i]['id'] for i in indices]
+            reasons=[]
+            if answer['needs_review']:reasons.append('below_contract_threshold')
+            if len(indices)!=1 or winner not in indices:reasons.append('non_singleton_prediction_set')
+            answer['review_reasons']=reasons
+            answer['needs_review']=bool(reasons)
+        if selection_scores is not None and selection_scores[head_index] is not None:
+            value=selection_scores[head_index]
+            reasons=answer.get('review_reasons',['below_contract_threshold'] if answer['needs_review'] else [])
+            answer['selection_score']=value;answer['selection_threshold']=.5
+            if value<.5:reasons.append('learned_selector_rejected')
+            answer['review_reasons']=reasons;answer['needs_review']=bool(reasons)
         if answer['needs_review']:uncertain.append(d['id'])
         answers[d['id']]=answer
     route=spec['routing']['fallback'];reason='Ninguna regla superó su umbral.'
     if uncertain:
-        route=spec['routing'].get('review_action','revision_humana');reason='Probabilidad insuficiente en: '+', '.join(uncertain)
+        route=spec['routing'].get('review_action','revision_humana');reason='Revisión requerida por umbral, conjunto o selector en: '+', '.join(uncertain)
     else:
         for rule in spec['routing'].get('rules',[]):
             probability=answers[rule['decision']]['probabilities'][rule['option']]
@@ -142,12 +161,30 @@ def judge(spec,probabilities):
             'action_executed':False}
 
 
+def infer_decision(spec,enc,net,state):
+    from decision_brain.model_zoo import review_scores
+    x=encode([state],enc)
+    result=judge(spec,[p[0] for p in net.predict(x)],getattr(net,'uncertainty_policy',None),
+                 [None if score is None else float(score[0]) for score in review_scores(net,x)])
+    if hasattr(net,'routes'):
+        for d,algorithm in zip(spec['decisions'],net.routes):result['answers'][d['id']]['algorithm']=algorithm
+    return result
+
+
 def load_model(run):
     spec=read_spec(run/'brain.json')
     meta=json.loads((run/'model.json').read_text(encoding='utf-8'))
     require(signature(spec)==meta['contract_hash'],'model and decision contract do not match')
+    from decision_brain.uncertainty import validate_policy
+    validate_policy(meta.get('uncertainty_policy'),meta['counts'])
     enc=import_encoder(run/'encoder.json')
     with np.load(run/'weights.npz',allow_pickle=False) as archive:
+        if 'model_graph' in meta:
+            from decision_brain.model_zoo import restore
+            net=restore(meta['model_graph'],archive,meta['input_dim'])
+            require(tuple(net.counts)==tuple(len(d['options']) for d in spec['decisions']),'model graph contract mismatch')
+            net.uncertainty_policy=meta.get('uncertainty_policy')
+            return spec,enc,net
         net=MultiDecisionNet(meta['input_dim'],Config(**meta['configuration']),0,meta['counts'])
         require(meta['counts']==[len(d['options']) for d in spec['decisions']],'model head sizes do not match contract')
         params=[archive[f'p{i}'] for i in range(2+2*len(meta['counts']))]
@@ -156,18 +193,22 @@ def load_model(run):
         require(temperature.shape==(len(meta['counts']),) and np.isfinite(temperature).all() and (temperature>0).all(),'invalid calibration temperatures')
         net.params=params
         net.temperature=temperature.tolist()
+        net.uncertainty_policy=meta.get('uncertainty_policy')
     return spec,enc,net
 
 
-def evaluate(spec,probs,truth,train_truth):
+def evaluate(spec,probs,truth,train_truth,uncertainty_policy=None):
     result={}
-    for d,p,y,yt in zip(spec['decisions'],probs,truth,train_truth):
+    for head_index,(d,p,y,yt) in enumerate(zip(spec['decisions'],probs,truth,train_truth)):
         k=len(d['options']);pred=p.argmax(axis=1)
         confidence=p.max(axis=1);correct=pred==y;ece=0.0
         for low,high in zip(np.linspace(0,1,11)[:-1],np.linspace(0,1,11)[1:]):
             selected=(confidence>=low)&(confidence<high if high<1 else confidence<=high)
             if selected.any():ece+=float(selected.mean()*abs(correct[selected].mean()-confidence[selected].mean()))
         automated=confidence>=d.get('min_probability',.6)
+        if uncertainty_policy is not None:
+            from decision_brain.uncertainty import prediction_set
+            automated &= np.array([prediction_set(row,uncertainty_policy['heads'][head_index])==[int(w)] for row,w in zip(p,pred)])
         prior=np.bincount(yt,minlength=k)/len(yt)
         baseline=np.tile(prior,(len(y),1))
         result[d['id']]={'question':d['question'],'accuracy':float(accuracy_score(y,pred)),
@@ -189,10 +230,13 @@ def evaluate(spec,probs,truth,train_truth):
 
 
 def train(args,spec):
+    if getattr(args,'engine','neural')=='multi':
+        from decision_brain.multi_training import train_multi
+        return train_multi(args,spec)
     out=args.output
     require(not out.exists(),'Output directory already exists; choose a new run directory')
     protected={str(args.data.resolve()):hashlib.sha256(args.data.read_bytes()).hexdigest()}
-    for name in ('brain.py','network.py','autoeval_quality.py','autoresearch.py'):
+    for name in ('brain.py','network.py','autoeval_quality.py','autoresearch.py','uncertainty.py'):
         path=Path(__file__).with_name(name);protected[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest()
     parts=read_dataset(args.data,spec)
     states={s:[r[0] for r in rows] for s,rows in parts.items()}
@@ -220,18 +264,21 @@ def train(args,spec):
         features['validation'],targets['validation'],seed=args.seed,epochs=args.epochs,trials=args.trials,
         log_every=args.log_every,folder=out/'research',policy=research_policy,proposals=proposals)
     require(all(hashlib.sha256(Path(path).read_bytes()).hexdigest()==digest for path,digest in protected.items()),'Data or training/evaluation code changed during research')
-    # Calibration set is independent of both optimization and final testing.
-    winner.temperature=[min((.7,1.,1.4,2.,3.),key=lambda t:single_loss(
-        winner._raw_prob(features['calibration'],i,t),targets['calibration'][i])) for i in range(len(counts))]
+    # Split calibration again so fitted temperatures cannot leak into conformal scores.
+    from decision_brain.uncertainty import calibrate,diagnostics,quality_gate
+    winner.uncertainty_policy,calibration_audit=calibrate(winner,features['calibration'],targets['calibration'],args.seed)
     test=winner.predict(features['test'])
-    metrics=evaluate(spec,test,targets['test'],targets['train'])
+    metrics=evaluate(spec,test,targets['test'],targets['train'],winner.uncertainty_policy)
+    selective=diagnostics(spec,test,targets['test'],winner.uncertainty_policy)
+    uncertainty_errors=quality_gate(selective,winner.uncertainty_policy)
     from decision_brain.autoeval_quality import evaluate as autoevaluate,gate as autogate
     autoevals=autoevaluate(spec['decisions'],test,targets['test'],include_cases=True)
     autoeval_errors=autogate(autoevals,research_policy['final_autoevals'])
+    assurance_errors=autoeval_errors+uncertainty_errors
     out.mkdir(parents=True,exist_ok=True)
     save(out/'brain.json',spec)
     save(out/'model.json',{'contract_hash':signature(spec),'input_dim':features['train'].shape[1],
-                         'counts':counts,'configuration':asdict(config)})
+                         'counts':counts,'configuration':asdict(config),'uncertainty_policy':winner.uncertainty_policy})
     np.savez(out/'weights.npz',**{f'p{i}':p for i,p in enumerate(winner.params)},temperature=winner.temperature)
     export_encoder(enc,out/'encoder.json')
     saved_spec,saved_enc,saved_net=load_model(out)
@@ -240,10 +287,10 @@ def train(args,spec):
     require(all(np.isfinite(p).all() and np.allclose(p.sum(axis=1),1) for p in replay),'invalid probabilities')
     from decision_brain.edge_contracts import check_response
     for index in range(len(states['test'])):
-        check_response({**judge(saved_spec,[p[index] for p in replay]),'model_version':'functional'},saved_spec,'functional')
+        check_response({**judge(saved_spec,[p[index] for p in replay],saved_net.uncertainty_policy),'model_version':'functional'},saved_spec,'functional')
     examples=[]
     for index,state in enumerate(states['test'][:5]):
-        examples.append({'state':state,**judge(saved_spec,[p[index] for p in replay])})
+        examples.append({'state':state,**judge(saved_spec,[p[index] for p in replay],saved_net.uncertainty_policy)})
     from decision_brain.data_quality import audit_dataset
     dataset_audit=audit_dataset(parts,spec)
     ablations={}
@@ -256,10 +303,12 @@ def train(args,spec):
     report={'industry':spec['industry'],'seed':args.seed,'dataset_sha256':hashlib.sha256(args.data.read_bytes()).hexdigest(),
         'split_sizes':{s:len(rows) for s,rows in parts.items()},'selected_trial':selected,'search':trace,
         'test_loss':loss(test,targets['test']),'metrics':metrics,'temperatures':winner.temperature,
+        'uncertainty_policy':winner.uncertainty_policy,'calibration_audit':calibration_audit,
+        'selective_decisions':selective,'uncertainty_assurance':{'passed':not uncertainty_errors,'reasons':uncertainty_errors},
         'dataset_audit':dataset_audit,'input_ablation':ablations,
         'uncertainty_training':{'rows':uncertainty_count,'targets':'soft distributions; train wording only; synthetic_demo only'},
-        'assurance':{'engine':'autoevals','version':autoevals['version'],'passed':not autoeval_errors,
-          'reasons':autoeval_errors,'policy':research_policy['final_autoevals'],
+        'assurance':{'engine':'autoevals','version':autoevals['version'],'passed':not assurance_errors,
+          'reasons':assurance_errors,'policy':research_policy['final_autoevals'],
           'scores':{k:v for k,v in autoevals.items() if k!='cases'},
           'research_policy_sha256':freeze_hash(research_policy),'test_used_for_selection':False,
           'protected_inputs_sha256':{Path(k).name:v for k,v in protected.items()},
@@ -272,7 +321,7 @@ def train(args,spec):
     save(out/'autoevals.json',{'passed':not autoeval_errors,'reasons':autoeval_errors,**autoevals})
     with (out/'predictions.jsonl').open('w',encoding='utf-8') as stream:
         for index in range(len(states['test'])):
-            result=judge(saved_spec,[p[index] for p in replay])
+            result=judge(saved_spec,[p[index] for p in replay],saved_net.uncertainty_policy)
             stream.write(json.dumps({'row':index,'targets':{d['id']:d['options'][int(targets['test'][i][index])]['id'] for i,d in enumerate(spec['decisions'])},**result},ensure_ascii=False,allow_nan=False)+'\n')
     for name,m in metrics.items():
         with (out/f'confusion_{name}.csv').open('w',newline='', encoding='utf-8') as f:
@@ -280,6 +329,8 @@ def train(args,spec):
             for label,row in zip(m['labels'],m['confusion_matrix']):w.writerow([label,*row])
     from decision_brain.reporting import render
     render(report,out)
+    print('CALIDAD INCERTIDUMBRE '+('PASS' if not uncertainty_errors else 'FAIL')+'; '+str(uncertainty_errors),flush=True)
+    print('ABSTENCIÓN: '+json.dumps(report['selective_decisions']['conformal_policy'],ensure_ascii=False),flush=True)
     print('AUTOEVALS '+('PASS' if not autoeval_errors else 'FAIL')+'; '+str(autoeval_errors),flush=True)
     print(f'FUNCTIONAL TEST PASSED; test_loss={report["test_loss"]:.6g}',flush=True)
     for name,m in metrics.items():
@@ -298,6 +349,7 @@ def main():
         t=sub.add_parser(name);t.add_argument('--data',type=Path,default=Path('data/demo.csv'))
         t.add_argument('--output',type=Path,default=Path('runs/default'));t.add_argument('--seed',type=int,default=42)
         t.add_argument('--trials',type=int,default=3);t.add_argument('--epochs',type=int,default=40)
+        t.add_argument('--engine',choices=['neural','multi'],default='neural')
         t.add_argument('--log-every',type=int,default=10)
         t.add_argument('--research-policy',type=Path)
         t.add_argument('--proposals',type=Path,help='JSON list of bounded hypotheses; baseline always runs first')
@@ -309,7 +361,7 @@ def main():
             from decision_brain.runtime_paths import latest_model
             if a.run is None:a.run=latest_model(Path.cwd())
             spec,enc,net=load_model(a.run);state=validate_state(json.loads(a.state.read_text(encoding='utf-8')),spec)
-            print(json.dumps({'state':state,**judge(spec,[p[0] for p in net.predict(encode([state],enc))])},indent=2,ensure_ascii=False));return
+            print(json.dumps({'state':state,**infer_decision(spec,enc,net,state)},indent=2,ensure_ascii=False));return
         spec=read_spec(a.config)
         if a.command=='generate':generate(spec,a.rows,a.seed,a.output);print(a.output);return
         require(a.trials>=1 and a.epochs>=1 and a.log_every>=1,'trials, epochs and log-every must be positive')
